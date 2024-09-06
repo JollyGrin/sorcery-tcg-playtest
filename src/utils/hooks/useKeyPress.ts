@@ -24,6 +24,7 @@ export function useKeyPress(targetKey: KeyboardEventKey) {
   // Add event listeners
   useEffect(() => {
     // If pressed key is our target key then set to true
+    // eslint-disable-next-line
     function downHandler({ key }: any) {
       if (!keyPressed && key === targetKey) {
         setKeyPressed(true);
