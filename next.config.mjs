@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
+
+const pathPrefix =
+  process.env.NODE_ENV === "production" ? "/sorcery-tcg-playtest" : "";
+
+console.log("Environment:", process.env.NODE_ENV);
 const nextConfig = {
+  assetPrefix: pathPrefix,
+  env: {
+    pathPrefix,
+  },
   reactStrictMode: true,
 };
 
-export default nextConfig;
+module.exports = nextConfig;
