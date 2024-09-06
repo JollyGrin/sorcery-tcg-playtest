@@ -61,8 +61,8 @@ jobs:
       # - name: Run postbuild script
       #   run: pnpm node lib/buildTools/prefixFonts.js
 
-      - name: Export Static HTML with Next.js
-        run: pnpm next export
+      # - name: Export Static HTML with Next.js
+      #   run: pnpm next export
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
