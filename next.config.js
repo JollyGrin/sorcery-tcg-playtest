@@ -5,6 +5,7 @@ const pathPrefix =
 
 console.log("Environment:", process.env.NODE_ENV);
 const nextConfig = {
+  output: "export",
   assetPrefix: pathPrefix,
   env: {
     pathPrefix,
