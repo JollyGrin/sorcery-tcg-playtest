@@ -218,7 +218,11 @@ const DroppableGridItem = (props: { children: ReactNode; id: string }) => {
   return (
     <div
       ref={setNodeRef}
-      style={{ minHeight: "100px", border: "1px solid black" }}
+      style={{
+        minHeight: "100px",
+        border: "1px solid black",
+        background: "rgba(0,0,250,0.1)",
+      }}
     >
       {props.children}
     </div>

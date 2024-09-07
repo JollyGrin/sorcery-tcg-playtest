@@ -10,6 +10,7 @@ import {
 } from "@dnd-kit/core";
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 import { ReactNode, useState } from "react";
+import { Nav } from "@/components/molecules/Nav";
 
 const nav = `100px`;
 const footer = `50px`;
@@ -50,22 +51,8 @@ export default function Home() {
     <div>
       <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCenter}>
         <Grid gridTemplateRows={`${nav} ${body} ${footer}`} gap={0}>
-          <div style={{ background: "rgba(0,200,0,0.2)", padding: "1rem" }}>
-            <p>Experiment arranging a Sorcery Grid</p>
-            <p>
-              While hovering over a card, click{" "}
-              <code
-                style={{
-                  background: "rgba(0,0,0,0.075)",
-                  padding: "5px",
-                  borderRadius: "5px",
-                }}
-              >
-                ALT
-              </code>{" "}
-              key
-            </p>
-          </div>
+          <Nav />
+
           <div
             className={grid({
               gap: 1,
