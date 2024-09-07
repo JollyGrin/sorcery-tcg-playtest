@@ -20,7 +20,6 @@ export const CardAtlas = ({
   }, [isPressed]);
 
   const show = preview && isHovering;
-  console.log(img);
   return (
     <Box
       position="relative"
