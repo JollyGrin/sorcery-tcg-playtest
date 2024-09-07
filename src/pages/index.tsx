@@ -52,7 +52,7 @@ export default function Home() {
             })}
           >
             {Array.from({ length: 20 }).map((_, i) => (
-              <DroppableGridItem key={"grid" + i}>
+              <DroppableGridItem key={"grid" + i} id={"grid" + i}>
                 <Drag>
                   <CardAtlas />
                 </Drag>
