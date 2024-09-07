@@ -42,24 +42,6 @@ export const GameBoard = ({
               gridIndex={gridIndex}
               onSortEnd={handleSortEnd}
             />
-            {/* <SortableContext */}
-            {/*   id={`grid-${gridIndex}`} */}
-            {/*   items={cards.map( */}
-            {/*     (_, cardIndex) => `card-${gridIndex}-${cardIndex}`, */}
-            {/*   )} */}
-            {/*   strategy={rectSortingStrategy} */}
-            {/* > */}
-            {/*   {cards.map((card, cardIndex) => ( */}
-            {/*     <DragItem */}
-            {/*       key={`card-${gridIndex}-${cardIndex}`} */}
-            {/*       gridIndex={gridIndex} */}
-            {/*       index={cardIndex} */}
-            {/*     > */}
-            {/*       {card.type === "site" && <CardAtlas img={card.img} />} */}
-            {/*       {card.type !== "site" && <CardImage img={card.img} />} */}
-            {/*     </DragItem> */}
-            {/*   ))} */}
-            {/* </SortableContext> */}
           </DroppableGridItem>
         ))}
       </GameLayout>
