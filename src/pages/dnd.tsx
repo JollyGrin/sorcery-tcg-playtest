@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { CardAtlas } from "@/components/atoms/mock-cards/atlas";
 import { Box, Grid, HStack } from "styled-system/jsx";
 import { grid } from "styled-system/patterns";

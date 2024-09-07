@@ -1,6 +1,6 @@
 import { CardAtlas } from "@/components/atoms/mock-cards/atlas";
 import { DroppableGridItem } from "@/components/molecules/DropGridItem";
-import { Box, Grid } from "styled-system/jsx";
+import { Grid } from "styled-system/jsx";
 import { grid } from "styled-system/patterns";
 import { DndContext, DragEndEvent, useDraggable } from "@dnd-kit/core";
 import { ReactNode, useState } from "react";
@@ -10,8 +10,7 @@ const footer = `50px`;
 const body = `calc(100vh - ${nav} - ${footer})`;
 
 export default function Home() {
-  const [isDropped, setIsDropped] = useState(false);
-  const draggableMarkup = <Drag>Drag me</Drag>;
+  const [_, setIsDropped] = useState(false);
 
   function handleDragEnd(event: DragEndEvent) {
     if (event.over && event.over.id === "droppable") {
