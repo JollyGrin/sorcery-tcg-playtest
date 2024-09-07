@@ -25,7 +25,7 @@ export const useHandleDrag = ({
       );
 
       // Place card in the destination area
-      updatedGrid[destinationIndex].push(movedCard);
+      updatedGrid[destinationIndex]?.push(movedCard);
 
       setGridItems(updatedGrid);
     }

@@ -8,7 +8,7 @@ export const DroppableGridItem = (props: {
   id: string;
 }) => {
   const { isOver, setNodeRef } = useDroppable({
-    id: "droppable",
+    id: "droppable-" + props.id,
   });
   const style = {
     color: isOver ? "green" : undefined,
@@ -30,7 +30,7 @@ export const DroppableGridItem = (props: {
         top={0}
         w="100%"
         h="100%"
-        bg="gray.200"
+        bg={isOver ? "green.200" : "gray.200"}
         zIndex={-1000}
       />
     </div>
