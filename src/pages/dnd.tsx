@@ -1,5 +1,5 @@
 import { CardAtlas } from "@/components/atoms/mock-cards/atlas";
-import { Box, Grid } from "styled-system/jsx";
+import { Box, Grid, HStack } from "styled-system/jsx";
 import { grid } from "styled-system/patterns";
 import {
   DndContext,
@@ -102,12 +102,16 @@ export default function Home() {
             ))}
           </div>
 
-          <div style={{ background: "brown" }}>footer</div>
+          <TrayFooter />
         </Grid>
       </DndContext>
     </div>
   );
 }
+
+const TrayFooter = () => {
+  return <HStack h={footer}>place hand here</HStack>;
+};
 
 const Drag = (props: {
   children: ReactNode;
