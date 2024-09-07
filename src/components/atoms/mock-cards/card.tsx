@@ -36,7 +36,7 @@ export const CardImage = ({
       bg="yellow"
       overflow={show ? "unset" : "clip"}
       borderRadius="1rem"
-      filter="drop-shadow(3px 3px 3px black)"
+      filter="drop-shadow(0 1px 3px rgba(0,0,0,0.2))"
       zIndex={isHovering ? 1000 : index}
       mb={position === "top" ? "unset" : "unset"}
       mt={position === "bottom" ? "-0.25rem" : "unset"}
@@ -55,7 +55,7 @@ export const CardImage = ({
         backgroundPosition="top"
         backgroundSize="cover"
         backgroundRepeat="no-repeat"
-        transform={show ? "scale(1.1)" : "unset"}
+        transform={show ? "scale(1.5)" : "unset"}
         transition="all 0.25s ease"
         // bg="gray.400"
       />{" "}
