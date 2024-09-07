@@ -1,6 +1,5 @@
-//@ts-nocheck
 import { CardAtlas } from "@/components/atoms/mock-cards/atlas";
-import { Box, Grid } from "styled-system/jsx";
+import { Grid } from "styled-system/jsx";
 import { grid } from "styled-system/patterns";
 import {
   DndContext,
@@ -9,11 +8,7 @@ import {
   useDroppable,
   closestCenter,
 } from "@dnd-kit/core";
-import {
-  SortableContext,
-  rectSortingStrategy,
-  arrayMove,
-} from "@dnd-kit/sortable";
+import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 import { ReactNode, useState } from "react";
 
 const nav = `100px`;
@@ -39,8 +34,8 @@ export default function Home() {
     const { active, over } = event;
 
     if (over) {
-      const originId = active.id;
-      const destinationId = over.id;
+      // const originId = active.id;
+      const destinationId = over.id as string;
 
       const originGridIndex = active.data.current?.gridIndex;
       const originHandIndex = active.data.current?.handIndex;
@@ -66,7 +61,7 @@ export default function Home() {
 
         // Move card within grid
         const [movedCard] = updatedGridItems[originGridIndex].splice(
-          active.data.current.index,
+          active?.data?.current?.index,
           1,
         );
         updatedGridItems[destinationGridIndex].push(movedCard); // Add card to destination grid area
@@ -80,7 +75,7 @@ export default function Home() {
         }
 
         const [movedCard] = updatedGridItems[originGridIndex].splice(
-          active.data.current.index,
+          active?.data?.current?.index,
           1,
         );
         updatedHandItems.push(movedCard); // Add card back to hand
@@ -94,6 +89,7 @@ export default function Home() {
         }
 
         const [movedCard] = updatedHandItems.splice(originHandIndex, 1); // Remove from hand
+        //@ts-expect-error: fix type
         updatedGridItems[destinationGridIndex].push(movedCard); // Add card to destination grid area
       }
 
@@ -142,11 +138,13 @@ export default function Home() {
               >
                 <SortableContext
                   id={`grid-${gridIndex}`}
+                  //@ts-expect-error: fix type
                   items={cards.map((card) => card?.id)}
                   strategy={rectSortingStrategy}
                 >
                   {cards.map((card, cardIndex) => (
                     <Drag
+                      //@ts-expect-error: fix type
                       key={card?.id + cardIndex}
                       gridIndex={gridIndex}
                       index={cardIndex}

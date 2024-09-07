@@ -1,6 +1,5 @@
-//@ts-nocheck
 import { CardAtlas } from "@/components/atoms/mock-cards/atlas";
-import { Box, Grid, HStack } from "styled-system/jsx";
+import { Grid, HStack } from "styled-system/jsx";
 import { grid } from "styled-system/patterns";
 import {
   DndContext,
@@ -9,11 +8,7 @@ import {
   useDroppable,
   closestCenter,
 } from "@dnd-kit/core";
-import {
-  SortableContext,
-  rectSortingStrategy,
-  arrayMove,
-} from "@dnd-kit/sortable";
+import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 import { ReactNode, useState } from "react";
 
 const nav = `100px`;
@@ -32,12 +27,15 @@ export default function Home() {
 
     if (over) {
       const originIndex = parseInt(active.data.current?.gridIndex, 10);
-      const destinationIndex = parseInt(over.id.split("-")[1], 10);
+      const destinationIndex = parseInt(
+        (over?.id as string)?.split("-")[1],
+        10,
+      );
 
       // Remove card from the origin area
       const updatedGrid = [...gridItems];
       const [movedCard] = updatedGrid[originIndex].splice(
-        active.data.current.index,
+        active?.data?.current?.index,
         1,
       );
 
@@ -89,7 +87,7 @@ export default function Home() {
                   items={cards.map((_, i) => `${gridIndex}-${i}`)}
                   strategy={rectSortingStrategy}
                 >
-                  {cards.map((card, cardIndex) => (
+                  {cards.map((_, cardIndex) => (
                     <Drag
                       key={`card-${gridIndex}-${cardIndex}`}
                       gridIndex={gridIndex}
