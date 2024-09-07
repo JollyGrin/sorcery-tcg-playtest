@@ -10,6 +10,7 @@ export function SortableItem(props: {
 }) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({
+      animateLayoutChanges: () => false,
       id: props.id,
       data: {
         gridIndex: props.gridIndex,
