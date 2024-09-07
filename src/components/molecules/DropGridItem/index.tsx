@@ -3,7 +3,10 @@ import { css } from "styled-system/css";
 import { Box } from "styled-system/jsx";
 import { useDroppable } from "@dnd-kit/core";
 
-export const DroppableGridItem = (props: { children: ReactNode }) => {
+export const DroppableGridItem = (props: {
+  children: ReactNode;
+  id: string;
+}) => {
   const { isOver, setNodeRef } = useDroppable({
     id: "droppable",
   });
