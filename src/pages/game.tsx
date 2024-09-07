@@ -1,3 +1,4 @@
+import { GameBoard } from "@/components/organisms/GameBoard";
 import { SorceryCard } from "@/types/card";
 import { useState } from "react";
 
@@ -29,4 +30,6 @@ export default function GamePage() {
       } as GameCard,
     ],
   ]);
+
+  return <GameBoard gridItems={gridItems} setGridItems={setGridItems} />;
 }
