@@ -49,15 +49,6 @@ export const GameBoard = ({
                   {card.type !== "site" && <CardImage img={card.img} />}
                 </SortableItem>
               ))}
-
-              {/* <DragItem */}
-              {/*   key={`card-${gridIndex}-${cardIndex}`} */}
-              {/*   gridIndex={gridIndex} */}
-              {/*   index={cardIndex} */}
-              {/* > */}
-              {/*   {card.type === "site" && <CardAtlas img={card.img} />} */}
-              {/*   {card.type !== "site" && <CardImage img={card.img} />} */}
-              {/* </DragItem> */}
             </SortableContext>
           </DroppableGridItem>
         ))}
