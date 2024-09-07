@@ -6,10 +6,7 @@ import { DroppableGridItem } from "@/components/molecules/DropGridItem";
 import { closestCenter, DndContext } from "@dnd-kit/core";
 import { useHandleDrag } from "./useHandleDrag";
 import { SorceryCard } from "@/types/card";
-
-const nav = `100px`;
-const footer = `50px`;
-const body = `calc(100vh - ${nav} - ${footer})`;
+import { CardImage } from "@/components/atoms/mock-cards/card";
 
 type GameCard = SorceryCard & { id: string }; // for game position
 type Cards = GameCard[][];
@@ -46,7 +43,8 @@ export const GameBoard = ({
                   gridIndex={gridIndex}
                   index={cardIndex}
                 >
-                  <CardAtlas img={card.img} />
+                  {card.type === "site" && <CardAtlas img={card.img} />}
+                  {card.type !== "site" && <CardImage img={card.img} />}
                 </DragItem>
               ))}
             </SortableContext>

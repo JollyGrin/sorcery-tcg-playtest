@@ -20,6 +20,7 @@ export const CardAtlas = ({
   }, [isPressed]);
 
   const show = preview && isHovering;
+  console.log(img);
   return (
     <Box
       position="relative"
@@ -35,13 +36,14 @@ export const CardAtlas = ({
       onMouseOut={() => setPreview(false)}
     >
       <Box
+        // bgImage={`url(/mock-cards/${img})`}
+        style={{ backgroundImage: `url(/mock-cards/${img})` }} // bgImage has caching issues
         ref={hoverRef}
         isolation="isolate"
         h="310px"
         w="100%"
         position="absolute"
         top={show ? 0 : "-85px"}
-        bgImage={`url(/mock-cards/${img})`}
         backgroundPosition="right"
         backgroundSize="cover"
         backgroundRepeat="no-repeat"
