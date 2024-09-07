@@ -1,5 +1,6 @@
 import { SorceryCard } from "@/types/card";
-import { DragEndEvent } from "@dnd-kit/core";
+import { DragEndEvent, UniqueIdentifier } from "@dnd-kit/core";
+import { useState } from "react";
 
 type GameCard = SorceryCard & { id: string }; // for game position
 type Cards = GameCard[][];
@@ -8,21 +9,20 @@ export const useHandleDrag = ({
   gridItems,
   setGridItems,
 }: {
-  setGridItems(state: Cards): void;
   gridItems: Cards;
+  setGridItems(state: Cards): void;
 }) => {
+  const [active, setActive] = useState<DragEndEvent["active"] | null>(null);
+
+  function handleDragStart(event: DragEndEvent) {
+    setActive(event?.active);
+  }
+
   function handleDragEnd(event: DragEndEvent) {
+    setActive(null);
     const { active, over } = event;
 
     if (over?.id === active.id) return; // if self, do nothing
-
-    console.log("drag", {
-      over,
-      overId: over?.id,
-      active,
-      destinationGridIndex: over?.data?.current?.gridIndex,
-      destinationIndex: over?.data?.current?.index,
-    });
 
     if (over) {
       const originIndex = parseInt(active.data.current?.gridIndex, 10);
@@ -47,11 +47,6 @@ export const useHandleDrag = ({
         // Update the original grid with the modified cards in the cell
         updatedGrid[originIndex] = cardsInCell;
 
-        console.log("drag", {
-          updatedGrid,
-          cardsInCell,
-          activeCard,
-        });
         setGridItems(updatedGrid);
         return;
       }
@@ -69,7 +64,20 @@ export const useHandleDrag = ({
     }
   }
 
+  console.log({
+    cardsInCell: gridItems[active?.data?.current?.gridIndex],
+    active: active?.id,
+    data: active?.data?.current,
+    find: gridItems.flat().find((card) => card?.id === active?.id),
+  });
+
   return {
     handleDragEnd,
+    handleDragStart,
+    activeId: active?.id,
+    activeCard:
+      gridItems?.[active?.data?.current?.gridIndex]?.[
+        active?.data?.current?.index
+      ],
   };
 };
