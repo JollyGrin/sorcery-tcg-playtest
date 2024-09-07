@@ -23,7 +23,12 @@ export function SortableItem(props: {
   };
 
   return (
-    <li ref={setNodeRef} style={style} {...attributes} {...listeners}>
+    <li
+      ref={setNodeRef}
+      style={{ ...style, listStyle: "none" }}
+      {...attributes}
+      {...listeners}
+    >
       {props.children}
     </li>
   );
