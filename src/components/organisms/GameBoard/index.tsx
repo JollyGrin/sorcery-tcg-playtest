@@ -7,6 +7,7 @@ import { closestCenter, DndContext } from "@dnd-kit/core";
 import { useHandleDrag } from "./useHandleDrag";
 import { SorceryCard } from "@/types/card";
 import { CardImage } from "@/components/atoms/mock-cards/card";
+import { SortableItem } from "@/components/molecules/SortItem";
 
 type GameCard = SorceryCard & { id: string }; // for game position
 type Cards = GameCard[][];
@@ -38,15 +39,25 @@ export const GameBoard = ({
               strategy={rectSortingStrategy}
             >
               {cards.map((card, cardIndex) => (
-                <DragItem
+                <SortableItem
                   key={`card-${gridIndex}-${cardIndex}`}
+                  id={`card-${gridIndex}-${cardIndex}`}
                   gridIndex={gridIndex}
                   index={cardIndex}
                 >
                   {card.type === "site" && <CardAtlas img={card.img} />}
                   {card.type !== "site" && <CardImage img={card.img} />}
-                </DragItem>
+                </SortableItem>
               ))}
+
+              {/* <DragItem */}
+              {/*   key={`card-${gridIndex}-${cardIndex}`} */}
+              {/*   gridIndex={gridIndex} */}
+              {/*   index={cardIndex} */}
+              {/* > */}
+              {/*   {card.type === "site" && <CardAtlas img={card.img} />} */}
+              {/*   {card.type !== "site" && <CardImage img={card.img} />} */}
+              {/* </DragItem> */}
             </SortableContext>
           </DroppableGridItem>
         ))}

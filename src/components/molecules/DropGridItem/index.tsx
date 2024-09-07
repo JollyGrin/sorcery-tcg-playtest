@@ -10,14 +10,10 @@ export const DroppableGridItem = (props: {
   const { isOver, setNodeRef } = useDroppable({
     id: "droppable-" + props.id,
   });
-  const style = {
-    color: isOver ? "green" : undefined,
-  };
 
   return (
     <div
       ref={setNodeRef}
-      style={style}
       className={css({
         h: "100%",
         w: "100%",
