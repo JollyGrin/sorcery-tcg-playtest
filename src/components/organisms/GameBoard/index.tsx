@@ -33,7 +33,7 @@ export const GameBoard = ({
             <SortableContext
               id={`grid-${gridIndex}`}
               items={cards.map(
-                (card, cardIndex) => `card-${gridIndex}-${cardIndex}`,
+                (_, cardIndex) => `card-${gridIndex}-${cardIndex}`,
               )}
               strategy={rectSortingStrategy}
             >

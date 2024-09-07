@@ -1,11 +1,15 @@
+import { SorceryCard } from "@/types/card";
 import { DragEndEvent } from "@dnd-kit/core";
+
+type GameCard = SorceryCard & { id: string }; // for game position
+type Cards = GameCard[][];
 
 export const useHandleDrag = ({
   gridItems,
   setGridItems,
 }: {
-  gridItems: any;
-  setGridItems: any;
+  setGridItems(state: Cards): void;
+  gridItems: Cards;
 }) => {
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
