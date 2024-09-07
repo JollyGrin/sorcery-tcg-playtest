@@ -18,6 +18,10 @@ export function SortableItem(props: {
   } = useSortable({
     animateLayoutChanges: () => false,
     id: props.id,
+    transition: {
+      duration: 500,
+      easing: "cubic-bezier(0.25, 1, 0.5, 1)",
+    },
     data: {
       gridIndex: props.gridIndex,
       index: props.index,
