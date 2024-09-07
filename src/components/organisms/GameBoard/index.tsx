@@ -29,7 +29,10 @@ export const GameBoard = ({
     <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCenter}>
       <GameLayout>
         {gridItems?.map((cards, gridIndex) => (
-          <DroppableGridItem key={"grid-" + gridIndex} id={"grid-" + gridIndex}>
+          <DroppableGridItem
+            key={"grid-" + gridIndex}
+            id={gridIndex.toString()}
+          >
             <SortableContext
               id={`grid-${gridIndex}`}
               items={cards.map(
