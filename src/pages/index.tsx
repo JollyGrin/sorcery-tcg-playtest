@@ -10,7 +10,7 @@ const footer = `50px`;
 const body = `calc(100vh - ${nav} - ${footer})`;
 
 export default function Home() {
-  const [dropped, setIsDropped] = useState(false);
+  const [, setIsDropped] = useState(false);
 
   function handleDragEnd(event: DragEndEvent) {
     if (event.over && event.over.id === "droppable") {
