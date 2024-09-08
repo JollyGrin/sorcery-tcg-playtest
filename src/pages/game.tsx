@@ -56,7 +56,7 @@ const handCards: GameCard[] = [
  * 21-33 aura
  * */
 
-type GameCard = SorceryCard & { id: string }; // for game position
+export type GameCard = SorceryCard & { id: string }; // for game position
 export default function GamePage() {
   const [gridItems, setGridItems] = useState<GameCard[][]>([
     ...initCards,

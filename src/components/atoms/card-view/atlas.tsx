@@ -27,7 +27,7 @@ export const FullCardAtlas = ({
         bg="gray.400"
         borderRadius="1rem"
         transition="all 0.25s ease"
-      />{" "}
+      />
     </Box>
   );
 };

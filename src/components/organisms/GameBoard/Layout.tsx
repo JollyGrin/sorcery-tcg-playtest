@@ -17,22 +17,12 @@ export const GameLayout = (
       <div
         style={{
           background: "rgba(0,200,0,0.2)",
-          padding: "1rem",
+          padding: "0.5rem",
           height: nav,
         }}
       >
-        <p style={{ width: "fit-content", margin: "0 auto" }}>
-          While hovering over a card, click{" "}
-          <code
-            style={{
-              background: "rgba(0,0,0,0.075)",
-              padding: "5px",
-              borderRadius: "5px",
-            }}
-          >
-            ALT
-          </code>{" "}
-          key
+        <p style={{ width: "fit-content" }}>
+          Right click cards to view in full
         </p>
       </div>
       <Box position="relative" h="100%" w="100%" maxW="1200px" m="0 auto">

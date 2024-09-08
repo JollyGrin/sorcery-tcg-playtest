@@ -24,6 +24,9 @@ export const DroppableGridItem = (props: {
         w: "100%",
         position: "relative",
       })}
+      onContextMenu={(e) => {
+        e.preventDefault();
+      }}
     >
       {props.children}
       <Box

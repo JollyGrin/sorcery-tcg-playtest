@@ -2,6 +2,11 @@ import { Box } from "styled-system/jsx";
 import { AuraDrop } from "./AuraDrop";
 import { GameStateActions } from "..";
 import { DragItem } from "@/components/molecules/DragItem";
+import { GameCard } from "@/pages/game";
+import { useState } from "react";
+import { Modal } from "@/components/atoms/Modal";
+import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
+import { CardImage as FullCard } from "@/components/atoms/card-view/card";
 
 export const Auras = (props: GameStateActions) => {
   const auraCards = props.gridItems?.[21]?.[0];
@@ -28,23 +33,11 @@ export const Auras = (props: GameStateActions) => {
           </AuraDrop>
         )}
         {auraCards?.id && (
-          <DragItem
+          <DragWrapper
             gridIndex={21}
             index={0}
-            style={{ width: "100%", height: "100%" }}
-          >
-            <Box
-              w="100%"
-              h="100%"
-              backgroundSize="cover"
-              transform="rotate(90deg)"
-              borderRadius="0.5rem"
-              style={{
-                zIndex: 100000,
-                backgroundImage: `url(/mock-cards/${props.gridItems?.[21]?.[0]?.img})`,
-              }}
-            />
-          </DragItem>
+            card={props.gridItems?.[21]?.[0]}
+          />
         )}
       </Box>
 
@@ -58,5 +51,49 @@ export const Auras = (props: GameStateActions) => {
         transform="translate(-50%, -50%)" /* Center the box */
       />
     </Box>
+  );
+};
+
+const DragWrapper = ({
+  card,
+  ...props
+}: {
+  gridIndex: number;
+  index: number;
+  card: GameCard;
+}) => {
+  const [preview, setPreview] = useState(false);
+  return (
+    <div style={{ width: "100%", height: "100%" }}>
+      <DragItem
+        gridIndex={21}
+        index={0}
+        style={{ width: "100%", height: "100%", zIndex: 1000 }}
+      >
+        <Box
+          w="100%"
+          h="100%"
+          backgroundSize="cover"
+          transform="rotate(90deg)"
+          borderRadius="0.5rem"
+          style={{
+            backgroundImage: `url(/mock-cards/${card?.img})`,
+          }}
+          onContextMenu={(e) => {
+            e.preventDefault();
+            setPreview(true);
+          }}
+        />
+      </DragItem>
+      <Modal
+        wrapperProps={{ open: preview, onOpenChange: setPreview }}
+        content={
+          <Box h="600px">
+            {card.type === "site" && <FullCardAtlas img={card.img} />}
+            {card.type !== "site" && <FullCard img={card.img} />}
+          </Box>
+        }
+      />
+    </div>
   );
 };
