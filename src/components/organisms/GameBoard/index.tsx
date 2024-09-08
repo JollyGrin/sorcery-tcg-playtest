@@ -18,6 +18,7 @@ import { Box } from "styled-system/jsx";
 import { Modal } from "@/components/atoms/Modal";
 
 import { useState } from "react";
+import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
 
 type GameCard = SorceryCard & { id: string }; // for game position
 type Cards = GameCard[][];
@@ -124,7 +125,7 @@ const SortItemWrapper = ({
         wrapperProps={{ open: preview, onOpenChange: setPreview }}
         content={
           <Box h="600px">
-            {card.type === "site" && <CardAtlas img={card.img} />}
+            {card.type === "site" && <FullCardAtlas img={card.img} />}
             {card.type !== "site" && <FullCard img={card.img} />}
           </Box>
         }
