@@ -11,10 +11,9 @@ import {
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 import { ReactNode, useState } from "react";
 import { Nav } from "@/components/molecules/Nav";
+import { LAYOUT_HEIGHTS } from "@/components/organisms/GameBoard/constants";
 
-const nav = `100px`;
-const footer = `50px`;
-const body = `calc(100vh - ${nav} - ${footer})`;
+const { nav, body, footer } = LAYOUT_HEIGHTS;
 
 export default function Home() {
   const [gridItems, setGridItems] = useState(

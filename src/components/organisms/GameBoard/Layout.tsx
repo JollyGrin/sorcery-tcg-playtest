@@ -1,17 +1,15 @@
 import { ReactNode } from "react";
 import { Grid, HStack } from "styled-system/jsx";
 import { grid } from "styled-system/patterns";
+import { LAYOUT_HEIGHTS } from "./constants";
 
-const nav = `100px`;
-const footer = `50px`;
-const body = `calc(100vh - ${nav} - ${footer})`;
+const { nav, body, footer } = LAYOUT_HEIGHTS;
 
 export const GameLayout = (props: { children: ReactNode }) => {
   return (
-    <Grid gridTemplateRows={`${nav} ${body} ${footer}`} gap={0}>
+    <Grid style={{ gridTemplateRows: `${nav} ${body} ${footer}` }} gap={0}>
       <div style={{ background: "rgba(0,200,0,0.2)", padding: "1rem" }}>
-        <p>Experiment arranging a Sorcery Grid</p>
-        <p>
+        <p style={{ width: "fit-content", margin: "0 auto" }}>
           While hovering over a card, click{" "}
           <code
             style={{

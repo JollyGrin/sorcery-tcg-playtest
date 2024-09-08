@@ -19,13 +19,12 @@ export const CardAtlas = ({
     }
   }, [isPressed]);
 
-  const show = preview && isHovering;
+  const show = preview && isHovering; // full preview of the card
   return (
     <Box
       position="relative"
       m="0.5rem auto"
       w="calc(100% - 1rem)"
-      // h={show ? "150px" : "70px"}
       h="70px"
       bg="yellow"
       borderRadius="1rem"
@@ -35,7 +34,6 @@ export const CardAtlas = ({
       onMouseOut={() => setPreview(false)}
     >
       <Box
-        // bgImage={`url(/mock-cards/${img})`}
         style={{ backgroundImage: `url(/mock-cards/${img})` }} // bgImage has caching issues
         ref={hoverRef}
         isolation="isolate"
@@ -48,11 +46,12 @@ export const CardAtlas = ({
         backgroundRepeat="no-repeat"
         transform={
           show
-            ? "scale(1.25) rotate(90deg) translate(-47.8%, 0px)"
+            ? "scale(1.45) rotate(90deg) translate(-47.8%, 0px)"
             : "scale(0.85) rotate(90deg) translate(-47.8%, 0px)"
         }
         bg="gray.400"
         borderRadius="1rem"
+        transition="all 0.25s ease"
       />{" "}
     </Box>
   );
