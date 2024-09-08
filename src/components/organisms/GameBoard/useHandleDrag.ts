@@ -1,5 +1,5 @@
 import { SorceryCard } from "@/types/card";
-import { DragEndEvent, UniqueIdentifier } from "@dnd-kit/core";
+import { DragEndEvent } from "@dnd-kit/core";
 import { useState } from "react";
 
 type GameCard = SorceryCard & { id: string }; // for game position
