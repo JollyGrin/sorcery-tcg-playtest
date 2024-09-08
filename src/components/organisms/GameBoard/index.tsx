@@ -12,8 +12,12 @@ import {
 import { useHandleDrag } from "./useHandleDrag";
 import { SorceryCard } from "@/types/card";
 import { CardImage } from "@/components/atoms/mock-cards/card";
+import { CardImage as FullCard } from "@/components/atoms/card-view/card";
 import { SortableItem } from "@/components/molecules/SortItem";
 import { Box } from "styled-system/jsx";
+import { Modal } from "@/components/atoms/Modal";
+
+import { useState } from "react";
 
 type GameCard = SorceryCard & { id: string }; // for game position
 type Cards = GameCard[][];
@@ -59,6 +63,7 @@ export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
             key={"grid-" + gridIndex}
             id={gridIndex.toString()}
             gridIndex={gridIndex}
+            style={{ overflowY: "auto" }}
           >
             <SortableContext
               id={`grid-${gridIndex}`}
@@ -66,15 +71,7 @@ export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
               strategy={rectSortingStrategy}
             >
               {cards.map((card, cardIndex) => (
-                <SortableItem
-                  key={`card-${gridIndex}-${cardIndex}`}
-                  id={card.id}
-                  gridIndex={gridIndex}
-                  index={cardIndex}
-                >
-                  {card.type === "site" && <CardAtlas img={card.img} />}
-                  {card.type !== "site" && <CardImage img={card.img} />}
-                </SortableItem>
+                <SortItemWrapper {...{ card, gridIndex, cardIndex }} />
               ))}
             </SortableContext>
           </DroppableGridItem>
@@ -89,5 +86,49 @@ export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
         ) : null}
       </DragOverlay>
     </DndContext>
+  );
+};
+
+const SortItemWrapper = ({
+  card,
+  gridIndex,
+  cardIndex,
+}: {
+  card: GameCard;
+  gridIndex: number;
+  cardIndex: number;
+}) => {
+  const [preview, setPreview] = useState(false);
+
+  return (
+    <div
+      onDoubleClick={(e) => {
+        e.preventDefault();
+        setPreview(true);
+      }}
+      onContextMenu={(e) => {
+        e.preventDefault();
+        setPreview(true);
+      }}
+    >
+      <SortableItem
+        key={`card-${gridIndex}-${cardIndex}`}
+        id={card.id}
+        gridIndex={gridIndex}
+        index={cardIndex}
+      >
+        {card.type === "site" && <CardAtlas img={card.img} />}
+        {card.type !== "site" && <CardImage img={card.img} />}
+      </SortableItem>
+      <Modal
+        wrapperProps={{ open: preview, onOpenChange: setPreview }}
+        content={
+          <Box h="600px">
+            {card.type === "site" && <CardAtlas img={card.img} />}
+            {card.type !== "site" && <FullCard img={card.img} />}
+          </Box>
+        }
+      />
+    </div>
   );
 };

@@ -12,17 +12,16 @@ import { ReactNode } from "react";
 export const Modal = (props: {
   wrapperProps: DialogProps;
   trigger?: ReactNode;
+  title?: string;
+  content?: ReactNode;
 }) => {
   return (
     <Dialog {...props.wrapperProps}>
       <DialogTrigger>{props.trigger}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Are you sure absolutely sure?</DialogTitle>
-          <DialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </DialogDescription>
+          <DialogTitle>{props.title}</DialogTitle>
+          <DialogDescription>{props.content}</DialogDescription>
         </DialogHeader>
       </DialogContent>
     </Dialog>

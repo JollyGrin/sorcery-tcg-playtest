@@ -2,17 +2,15 @@
 
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { X } from "lucide-react";
 import { createStyleContext } from "@shadow-panda/style-context";
 import { styled } from "styled-system/jsx";
-import { css } from "styled-system/css";
-import { dialog, icon } from "styled-system/recipes";
+import { dialog } from "styled-system/recipes";
 
 const { withProvider, withContext } = createStyleContext(dialog);
 
 const DialogPortal = withContext(styled(DialogPrimitive.Portal), "portal");
 const DialogOverlay = withContext(styled(DialogPrimitive.Overlay), "overlay");
-const DialogClose = withContext(styled(DialogPrimitive.Close), "close");
+// const DialogClose = withContext(styled(DialogPrimitive.Close), "close");
 
 const Content = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
@@ -20,12 +18,16 @@ const Content = React.forwardRef<
 >(({ children, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay />
-    <DialogPrimitive.Content ref={ref} {...props}>
+    <DialogPrimitive.Content
+      ref={ref}
+      {...props}
+      style={{ background: "transparent", border: 0, boxShadow: "none" }}
+    >
       {children}
-      <DialogClose>
-        <X className={icon()} />
-        <span className={css({ srOnly: true })}>Close</span>
-      </DialogClose>
+      {/* <DialogClose> */}
+      {/*   <X className={icon()} /> */}
+      {/*   <span className={css({ srOnly: true })}>Close</span> */}
+      {/* </DialogClose> */}
     </DialogPrimitive.Content>
   </DialogPortal>
 ));

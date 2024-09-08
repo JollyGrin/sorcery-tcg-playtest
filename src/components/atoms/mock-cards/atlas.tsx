@@ -19,7 +19,8 @@ export const CardAtlas = ({
     }
   }, [isPressed]);
 
-  const show = preview && isHovering; // full preview of the card
+  // const show = preview && isHovering; // full preview of the card
+  const show = false;
   return (
     <Box
       position="relative"
