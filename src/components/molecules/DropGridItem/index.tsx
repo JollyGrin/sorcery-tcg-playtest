@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 import { css } from "styled-system/css";
 import { Box } from "styled-system/jsx";
 import { useDroppable } from "@dnd-kit/core";
@@ -7,6 +7,7 @@ export const DroppableGridItem = (props: {
   children: ReactNode;
   id: string;
   gridIndex: number;
+  style?: CSSProperties;
 }) => {
   const { isOver, setNodeRef } = useDroppable({
     id: "droppable-" + props.id,
@@ -17,6 +18,7 @@ export const DroppableGridItem = (props: {
     <div
       data-testid={"droppable-" + props.id}
       ref={setNodeRef}
+      style={props.style}
       className={css({
         h: "100%",
         w: "100%",
