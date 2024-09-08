@@ -24,11 +24,7 @@ export const Auras = (props: GameStateActions) => {
               backgroundSize="cover"
               transform="rotate(90deg)"
               borderRadius="0.5rem"
-              // style={{
-              //   backgroundImage: `url(/mock-cards/${props.gridItems?.[21]?.[0]?.img})`,
-              // }}
             />
-            {/* {props.gridItems[21][0].img} */}
           </AuraDrop>
         )}
         {auraCards?.id && (
