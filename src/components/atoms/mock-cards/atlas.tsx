@@ -25,7 +25,6 @@ export const CardAtlas = ({
       position="relative"
       m="0.5rem auto"
       w="calc(100% - 1rem)"
-      // h={show ? "150px" : "70px"}
       h="70px"
       bg="yellow"
       borderRadius="1rem"
@@ -52,6 +51,7 @@ export const CardAtlas = ({
         }
         bg="gray.400"
         borderRadius="1rem"
+        transition="all 0.25s ease"
       />{" "}
     </Box>
   );

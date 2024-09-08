@@ -4,10 +4,9 @@ import { Grid } from "styled-system/jsx";
 import { grid } from "styled-system/patterns";
 import { DndContext, DragEndEvent, useDraggable } from "@dnd-kit/core";
 import { ReactNode, useState } from "react";
+import { LAYOUT_HEIGHTS } from "@/components/organisms/GameBoard/constants";
 
-const nav = `100px`;
-const footer = `50px`;
-const body = `calc(100vh - ${nav} - ${footer})`;
+const { nav, body, footer } = LAYOUT_HEIGHTS;
 
 export default function Home() {
   const [, setIsDropped] = useState(false);
