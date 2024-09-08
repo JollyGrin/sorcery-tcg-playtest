@@ -35,7 +35,14 @@ export const GameFooter = (props: GameStateActions) => {
             )}
             strategy={horizontalListSortingStrategy}
           >
-            <HStack p={0} m={0} w="100%" h="100%" justifyContent="start">
+            <HStack
+              p={0}
+              m={0}
+              w="calc(100vw - 300px)"
+              h="100%"
+              justifyContent="start"
+              overflowX="auto"
+            >
               {props.gridItems?.[gridIndex]?.map((card, index) => (
                 <div
                   key={card.id}

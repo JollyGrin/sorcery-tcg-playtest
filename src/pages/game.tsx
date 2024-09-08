@@ -26,14 +26,26 @@ const handCards: GameCard[] = [
   },
 ];
 
+const deckCards = Array.from({ length: 30 }).map((_, index) => ({
+  id: "headless-ab-" + index,
+  img: "headless_haunt.webp",
+  type: "minion",
+}));
+
+const atlasCards = Array.from({ length: 10 }).map((_, index) => ({
+  id: "atlas-02" + index,
+  img: "atlas_cloud_city.webp",
+  type: "site",
+}));
+
 const initCards: GameCard[][] = Array.from({ length: 35 }, () => []);
-initCards[GRIDS.HAND] = handCards as GameCard[];
+// initCards[GRIDS.HAND] = handCards as GameCard[];
+initCards[GRIDS.DECK] = deckCards as GameCard[];
+initCards[GRIDS.ATLAS_DECK] = atlasCards as GameCard[];
 
 export type GameCard = SorceryCard & { id: string }; // for game position
 export default function GamePage() {
   const [gridItems, setGridItems] = useState<GameCard[][]>(initCards);
-
-  console.log(gridItems.length, "length");
 
   return <GameBoard gridItems={gridItems} setGridItems={setGridItems} />;
 }
