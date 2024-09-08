@@ -32,6 +32,7 @@ export const CardImage = ({
       position="relative"
       m="0.5rem auto"
       w="calc(100% - 1rem)"
+      maxW="221px"
       h="90px"
       bg="yellow"
       overflow={show ? "unset" : "clip"}

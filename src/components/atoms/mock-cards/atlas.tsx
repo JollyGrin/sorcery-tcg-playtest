@@ -25,6 +25,7 @@ export const CardAtlas = ({
       position="relative"
       m="0.5rem auto"
       w="calc(100% - 1rem)"
+      maxW="221px"
       h="70px"
       bg="yellow"
       borderRadius="1rem"

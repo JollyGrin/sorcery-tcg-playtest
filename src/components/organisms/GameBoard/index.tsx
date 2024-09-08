@@ -11,13 +11,11 @@ import { Box } from "styled-system/jsx";
 
 type GameCard = SorceryCard & { id: string }; // for game position
 type Cards = GameCard[][];
-export const GameBoard = ({
-  gridItems,
-  setGridItems,
-}: {
-  setGridItems(state: Cards): void;
+export type GameStateActions = {
   gridItems: Cards;
-}) => {
+  setGridItems(state: Cards): void;
+};
+export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
   const { handleDragEnd, handleDragStart, activeId, activeCard } =
     useHandleDrag({
       gridItems,
@@ -30,8 +28,8 @@ export const GameBoard = ({
       onDragEnd={handleDragEnd}
       collisionDetection={closestCorners}
     >
-      <GameLayout>
-        {gridItems?.map((cards, gridIndex) => (
+      <GameLayout {...{ gridItems, setGridItems }}>
+        {gridItems?.slice(0, 20)?.map((cards, gridIndex) => (
           <DroppableGridItem
             key={"grid-" + gridIndex}
             id={gridIndex.toString()}

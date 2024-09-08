@@ -29,6 +29,18 @@ export default function GamePage() {
         type: "site",
       } as GameCard,
     ],
+    [
+      {
+        id: "card-20-0",
+        img: "atlas_cloud_city.webp",
+        type: "site",
+      } as GameCard,
+      {
+        id: "card-20-1",
+        img: "headless_haunt.webp",
+        type: "minion",
+      },
+    ],
   ]);
 
   return <GameBoard gridItems={gridItems} setGridItems={setGridItems} />;
