@@ -6,9 +6,11 @@ import { useDroppable } from "@dnd-kit/core";
 export const DroppableGridItem = (props: {
   children: ReactNode;
   id: string;
+  gridIndex: number;
 }) => {
   const { isOver, setNodeRef } = useDroppable({
     id: "droppable-" + props.id,
+    data: { gridIndex: props.gridIndex },
   });
 
   return (
