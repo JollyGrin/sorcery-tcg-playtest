@@ -9,34 +9,44 @@ const initCards = Array.from({ length: 18 }, (_, gridIndex) => [
   //   type: "site",
   // } as GameCard, // Each droppable starts with a single card
 ]);
-const customCards = [
+const customCards: GameCard[][] = [
   [
     {
       id: "headless-01",
       img: "headless_haunt.webp",
       type: "minion",
-    } as GameCard,
+    },
   ],
   [
     {
       id: "atlas-01",
       img: "atlas_cloud_city.webp",
       type: "site",
-    } as GameCard,
+    },
   ],
 ];
 
-const handCards = [
+const handCards: GameCard[] = [
   {
     id: "atlas-02",
     img: "atlas_cloud_city.webp",
     type: "site",
-  } as GameCard,
+  },
   {
     id: "headless-02",
     img: "headless_haunt.webp",
     type: "minion",
-  } as GameCard,
+  },
+  {
+    id: "headless-03",
+    img: "headless_haunt.webp",
+    type: "minion",
+  },
+  {
+    id: "headless-04",
+    img: "headless_haunt.webp",
+    type: "minion",
+  },
 ];
 
 /**
