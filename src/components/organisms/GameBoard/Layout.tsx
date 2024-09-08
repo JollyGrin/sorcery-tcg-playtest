@@ -11,7 +11,6 @@ const { nav, body, footer } = LAYOUT_HEIGHTS;
 export const GameLayout = (
   props: GameStateActions & { children: ReactNode },
 ) => {
-  console.table(props.gridItems);
   return (
     <Grid style={{ gridTemplateRows: `${nav} ${body} ${footer}` }} gap={0}>
       <div
@@ -29,7 +28,7 @@ export const GameLayout = (
         <Auras {...props} />
         <div
           className={grid({
-            gap: 1,
+            gap: 2,
             gridTemplateColumns: "repeat(5, 1fr)",
             gridTemplateRows: "repeat(4, 1fr)",
             w: "100%",
