@@ -13,6 +13,7 @@ export const DroppableGridItem = (props: {
 
   return (
     <div
+      data-testid={"droppable-" + props.id}
       ref={setNodeRef}
       className={css({
         h: "100%",

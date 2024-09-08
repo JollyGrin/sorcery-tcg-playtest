@@ -2,10 +2,14 @@ import { ReactNode } from "react";
 import { Grid, HStack } from "styled-system/jsx";
 import { grid } from "styled-system/patterns";
 import { LAYOUT_HEIGHTS } from "./constants";
+import { GameFooter } from "./Footer";
+import { GameStateActions } from ".";
 
 const { nav, body, footer } = LAYOUT_HEIGHTS;
 
-export const GameLayout = (props: { children: ReactNode }) => {
+export const GameLayout = (
+  props: GameStateActions & { children: ReactNode },
+) => {
   return (
     <Grid style={{ gridTemplateRows: `${nav} ${body} ${footer}` }} gap={0}>
       <div style={{ background: "rgba(0,200,0,0.2)", padding: "1rem" }}>
@@ -38,11 +42,7 @@ export const GameLayout = (props: { children: ReactNode }) => {
         {props.children}
       </div>
 
-      <TrayFooter />
+      <GameFooter {...props} />
     </Grid>
   );
-};
-
-const TrayFooter = () => {
-  return <HStack h={footer}>place hand here</HStack>;
 };
