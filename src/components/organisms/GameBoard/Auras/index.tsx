@@ -11,72 +11,34 @@ import { CardImage as FullCard } from "@/components/atoms/card-view/card";
 export const Auras = (props: GameStateActions) => {
   return (
     <Box position="absolute" w="100%" h="100%">
-      {/* {Array.from({ length: 3 }).map((_, index) => ( */}
-      {/*   <Aura */}
-      {/*     card={props.gridItems[21 + index]?.[0]} */}
-      {/*     gridIndex={21 + index} */}
-      {/*     index={0} */}
-      {/*   /> */}
-      {/* ))} */}
-      {/* <Aura card={props.gridItems[21]?.[0]} gridIndex={21} index={0} /> */}
-
-      <Aura
-        card={props.gridItems[21]?.[0]}
-        gridIndex={21}
-        index={0}
-        top="25%"
-        left="20%"
-      />
-
-      <Aura
-        card={props.gridItems[22]?.[0]}
-        gridIndex={22}
-        index={0}
-        top="25%"
-        left="40%"
-      />
-
-      <Aura
-        card={props.gridItems[23]?.[0]}
-        gridIndex={23}
-        index={0}
-        top="25%"
-        left="60%"
-      />
-
-      <Aura
-        card={props.gridItems[24]?.[0]}
-        gridIndex={24}
-        index={0}
-        top="25%"
-        left="80%"
-      />
-
-      <Aura
-        card={props.gridItems[25]?.[0]}
-        gridIndex={25}
-        index={0}
-        top="50%"
-        left="20%"
-      />
+      {Array.from({ length: 12 }).map((_, index) => (
+        <Aura
+          key={"aura" + index}
+          card={props.gridItems?.[21 + index]?.[0]}
+          gridIndex={21 + index}
+          index={0}
+        />
+      ))}
     </Box>
   );
 };
 
-const Aura = (props: {
-  card: GameCard;
-  gridIndex: number;
-  index: number;
-  top: string;
-  left: string;
-}) => {
+const Aura = (props: { card: GameCard; gridIndex: number; index: number }) => {
   const auraCard = props.card;
+
+  const auraIndex = props.gridIndex - 21; // normalize to zero
+  const topIndex = Math.floor(auraIndex / 4) + 1; // increments every 4
+  const top = `${topIndex * 25}%`; // in percent
+  const leftIndex = 1 + (auraIndex % 4); // every 4, resets
+  const left = `${leftIndex * 20}%`; // in percent
 
   return (
     <Box
+      style={{
+        top,
+        left,
+      }}
       position="absolute"
-      top={props.top} /* Adjust relative to row height */
-      left={props.left} /* Adjust relative to column width */
       w="75px"
       h="75px"
       transform="translate(-50%, -50%)" /* Center the box */
@@ -96,7 +58,9 @@ const Aura = (props: {
           />
         </AuraDrop>
       )}
-      {auraCard?.id && <DragWrapper gridIndex={21} index={0} card={auraCard} />}
+      {auraCard?.id && (
+        <DragWrapper gridIndex={props.gridIndex} index={0} card={auraCard} />
+      )}
     </Box>
   );
 };

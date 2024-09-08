@@ -67,5 +67,7 @@ export default function GamePage() {
     ...auraCards,
   ]);
 
+  console.log(gridItems.length, "length");
+
   return <GameBoard gridItems={gridItems} setGridItems={setGridItems} />;
 }
