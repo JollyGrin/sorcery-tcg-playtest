@@ -1,6 +1,3 @@
-import { useHover } from "@/utils/hooks/useHover";
-import { useKeyPress } from "@/utils/hooks/useKeyPress";
-import { useEffect, useRef, useState } from "react";
 import { Box } from "styled-system/jsx";
 
 export const CardAtlas = ({
