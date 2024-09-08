@@ -4,7 +4,6 @@ import { grid } from "styled-system/patterns";
 import { LAYOUT_HEIGHTS } from "./constants";
 import { GameFooter } from "./Footer";
 import { GameStateActions } from ".";
-import { AuraDrop } from "./AuraDrop";
 import { Auras } from "./Auras";
 
 const { nav, body, footer } = LAYOUT_HEIGHTS;
