@@ -5,6 +5,7 @@ import { LAYOUT_HEIGHTS } from "./constants";
 import { GameFooter } from "./Footer";
 import { GameStateActions } from ".";
 import { AuraDrop } from "./AuraDrop";
+import { Auras } from "./Auras";
 
 const { nav, body, footer } = LAYOUT_HEIGHTS;
 
@@ -36,39 +37,7 @@ export const GameLayout = (
         </p>
       </div>
       <Box position="relative" h="100%" w="100%" maxW="1200px" m="0 auto">
-        <Box position="absolute" w="100%" h="100%">
-          <Box
-            position="absolute"
-            top="25%" /* Adjust relative to row height */
-            left="20%" /* Adjust relative to column width */
-            bg="blue"
-            w="50px"
-            h="50px"
-            transform="translate(-50%, -50%)" /* Center the box */
-          >
-            <AuraDrop gridIndex={21}>
-              <Box
-                w="100%"
-                h="100%"
-                style={{
-                  backgroundImage: `url(/mock-cards/${props.gridItems?.[21]?.[0]?.img})`,
-                }}
-              />
-              {/* {props.gridItems[21][0].img} */}
-            </AuraDrop>
-          </Box>
-
-          <Box
-            position="absolute"
-            top="25%" /* Adjust relative to row height */
-            left="40%" /* Adjust relative to column width */
-            bg="blue"
-            w="25px"
-            h="25px"
-            transform="translate(-50%, -50%)" /* Center the box */
-          />
-        </Box>
-
+        <Auras {...props} />
         <div
           className={grid({
             gap: 1,

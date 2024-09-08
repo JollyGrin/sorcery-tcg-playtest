@@ -86,7 +86,7 @@ export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
       </GameLayout>
       <DragOverlay>
         {activeId ? (
-          <Box opacity={0.8}>
+          <Box opacity={0.5}>
             {activeCard?.type === "site" && <CardAtlas img={activeCard?.img} />}
             {activeCard?.type !== "site" && <CardImage img={activeCard?.img} />}
           </Box>
