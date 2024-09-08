@@ -21,18 +21,12 @@ export const useHandleDrag = ({
   function handleDragEnd(event: DragEndEvent) {
     setActive(null);
     const { active, over } = event;
-    console.log({ active, over });
 
     if (over?.id === active.id) return; // if self, do nothing
 
     if (over) {
       const originIndex = parseInt(active.data.current?.gridIndex, 10);
       const destinationIndex = over?.data?.current?.gridIndex;
-
-      // const destinationIndex = parseInt(
-      //   (over?.id as string)?.split("-")[1],
-      //   10, // base 10 number
-      // );
 
       if (originIndex === destinationIndex) {
         const updatedGrid = [...gridItems];

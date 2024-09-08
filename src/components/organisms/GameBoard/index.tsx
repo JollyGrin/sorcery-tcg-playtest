@@ -41,7 +41,6 @@ export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
     // Check if the current Y position is within the bottom 170px of the page
     // If the item is in the bottom 170px, use closestCenter for the footer
     if (isInFooter) {
-      console.log("isInFooter");
       return closestCenter(props);
     }
 
