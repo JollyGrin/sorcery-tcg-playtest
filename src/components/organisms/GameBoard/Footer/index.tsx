@@ -13,7 +13,7 @@ import { CardImage } from "@/components/atoms/mock-cards/card";
 export const GameFooter = (props: GameStateActions) => {
   const gridIndex = 20;
   const cardsInHand = props.gridItems[gridIndex] ?? [];
-  console.log({ cardsInHand });
+
   return (
     <div
       data-testid="footer"

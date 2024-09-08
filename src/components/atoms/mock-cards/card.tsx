@@ -8,11 +8,13 @@ export const CardImage = ({
   position = "top",
   index = 1,
   isTapped,
+  ...props
 }: {
   img?: string;
   position?: "top" | "bottom";
   index?: number;
   isTapped?: boolean;
+  show?: boolean;
 }) => {
   const hoverRef = useRef(null);
   const isHovering = useHover(hoverRef);
@@ -25,7 +27,7 @@ export const CardImage = ({
     }
   }, [isPressed]);
 
-  const show = preview && isHovering;
+  const show = props.show || (preview && isHovering);
 
   return (
     <Box
