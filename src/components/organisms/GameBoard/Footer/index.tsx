@@ -1,5 +1,5 @@
-import { Grid, HStack } from "styled-system/jsx";
-import { LAYOUT_HEIGHTS } from "../constants";
+import { Box, Grid, HStack } from "styled-system/jsx";
+import { GRIDS, LAYOUT_HEIGHTS } from "../constants";
 import { DroppableGridItem } from "@/components/molecules/DropGridItem";
 import {
   horizontalListSortingStrategy,
@@ -9,9 +9,10 @@ import { GameStateActions } from "..";
 import { SortableItem } from "@/components/molecules/SortItem";
 import { CardAtlas } from "@/components/atoms/mock-cards/atlas";
 import { CardImage } from "@/components/atoms/mock-cards/card";
+import { DecksTray } from "./Decks";
 
 export const GameFooter = (props: GameStateActions) => {
-  const gridIndex = 20;
+  const gridIndex = GRIDS.HAND;
   const cardsInHand = props.gridItems[gridIndex] ?? [];
 
   return (
@@ -23,9 +24,9 @@ export const GameFooter = (props: GameStateActions) => {
         overflowX: "auto",
       }}
     >
-      <Grid h="100%" gridTemplateColumns="100px 100px 1fr">
-        <p>Grave</p>
-        <p>Deck</p>
+      <Grid h="100%" gridTemplateColumns="repeat(2,150px) 1fr" gap={0}>
+        <Box bg="yellow">Grave</Box>
+        <DecksTray {...props} />
         <DroppableGridItem id={gridIndex.toString()} gridIndex={gridIndex}>
           <SortableContext
             id={`grid-${gridIndex}`}

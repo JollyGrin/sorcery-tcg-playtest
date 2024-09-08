@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Modal } from "@/components/atoms/Modal";
 import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
 import { CardImage as FullCard } from "@/components/atoms/card-view/card";
+import { GRIDS } from "../constants";
 
 export const Auras = (props: GameStateActions) => {
   return (
@@ -14,8 +15,8 @@ export const Auras = (props: GameStateActions) => {
       {Array.from({ length: 12 }).map((_, index) => (
         <Aura
           key={"aura" + index}
-          card={props.gridItems?.[21 + index]?.[0]}
-          gridIndex={21 + index}
+          card={props.gridItems?.[GRIDS.AURA_1 + index]?.[0]}
+          gridIndex={GRIDS.AURA_1 + index}
           index={0}
         />
       ))}
@@ -26,7 +27,7 @@ export const Auras = (props: GameStateActions) => {
 const Aura = (props: { card: GameCard; gridIndex: number; index: number }) => {
   const auraCard = props.card;
 
-  const auraIndex = props.gridIndex - 21; // normalize to zero
+  const auraIndex = props.gridIndex - GRIDS.AURA_1; // normalize to zero
   const topIndex = Math.floor(auraIndex / 4) + 1; // increments every 4
   const top = `${topIndex * 25}%`; // in percent
   const leftIndex = 1 + (auraIndex % 4); // every 4, resets
