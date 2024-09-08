@@ -63,7 +63,7 @@ export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
           >
             <SortableContext
               id={`grid-${gridIndex}`}
-              items={cards.map((card, cardIndex) => card.id)}
+              items={cards.map((card) => card.id)}
               // items={cards.map(
               //   (card, cardIndex) => `card-${gridIndex}-${cardIndex}`,
               // )}
