@@ -16,11 +16,9 @@ export default function Home() {
   }, []);
   return null;
 
-  const [, setIsDropped] = useState(false);
-
   function handleDragEnd(event: DragEndEvent) {
     if (event.over && event.over.id === "droppable") {
-      setIsDropped(true);
+      // setIsDropped(true);
     }
   }
 
