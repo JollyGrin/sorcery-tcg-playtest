@@ -29,7 +29,7 @@ export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
       collisionDetection={closestCorners}
     >
       <GameLayout {...{ gridItems, setGridItems }}>
-        {gridItems?.map((cards, gridIndex) => (
+        {gridItems?.slice(0, 20)?.map((cards, gridIndex) => (
           <DroppableGridItem
             key={"grid-" + gridIndex}
             id={gridIndex.toString()}

@@ -35,6 +35,11 @@ export default function GamePage() {
         img: "atlas_cloud_city.webp",
         type: "site",
       } as GameCard,
+      {
+        id: "card-20-1",
+        img: "headless_haunt.webp",
+        type: "minion",
+      },
     ],
   ]);
 

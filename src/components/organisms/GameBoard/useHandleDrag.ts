@@ -21,6 +21,7 @@ export const useHandleDrag = ({
   function handleDragEnd(event: DragEndEvent) {
     setActive(null);
     const { active, over } = event;
+    console.log({ active, over });
 
     if (over?.id === active.id) return; // if self, do nothing
 
@@ -63,13 +64,6 @@ export const useHandleDrag = ({
       setGridItems(updatedGrid);
     }
   }
-
-  console.log({
-    cardsInCell: gridItems[active?.data?.current?.gridIndex],
-    active: active?.id,
-    data: active?.data?.current,
-    find: gridItems.flat().find((card) => card?.id === active?.id),
-  });
 
   return {
     handleDragEnd,

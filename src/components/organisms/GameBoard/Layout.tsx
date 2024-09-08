@@ -12,7 +12,13 @@ export const GameLayout = (
 ) => {
   return (
     <Grid style={{ gridTemplateRows: `${nav} ${body} ${footer}` }} gap={0}>
-      <div style={{ background: "rgba(0,200,0,0.2)", padding: "1rem" }}>
+      <div
+        style={{
+          background: "rgba(0,200,0,0.2)",
+          padding: "1rem",
+          height: nav,
+        }}
+      >
         <p style={{ width: "fit-content", margin: "0 auto" }}>
           While hovering over a card, click{" "}
           <code
