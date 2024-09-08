@@ -2,7 +2,13 @@ import { CardAtlas } from "@/components/atoms/mock-cards/atlas";
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 import { GameLayout } from "./Layout";
 import { DroppableGridItem } from "@/components/molecules/DropGridItem";
-import { closestCorners, DndContext, DragOverlay } from "@dnd-kit/core";
+import {
+  closestCenter,
+  closestCorners,
+  CollisionDetection,
+  DndContext,
+  DragOverlay,
+} from "@dnd-kit/core";
 import { useHandleDrag } from "./useHandleDrag";
 import { SorceryCard } from "@/types/card";
 import { CardImage } from "@/components/atoms/mock-cards/card";

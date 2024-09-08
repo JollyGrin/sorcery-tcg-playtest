@@ -1,4 +1,4 @@
-import { HStack } from "styled-system/jsx";
+import { Grid, HStack } from "styled-system/jsx";
 import { LAYOUT_HEIGHTS } from "../constants";
 import { DroppableGridItem } from "@/components/molecules/DropGridItem";
 import {
@@ -22,29 +22,41 @@ export const GameFooter = (props: GameStateActions) => {
         overflowX: "auto",
       }}
     >
-      <DroppableGridItem id={gridIndex.toString()}>
-        <SortableContext
-          id={`grid-${gridIndex}`}
-          items={cardsInHand?.map(
-            (_, cardIndex) => `card-${gridIndex}-${cardIndex}`,
-          )}
-          strategy={horizontalListSortingStrategy}
-        >
-          <HStack p={0} m={0} w="100%" h="100%" justifyContent="start">
-            {props.gridItems?.[gridIndex]?.map((card, index) => (
-              <div
-                key={card.id}
-                style={{ width: "100%", maxWidth: "220px", minWidth: "180px" }}
-              >
-                <SortableItem id={card.id} gridIndex={gridIndex} index={index}>
-                  {card?.type === "site" && <CardAtlas img={card?.img} />}
-                  {card?.type !== "site" && <CardImage img={card?.img} />}
-                </SortableItem>
-              </div>
-            ))}
-          </HStack>
-        </SortableContext>
-      </DroppableGridItem>
+      <Grid h="100%" gridTemplateColumns="100px 100px 1fr">
+        <p>hjkl</p>
+        <p>hjkl</p>
+        <DroppableGridItem id={gridIndex.toString()}>
+          <SortableContext
+            id={`grid-${gridIndex}`}
+            items={cardsInHand?.map(
+              (_, cardIndex) => `card-${gridIndex}-${cardIndex}`,
+            )}
+            strategy={horizontalListSortingStrategy}
+          >
+            <HStack p={0} m={0} w="100%" h="100%" justifyContent="start">
+              {props.gridItems?.[gridIndex]?.map((card, index) => (
+                <div
+                  key={card.id}
+                  style={{
+                    width: "100%",
+                    maxWidth: "220px",
+                    minWidth: "180px",
+                  }}
+                >
+                  <SortableItem
+                    id={card.id}
+                    gridIndex={gridIndex}
+                    index={index}
+                  >
+                    {card?.type === "site" && <CardAtlas img={card?.img} />}
+                    {card?.type !== "site" && <CardImage img={card?.img} />}
+                  </SortableItem>
+                </div>
+              ))}
+            </HStack>
+          </SortableContext>
+        </DroppableGridItem>
+      </Grid>
     </div>
   );
 };
