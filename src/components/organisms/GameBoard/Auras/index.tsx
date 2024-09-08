@@ -9,37 +9,9 @@ import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
 import { CardImage as FullCard } from "@/components/atoms/card-view/card";
 
 export const Auras = (props: GameStateActions) => {
-  const auraCards = props.gridItems?.[21]?.[0];
   return (
     <Box position="absolute" w="100%" h="100%">
-      <Box
-        position="absolute"
-        top="25%" /* Adjust relative to row height */
-        left="20%" /* Adjust relative to column width */
-        bg="blue"
-        w="50px"
-        h="50px"
-        transform="translate(-50%, -50%)" /* Center the box */
-      >
-        {!auraCards?.id && (
-          <AuraDrop gridIndex={21}>
-            <Box
-              w="100%"
-              h="100%"
-              backgroundSize="cover"
-              transform="rotate(90deg)"
-              borderRadius="0.5rem"
-            />
-          </AuraDrop>
-        )}
-        {auraCards?.id && (
-          <DragWrapper
-            gridIndex={21}
-            index={0}
-            card={props.gridItems?.[21]?.[0]}
-          />
-        )}
-      </Box>
+      <Aura card={props.gridItems[21]?.[0]} gridIndex={21} index={0} />
 
       <Box
         position="absolute"
@@ -50,6 +22,37 @@ export const Auras = (props: GameStateActions) => {
         h="25px"
         transform="translate(-50%, -50%)" /* Center the box */
       />
+    </Box>
+  );
+};
+
+const Aura = (props: { card: GameCard; gridIndex: number; index: number }) => {
+  const auraCard = props.card;
+  return (
+    <Box
+      position="absolute"
+      top="25%" /* Adjust relative to row height */
+      left="20%" /* Adjust relative to column width */
+      w="75px"
+      h="75px"
+      transform="translate(-50%, -50%)" /* Center the box */
+      _hover={{
+        border: "solid 5px rgba(0,100,200,0.5)",
+        borderRadius: "1rem",
+      }}
+    >
+      {!auraCard?.id && (
+        <AuraDrop gridIndex={21}>
+          <Box
+            w="100%"
+            h="100%"
+            backgroundSize="cover"
+            transform="rotate(90deg)"
+            borderRadius="0.5rem"
+          />
+        </AuraDrop>
+      )}
+      {auraCard?.id && <DragWrapper gridIndex={21} index={0} card={auraCard} />}
     </Box>
   );
 };
@@ -66,15 +69,16 @@ const DragWrapper = ({
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <DragItem
-        gridIndex={21}
-        index={0}
+        gridIndex={props.gridIndex}
+        index={props.index}
         style={{ width: "100%", height: "100%", zIndex: 1000 }}
       >
         <Box
           w="100%"
           h="100%"
-          backgroundSize="cover"
-          transform="rotate(90deg)"
+          backgroundSize="200%"
+          backgroundPosition="10% 20%"
+          transform={card?.type === "site" ? "rotate(90deg)" : ""}
           borderRadius="0.5rem"
           style={{
             backgroundImage: `url(/mock-cards/${card?.img})`,
@@ -89,8 +93,8 @@ const DragWrapper = ({
         wrapperProps={{ open: preview, onOpenChange: setPreview }}
         content={
           <Box h="600px">
-            {card.type === "site" && <FullCardAtlas img={card.img} />}
-            {card.type !== "site" && <FullCard img={card.img} />}
+            {card?.type === "site" && <FullCardAtlas img={card?.img} />}
+            {card?.type !== "site" && <FullCard img={card?.img} />}
           </Box>
         }
       />
