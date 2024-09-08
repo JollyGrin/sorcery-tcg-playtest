@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Grid, HStack } from "styled-system/jsx";
+import { Grid } from "styled-system/jsx";
 import { grid } from "styled-system/patterns";
 import { LAYOUT_HEIGHTS } from "./constants";
 import { GameFooter } from "./Footer";
