@@ -11,28 +11,72 @@ import { CardImage as FullCard } from "@/components/atoms/card-view/card";
 export const Auras = (props: GameStateActions) => {
   return (
     <Box position="absolute" w="100%" h="100%">
-      <Aura card={props.gridItems[21]?.[0]} gridIndex={21} index={0} />
+      {/* {Array.from({ length: 3 }).map((_, index) => ( */}
+      {/*   <Aura */}
+      {/*     card={props.gridItems[21 + index]?.[0]} */}
+      {/*     gridIndex={21 + index} */}
+      {/*     index={0} */}
+      {/*   /> */}
+      {/* ))} */}
+      {/* <Aura card={props.gridItems[21]?.[0]} gridIndex={21} index={0} /> */}
 
-      <Box
-        position="absolute"
-        top="25%" /* Adjust relative to row height */
-        left="40%" /* Adjust relative to column width */
-        bg="blue"
-        w="25px"
-        h="25px"
-        transform="translate(-50%, -50%)" /* Center the box */
+      <Aura
+        card={props.gridItems[21]?.[0]}
+        gridIndex={21}
+        index={0}
+        top="25%"
+        left="20%"
+      />
+
+      <Aura
+        card={props.gridItems[22]?.[0]}
+        gridIndex={22}
+        index={0}
+        top="25%"
+        left="40%"
+      />
+
+      <Aura
+        card={props.gridItems[23]?.[0]}
+        gridIndex={23}
+        index={0}
+        top="25%"
+        left="60%"
+      />
+
+      <Aura
+        card={props.gridItems[24]?.[0]}
+        gridIndex={24}
+        index={0}
+        top="25%"
+        left="80%"
+      />
+
+      <Aura
+        card={props.gridItems[25]?.[0]}
+        gridIndex={25}
+        index={0}
+        top="50%"
+        left="20%"
       />
     </Box>
   );
 };
 
-const Aura = (props: { card: GameCard; gridIndex: number; index: number }) => {
+const Aura = (props: {
+  card: GameCard;
+  gridIndex: number;
+  index: number;
+  top: string;
+  left: string;
+}) => {
   const auraCard = props.card;
+
   return (
     <Box
       position="absolute"
-      top="25%" /* Adjust relative to row height */
-      left="20%" /* Adjust relative to column width */
+      top={props.top} /* Adjust relative to row height */
+      left={props.left} /* Adjust relative to column width */
       w="75px"
       h="75px"
       transform="translate(-50%, -50%)" /* Center the box */
@@ -42,7 +86,7 @@ const Aura = (props: { card: GameCard; gridIndex: number; index: number }) => {
       }}
     >
       {!auraCard?.id && (
-        <AuraDrop gridIndex={21}>
+        <AuraDrop gridIndex={props.gridIndex}>
           <Box
             w="100%"
             h="100%"

@@ -49,6 +49,8 @@ const handCards: GameCard[] = [
   },
 ];
 
+const auraCards = Array.from({ length: 12 }, (_, gridIndex) => []);
+
 /**
  * gridIndexes
  * 0-19 grid
@@ -62,7 +64,7 @@ export default function GamePage() {
     ...initCards,
     ...customCards,
     handCards,
-    [],
+    ...auraCards,
   ]);
 
   return <GameBoard gridItems={gridItems} setGridItems={setGridItems} />;
