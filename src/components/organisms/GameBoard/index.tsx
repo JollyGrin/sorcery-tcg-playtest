@@ -2,7 +2,13 @@ import { CardAtlas } from "@/components/atoms/mock-cards/atlas";
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 import { GameLayout } from "./Layout";
 import { DroppableGridItem } from "@/components/molecules/DropGridItem";
-import { closestCorners, DndContext, DragOverlay } from "@dnd-kit/core";
+import {
+  closestCenter,
+  closestCorners,
+  CollisionDetection,
+  DndContext,
+  DragOverlay,
+} from "@dnd-kit/core";
 import { useHandleDrag } from "./useHandleDrag";
 import { SorceryCard } from "@/types/card";
 import { CardImage } from "@/components/atoms/mock-cards/card";
@@ -22,29 +28,52 @@ export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
       setGridItems,
     });
 
+  const collision: CollisionDetection = (props) => {
+    // Access the current translated Y position of the dragged item
+    const currentY = props?.active?.rect?.current?.translated?.top;
+
+    // Get the height of the viewport
+    const viewportHeight = window.innerHeight;
+
+    // Check if the current Y position is within the bottom 170px of the page
+    const isInFooter = currentY && currentY > viewportHeight - 170;
+
+    // Check if the current Y position is within the bottom 170px of the page
+    // If the item is in the bottom 170px, use closestCenter for the footer
+    if (isInFooter) {
+      console.log("isInFooter");
+      return closestCenter(props);
+    }
+
+    return closestCorners(props);
+  };
+
   return (
     <DndContext
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
-      collisionDetection={closestCorners}
+      collisionDetection={collision}
     >
       <GameLayout {...{ gridItems, setGridItems }}>
         {gridItems?.slice(0, 20)?.map((cards, gridIndex) => (
           <DroppableGridItem
             key={"grid-" + gridIndex}
             id={gridIndex.toString()}
+            gridIndex={gridIndex}
           >
             <SortableContext
               id={`grid-${gridIndex}`}
-              items={cards.map(
-                (_, cardIndex) => `card-${gridIndex}-${cardIndex}`,
-              )}
+              items={cards.map((card, cardIndex) => card.id)}
+              // items={cards.map(
+              //   (card, cardIndex) => `card-${gridIndex}-${cardIndex}`,
+              // )}
               strategy={rectSortingStrategy}
             >
               {cards.map((card, cardIndex) => (
                 <SortableItem
                   key={`card-${gridIndex}-${cardIndex}`}
-                  id={`card-${gridIndex}-${cardIndex}`}
+                  // id={`card-${gridIndex}-${cardIndex}`}
+                  id={card.id}
                   gridIndex={gridIndex}
                   index={cardIndex}
                 >

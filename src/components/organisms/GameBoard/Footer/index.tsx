@@ -16,6 +16,7 @@ export const GameFooter = (props: GameStateActions) => {
   console.log({ cardsInHand });
   return (
     <div
+      data-testid="footer"
       style={{
         height: LAYOUT_HEIGHTS.footer,
         maxWidth: "100vw",
@@ -23,9 +24,9 @@ export const GameFooter = (props: GameStateActions) => {
       }}
     >
       <Grid h="100%" gridTemplateColumns="100px 100px 1fr">
-        <p>hjkl</p>
-        <p>hjkl</p>
-        <DroppableGridItem id={gridIndex.toString()}>
+        <p>Grave</p>
+        <p>Deck</p>
+        <DroppableGridItem id={gridIndex.toString()} gridIndex={gridIndex}>
           <SortableContext
             id={`grid-${gridIndex}`}
             items={cardsInHand?.map(

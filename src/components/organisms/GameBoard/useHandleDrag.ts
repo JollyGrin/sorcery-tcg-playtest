@@ -27,10 +27,12 @@ export const useHandleDrag = ({
 
     if (over) {
       const originIndex = parseInt(active.data.current?.gridIndex, 10);
-      const destinationIndex = parseInt(
-        (over?.id as string)?.split("-")[1],
-        10, // base 10 number
-      );
+      const destinationIndex = over?.data?.current?.gridIndex;
+
+      // const destinationIndex = parseInt(
+      //   (over?.id as string)?.split("-")[1],
+      //   10, // base 10 number
+      // );
 
       if (originIndex === destinationIndex) {
         const updatedGrid = [...gridItems];
