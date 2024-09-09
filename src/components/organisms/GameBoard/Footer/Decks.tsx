@@ -22,11 +22,13 @@ export const DecksTray = (props: GameStateActions) => {
 
   return (
     <VStack
-      bg="blue"
       w="100%"
       py="1rem"
-      // style={{ height: LAYOUT_HEIGHTS.footer }}
-      style={{ height: LAYOUT_HEIGHTS.footer }}
+      style={{
+        height: LAYOUT_HEIGHTS.footer,
+        background:
+          "linear-gradient(90deg, rgba(131,58,180,0.15) 0%, rgba(253,29,29,0.15) 50%, rgba(252,176,69,0.35) 100%)",
+      }}
     >
       <Grid
         h="70px"

@@ -161,7 +161,7 @@ const SortItemWrapper = ({
       <Modal
         wrapperProps={{ open: preview, onOpenChange: setPreview }}
         content={
-          <Box h="600px">
+          <Box h="600px" w="460px">
             {card.type === "site" && <FullCardAtlas img={card.img} />}
             {card.type !== "site" && <FullCard img={card.img} />}
           </Box>

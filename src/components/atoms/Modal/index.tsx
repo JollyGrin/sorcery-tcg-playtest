@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { DialogProps } from "@radix-ui/react-dialog";
 import { ReactNode } from "react";
+import { Box } from "styled-system/jsx";
 
 export const Modal = (props: {
   wrapperProps: DialogProps;
@@ -17,12 +18,14 @@ export const Modal = (props: {
 }) => {
   return (
     <Dialog {...props.wrapperProps}>
-      <DialogTrigger>{props.trigger}</DialogTrigger>
+      {props.trigger && <DialogTrigger>{props.trigger}</DialogTrigger>}
       <DialogContent>
-        <DialogHeader>
-          <DialogTitle>{props.title}</DialogTitle>
-          <DialogDescription>{props.content}</DialogDescription>
-        </DialogHeader>
+        {props.title && (
+          <DialogHeader>
+            <DialogTitle>{props.title}</DialogTitle>
+          </DialogHeader>
+        )}
+        {props.content}
       </DialogContent>
     </Dialog>
   );
