@@ -1,3 +1,4 @@
+import { CARD_CDN } from "@/components/organisms/GameBoard/constants";
 import { useHover } from "@/utils/hooks/useHover";
 import { useKeyPress } from "@/utils/hooks/useKeyPress";
 import { useEffect, useRef, useState } from "react";
@@ -62,7 +63,7 @@ export const CardImage = ({
         transform={show ? "scale(1.5)" : "unset"}
         transition="all 0.25s ease"
         style={{
-          backgroundImage: `url(/mock-cards/${img})`,
+          backgroundImage: `url(${CARD_CDN}/5/${img}.webp)`,
         }}
       />{" "}
     </Box>
