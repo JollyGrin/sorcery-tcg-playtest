@@ -21,7 +21,7 @@ export const GameLayout = (
         }}
       >
         <p style={{ width: "fit-content" }}>
-          Right click cards to view in full
+          Playtest cards on a grid. Click to tap. Right click to view big.
         </p>
       </div>
       <Box position="relative" h="100%" w="100%" maxW="1200px" m="0 auto">

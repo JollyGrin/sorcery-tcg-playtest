@@ -1,5 +1,13 @@
 import { SorceryCard } from "@/types/card";
-import { DragEndEvent } from "@dnd-kit/core";
+import {
+  DragEndEvent,
+  KeyboardSensor,
+  MouseSensor,
+  PointerSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
 import { useState } from "react";
 
 type GameCard = SorceryCard & { id: string }; // for game position
@@ -13,6 +21,22 @@ export const useHandleDrag = ({
   setGridItems(state: Cards): void;
 }) => {
   const [active, setActive] = useState<DragEndEvent["active"] | null>(null);
+
+  const pointerSensor = useSensor(PointerSensor, {
+    activationConstraint: {
+      distance: 5,
+    },
+  });
+  const mouseSensor = useSensor(MouseSensor);
+  const touchSensor = useSensor(TouchSensor);
+  const keyboardSensor = useSensor(KeyboardSensor);
+
+  const sensors = useSensors(
+    pointerSensor,
+    mouseSensor,
+    touchSensor,
+    keyboardSensor,
+  );
 
   function handleDragStart(event: DragEndEvent) {
     setActive(event?.active);
@@ -62,6 +86,7 @@ export const useHandleDrag = ({
   }
 
   return {
+    sensors,
     handleDragEnd,
     handleDragStart,
     activeId: active?.id,

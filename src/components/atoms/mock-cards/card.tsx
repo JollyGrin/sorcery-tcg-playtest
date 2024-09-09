@@ -56,13 +56,14 @@ export const CardImage = ({
         position={show ? "absolute" : "unset"}
         h="310px"
         w="100%"
-        bgImage={`url(/mock-cards/${img})`}
         backgroundPosition="top"
         backgroundSize="cover"
         backgroundRepeat="no-repeat"
         transform={show ? "scale(1.5)" : "unset"}
         transition="all 0.25s ease"
-        // bg="gray.400"
+        style={{
+          backgroundImage: `url(/mock-cards/${img})`,
+        }}
       />{" "}
     </Box>
   );
