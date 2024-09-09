@@ -1,4 +1,5 @@
 import { SorceryCard } from "@/types/card";
+import { actMoveCardInCell } from "@/utils/actions/grid";
 import {
   DragEndEvent,
   KeyboardSensor,
@@ -53,22 +54,7 @@ export const useHandleDrag = ({
       const destinationIndex = over?.data?.current?.gridIndex;
 
       if (originIndex === destinationIndex) {
-        const updatedGrid = [...gridItems];
-        const cardsInCell = [...updatedGrid[originIndex]]; // Copy the cards in the original cell
-
-        const activeCardIndex = active?.data?.current?.index; // Index of the card being dragged
-        const destinationCardIndex = over?.data?.current?.index; // Index where the card will be dropped
-
-        // Remove the active card from its original position
-        const [activeCard] = cardsInCell.splice(activeCardIndex, 1);
-
-        // Insert the active card into the new position (destination)
-        cardsInCell.splice(destinationCardIndex, 0, activeCard);
-
-        // Update the original grid with the modified cards in the cell
-        updatedGrid[originIndex] = cardsInCell;
-
-        setGridItems(updatedGrid);
+        setGridItems(actMoveCardInCell(gridItems, event));
         return;
       }
 

@@ -18,12 +18,11 @@ import { Modal } from "@/components/atoms/Modal";
 
 import { Dispatch, SetStateAction, useState } from "react";
 import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
-import { GameCard } from "@/pages/game";
+import { GameCard, GameState } from "@/types/card";
 
-type Cards = GameCard[][];
 export type GameStateActions = {
-  gridItems: Cards;
-  setGridItems: Dispatch<SetStateAction<Cards>>;
+  gridItems: GameState;
+  setGridItems: Dispatch<SetStateAction<GameState>>;
 };
 export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
   const { sensors, handleDragEnd, handleDragStart, activeId, activeCard } =
