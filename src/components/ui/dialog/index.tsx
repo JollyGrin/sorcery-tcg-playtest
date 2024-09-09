@@ -21,7 +21,14 @@ const Content = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       {...props}
-      style={{ background: "transparent", border: 0, boxShadow: "none" }}
+      style={{
+        background: "transparent",
+        // border: "solid 1rem black",
+        border: 0,
+        // boxShadow: "none",
+        maxWidth: "80vw",
+        width: "fit-content",
+      }}
     >
       {children}
       {/* <DialogClose> */}

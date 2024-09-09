@@ -4,9 +4,11 @@ import { Box } from "styled-system/jsx";
 export const CardImage = ({
   img = "headless_haunt.webp",
   position = "top",
+  minH = "300px",
 }: {
   img?: string;
   position?: "top" | "bottom";
+  minH?: string;
 }) => {
   return (
     <Box
@@ -28,7 +30,7 @@ export const CardImage = ({
         }}
         w="100%"
         h="100%"
-        minH="300px"
+        minH={minH}
         backgroundPosition="top"
         backgroundSize="contain"
         backgroundRepeat="no-repeat"

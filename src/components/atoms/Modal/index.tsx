@@ -1,7 +1,6 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -17,12 +16,14 @@ export const Modal = (props: {
 }) => {
   return (
     <Dialog {...props.wrapperProps}>
-      <DialogTrigger>{props.trigger}</DialogTrigger>
+      {props.trigger && <DialogTrigger>{props.trigger}</DialogTrigger>}
       <DialogContent>
-        <DialogHeader>
-          <DialogTitle>{props.title}</DialogTitle>
-          <DialogDescription>{props.content}</DialogDescription>
-        </DialogHeader>
+        {props.title && (
+          <DialogHeader>
+            <DialogTitle>{props.title}</DialogTitle>
+          </DialogHeader>
+        )}
+        {props.content}
       </DialogContent>
     </Dialog>
   );

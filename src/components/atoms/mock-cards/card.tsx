@@ -63,7 +63,7 @@ export const CardImage = ({
         transform={show ? "scale(1.5)" : "unset"}
         transition="all 0.25s ease"
         style={{
-          backgroundImage: `url(${CARD_CDN}/5/${img}.webp)`,
+          backgroundImage: `url(${CARD_CDN}/${img}.webp)`,
         }}
       />{" "}
     </Box>
