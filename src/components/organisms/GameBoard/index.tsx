@@ -17,14 +17,14 @@ import { SortableItem } from "@/components/molecules/SortItem";
 import { Box } from "styled-system/jsx";
 import { Modal } from "@/components/atoms/Modal";
 
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
 
 type GameCard = SorceryCard & { id: string }; // for game position
 type Cards = GameCard[][];
 export type GameStateActions = {
   gridItems: Cards;
-  setGridItems(state: Cards): void;
+  setGridItems: Dispatch<SetStateAction<Cards>>;
 };
 export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
   const { handleDragEnd, handleDragStart, activeId, activeCard } =
@@ -58,7 +58,7 @@ export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
       onDragEnd={handleDragEnd}
       collisionDetection={collision}
     >
-      <GameLayout {...{ gridItems, setGridItems }}>
+      <GameLayout gridItems={gridItems} setGridItems={setGridItems}>
         {gridItems?.slice(0, 20)?.map((cards, gridIndex) => (
           <DroppableGridItem
             key={"grid-" + gridIndex}
@@ -72,7 +72,11 @@ export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
               strategy={rectSortingStrategy}
             >
               {cards.map((card, cardIndex) => (
-                <SortItemWrapper {...{ card, gridIndex, cardIndex }} />
+                <SortItemWrapper
+                  key={card.id}
+                  amountOfCards={cards?.length}
+                  {...{ card, gridIndex, cardIndex }}
+                />
               ))}
             </SortableContext>
           </DroppableGridItem>
@@ -91,6 +95,7 @@ export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
 };
 
 const SortItemWrapper = ({
+  amountOfCards = 0,
   card,
   gridIndex,
   cardIndex,
@@ -98,8 +103,11 @@ const SortItemWrapper = ({
   card: GameCard;
   gridIndex: number;
   cardIndex: number;
+  amountOfCards?: number;
 }) => {
   const [preview, setPreview] = useState(false);
+  const heightCalc = 90 - Math.min(amountOfCards, 4) * 15;
+  const height = `${heightCalc}px`;
 
   return (
     <div
@@ -111,6 +119,7 @@ const SortItemWrapper = ({
         e.preventDefault();
         setPreview(true);
       }}
+      style={{ height: heightCalc + 7 + "px" }}
     >
       <SortableItem
         key={`card-${gridIndex}-${cardIndex}`}
@@ -118,8 +127,8 @@ const SortItemWrapper = ({
         gridIndex={gridIndex}
         index={cardIndex}
       >
-        {card.type === "site" && <CardAtlas img={card.img} />}
-        {card.type !== "site" && <CardImage img={card.img} />}
+        {card.type === "site" && <CardAtlas height={height} img={card.img} />}
+        {card.type !== "site" && <CardImage height={height} img={card.img} />}
       </SortableItem>
       <Modal
         wrapperProps={{ open: preview, onOpenChange: setPreview }}

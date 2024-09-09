@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Box } from "styled-system/jsx";
 
 export const CardImage = ({
+  height = "90px",
   img = "headless_haunt.webp",
   position = "top",
   index = 1,
@@ -15,6 +16,7 @@ export const CardImage = ({
   index?: number;
   isTapped?: boolean;
   show?: boolean;
+  height?: string;
 }) => {
   const hoverRef = useRef(null);
   const isHovering = useHover(hoverRef);
@@ -32,10 +34,9 @@ export const CardImage = ({
   return (
     <Box
       position="relative"
-      m="0.5rem auto"
+      m="0 auto"
       w="calc(100% - 1rem)"
       maxW="221px"
-      h="90px"
       bg="yellow"
       overflow={show ? "unset" : "clip"}
       borderRadius="1rem"
@@ -48,6 +49,7 @@ export const CardImage = ({
       opacity={isTapped && !isHovering ? "0.8" : "1"}
       transition="all 0.25s ease"
       onMouseOut={() => setPreview(false)}
+      style={{ height }}
     >
       <Box
         ref={hoverRef}

@@ -31,7 +31,7 @@ export const CardImage = ({
         backgroundRepeat="no-repeat"
         transition="all 0.25s ease"
         // bg="gray.400"
-      />{" "}
+      />
     </Box>
   );
 };
