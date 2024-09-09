@@ -1,3 +1,4 @@
+import { CARD_CDN } from "@/components/organisms/GameBoard/constants";
 import { Box } from "styled-system/jsx";
 
 export const CardAtlas = ({
@@ -20,7 +21,9 @@ export const CardAtlas = ({
       style={{ height }}
     >
       <Box
-        style={{ backgroundImage: `url(/mock-cards/${img})` }} // bgImage has caching issues
+        style={{
+          backgroundImage: `url(${CARD_CDN}/${img}.webp)`,
+        }} // bgImage has caching issues
         isolation="isolate"
         h="310px"
         w="100%"

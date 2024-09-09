@@ -1,3 +1,4 @@
+import { CARD_CDN } from "@/components/organisms/GameBoard/constants";
 import { Box } from "styled-system/jsx";
 
 export const CardImage = ({
@@ -22,7 +23,9 @@ export const CardImage = ({
       transition="all 0.25s ease"
     >
       <Box
-        style={{ backgroundImage: `url(/mock-cards/${img})` }}
+        style={{
+          backgroundImage: `url(${CARD_CDN}/${img}.webp)`,
+        }}
         w="100%"
         h="100%"
         minH="300px"

@@ -1,4 +1,9 @@
 /**
+ * CDN Images
+ * */
+export const CARD_CDN = `https://card.cards.army/cards/`;
+
+/**
  * LAYOUT
  * */
 

@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Modal } from "@/components/atoms/Modal";
 import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
 import { CardImage as FullCard } from "@/components/atoms/card-view/card";
-import { GRIDS } from "../constants";
+import { CARD_CDN, GRIDS } from "../constants";
 
 export const Auras = (props: GameStateActions) => {
   return (
@@ -90,7 +90,7 @@ const DragWrapper = ({
           transform={card?.type === "site" ? "rotate(90deg)" : ""}
           borderRadius="0.5rem"
           style={{
-            backgroundImage: `url(/mock-cards/${card?.img})`,
+            backgroundImage: `url(${CARD_CDN}/${card.img}.webp)`,
           }}
           onContextMenu={(e) => {
             e.preventDefault();
