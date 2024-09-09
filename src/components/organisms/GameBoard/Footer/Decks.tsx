@@ -1,7 +1,6 @@
-import { Box, Grid, VStack } from "styled-system/jsx";
+import { Grid, VStack } from "styled-system/jsx";
 import { GRIDS, LAYOUT_HEIGHTS } from "../constants";
 import { GameStateActions } from "..";
-import { GameCard } from "@/pages/game";
 
 export const DecksTray = (props: GameStateActions) => {
   function draw(deck: GRIDS.DECK | GRIDS.ATLAS_DECK) {

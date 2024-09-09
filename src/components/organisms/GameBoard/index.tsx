@@ -99,7 +99,6 @@ const SortItemWrapper = ({
   card,
   gridIndex,
   cardIndex,
-  ...props
 }: {
   card: GameCard;
   gridIndex: number;

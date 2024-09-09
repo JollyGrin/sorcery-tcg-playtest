@@ -39,7 +39,7 @@ const atlasCards = Array.from({ length: 10 }).map((_, index) => ({
 }));
 
 const initCards: GameCard[][] = Array.from({ length: 35 }, () => []);
-// initCards[GRIDS.HAND] = handCards as GameCard[];
+initCards[GRIDS.HAND] = handCards as GameCard[];
 initCards[GRIDS.DECK] = deckCards as GameCard[];
 initCards[GRIDS.ATLAS_DECK] = atlasCards as GameCard[];
 
