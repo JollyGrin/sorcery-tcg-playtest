@@ -10,6 +10,7 @@ import { SortableItem } from "@/components/molecules/SortItem";
 import { CardAtlas } from "@/components/atoms/mock-cards/atlas";
 import { CardImage } from "@/components/atoms/mock-cards/card";
 import { DecksTray } from "./Decks";
+import { GraveTray } from "./Grave";
 
 export const GameFooter = (props: GameStateActions) => {
   const gridIndex = GRIDS.HAND;
@@ -25,7 +26,7 @@ export const GameFooter = (props: GameStateActions) => {
       }}
     >
       <Grid h="100%" gridTemplateColumns="repeat(2,150px) 1fr" gap={0}>
-        <Box bg="yellow">Grave</Box>
+        <GraveTray {...props} />
         <DecksTray {...props} />
         <DroppableGridItem id={gridIndex.toString()} gridIndex={gridIndex}>
           <SortableContext
