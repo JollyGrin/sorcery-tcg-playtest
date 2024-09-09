@@ -19,15 +19,15 @@ import { Modal } from "@/components/atoms/Modal";
 
 import { Dispatch, SetStateAction, useState } from "react";
 import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
+import { GameCard } from "@/pages/game";
 
-type GameCard = SorceryCard & { id: string }; // for game position
 type Cards = GameCard[][];
 export type GameStateActions = {
   gridItems: Cards;
   setGridItems: Dispatch<SetStateAction<Cards>>;
 };
 export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
-  const { handleDragEnd, handleDragStart, activeId, activeCard } =
+  const { sensors, handleDragEnd, handleDragStart, activeId, activeCard } =
     useHandleDrag({
       gridItems,
       setGridItems,
@@ -57,6 +57,7 @@ export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
       collisionDetection={collision}
+      sensors={sensors}
     >
       <GameLayout gridItems={gridItems} setGridItems={setGridItems}>
         {gridItems?.slice(0, 20)?.map((cards, gridIndex) => (
@@ -64,7 +65,7 @@ export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
             key={"grid-" + gridIndex}
             id={gridIndex.toString()}
             gridIndex={gridIndex}
-            style={{ overflowY: "auto" }}
+            style={{ overflowY: "auto", overflowX: "clip" }}
           >
             <SortableContext
               id={`grid-${gridIndex}`}
@@ -75,6 +76,7 @@ export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
                 <SortItemWrapper
                   key={card.id}
                   amountOfCards={cards?.length}
+                  {...{ gridItems, setGridItems }}
                   {...{ card, gridIndex, cardIndex }}
                 />
               ))}
@@ -99,27 +101,55 @@ const SortItemWrapper = ({
   card,
   gridIndex,
   cardIndex,
+  ...props
 }: {
   card: GameCard;
   gridIndex: number;
   cardIndex: number;
   amountOfCards?: number;
-}) => {
+} & GameStateActions) => {
   const [preview, setPreview] = useState(false);
-  const heightCalc = 90 - Math.min(amountOfCards, 4) * 15;
-  const height = `${heightCalc}px`;
+
+  const heightCalc = () => {
+    if (amountOfCards === 1) return 120;
+    if (amountOfCards === 2) return 75;
+    if (amountOfCards === 3) return 65;
+
+    return 90 - Math.min(amountOfCards, 4) * 15;
+  };
+  const height = `${heightCalc()}px`;
+
+  const isTapped = card.isTapped;
+  function toggleTap() {
+    props.setGridItems(() => {
+      const newGrid = [...props.gridItems];
+      const card = newGrid[gridIndex][cardIndex];
+      newGrid[gridIndex][cardIndex] = {
+        ...card,
+        isTapped: !card.isTapped,
+      } as GameCard;
+
+      return newGrid;
+    });
+  }
 
   return (
     <div
-      onDoubleClick={(e) => {
+      onClick={(e) => {
         e.preventDefault();
-        setPreview(true);
+        e.stopPropagation();
+        toggleTap();
       }}
       onContextMenu={(e) => {
         e.preventDefault();
         setPreview(true);
       }}
-      style={{ height: heightCalc + 7 + "px" }}
+      style={{
+        height: heightCalc() + 7 + "px",
+        transform: isTapped ? "rotate(5deg)" : "",
+        filter: isTapped ? "saturate(0)" : "",
+        transition: "all 0.25s ease",
+      }}
     >
       <SortableItem
         key={`card-${gridIndex}-${cardIndex}`}
