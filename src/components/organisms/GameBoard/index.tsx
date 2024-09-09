@@ -10,7 +10,6 @@ import {
   DragOverlay,
 } from "@dnd-kit/core";
 import { useHandleDrag } from "./useHandleDrag";
-import { SorceryCard } from "@/types/card";
 import { CardImage } from "@/components/atoms/mock-cards/card";
 import { CardImage as FullCard } from "@/components/atoms/card-view/card";
 import { SortableItem } from "@/components/molecules/SortItem";
