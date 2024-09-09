@@ -1,4 +1,4 @@
-import { Box, Grid, HStack } from "styled-system/jsx";
+import { Grid, HStack } from "styled-system/jsx";
 import { GRIDS, LAYOUT_HEIGHTS } from "../constants";
 import { DroppableGridItem } from "@/components/molecules/DropGridItem";
 import {
