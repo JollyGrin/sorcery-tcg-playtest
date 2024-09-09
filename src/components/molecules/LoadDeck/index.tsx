@@ -25,7 +25,7 @@ export const LoadDeck = (props: GameStateActions) => {
           ...spell,
           quantity: undefined, // Remove the quantity field
         })).map(
-          ({ quantity, ...rest }, index) =>
+          (rest, index) =>
             ({
               id: rest.identifier + index + Date.now(),
               img: rest.identifier,
@@ -40,7 +40,7 @@ export const LoadDeck = (props: GameStateActions) => {
           ...spell,
           quantity: undefined, // Remove the quantity field
         })).map(
-          ({ quantity, ...rest }, i) =>
+          (rest, i) =>
             ({
               id: rest.identifier + i + Date.now(),
               img: rest.identifier,
@@ -93,8 +93,9 @@ export const LoadDeck = (props: GameStateActions) => {
       )}
       <Flex wrap="wrap" gap="0.25rem" mt="1rem">
         {cards?.map((card, index) => (
-          <div>
+          <div key={card.identifier + index + "flex"}>
             <img
+              alt="card"
               width="165px"
               key={card.identifier + index}
               src={`https://card.cards.army/cards/50/${card.identifier}.webp`}
@@ -106,6 +107,7 @@ export const LoadDeck = (props: GameStateActions) => {
   );
 };
 
+// eslint-disable-next-line
 function shuffleArray(array: any) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1)); // Random index from 0 to i
