@@ -2,7 +2,7 @@ import { Box } from "styled-system/jsx";
 import { AuraDrop } from "./AuraDrop";
 import { GameStateActions } from "..";
 import { DragItem } from "@/components/molecules/DragItem";
-import { GameCard } from "@/pages/game";
+import { GameCard } from "@/types/card";
 import { useState } from "react";
 import { Modal } from "@/components/atoms/Modal";
 import { FullCardAtlas } from "@/components/atoms/card-view/atlas";

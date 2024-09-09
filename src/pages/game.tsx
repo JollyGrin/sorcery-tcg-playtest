@@ -1,20 +1,15 @@
 import { LoadDeck } from "@/components/molecules/LoadDeck";
 import { GameBoard } from "@/components/organisms/GameBoard";
 import { GRIDS } from "@/components/organisms/GameBoard/constants";
-import { SorceryCard } from "@/types/card";
+import { GameCard, GameState } from "@/types/card";
 import { useState } from "react";
 
 const initCards: GameCard[][] = Array.from({ length: 36 }, () => []);
 // initCards[GRIDS.HAND] = handCards as GameCard[];
 // initCards[GRIDS.DECK] = [...deckCards, ...mockDeck] as GameCard[];
 
-type GameProps = {
-  id: string;
-  isTapped?: boolean;
-};
-export type GameCard = SorceryCard & GameProps; // for game position
 export default function GamePage() {
-  const [gridItems, setGridItems] = useState<GameCard[][]>(initCards);
+  const [gridItems, setGridItems] = useState<GameState>(initCards);
 
   if (
     gridItems[GRIDS.DECK].length === 0 &&

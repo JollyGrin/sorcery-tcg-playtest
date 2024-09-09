@@ -1,28 +1,13 @@
 import { Grid, VStack } from "styled-system/jsx";
 import { GRIDS, LAYOUT_HEIGHTS } from "../constants";
 import { GameStateActions } from "..";
+import { actDrawAtlas, actDrawDeck } from "@/utils/actions";
 
 export const DecksTray = (props: GameStateActions) => {
   function draw(deck: GRIDS.DECK | GRIDS.ATLAS_DECK) {
-    props.setGridItems((prev) => {
-      // Create a shallow copy of the previous grid items array
-      const newGridItems = [...prev];
-
-      // Make a copy of the deck and hand arrays, preserving their positions
-      const newDeck = [...newGridItems[deck]];
-      const newHand = [...newGridItems[GRIDS.HAND]];
-
-      // Pop a card from the deck and push it to the hand
-      const card = newDeck.pop();
-      if (card) newHand.push(card);
-
-      // Update the newGridItems array with the updated deck and hand arrays
-      newGridItems[deck] = newDeck;
-      newGridItems[GRIDS.HAND] = newHand;
-
-      // Return the updated newGridItems array to trigger a re-render
-      return newGridItems;
-    });
+    deck === GRIDS.DECK
+      ? props.setGridItems(actDrawDeck(props.gridItems))
+      : props.setGridItems(actDrawAtlas(props.gridItems));
   }
 
   function drawDeck() {

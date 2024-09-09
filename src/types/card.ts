@@ -1,5 +1,5 @@
 type SorceryCardType =
-  | "site"
+  | "site" // in reality, only this one is relevant variation
   | "aura"
   | "avatar"
   | "artifact"
@@ -7,6 +7,22 @@ type SorceryCardType =
   | "magic";
 
 export type SorceryCard = {
-  img: string;
-  type: SorceryCardType;
+  img: string; // used with CDN
+  type: SorceryCardType; // site card is rotated sideways
 };
+
+/**
+ * Card props used for playtesting
+ * */
+type GameProps = {
+  id: string;
+  isTapped?: boolean;
+};
+/**
+ * Card type used for game playtesting
+ * */
+export type GameCard = SorceryCard & GameProps;
+
+export type GridItem = GameCard[];
+
+export type GameState = GridItem[];
