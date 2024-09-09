@@ -1,6 +1,6 @@
 import { GameStateActions } from "@/components/organisms/GameBoard";
 import { GRIDS } from "@/components/organisms/GameBoard/constants";
-import { GameCard } from "@/pages/game";
+import { GameCard } from "@/types/card";
 import { useCuriosaDeck } from "@/utils/api/curiosa/useCuriosa";
 import { useState } from "react";
 import { Box, Flex } from "styled-system/jsx";
