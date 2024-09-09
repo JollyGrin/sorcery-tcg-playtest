@@ -3,6 +3,7 @@ import { DragEndEvent } from "@dnd-kit/core";
 
 /**
  * Repositions a card within it's existing grid cell
+ * Returns an updated game state
  * */
 export function actMoveCardInCell(state: GameState, event: DragEndEvent) {
   const originIndex = parseInt(event.active.data.current?.gridIndex, 10);
@@ -22,4 +23,48 @@ export function actMoveCardInCell(state: GameState, event: DragEndEvent) {
   updatedGrid[originIndex] = cardsInCell;
 
   return updatedGrid;
+}
+
+/**
+ * Repositions a card to another grid cell
+ * Returns an updated game state
+ * */
+export function actMoveCardOutsideCell(state: GameState, event: DragEndEvent) {
+  const originIndex = parseInt(event.active.data.current?.gridIndex, 10);
+  const destinationIndex = event.over?.data?.current?.gridIndex;
+
+  // Remove the active card from its original position
+  const updatedGrid = [...state];
+  const [movedCard] = updatedGrid[originIndex].splice(
+    event.active?.data?.current?.index,
+    1,
+  );
+  // Place card in the destination area
+  updatedGrid[destinationIndex]?.push(movedCard);
+
+  return updatedGrid;
+}
+
+/**
+ * Moves a card within a cell or to another grid cell
+ * Returns an updated game state
+ * If no action possible, will return the original state
+ * * */
+export function actMoveCard(state: GameState, event: DragEndEvent) {
+  const { active, over } = event;
+
+  if (over?.id === active.id) return state; // if self, do nothing
+
+  if (over) {
+    const originIndex = parseInt(active.data.current?.gridIndex, 10);
+    const destinationIndex = over?.data?.current?.gridIndex;
+
+    if (originIndex === destinationIndex) {
+      return actMoveCardInCell(state, event);
+    }
+
+    return actMoveCardOutsideCell(state, event);
+  }
+
+  return state;
 }
