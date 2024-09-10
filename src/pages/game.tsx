@@ -5,8 +5,6 @@ import { GameCard, GameState } from "@/types/card";
 import { useState } from "react";
 
 const initCards: GameCard[][] = Array.from({ length: 36 }, () => []);
-// initCards[GRIDS.HAND] = handCards as GameCard[];
-// initCards[GRIDS.DECK] = [...deckCards, ...mockDeck] as GameCard[];
 
 export default function GamePage() {
   const [gridItems, setGridItems] = useState<GameState>(initCards);
