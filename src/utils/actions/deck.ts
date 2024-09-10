@@ -1,6 +1,25 @@
 import { GRIDS } from "@/components/organisms/GameBoard/constants";
 import { GameState } from "@/types/card";
 
+/**
+ * Shuffle deck with fisher yates algorithm
+ * */
+export function actShuffleDeck(state: GameState, deckType: "deck" | "atlas") {
+  const GRID_DECK_TYPE = deckType === "deck" ? GRIDS.DECK : GRIDS.ATLAS_DECK;
+
+  const newState = [...state];
+  const newDeck = [...newState[GRID_DECK_TYPE]];
+
+  const array = newDeck;
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1)); // Random index from 0 to i
+    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+  }
+
+  newState[GRID_DECK_TYPE] = newDeck;
+  return newState;
+}
+
 export function actDrawDeck(state: GameState) {
   // Create a shallow copy of the previous grid items array
   const newState = [...state];
