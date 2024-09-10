@@ -9,6 +9,7 @@ import { cva } from "styled-system/css/cva.mjs";
 import { Modal } from "@/components/atoms/Modal";
 import { useState } from "react";
 import { DeckModalBody } from "./DeckPreviewModal";
+import toast from "react-hot-toast";
 
 export const DecksTray = (props: GameStateActions) => {
   const [preview, setPreview] = useState<"deck" | "atlas">();
@@ -28,6 +29,7 @@ export const DecksTray = (props: GameStateActions) => {
 
   function shuffleDeck(deckType: typeof preview) {
     if (deckType) props.setGridItems(actShuffleDeck(props.gridItems, deckType));
+    toast.success("Shuffled after closing");
   }
 
   const atlasRemainingCards = props.gridItems[GRIDS.ATLAS_DECK]?.length;
