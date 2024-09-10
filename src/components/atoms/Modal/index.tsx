@@ -8,9 +8,10 @@ import {
 import { DialogDescription, DialogProps } from "@radix-ui/react-dialog";
 import { ReactNode } from "react";
 import { VisuallyHidden } from "styled-system/jsx";
+import { Pretty } from "styled-system/types";
 
 export const Modal = (props: {
-  wrapperProps: DialogProps;
+  wrapperProps: Pretty<DialogProps>;
   trigger?: ReactNode;
   title?: string;
   content?: ReactNode;
