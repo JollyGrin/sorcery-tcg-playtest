@@ -2,6 +2,7 @@ import { Grid, VStack } from "styled-system/jsx";
 import { GRIDS, LAYOUT_HEIGHTS } from "../constants";
 import { GameStateActions } from "..";
 import { actDrawAtlas, actDrawDeck } from "@/utils/actions";
+import { cva } from "styled-system/css/cva.mjs";
 
 export const DecksTray = (props: GameStateActions) => {
   function draw(deck: GRIDS.DECK | GRIDS.ATLAS_DECK) {
@@ -42,16 +43,7 @@ export const DecksTray = (props: GameStateActions) => {
           backgroundImage: "url(/card-backs/m_atlas.png)",
         }}
       >
-        <p
-          style={{
-            fontWeight: 700,
-            background: "rgba(255,255,255,0.7)",
-            padding: "0 0.25rem",
-            borderRadius: "0.25rem",
-          }}
-        >
-          {atlasRemainingCards}
-        </p>
+        <p className={remainingCards()}>{atlasRemainingCards}</p>
       </Grid>
       <Grid
         w="60px"
@@ -65,17 +57,17 @@ export const DecksTray = (props: GameStateActions) => {
           backgroundImage: "url(/card-backs/m_spells.png)",
         }}
       >
-        <p
-          style={{
-            fontWeight: 700,
-            background: "rgba(255,255,255,0.7)",
-            padding: "0 0.25rem",
-            borderRadius: "0.25rem",
-          }}
-        >
-          {deckRemainingCards}
-        </p>
+        <p className={remainingCards()}>{deckRemainingCards}</p>
       </Grid>
     </VStack>
   );
 };
+
+const remainingCards = cva({
+  base: {
+    fontWeight: 700,
+    background: "rgba(255,255,255,0.7)",
+    padding: "0 0.25rem",
+    borderRadius: "0.25rem",
+  },
+});
