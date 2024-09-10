@@ -4,7 +4,7 @@ import {
   LAYOUT_HEIGHTS,
 } from "@/components/organisms/GameBoard/constants";
 import { GameStateActions } from "@/components/organisms/GameBoard";
-import { actDrawAtlas, actDrawDeck } from "@/utils/actions";
+import { actDrawAtlas, actDrawDeck, actShuffleDeck } from "@/utils/actions";
 import { cva } from "styled-system/css/cva.mjs";
 import { Modal } from "@/components/atoms/Modal";
 import { useState } from "react";
@@ -26,6 +26,10 @@ export const DecksTray = (props: GameStateActions) => {
     draw(GRIDS.ATLAS_DECK);
   }
 
+  function shuffleDeck(deckType: typeof preview) {
+    if (deckType) props.setGridItems(actShuffleDeck(props.gridItems, deckType));
+  }
+
   const atlasRemainingCards = props.gridItems[GRIDS.ATLAS_DECK]?.length;
   const deckRemainingCards = props.gridItems[GRIDS.DECK]?.length;
 
@@ -34,7 +38,15 @@ export const DecksTray = (props: GameStateActions) => {
       <Modal
         wrapperProps={{
           open: !!preview,
-          onOpenChange: () => setPreview(undefined),
+          onOpenChange: () => {
+            // when closing the modal, delay shuffling the deck briefly
+            // avoids briefly showing new deck order before modal closes
+            let wasOpen = preview;
+            setPreview(undefined);
+            setTimeout(() => {
+              if (!!wasOpen) shuffleDeck(wasOpen);
+            }, 100);
+          },
         }}
         content={<DeckModalBody deckType={preview} {...props} />}
       />
