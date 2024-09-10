@@ -1,4 +1,4 @@
-import { Grid, HStack } from "styled-system/jsx";
+import { Box, Grid, HStack } from "styled-system/jsx";
 import { GRIDS, LAYOUT_HEIGHTS } from "../constants";
 import { DroppableGridItem } from "@/components/molecules/DropGridItem";
 import {
@@ -11,6 +11,11 @@ import { CardAtlas } from "@/components/atoms/mock-cards/atlas";
 import { CardImage } from "@/components/atoms/mock-cards/card";
 import { DecksTray } from "./Decks";
 import { GraveTray } from "./Grave";
+import { GameCard } from "@/types/card";
+import { useState } from "react";
+import { Modal } from "@/components/atoms/Modal";
+import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
+import { CardImage as FullCard } from "@/components/atoms/card-view/card";
 
 /**
  * HAND - Drag and Drop tray of all the cards in your hand
@@ -48,28 +53,58 @@ export const GameFooter = (props: GameStateActions) => {
               overflowX="auto"
             >
               {props.gridItems?.[gridIndex]?.map((card, index) => (
-                <div
-                  key={card.id}
-                  style={{
-                    width: "100%",
-                    maxWidth: "220px",
-                    minWidth: "180px",
-                  }}
-                >
-                  <SortableItem
-                    id={card.id}
-                    gridIndex={gridIndex}
-                    index={index}
-                  >
-                    {card?.type === "site" && <CardAtlas img={card?.img} />}
-                    {card?.type !== "site" && <CardImage img={card?.img} />}
-                  </SortableItem>
-                </div>
+                <HandCard
+                  key={card.id + index}
+                  card={card}
+                  gridIndex={gridIndex}
+                  cardIndex={index}
+                />
               ))}
             </HStack>
           </SortableContext>
         </DroppableGridItem>
       </Grid>
+    </div>
+  );
+};
+
+const HandCard = ({
+  card,
+  gridIndex,
+  cardIndex: index,
+}: {
+  card: GameCard;
+  gridIndex: number;
+  cardIndex: number;
+}) => {
+  const [preview, setPreview] = useState(false);
+
+  return (
+    <div
+      onContextMenu={(e) => {
+        e.preventDefault();
+        setPreview(true);
+      }}
+      style={{
+        width: "100%",
+        maxWidth: "220px",
+        minWidth: "180px",
+      }}
+    >
+      <SortableItem id={card.id} gridIndex={gridIndex} index={index}>
+        {card?.type === "site" && <CardAtlas img={card?.img} />}
+        {card?.type !== "site" && <CardImage img={card?.img} />}
+      </SortableItem>
+
+      <Modal
+        wrapperProps={{ open: preview, onOpenChange: setPreview }}
+        content={
+          <Box h="600px" w="460px">
+            {card.type === "site" && <FullCardAtlas img={card.img} />}
+            {card.type !== "site" && <FullCard img={card.img} />}
+          </Box>
+        }
+      />
     </div>
   );
 };
