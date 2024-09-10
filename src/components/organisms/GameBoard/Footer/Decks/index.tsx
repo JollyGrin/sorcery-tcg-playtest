@@ -6,8 +6,13 @@ import {
 import { GameStateActions } from "@/components/organisms/GameBoard";
 import { actDrawAtlas, actDrawDeck } from "@/utils/actions";
 import { cva } from "styled-system/css/cva.mjs";
+import { Modal } from "@/components/atoms/Modal";
+import { useState } from "react";
+import { DeckModalBody } from "./DeckPreviewModal";
 
 export const DecksTray = (props: GameStateActions) => {
+  const [preview, setPreview] = useState<"deck" | "atlas">();
+
   function draw(deck: GRIDS.DECK | GRIDS.ATLAS_DECK) {
     deck === GRIDS.DECK
       ? props.setGridItems(actDrawDeck(props.gridItems))
@@ -25,44 +30,61 @@ export const DecksTray = (props: GameStateActions) => {
   const deckRemainingCards = props.gridItems[GRIDS.DECK]?.length;
 
   return (
-    <VStack
-      w="100%"
-      py="1rem"
-      style={{
-        height: LAYOUT_HEIGHTS.footer,
-        background:
-          "linear-gradient(90deg, rgba(131,58,180,0.15) 0%, rgba(253,29,29,0.15) 50%, rgba(252,176,69,0.35) 100%)",
-      }}
-    >
-      <Grid
-        h="70px"
-        aspectRatio={3 / 2}
-        onClick={drawAtlas}
-        placeItems="center"
-        borderRadius="0.25rem"
-        cursor="pointer"
-        backgroundSize="cover"
+    <>
+      <Modal
+        wrapperProps={{
+          open: !!preview,
+          onOpenChange: () => setPreview(undefined),
+        }}
+        content={<DeckModalBody deckType={preview} {...props} />}
+      />
+      <VStack
+        w="100%"
+        py="1rem"
         style={{
-          backgroundImage: "url(/card-backs/m_atlas.png)",
+          height: LAYOUT_HEIGHTS.footer,
+          background:
+            "linear-gradient(90deg, rgba(131,58,180,0.15) 0%, rgba(253,29,29,0.15) 50%, rgba(252,176,69,0.35) 100%)",
         }}
       >
-        <p className={remainingCards()}>{atlasRemainingCards}</p>
-      </Grid>
-      <Grid
-        w="60px"
-        aspectRatio={2 / 3}
-        onClick={drawDeck}
-        placeItems="center"
-        borderRadius="0.25rem"
-        cursor="pointer"
-        backgroundSize="cover"
-        style={{
-          backgroundImage: "url(/card-backs/m_spells.png)",
-        }}
-      >
-        <p className={remainingCards()}>{deckRemainingCards}</p>
-      </Grid>
-    </VStack>
+        <Grid
+          onContextMenu={(e) => {
+            e.preventDefault();
+            setPreview("atlas");
+          }}
+          h="70px"
+          aspectRatio={3 / 2}
+          onClick={drawAtlas}
+          placeItems="center"
+          borderRadius="0.25rem"
+          cursor="pointer"
+          backgroundSize="cover"
+          style={{
+            backgroundImage: "url(/card-backs/m_atlas.png)",
+          }}
+        >
+          <p className={remainingCards()}>{atlasRemainingCards}</p>
+        </Grid>
+        <Grid
+          onContextMenu={(e) => {
+            e.preventDefault();
+            setPreview("deck");
+          }}
+          w="60px"
+          aspectRatio={2 / 3}
+          onClick={drawDeck}
+          placeItems="center"
+          borderRadius="0.25rem"
+          cursor="pointer"
+          backgroundSize="cover"
+          style={{
+            backgroundImage: "url(/card-backs/m_spells.png)",
+          }}
+        >
+          <p className={remainingCards()}>{deckRemainingCards}</p>
+        </Grid>
+      </VStack>
+    </>
   );
 };
 
