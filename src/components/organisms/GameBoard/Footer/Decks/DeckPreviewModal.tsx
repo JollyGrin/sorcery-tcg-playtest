@@ -1,5 +1,5 @@
 import { CardImage } from "@/components/atoms/card-view/card";
-import { GameCard, GridItem } from "@/types/card";
+import { GameCard } from "@/types/card";
 import { Box, Grid, HStack } from "styled-system/jsx";
 import { button } from "styled-system/recipes";
 
@@ -11,15 +11,18 @@ import { GRIDS } from "../../constants";
 import { actDrawDeckIndex } from "@/utils/actions";
 
 export const DeckModalBody = ({
-  deckType = "deck",
+  deckType,
   ...props
 }: {
   deckType?: "deck" | "atlas";
 } & GameStateActions) => {
+  if (deckType === undefined) return null;
+
   const deckTypeGridIndex = deckType === "deck" ? GRIDS.DECK : GRIDS.ATLAS_DECK;
   const cards = props.gridItems[deckTypeGridIndex];
 
   function returnToHand(cardIndex: number) {
+    if (deckType === undefined) return;
     props.setGridItems(actDrawDeckIndex(props.gridItems, deckType, cardIndex));
   }
 
