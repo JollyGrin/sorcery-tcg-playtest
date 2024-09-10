@@ -16,6 +16,13 @@ import { useState } from "react";
 import { Modal } from "@/components/atoms/Modal";
 import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
 import { CardImage as FullCard } from "@/components/atoms/card-view/card";
+import { button } from "styled-system/recipes";
+import { actHandToBottomDeck, actHandToTopDeck } from "@/utils/actions/hand";
+
+import {
+  BiArrowToTop as IconTop,
+  BiArrowToBottom as IconBottom,
+} from "react-icons/bi";
 
 /**
  * HAND - Drag and Drop tray of all the cards in your hand
@@ -58,6 +65,7 @@ export const GameFooter = (props: GameStateActions) => {
                   card={card}
                   gridIndex={gridIndex}
                   cardIndex={index}
+                  gameStateActions={props}
                 />
               ))}
             </HStack>
@@ -72,12 +80,27 @@ const HandCard = ({
   card,
   gridIndex,
   cardIndex: index,
+  gameStateActions,
 }: {
   card: GameCard;
   gridIndex: number;
   cardIndex: number;
+  gameStateActions: GameStateActions;
 }) => {
   const [preview, setPreview] = useState(false);
+  const deckType = card.type === "site" ? "atlas" : "deck";
+
+  function topDeck() {
+    gameStateActions.setGridItems(
+      actHandToTopDeck(gameStateActions.gridItems, deckType, index),
+    );
+  }
+
+  function bottomDeck() {
+    gameStateActions.setGridItems(
+      actHandToBottomDeck(gameStateActions.gridItems, deckType, index),
+    );
+  }
 
   return (
     <div
@@ -86,6 +109,7 @@ const HandCard = ({
         setPreview(true);
       }}
       style={{
+        position: "relative",
         width: "100%",
         maxWidth: "220px",
         minWidth: "180px",
@@ -99,9 +123,31 @@ const HandCard = ({
       <Modal
         wrapperProps={{ open: preview, onOpenChange: setPreview }}
         content={
-          <Box h="600px" w="460px">
+          <Box h="700px" w="460px">
             {card.type === "site" && <FullCardAtlas img={card.img} />}
             {card.type !== "site" && <FullCard img={card.img} />}
+            <HStack
+              position="absolute"
+              bottom="1rem"
+              w="calc(100% - 3rem)"
+              justifyContent="center"
+              borderRadius="1rem"
+              filter="drop-shadow(0 4px 2px rgba(0,0,0,0.25))"
+            >
+              <button className={button()} onClick={topDeck}>
+                <HStack>
+                  <IconTop />
+                  <p>Top of deck</p>
+                </HStack>
+              </button>
+
+              <button className={button()} onClick={bottomDeck}>
+                <HStack>
+                  <IconBottom />
+                  <p>Bottom of deck</p>
+                </HStack>
+              </button>
+            </HStack>
           </Box>
         }
       />
