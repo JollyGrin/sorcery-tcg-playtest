@@ -7,7 +7,7 @@ import { Box, Flex } from "styled-system/jsx";
 import { button, input } from "styled-system/recipes";
 
 export const LoadDeck = (props: GameStateActions) => {
-  const [deckId, setDeckId] = useState<string>();
+  const [deckId, setDeckId] = useState<string>("");
   const { data: deck } = useCuriosaDeck(deckId);
   const cards = [
     ...(deck?.avatar ?? []),
@@ -70,7 +70,7 @@ export const LoadDeck = (props: GameStateActions) => {
         value={deckId}
         onChange={(e) => setDeckId(e.target.value)}
       />
-      {deckId === undefined && (
+      {deckId === "" && (
         <>
           <p>copy the deckid from curiosa</p>
           <button
@@ -82,7 +82,7 @@ export const LoadDeck = (props: GameStateActions) => {
           </button>
         </>
       )}
-      {deckId !== undefined && (
+      {deckId !== "" && (
         <button
           className={button()}
           style={{ marginTop: "1rem" }}
