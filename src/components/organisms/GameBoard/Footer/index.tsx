@@ -40,7 +40,7 @@ export const GameFooter = (props: GameStateActions) => {
         overflowX: "auto",
       }}
     >
-      <Grid h="100%" gridTemplateColumns="repeat(2,150px) 1fr" gap={0}>
+      <Grid h="100%" gridTemplateColumns="130px 100px 1fr" gap={0}>
         <GraveTray {...props} />
         <DecksTray {...props} />
         <DroppableGridItem id={gridIndex.toString()} gridIndex={gridIndex}>
