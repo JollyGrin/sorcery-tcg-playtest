@@ -12,6 +12,9 @@ import { CardImage } from "@/components/atoms/mock-cards/card";
 import { DecksTray } from "./Decks";
 import { GraveTray } from "./Grave";
 
+/**
+ * HAND - Drag and Drop tray of all the cards in your hand
+ * */
 export const GameFooter = (props: GameStateActions) => {
   const gridIndex = GRIDS.HAND;
   const cardsInHand = props.gridItems[gridIndex] ?? [];
