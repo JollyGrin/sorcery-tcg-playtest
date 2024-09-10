@@ -43,7 +43,7 @@ export const DecksTray = (props: GameStateActions) => {
           onOpenChange: () => {
             // when closing the modal, delay shuffling the deck briefly
             // avoids briefly showing new deck order before modal closes
-            let wasOpen = preview;
+            const wasOpen = preview;
             setPreview(undefined);
             setTimeout(() => {
               if (!!wasOpen) shuffleDeck(wasOpen);
