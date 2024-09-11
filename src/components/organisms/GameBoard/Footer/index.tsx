@@ -23,6 +23,7 @@ import {
   BiArrowToTop as IconTop,
   BiArrowToBottom as IconBottom,
 } from "react-icons/bi";
+import { CountersTray } from "./Counters";
 
 /**
  * HAND - Drag and Drop tray of all the cards in your hand
@@ -40,9 +41,16 @@ export const GameFooter = (props: GameStateActions) => {
         overflowX: "auto",
       }}
     >
-      <Grid h="100%" gridTemplateColumns="130px 100px 1fr" gap={0}>
+      <Grid
+        h="100%"
+        gridTemplateColumns="130px 115px 85px 1fr"
+        gap={0}
+        overflowY="clip"
+        // w="100vw"
+      >
         <GraveTray {...props} />
         <DecksTray {...props} />
+        <CountersTray />
         <DroppableGridItem id={gridIndex.toString()} gridIndex={gridIndex}>
           <SortableContext
             id={`grid-${gridIndex}`}
@@ -54,7 +62,7 @@ export const GameFooter = (props: GameStateActions) => {
             <HStack
               p={0}
               m={0}
-              w="calc(100vw - 300px)"
+              w="calc(100vw - 330px)"
               h="100%"
               justifyContent="start"
               overflowX="auto"
