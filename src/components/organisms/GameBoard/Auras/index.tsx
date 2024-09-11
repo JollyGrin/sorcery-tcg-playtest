@@ -75,7 +75,6 @@ const DragWrapper = ({
   card: GameCard;
 }) => {
   const [preview, setPreview] = useState(false);
-  console.log({ card }, `${CARD_CDN}${card.img}.webp`);
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <DragItem
