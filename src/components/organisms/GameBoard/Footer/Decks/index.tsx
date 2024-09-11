@@ -54,7 +54,7 @@ export const DecksTray = (props: GameStateActions) => {
       />
       <VStack
         w="100%"
-        py="1rem"
+        py="0.25rem"
         style={{
           height: LAYOUT_HEIGHTS.footer,
           background:
