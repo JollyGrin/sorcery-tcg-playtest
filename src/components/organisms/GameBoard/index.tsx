@@ -2,13 +2,7 @@ import { CardAtlas } from "@/components/atoms/mock-cards/atlas";
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 import { GameLayout } from "./Layout";
 import { DroppableGridItem } from "@/components/molecules/DropGridItem";
-import {
-  closestCenter,
-  closestCorners,
-  CollisionDetection,
-  DndContext,
-  DragOverlay,
-} from "@dnd-kit/core";
+import { DndContext, DragOverlay } from "@dnd-kit/core";
 import { useHandleDrag } from "./useHandleDrag";
 import { CardImage } from "@/components/atoms/mock-cards/card";
 import { CardImage as FullCard } from "@/components/atoms/card-view/card";
@@ -25,38 +19,13 @@ export type GameStateActions = {
   setGridItems: Dispatch<SetStateAction<GameState>>;
 };
 export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
-  const { sensors, handleDragEnd, handleDragStart, activeId, activeCard } =
-    useHandleDrag({
-      gridItems,
-      setGridItems,
-    });
-
-  const collision: CollisionDetection = (props) => {
-    // Access the current translated Y position of the dragged item
-    const currentY = props?.active?.rect?.current?.translated?.top;
-
-    // Get the height of the viewport
-    const viewportHeight = window.innerHeight;
-
-    // Check if the current Y position is within the bottom 170px of the page
-    const isInFooter = currentY && currentY > viewportHeight - 170;
-
-    // Check if the current Y position is within the bottom 170px of the page
-    // If the item is in the bottom 170px, use closestCenter for the footer
-    if (isInFooter) {
-      return closestCenter(props);
-    }
-
-    return closestCorners(props);
-  };
+  const { activeCard, activeId, ...dragProps } = useHandleDrag({
+    gridItems,
+    setGridItems,
+  });
 
   return (
-    <DndContext
-      onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
-      collisionDetection={collision}
-      sensors={sensors}
-    >
+    <DndContext {...dragProps}>
       <GameLayout gridItems={gridItems} setGridItems={setGridItems}>
         {gridItems?.slice(0, 20)?.map((cards, gridIndex) => (
           <DroppableGridItem
