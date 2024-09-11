@@ -75,6 +75,7 @@ const DragWrapper = ({
   card: GameCard;
 }) => {
   const [preview, setPreview] = useState(false);
+  console.log({ card }, `${CARD_CDN}${card.img}.webp`);
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <DragItem
@@ -90,7 +91,7 @@ const DragWrapper = ({
           transform={card?.type === "site" ? "rotate(90deg)" : ""}
           borderRadius="0.5rem"
           style={{
-            backgroundImage: `url(${CARD_CDN}/${card.img}.webp)`,
+            backgroundImage: `url(${CARD_CDN}${card.img}.webp)`,
           }}
           onContextMenu={(e) => {
             e.preventDefault();
@@ -101,7 +102,7 @@ const DragWrapper = ({
       <Modal
         wrapperProps={{ open: preview, onOpenChange: setPreview }}
         content={
-          <Box h="600px">
+          <Box h="600px" minW="400px">
             {card?.type === "site" && <FullCardAtlas img={card?.img} />}
             {card?.type !== "site" && <FullCard img={card?.img} />}
           </Box>
