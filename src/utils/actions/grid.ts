@@ -39,8 +39,15 @@ export function actMoveCardOutsideCell(state: GameState, event: DragEndEvent) {
     event.active?.data?.current?.index,
     1,
   );
-  // Place card in the destination area
-  updatedGrid[destinationIndex]?.push(movedCard);
+
+  // Adjust order of where card is dropped for better UX
+  if (movedCard.type === "site") {
+    // place on bottom of stack
+    updatedGrid[destinationIndex]?.push(movedCard);
+  } else {
+    // place on top of stack
+    updatedGrid[destinationIndex]?.unshift(movedCard);
+  }
 
   return updatedGrid;
 }
