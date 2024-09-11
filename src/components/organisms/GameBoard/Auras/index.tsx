@@ -12,14 +12,16 @@ import { CARD_CDN, GRIDS } from "../constants";
 export const Auras = (props: GameStateActions) => {
   return (
     <Box position="absolute" w="100%" h="100%">
-      {Array.from({ length: 12 }).map((_, index) => (
-        <Aura
-          key={"aura" + index}
-          card={props.gridItems?.[GRIDS.AURA_1 + index]?.[0]}
-          gridIndex={GRIDS.AURA_1 + index}
-          index={0}
-        />
-      ))}
+      {Array.from({ length: 12 })
+        .map((_, index) => index)
+        .map((index) => (
+          <Aura
+            key={"aura" + index}
+            card={props.gridItems?.[GRIDS.AURA_1 + index]?.[0]}
+            gridIndex={GRIDS.AURA_1 + index}
+            index={0}
+          />
+        ))}
     </Box>
   );
 };
