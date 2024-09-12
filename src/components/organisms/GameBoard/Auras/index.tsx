@@ -8,6 +8,7 @@ import { Modal } from "@/components/atoms/Modal";
 import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
 import { CardImage as FullCard } from "@/components/atoms/card-view/card";
 import { CARD_CDN, GRIDS } from "../constants";
+import { useRouter } from "next/router";
 
 export const Auras = (props: GameStateActions) => {
   return (
@@ -27,14 +28,19 @@ export const Auras = (props: GameStateActions) => {
 };
 
 const Aura = (props: { card: GameCard; gridIndex: number; index: number }) => {
-  const auraCard = props.card;
+  const { query } = useRouter();
+  const name = query?.name ?? "p1";
+  const isReversed = name === "p2";
 
+  const auraCard = props.card;
   const auraIndex = props.gridIndex - GRIDS.AURA_1; // normalize to zero
   const topIndex = Math.floor(auraIndex / 4) + 1; // increments every 4
-  const top = `${topIndex * 25}%`; // in percent
+  // const top = `${topIndex * 25}%`; // in percent
   const leftIndex = 1 + (auraIndex % 4); // every 4, resets
-  const left = `${leftIndex * 20}%`; // in percent
+  // const left = `${leftIndex * 20}%`; // in percent
 
+  const top = isReversed ? `${(4 - topIndex) * 25}%` : `${topIndex * 25}%`; // Reverse top
+  const left = isReversed ? `${(5 - leftIndex) * 20}%` : `${leftIndex * 20}%`; // Reverse left
   return (
     <Box
       style={{
