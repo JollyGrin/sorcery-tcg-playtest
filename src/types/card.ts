@@ -48,3 +48,5 @@ export type GridItem = GameCard[];
  * 36 GRAVE
  * */
 export type GameState = GridItem[];
+
+export type PlayersState = Record<string, GameState> & { GLOBAL: GameState };
