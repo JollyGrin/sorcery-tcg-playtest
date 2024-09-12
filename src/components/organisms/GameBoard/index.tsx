@@ -28,7 +28,8 @@ export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
     setGridItems,
   });
 
-  const isReversed = query?.name === "p2";
+  const name = query?.name ?? "p1";
+  const isReversed = name === "p2";
 
   return (
     <DndContext {...dragProps}>
