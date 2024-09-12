@@ -2,13 +2,7 @@ import { CardAtlas } from "@/components/atoms/mock-cards/atlas";
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 import { GameLayout } from "./Layout";
 import { DroppableGridItem } from "@/components/molecules/DropGridItem";
-import {
-  closestCenter,
-  closestCorners,
-  CollisionDetection,
-  DndContext,
-  DragOverlay,
-} from "@dnd-kit/core";
+import { DndContext, DragOverlay } from "@dnd-kit/core";
 import { useHandleDrag } from "./useHandleDrag";
 import { CardImage } from "@/components/atoms/mock-cards/card";
 import { CardImage as FullCard } from "@/components/atoms/card-view/card";
@@ -16,71 +10,63 @@ import { SortableItem } from "@/components/molecules/SortItem";
 import { Box } from "styled-system/jsx";
 import { Modal } from "@/components/atoms/Modal";
 
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
 import { GameCard, GameState } from "@/types/card";
+import { GRIDS } from "./constants";
+import { useRouter } from "next/router";
 
 export type GameStateActions = {
   gridItems: GameState;
-  setGridItems: Dispatch<SetStateAction<GameState>>;
+  setGridItems: (state: GameState) => void;
 };
 export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
-  const { sensors, handleDragEnd, handleDragStart, activeId, activeCard } =
-    useHandleDrag({
-      gridItems,
-      setGridItems,
-    });
+  const { query } = useRouter();
 
-  const collision: CollisionDetection = (props) => {
-    // Access the current translated Y position of the dragged item
-    const currentY = props?.active?.rect?.current?.translated?.top;
+  const { activeCard, activeId, ...dragProps } = useHandleDrag({
+    gridItems,
+    setGridItems,
+  });
 
-    // Get the height of the viewport
-    const viewportHeight = window.innerHeight;
-
-    // Check if the current Y position is within the bottom 170px of the page
-    const isInFooter = currentY && currentY > viewportHeight - 170;
-
-    // Check if the current Y position is within the bottom 170px of the page
-    // If the item is in the bottom 170px, use closestCenter for the footer
-    if (isInFooter) {
-      return closestCenter(props);
-    }
-
-    return closestCorners(props);
-  };
+  const name = query?.name ?? "p1";
+  const isReversed = name === "p2";
 
   return (
-    <DndContext
-      onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
-      collisionDetection={collision}
-      sensors={sensors}
-    >
+    <DndContext {...dragProps}>
       <GameLayout gridItems={gridItems} setGridItems={setGridItems}>
-        {gridItems?.slice(0, 20)?.map((cards, gridIndex) => (
-          <DroppableGridItem
-            key={"grid-" + gridIndex}
-            id={gridIndex.toString()}
-            gridIndex={gridIndex}
-            style={{ overflowY: "auto", overflowX: "clip" }}
-          >
-            <SortableContext
-              id={`grid-${gridIndex}`}
-              items={cards.map((card) => card.id)}
-              strategy={rectSortingStrategy}
+        {(isReversed
+          ? gridItems.slice(0, 20).reverse()
+          : gridItems.slice(0, 20)
+        )?.map((cards, _gridIndex) => {
+          // Adjust the gridIndex if array was reversed
+          const gridIndex = isReversed
+            ? GRIDS.GRID_20 - _gridIndex
+            : _gridIndex;
+
+          return (
+            <DroppableGridItem
+              key={"grid-" + gridIndex}
+              id={gridIndex.toString()}
+              gridIndex={gridIndex}
+              style={{ overflowY: "auto", overflowX: "clip" }}
             >
-              {cards.map((card, cardIndex) => (
-                <SortItemWrapper
-                  key={card.id}
-                  amountOfCards={cards?.length}
-                  {...{ gridItems, setGridItems }}
-                  {...{ card, gridIndex, cardIndex }}
-                />
-              ))}
-            </SortableContext>
-          </DroppableGridItem>
-        ))}
+              <SortableContext
+                id={`grid-${gridIndex}`}
+                items={cards.map((card) => card.id)}
+                strategy={rectSortingStrategy}
+              >
+                {cards.map((card, cardIndex) => (
+                  <SortItemWrapper
+                    key={card.id}
+                    amountOfCards={cards?.length}
+                    {...{ gridItems, setGridItems }}
+                    {...{ card, gridIndex, cardIndex }}
+                  />
+                ))}
+              </SortableContext>
+            </DroppableGridItem>
+          );
+        })}
       </GameLayout>
       <DragOverlay>
         {activeId ? (
@@ -119,16 +105,13 @@ const SortItemWrapper = ({
 
   const isTapped = card.isTapped;
   function toggleTap() {
-    props.setGridItems(() => {
-      const newGrid = [...props.gridItems];
-      const card = newGrid[gridIndex][cardIndex];
-      newGrid[gridIndex][cardIndex] = {
-        ...card,
-        isTapped: !card.isTapped,
-      } as GameCard;
-
-      return newGrid;
-    });
+    const newGrid = [...props.gridItems];
+    const card = newGrid[gridIndex][cardIndex];
+    newGrid[gridIndex][cardIndex] = {
+      ...card,
+      isTapped: !card.isTapped,
+    } as GameCard;
+    props.setGridItems(newGrid);
   }
 
   return (

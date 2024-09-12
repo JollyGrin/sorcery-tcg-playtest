@@ -17,8 +17,8 @@ export const LAYOUT_HEIGHTS = { nav, footer, body };
  * GRID ORDERING
  *
  * Contains the grid, auras, hand, deck, atlas deck, grave
+ * grave is last element in enum
  * */
-
 export enum GRIDS {
   GRID_1,
   GRID_2,
@@ -57,3 +57,9 @@ export enum GRIDS {
   ATLAS_DECK,
   GRAVE,
 }
+
+/**
+ * Length of hand, deck, deck-atlas, and grave (4)
+ * used to splice playerstate from global state
+ * */
+export const GRIDS_PERSONAL_LENGTH = GRIDS.GRAVE - GRIDS.AURA_12;

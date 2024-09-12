@@ -1,6 +1,9 @@
 import { SorceryCard } from "@/types/card";
 import { actMoveCard } from "@/utils/actions/grid";
 import {
+  closestCenter,
+  closestCorners,
+  CollisionDetection,
   DragEndEvent,
   KeyboardSensor,
   MouseSensor,
@@ -13,6 +16,25 @@ import { useState } from "react";
 
 type GameCard = SorceryCard & { id: string }; // for game position
 type Cards = GameCard[][];
+
+const collision: CollisionDetection = (props) => {
+  // Access the current translated Y position of the dragged item
+  const currentY = props?.active?.rect?.current?.translated?.top;
+
+  // Get the height of the viewport
+  const viewportHeight = window.innerHeight;
+
+  // Check if the current Y position is within the bottom 170px of the page
+  const isInFooter = currentY && currentY > viewportHeight - 170;
+
+  // Check if the current Y position is within the bottom 170px of the page
+  // If the item is in the bottom 170px, use closestCenter for the footer
+  if (isInFooter) {
+    return closestCenter(props);
+  }
+
+  return closestCorners(props);
+};
 
 export const useHandleDrag = ({
   gridItems,
@@ -49,9 +71,10 @@ export const useHandleDrag = ({
   }
 
   return {
+    collision,
     sensors,
-    handleDragEnd,
-    handleDragStart,
+    onDragEnd: handleDragEnd,
+    onDragStart: handleDragStart,
     activeId: active?.id,
     activeCard:
       gridItems?.[active?.data?.current?.gridIndex]?.[

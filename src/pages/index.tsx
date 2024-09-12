@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 export default function Home() {
   const router = useRouter();
   useEffect(() => {
-    router.push("/game");
+    router.push("/game?name=p1");
   }, []);
   return null;
 }
