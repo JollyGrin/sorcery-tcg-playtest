@@ -39,7 +39,8 @@ const addEntry = (entryText, isTodo) => {
 };
 
 // Main script
-const command = process.argv[2];
+// const command = process.argv[2];
+const command = "add";
 const entryText = process.argv.slice(3).join(" ");
 
 if (command === "add" || command === "todo") {
