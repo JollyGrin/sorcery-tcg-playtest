@@ -10,6 +10,9 @@ import { GameStateActions } from "@/components/organisms/GameBoard";
 import { DiscardModalBody } from "./DiscardModal";
 
 export const GraveTray = (props: GameStateActions) => {
+  console.log("length", props.gridItems.length);
+  console.log("hand", props.gridItems[GRIDS.HAND]);
+  console.log("grave", props.gridItems[GRIDS.GRAVE]);
   const graveCards = props.gridItems[GRIDS.GRAVE];
   const graveAmount = graveCards?.length ?? 0;
   const hasCards = graveCards?.length > 0;
@@ -33,7 +36,7 @@ export const GraveTray = (props: GameStateActions) => {
           content={<DiscardModalBody cards={graveCards} {...props} />}
         />
       )}
-      <DroppableGridItem gridIndex={GRIDS.GRAVE} id="droppable-grave">
+      <DroppableGridItem gridIndex={GRIDS.GRAVE} id={GRIDS.GRAVE.toString()}>
         {hasCards && (
           <Grid
             position="relative"
