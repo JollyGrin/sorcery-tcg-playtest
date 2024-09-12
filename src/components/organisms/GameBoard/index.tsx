@@ -10,46 +10,62 @@ import { SortableItem } from "@/components/molecules/SortItem";
 import { Box } from "styled-system/jsx";
 import { Modal } from "@/components/atoms/Modal";
 
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
 import { GameCard, GameState } from "@/types/card";
+import { GRIDS } from "./constants";
+import { useRouter } from "next/router";
 
 export type GameStateActions = {
   gridItems: GameState;
-  setGridItems: Dispatch<SetStateAction<GameState>>;
+  setGridItems: (state: GameState) => void;
 };
 export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
+  const { query } = useRouter();
+
   const { activeCard, activeId, ...dragProps } = useHandleDrag({
     gridItems,
     setGridItems,
   });
 
+  const isReversed = query?.name === "p2";
+
   return (
     <DndContext {...dragProps}>
       <GameLayout gridItems={gridItems} setGridItems={setGridItems}>
-        {gridItems?.slice(0, 20)?.map((cards, gridIndex) => (
-          <DroppableGridItem
-            key={"grid-" + gridIndex}
-            id={gridIndex.toString()}
-            gridIndex={gridIndex}
-            style={{ overflowY: "auto", overflowX: "clip" }}
-          >
-            <SortableContext
-              id={`grid-${gridIndex}`}
-              items={cards.map((card) => card.id)}
-              strategy={rectSortingStrategy}
+        {(isReversed
+          ? gridItems.slice(0, 20).reverse()
+          : gridItems.slice(0, 20)
+        )?.map((cards, _gridIndex) => {
+          // Adjust the gridIndex if array was reversed
+          const gridIndex = isReversed
+            ? GRIDS.GRID_20 - _gridIndex
+            : _gridIndex;
+
+          return (
+            <DroppableGridItem
+              key={"grid-" + gridIndex}
+              id={gridIndex.toString()}
+              gridIndex={gridIndex}
+              style={{ overflowY: "auto", overflowX: "clip" }}
             >
-              {cards.map((card, cardIndex) => (
-                <SortItemWrapper
-                  key={card.id}
-                  amountOfCards={cards?.length}
-                  {...{ gridItems, setGridItems }}
-                  {...{ card, gridIndex, cardIndex }}
-                />
-              ))}
-            </SortableContext>
-          </DroppableGridItem>
-        ))}
+              <SortableContext
+                id={`grid-${gridIndex}`}
+                items={cards.map((card) => card.id)}
+                strategy={rectSortingStrategy}
+              >
+                {cards.map((card, cardIndex) => (
+                  <SortItemWrapper
+                    key={card.id}
+                    amountOfCards={cards?.length}
+                    {...{ gridItems, setGridItems }}
+                    {...{ card, gridIndex, cardIndex }}
+                  />
+                ))}
+              </SortableContext>
+            </DroppableGridItem>
+          );
+        })}
       </GameLayout>
       <DragOverlay>
         {activeId ? (
@@ -88,16 +104,13 @@ const SortItemWrapper = ({
 
   const isTapped = card.isTapped;
   function toggleTap() {
-    props.setGridItems(() => {
-      const newGrid = [...props.gridItems];
-      const card = newGrid[gridIndex][cardIndex];
-      newGrid[gridIndex][cardIndex] = {
-        ...card,
-        isTapped: !card.isTapped,
-      } as GameCard;
-
-      return newGrid;
-    });
+    const newGrid = [...props.gridItems];
+    const card = newGrid[gridIndex][cardIndex];
+    newGrid[gridIndex][cardIndex] = {
+      ...card,
+      isTapped: !card.isTapped,
+    } as GameCard;
+    props.setGridItems(newGrid);
   }
 
   return (
