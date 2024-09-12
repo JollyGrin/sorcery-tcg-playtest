@@ -1,9 +1,6 @@
 import { LoadDeck } from "@/components/molecules/LoadDeck";
 import { GameBoard } from "@/components/organisms/GameBoard";
-import {
-  GRIDS,
-  GRIDS_PERSONAL_LENGTH,
-} from "@/components/organisms/GameBoard/constants";
+import { GRIDS } from "@/components/organisms/GameBoard/constants";
 import { GameCard, GameState, PlayersState } from "@/types/card";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
@@ -13,9 +10,8 @@ const initGameState: GameCard[][] = Array.from({ length: 36 }, () => []);
 export default function GamePage() {
   const { query } = useRouter();
   const name = (query?.name as string | undefined) ?? "p1";
-  const isP2 = name === "p2";
 
-  const [gridItems, setGridItems] = useState<GameState>(initGameState);
+  // const [gridItems, setGridItems] = useState<GameState>(initGameState);
   const [players, setPlayers] = useState<PlayersState>({
     p1: initGameState,
     p2: initGameState,
@@ -61,8 +57,6 @@ export default function GamePage() {
         <LoadDeck gridItems={players["p2"]} setGridItems={setPlayer("p2")} />
       </div>
     );
-
-  console.log({ players });
 
   return <GameBoard gridItems={state} setGridItems={setPlayer(name)} />;
 }
