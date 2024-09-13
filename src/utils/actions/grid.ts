@@ -33,8 +33,6 @@ export function actMoveCardOutsideCell(state: GameState, event: DragEndEvent) {
   const originIndex = parseInt(event.active.data.current?.gridIndex, 10);
   const destinationIndex = event.over?.data?.current?.gridIndex;
 
-  console.log("aaaa", originIndex, destinationIndex);
-
   // Remove the active card from its original position
   const updatedGrid = state.map((arr) => [...arr]);
   const [movedCard] = updatedGrid[originIndex].splice(
@@ -67,7 +65,6 @@ export function actMoveCard(state: GameState, event: DragEndEvent) {
   if (over) {
     const originIndex = parseInt(active.data.current?.gridIndex, 10);
     const destinationIndex = over?.data?.current?.gridIndex;
-    console.log(destinationIndex);
 
     if (originIndex === destinationIndex) {
       return actMoveCardInCell(state, event);
