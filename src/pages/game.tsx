@@ -7,18 +7,19 @@ import { useMemo, useState } from "react";
 
 const initGameState: GameCard[][] = Array.from({ length: 36 }, () => []);
 
+type PState = Record<string, { state: GameState; data: any }>;
+
 export default function GamePage() {
   const { query } = useRouter();
   const name = (query?.name as string | undefined) ?? "p1";
 
-  // const [gridItems, setGridItems] = useState<GameState>(initGameState);
   const [players, setPlayers] = useState<PlayersState>({
-    p1: initGameState,
-    p2: initGameState,
-    GLOBAL: initGameState,
+    p1: { state: initGameState, data: {} },
+    p2: { state: initGameState, data: {} },
+    GLOBAL: { state: initGameState, data: {} },
   });
 
-  function setPlayer(playerName: keyof typeof players) {
+  function setPlayerState(playerName: keyof typeof players) {
     return (state: GameState) => {
       const newState = [...state]; // make a copy of state
       const GLOBAL = newState.slice(0, GRIDS.AURA_12 + 1); // GLOBAL takes game grid
@@ -26,36 +27,58 @@ export default function GamePage() {
       const newGlobal = [...GLOBAL, ...GLOBAL_EMPTY];
       setPlayers((prev) => ({
         ...prev,
-        GLOBAL: newGlobal,
-        [playerName]: state,
+        GLOBAL: { state: newGlobal, data: {} },
+        [playerName]: { state, data: prev[playerName].data },
+      }));
+    };
+  }
+
+  function setPlayerData(playerName: keyof typeof players) {
+    return (data: PlayersState["GLOBAL"]["data"]) => {
+      setPlayers((prev) => ({
+        ...prev,
+        [playerName]: { state: prev[playerName].state, data },
       }));
     };
   }
 
   const state = useMemo(() => {
     return [
-      ...players.GLOBAL.slice(0, GRIDS.HAND),
-      ...players[name as keyof typeof players].slice(GRIDS.HAND),
+      ...players.GLOBAL.state.slice(0, GRIDS.HAND),
+      ...players[name as keyof typeof players].state.slice(GRIDS.HAND),
     ];
   }, [players, name]);
 
-  if (needsDeck(players["p1"]))
+  if (needsDeck(players["p1"].state))
     return (
       <div>
         <p>Load deck for player 1</p>
-        <LoadDeck gridItems={players["p1"]} setGridItems={setPlayer("p1")} />
+        <LoadDeck
+          gridItems={players["p1"].state}
+          setGridItems={setPlayerState("p1")}
+        />
       </div>
     );
 
-  if (needsDeck(players["p2"]))
+  if (needsDeck(players["p2"].state))
     return (
       <div>
         <p>Load deck for player 2</p>
-        <LoadDeck gridItems={players["p2"]} setGridItems={setPlayer("p2")} />
+        <LoadDeck
+          gridItems={players["p2"].state}
+          setGridItems={setPlayerState("p2")}
+        />
       </div>
     );
 
-  return <GameBoard gridItems={state} setGridItems={setPlayer(name)} />;
+  return (
+    <GameBoard
+      gridItems={state}
+      setGridItems={setPlayerState(name)}
+      players={players}
+      setMyData={setPlayerData(name)}
+    />
+  );
 }
 
 function needsDeck(state: GameState) {
