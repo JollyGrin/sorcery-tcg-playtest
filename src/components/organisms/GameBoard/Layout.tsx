@@ -6,12 +6,17 @@ import { GameFooter } from "./Footer";
 import { GameStateActions } from ".";
 import { Auras } from "./Auras";
 import Link from "next/link";
+import { PlayerDataProps } from "@/types/card";
 
 const { nav, body, footer } = LAYOUT_HEIGHTS;
 
 export const GameLayout = (
-  props: GameStateActions & { children: ReactNode },
+  props: GameStateActions & PlayerDataProps & { children: ReactNode },
 ) => {
+  const playerKeys = Object.keys(props?.players ?? {}).filter(
+    (key) => key !== "GLOBAL",
+  );
+
   return (
     <Grid style={{ gridTemplateRows: `${nav} ${body} ${footer}` }} gap={0}>
       <div
@@ -23,16 +28,11 @@ export const GameLayout = (
           gap: "2rem",
         }}
       >
-        <p style={{ width: "fit-content" }}>
-          Playtest cards on a grid. Click to tap. Right click to view big.
-        </p>
-        <Link href={{ query: { name: "p1" } }}>
-          <p>p1</p>
-        </Link>
-
-        <Link href={{ query: { name: "p2" } }}>
-          <p>p2</p>
-        </Link>
+        {playerKeys?.map((key) => (
+          <Link href={{ query: { name: key } }}>
+            <p>{key}</p>
+          </Link>
+        ))}
       </div>
       <Box position="relative" h="100%" w="100%" maxW="1200px" m="0 auto">
         <Auras {...props} />
