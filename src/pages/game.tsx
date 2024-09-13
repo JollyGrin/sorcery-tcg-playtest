@@ -21,11 +21,13 @@ export default function GamePage() {
   function setPlayer(playerName: keyof typeof players) {
     return (state: GameState) => {
       const newState = [...state]; // make a copy of state
-      const GLOBAL = newState.splice(0, GRIDS.AURA_12 + 1); // GLOBAL takes game grid
+      const GLOBAL = newState.slice(0, GRIDS.AURA_12 + 1); // GLOBAL takes game grid
       const GLOBAL_EMPTY = Array.from({ length: 4 }, () => []); // empties player data
+      const newGlobal = [...GLOBAL, ...GLOBAL_EMPTY];
+      console.log("newGlobal", newGlobal);
       setPlayers((prev) => ({
         ...prev,
-        GLOBAL: [...GLOBAL, ...GLOBAL_EMPTY],
+        GLOBAL: newGlobal,
         [playerName]: state,
       }));
     };
@@ -34,13 +36,31 @@ export default function GamePage() {
   const state = useMemo(
     () => [
       ...players.GLOBAL.slice(0, GRIDS.AURA_12),
-      ...players[name as keyof typeof players].slice(
-        GRIDS.AURA_12,
-        GRIDS.AURA_12 + 5,
-      ),
+      ...players[name as keyof typeof players].slice(GRIDS.AURA_12),
     ],
     [players, name],
   );
+
+  // const arrayOfObjects = state.map((row) => {
+  //   return row.reduce((acc, obj, index) => {
+  //     acc[`Column ${index}`] = obj.id; // Extract the `id` property from each object
+  //     return acc;
+  //   }, {});
+  // });
+
+  // Transform each row into an object that includes the `id` from each object
+  const arrayOfObjects = state.map((row, rowIndex) => {
+    // Start with the row name from the enum
+    const rowObject = { "Row Name": GRIDS[rowIndex] };
+
+    // Add the id from each object in the row
+    row.forEach((obj, colIndex) => {
+      rowObject[`Card Index ${colIndex}`] = obj.id;
+    });
+
+    return rowObject;
+  });
+  console.table(arrayOfObjects);
 
   if (needsDeck(players["p1"]))
     return (
