@@ -22,9 +22,10 @@ export default function GamePage() {
     return (state: GameState) => {
       const newState = [...state]; // make a copy of state
       const GLOBAL = newState.slice(0, GRIDS.AURA_12 + 1); // GLOBAL takes game grid
+      console.log("lastGlobal", GLOBAL[GLOBAL.length - 1]);
       const GLOBAL_EMPTY = Array.from({ length: 4 }, () => []); // empties player data
       const newGlobal = [...GLOBAL, ...GLOBAL_EMPTY];
-      console.log("newGlobal", newGlobal);
+      console.log("newGlobal", newGlobal, newGlobal.length);
       setPlayers((prev) => ({
         ...prev,
         GLOBAL: newGlobal,
@@ -33,13 +34,17 @@ export default function GamePage() {
     };
   }
 
-  const state = useMemo(
-    () => [
-      ...players.GLOBAL.slice(0, GRIDS.AURA_12),
-      ...players[name as keyof typeof players].slice(GRIDS.AURA_12),
-    ],
-    [players, name],
-  );
+  const state = useMemo(() => {
+    console.log("global", players.GLOBAL.slice(0, GRIDS.AURA_12));
+    console.log(
+      "perosnal",
+      players[name as keyof typeof players].slice(GRIDS.AURA_12),
+    );
+    return [
+      ...players.GLOBAL.slice(0, GRIDS.HAND),
+      ...players[name as keyof typeof players].slice(GRIDS.HAND),
+    ];
+  }, [players, name]);
 
   // const arrayOfObjects = state.map((row) => {
   //   return row.reduce((acc, obj, index) => {
