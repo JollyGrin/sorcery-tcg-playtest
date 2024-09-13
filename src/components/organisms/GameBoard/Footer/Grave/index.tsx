@@ -33,7 +33,7 @@ export const GraveTray = (props: GameStateActions) => {
           content={<DiscardModalBody cards={graveCards} {...props} />}
         />
       )}
-      <DroppableGridItem gridIndex={GRIDS.GRAVE} id="droppable-grave">
+      <DroppableGridItem gridIndex={GRIDS.GRAVE} id={GRIDS.GRAVE.toString()}>
         {hasCards && (
           <Grid
             position="relative"

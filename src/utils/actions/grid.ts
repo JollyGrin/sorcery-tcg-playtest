@@ -34,7 +34,7 @@ export function actMoveCardOutsideCell(state: GameState, event: DragEndEvent) {
   const destinationIndex = event.over?.data?.current?.gridIndex;
 
   // Remove the active card from its original position
-  const updatedGrid = [...state];
+  const updatedGrid = state.map((arr) => [...arr]);
   const [movedCard] = updatedGrid[originIndex].splice(
     event.active?.data?.current?.index,
     1,

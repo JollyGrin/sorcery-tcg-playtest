@@ -21,26 +21,23 @@ export default function GamePage() {
   function setPlayer(playerName: keyof typeof players) {
     return (state: GameState) => {
       const newState = [...state]; // make a copy of state
-      const GLOBAL = newState.splice(0, GRIDS.AURA_12 + 1); // GLOBAL takes game grid
+      const GLOBAL = newState.slice(0, GRIDS.AURA_12 + 1); // GLOBAL takes game grid
       const GLOBAL_EMPTY = Array.from({ length: 4 }, () => []); // empties player data
+      const newGlobal = [...GLOBAL, ...GLOBAL_EMPTY];
       setPlayers((prev) => ({
         ...prev,
-        GLOBAL: [...GLOBAL, ...GLOBAL_EMPTY],
+        GLOBAL: newGlobal,
         [playerName]: state,
       }));
     };
   }
 
-  const state = useMemo(
-    () => [
-      ...players.GLOBAL.slice(0, GRIDS.AURA_12),
-      ...players[name as keyof typeof players].slice(
-        GRIDS.AURA_12,
-        GRIDS.AURA_12 + 5,
-      ),
-    ],
-    [players, name],
-  );
+  const state = useMemo(() => {
+    return [
+      ...players.GLOBAL.slice(0, GRIDS.HAND),
+      ...players[name as keyof typeof players].slice(GRIDS.HAND),
+    ];
+  }, [players, name]);
 
   if (needsDeck(players["p1"]))
     return (
