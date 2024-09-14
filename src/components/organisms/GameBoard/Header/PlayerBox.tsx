@@ -31,18 +31,6 @@ export const PlayerBox = ({
       <p>{name}</p>
 
       <Flex
-        bg="rgba(255,255,255,0.5)"
-        p="0.1rem 0.5rem"
-        borderRadius="0.75rem"
-        gap={2}
-      >
-        <Stat Icon={IconGrave} value={length(GRIDS.GRAVE)} />
-        <Stat Icon={IconDeck} value={length(GRIDS.DECK)} />
-        <Stat Icon={IconMap} value={length(GRIDS.ATLAS_DECK)} />
-        <Stat Icon={IconHand} value={length(GRIDS.HAND)} />
-      </Flex>
-
-      <Flex
         bg="rgba(0,255,100,0.5)"
         p="0.1rem 0.5rem"
         borderRadius="0.75rem"
@@ -65,6 +53,18 @@ export const PlayerBox = ({
         <Resource icon="water" value={9} />
         <Resource icon="wind" value={3} />
       </Flex>
+
+      <Flex
+        bg="rgba(255,255,255,0.5)"
+        p="0.1rem 0.5rem"
+        borderRadius="0.75rem"
+        gap={2}
+      >
+        <Stat Icon={IconGrave} value={length(GRIDS.GRAVE)} />
+        <Stat Icon={IconDeck} value={length(GRIDS.DECK)} />
+        <Stat Icon={IconMap} value={length(GRIDS.ATLAS_DECK)} />
+        <Stat Icon={IconHand} value={length(GRIDS.HAND)} />
+      </Flex>
     </HStack>
   );
 };
@@ -79,7 +79,7 @@ const Resource = (props: {
       alt="fire"
       style={{ height: "1rem", width: "1rem" }}
     />
-    <p>{props.value}</p>
+    <p style={{ fontFamily: "monospace" }}>{props.value}</p>
   </HStack>
 );
 
@@ -91,7 +91,7 @@ const Stat = ({
   return (
     <HStack gap={1} alignItems="center" {...props}>
       <Icon fontSize="0.875rem" opacity={0.5} />
-      <p>{value}</p>
+      <p style={{ fontFamily: "monospace" }}>{value}</p>
     </HStack>
   );
 };
