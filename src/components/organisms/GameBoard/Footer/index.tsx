@@ -11,7 +11,7 @@ import { CardAtlas } from "@/components/atoms/mock-cards/atlas";
 import { CardImage } from "@/components/atoms/mock-cards/card";
 import { DecksTray } from "./Decks";
 import { GraveTray } from "./Grave";
-import { GameCard } from "@/types/card";
+import { GameCard, PlayerDataProps } from "@/types/card";
 import { useState } from "react";
 import { Modal } from "@/components/atoms/Modal";
 import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
@@ -28,7 +28,7 @@ import { CountersTray } from "./Counters";
 /**
  * HAND - Drag and Drop tray of all the cards in your hand
  * */
-export const GameFooter = (props: GameStateActions) => {
+export const GameFooter = (props: GameStateActions & PlayerDataProps) => {
   const gridIndex = GRIDS.HAND;
   const cardsInHand = props.gridItems[gridIndex] ?? [];
 
@@ -50,7 +50,7 @@ export const GameFooter = (props: GameStateActions) => {
       >
         <GraveTray {...props} />
         <DecksTray {...props} />
-        <CountersTray />
+        <CountersTray {...props} />
         <DroppableGridItem id={gridIndex.toString()} gridIndex={gridIndex}>
           <SortableContext
             id={`grid-${gridIndex}`}

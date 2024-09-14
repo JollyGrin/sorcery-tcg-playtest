@@ -1,9 +1,10 @@
+import { PlayerDataProps } from "@/types/card";
 import { useState } from "react";
 import { cva } from "styled-system/css/cva.mjs";
 import { Flex, Grid, HStack, VStack } from "styled-system/jsx";
 import { button } from "styled-system/recipes";
 
-export const CountersTray = () => {
+export const CountersTray = (props: PlayerDataProps) => {
   return (
     <Flex
       direction="column"
