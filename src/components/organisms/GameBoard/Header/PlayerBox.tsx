@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PlayersState } from "@/types/card";
+import { PlayerData, PlayersState } from "@/types/card";
 import { GRIDS, LAYOUT_HEIGHTS } from "../constants";
 import { Box, Flex, HStack } from "styled-system/jsx";
 
@@ -22,7 +22,6 @@ export const PlayerBox = ({
   name: string;
   player: PlayersState["GLOBAL"];
 }) => {
-  const { GRAVE, DECK, ATLAS_DECK, HAND } = GRIDS;
   function length(position: number) {
     return player.state[position].length;
   }
@@ -39,7 +38,7 @@ export const PlayerBox = ({
         gap={1}
       >
         <IconHealth fontSize="0.75rem" />
-        <p>20</p>
+        <p>{player.data.life}</p>
       </Flex>
 
       <Flex
@@ -72,7 +71,7 @@ export const PlayerBox = ({
 
 const Resource = (props: {
   value: number;
-  icon: "earth" | "fire" | "water" | "wind";
+  icon: keyof PlayerData["resources"];
 }) => (
   <HStack gap={1}>
     <img

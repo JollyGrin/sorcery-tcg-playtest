@@ -1,11 +1,15 @@
 import { LoadDeck } from "@/components/molecules/LoadDeck";
 import { GameBoard } from "@/components/organisms/GameBoard";
 import { GRIDS } from "@/components/organisms/GameBoard/constants";
-import { GameCard, GameState, PlayersState } from "@/types/card";
+import { GameCard, GameState, PlayerData, PlayersState } from "@/types/card";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 
 const initGameState: GameCard[][] = Array.from({ length: 36 }, () => []);
+const initGameData: PlayerData = {
+  resources: { earth: 0, wind: 0, fire: 0, water: 0 },
+  life: 20,
+};
 
 type PState = Record<string, { state: GameState; data: any }>;
 
@@ -14,9 +18,9 @@ export default function GamePage() {
   const name = (query?.name as string | undefined) ?? "p1";
 
   const [players, setPlayers] = useState<PlayersState>({
-    p1: { state: initGameState, data: {} },
-    p2: { state: initGameState, data: {} },
-    GLOBAL: { state: initGameState, data: {} },
+    p1: { state: initGameState, data: initGameData },
+    p2: { state: initGameState, data: initGameData },
+    GLOBAL: { state: initGameState, data: initGameData },
   });
 
   function setPlayerState(playerName: keyof typeof players) {
@@ -27,7 +31,7 @@ export default function GamePage() {
       const newGlobal = [...GLOBAL, ...GLOBAL_EMPTY];
       setPlayers((prev) => ({
         ...prev,
-        GLOBAL: { state: newGlobal, data: {} },
+        GLOBAL: { state: newGlobal, data: initGameData },
         [playerName]: { state, data: prev[playerName].data },
       }));
     };
