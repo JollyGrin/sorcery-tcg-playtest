@@ -1,71 +1,75 @@
 import { GameStateActions } from "@/components/organisms/GameBoard";
-import { GRIDS } from "@/components/organisms/GameBoard/constants";
-import { GameCard } from "@/types/card";
 import { useCuriosaDeck } from "@/utils/api/curiosa/useCuriosa";
-import { useState } from "react";
-import { Box, Flex } from "styled-system/jsx";
+import { ReactNode, useState } from "react";
+import { Box, Flex, Grid } from "styled-system/jsx";
 import { button, input } from "styled-system/recipes";
 
-import { v4 as uuid } from "uuid";
+import { mapDeckCuriosa } from "./mappers";
+import { actShuffleDeck } from "@/utils/actions";
+import { CuriosaResponse } from "@/utils/api/curiosa/api";
 
-export const LoadDeck = (props: GameStateActions) => {
+export const LoadDeck = (
+  props: GameStateActions & { children?: ReactNode },
+) => {
   const [deckId, setDeckId] = useState<string>("");
   const { data: deck } = useCuriosaDeck(deckId);
+
+  function setDeck() {
+    const newGrid = mapDeckCuriosa({ deck, gridItems: props.gridItems });
+    if (!newGrid) return;
+    const shuffledDeck = actShuffleDeck(newGrid, "deck");
+    const shuffledAtlas = actShuffleDeck(shuffledDeck, "atlas");
+    if (newGrid) props.setGridItems(shuffledAtlas);
+  }
+
+  return (
+    <>
+      <Grid
+        w="100vw"
+        h="100vh"
+        placeItems="center"
+        bg="blue.200"
+        overflowX="hidden"
+      >
+        <Box
+          bg="white"
+          w="100%"
+          maxW={!!deck ? "900px" : "400px"}
+          m="0 auto"
+          p="1rem"
+        >
+          {props.children}
+          <InputLoader
+            deckId={deckId}
+            setDeckId={setDeckId}
+            setDeck={setDeck}
+            deck={deck}
+          />
+        </Box>
+      </Grid>
+    </>
+  );
+};
+
+const InputLoader = ({
+  deckId,
+  setDeckId,
+  setDeck,
+  deck,
+}: {
+  deckId: string;
+  setDeckId(value: string): void;
+  setDeck(): void;
+  deck?: CuriosaResponse;
+}) => {
   const cards = [
     ...(deck?.avatar ?? []),
     ...(deck?.spellbook ?? []),
     ...(deck?.atlas ?? []),
   ];
 
-  function setDeck() {
-    if (!deck) return;
-    const newGrid = [...props.gridItems];
-    const newAtlas = deck?.atlas?.flatMap(
-      (spell) =>
-        Array.from({ length: spell.quantity }, () => ({
-          // Copy the spell object without the quantity field
-          ...spell,
-          quantity: undefined, // Remove the quantity field
-        })).map(
-          (rest, index) =>
-            ({
-              id: rest.identifier + index + uuid(),
-              img: rest.identifier,
-              type: "site",
-            }) as GameCard,
-        ), // Actually remove quantity in the final object
-    );
-    const newDeck = deck?.spellbook?.flatMap(
-      (spell) =>
-        Array.from({ length: spell.quantity }, () => ({
-          // Copy the spell object without the quantity field
-          ...spell,
-          quantity: undefined, // Remove the quantity field
-        })).map(
-          (rest) =>
-            ({
-              id: rest.identifier + uuid(),
-              img: rest.identifier,
-              type: "minion",
-            }) as GameCard,
-        ), // Actually remove quantity in the final object
-    );
-    newGrid[GRIDS.DECK] = shuffleArray(newDeck);
-    newGrid[GRIDS.ATLAS_DECK] = shuffleArray(newAtlas);
-    newGrid[GRIDS.HAND] = deck?.avatar?.map(
-      (avatar) =>
-        ({
-          id: avatar.identifier + "-avatar-" + uuid(),
-          img: avatar.identifier,
-          type: "avatar",
-        }) as GameCard,
-    );
-
-    props.setGridItems(newGrid);
-  }
-
   return (
-    <Box p="2rem">
+    <>
       <input
         placeholder="curiosa deck id"
         className={input()}
@@ -105,15 +109,6 @@ export const LoadDeck = (props: GameStateActions) => {
           </div>
         ))}
       </Flex>
-    </Box>
+    </>
   );
 };
-
-// eslint-disable-next-line
-function shuffleArray(array: any) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1)); // Random index from 0 to i
-    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
-  }
-  return array;
-}
