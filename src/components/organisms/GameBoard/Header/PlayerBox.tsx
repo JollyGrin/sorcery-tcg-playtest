@@ -3,7 +3,7 @@ import { PlayerData, PlayersState } from "@/types/card";
 import { GRIDS, LAYOUT_HEIGHTS } from "../constants";
 import { Box, Flex, HStack } from "styled-system/jsx";
 
-import { ReactNode } from "react";
+import { ReactNode, useMemo } from "react";
 import { IconType } from "react-icons";
 import { JsxStyleProps } from "styled-system/types";
 
@@ -15,6 +15,8 @@ import { GiHealthNormal as IconHealth } from "react-icons/gi";
 import { cva } from "styled-system/css/cva.mjs";
 import css from "styled-jsx/css";
 
+import { mix } from "polished";
+
 export const PlayerBox = ({
   name,
   player,
@@ -22,23 +24,37 @@ export const PlayerBox = ({
   name: string;
   player: PlayersState["GLOBAL"];
 }) => {
+  const life = 20;
+
   function length(position: number) {
     return player.state[position].length;
   }
+
+  const bg = useMemo(() => {
+    const percent = Math.min(life / 20, 1);
+    if (life > 10) return mix(percent, "#00b8a9", "#f8f3d4");
+    if (life > 1) return mix(life / 20, "#f8f3d4", "#f6416c");
+
+    return "purple";
+  }, [life]);
 
   return (
     <HStack fontSize="1rem" gap={1}>
       <p className={textStyle({ visual: "bold" })}>{name}</p>
 
       <Flex
-        bg="rgba(0,255,100,0.5)"
+        minW="3rem"
         p="0.1rem 0.5rem"
         borderRadius="0.75rem"
         alignItems="center"
+        justifyContent="center"
         gap={1}
+        style={{
+          background: bg,
+        }}
       >
         <IconHealth fontSize="0.75rem" />
-        <p>{player.data.life}</p>
+        <p>{life}</p>
       </Flex>
 
       <Flex
