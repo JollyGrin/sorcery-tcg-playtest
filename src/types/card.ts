@@ -49,4 +49,17 @@ export type GridItem = GameCard[];
  * */
 export type GameState = GridItem[];
 
-export type PlayersState = Record<string, GameState> & { GLOBAL: GameState };
+export type PlayerData = {
+  earth: number;
+  wind: number;
+  fire: number;
+  water: number;
+  life: number;
+};
+type PState = { state: GameState; data: PlayerData };
+export type PlayersState = Record<string, PState> & { GLOBAL: PState };
+
+export type PlayerDataProps = {
+  players?: PlayersState;
+  setMyData(data: PlayersState["GLOBAL"]["data"]): void;
+};

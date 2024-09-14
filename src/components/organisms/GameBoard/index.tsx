@@ -12,7 +12,7 @@ import { Modal } from "@/components/atoms/Modal";
 
 import { useState } from "react";
 import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
-import { GameCard, GameState } from "@/types/card";
+import { GameCard, GameState, PlayerDataProps } from "@/types/card";
 import { GRIDS } from "./constants";
 import { useRouter } from "next/router";
 
@@ -20,7 +20,11 @@ export type GameStateActions = {
   gridItems: GameState;
   setGridItems: (state: GameState) => void;
 };
-export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
+export const GameBoard = ({
+  gridItems,
+  setGridItems,
+  ...playerDataProps
+}: GameStateActions & PlayerDataProps) => {
   const { query } = useRouter();
 
   const { activeCard, activeId, ...dragProps } = useHandleDrag({
@@ -33,7 +37,11 @@ export const GameBoard = ({ gridItems, setGridItems }: GameStateActions) => {
 
   return (
     <DndContext {...dragProps}>
-      <GameLayout gridItems={gridItems} setGridItems={setGridItems}>
+      <GameLayout
+        gridItems={gridItems}
+        setGridItems={setGridItems}
+        {...playerDataProps}
+      >
         {(isReversed
           ? gridItems.slice(0, 20).reverse()
           : gridItems.slice(0, 20)
