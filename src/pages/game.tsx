@@ -14,8 +14,6 @@ const initGameData: PlayerData = {
   life: 20,
 };
 
-type PState = Record<string, { state: GameState; data: any }>;
-
 export default function GamePage() {
   const { query } = useRouter();
   const name = (query?.name as string | undefined) ?? "p1";

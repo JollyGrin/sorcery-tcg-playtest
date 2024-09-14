@@ -1,7 +1,7 @@
 import { PlayerData, PlayerDataProps } from "@/types/card";
 import { useHover } from "@/utils/hooks/useHover";
 import { useRouter } from "next/router";
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef } from "react";
 import { cva } from "styled-system/css/cva.mjs";
 import { Flex, Grid, HStack, VStack } from "styled-system/jsx";
 import { button } from "styled-system/recipes";

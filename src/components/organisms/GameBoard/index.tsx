@@ -12,12 +12,7 @@ import { Modal } from "@/components/atoms/Modal";
 
 import { useState } from "react";
 import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
-import {
-  GameCard,
-  GameState,
-  PlayerDataProps,
-  PlayersState,
-} from "@/types/card";
+import { GameCard, GameState, PlayerDataProps } from "@/types/card";
 import { GRIDS } from "./constants";
 import { useRouter } from "next/router";
 
