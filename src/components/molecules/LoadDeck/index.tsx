@@ -1,5 +1,8 @@
 import { GameStateActions } from "@/components/organisms/GameBoard";
-import { useCuriosaDeck } from "@/utils/api/curiosa/useCuriosa";
+import {
+  useCuriosaDeck,
+  useRealmsAppDeck,
+} from "@/utils/api/curiosa/useCuriosa";
 import { ReactNode, useState } from "react";
 import { Box, Flex, Grid } from "styled-system/jsx";
 import { button, input } from "styled-system/recipes";
@@ -41,14 +44,21 @@ export const LoadDeck = (
         >
           {props.children}
           <Tabs
-            tabs={["curiosa"]}
+            tabs={["curiosa", "realms app"]}
             content={[
               <InputLoader
                 deckId={deckId}
                 setDeckId={setDeckId}
                 setDeck={setDeck}
-                // deck={deck}
                 useDeck={useCuriosaDeck}
+                provider="curiosa"
+              />,
+              <InputLoader
+                deckId={deckId}
+                setDeckId={setDeckId}
+                setDeck={setDeck}
+                useDeck={useRealmsAppDeck}
+                provider="realms app"
               />,
             ]}
           />
@@ -63,13 +73,16 @@ const InputLoader = ({
   setDeckId,
   setDeck,
   useDeck,
+  provider,
 }: {
   deckId: string;
   setDeckId(value: string): void;
   setDeck(deck?: CuriosaResponse): void;
   useDeck(deckId: string): UseQueryResult<CuriosaResponse, Error>;
+  provider: "curiosa" | "realms app";
 }) => {
   const { data: deck } = useDeck(deckId);
+  console.log({ deck });
 
   const cards = [
     ...(deck?.avatar ?? []),
@@ -80,14 +93,14 @@ const InputLoader = ({
   return (
     <>
       <input
-        placeholder="curiosa deck id"
+        placeholder={`${provider} deck id`}
         className={input()}
         value={deckId}
         onChange={(e) => setDeckId(e.target.value)}
       />
       {deckId === "" && (
         <>
-          <p>copy the deckid from curiosa</p>
+          <p>copy the deckid from {provider}</p>
           <button
             className={button()}
             style={{ marginTop: "1rem" }}

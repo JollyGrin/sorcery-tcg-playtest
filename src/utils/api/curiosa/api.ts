@@ -23,9 +23,36 @@ export async function getCuriosaDeck(deckId: string) {
   return res.data;
 }
 
+type RealmsCard = {
+  name: string;
+  id: string;
+  count: number;
+};
+type RealmsAppResponse = {
+  atlas: RealmsCard[];
+  avatar: RealmsCard[];
+  spellbook: RealmsCard[];
+};
 export async function getRealmsAppDeck(deckId: string) {
-  const res = await axios.get<CuriosaResponse>(
+  const res = await axios.get<RealmsAppResponse>(
     `${CORS_PROXY}https://www.realmsapp.com/sorcery_tcg/decklists/${deckId}/exports/TTS/share.json`,
   );
-  return res.data;
+
+  /**
+   * Convert to Curiosa card
+   * */
+  function mapper(card: RealmsCard) {
+    return { ...card, quantity: card.count, identifier: card.id } as Card;
+  }
+  /**
+   * Normalize to Curiosa Response
+   * */
+  const newResponse: CuriosaResponse = {
+    avatar: res.data.avatar.map(mapper),
+    spellbook: res.data.spellbook.map(mapper),
+    atlas: res.data.atlas.map(mapper),
+    sideboard: [],
+  };
+
+  return newResponse;
 }
