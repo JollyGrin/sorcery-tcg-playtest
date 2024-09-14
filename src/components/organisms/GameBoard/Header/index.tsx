@@ -21,7 +21,7 @@ export const GameHeader = (props: { players?: PlayersState }) => {
       }}
     >
       {playerKeys?.map((key) => (
-        <Link href={{ query: { name: key } }}>
+        <Link key={key} href={{ query: { name: key } }}>
           {props?.players?.[key] && (
             <PlayerBox player={props?.players[key]} name={key} />
           )}
