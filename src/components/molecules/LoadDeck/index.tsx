@@ -7,6 +7,7 @@ import { button, input } from "styled-system/recipes";
 import { mapDeckCuriosa } from "./mappers";
 import { actShuffleDeck } from "@/utils/actions";
 import { CuriosaResponse } from "@/utils/api/curiosa/api";
+import { Tabs } from "@/components/atoms/Tabs";
 
 export const LoadDeck = (
   props: GameStateActions & { children?: ReactNode },
@@ -31,6 +32,17 @@ export const LoadDeck = (
         bg="blue.200"
         overflowX="hidden"
       >
+        <Tabs
+          tabs={["curiosa"]}
+          content={[
+            <InputLoader
+              deckId={deckId}
+              setDeckId={setDeckId}
+              setDeck={setDeck}
+              deck={deck}
+            />,
+          ]}
+        />
         <Box
           bg="white"
           w="100%"
