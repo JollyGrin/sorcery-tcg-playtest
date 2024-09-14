@@ -42,7 +42,7 @@ export const LoadDeck = (props: GameStateActions) => {
           ...spell,
           quantity: undefined, // Remove the quantity field
         })).map(
-          (rest, i) =>
+          (rest) =>
             ({
               id: rest.identifier + uuid(),
               img: rest.identifier,
