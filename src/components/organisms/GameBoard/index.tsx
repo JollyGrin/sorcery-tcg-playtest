@@ -133,6 +133,7 @@ const SortItemWrapper = ({
         e.preventDefault();
         setPreview(true);
       }}
+      data-testid={"sortable-item-wrapper-" + card.id}
       style={{
         height: heightCalc() + 7 + "px",
         transform: isTapped ? "rotate(5deg)" : "",
@@ -142,6 +143,7 @@ const SortItemWrapper = ({
     >
       <SortableItem
         key={`card-${gridIndex}-${cardIndex}`}
+        data-testid={"sortable-item-" + card.id}
         id={card.id}
         gridIndex={gridIndex}
         index={cardIndex}
