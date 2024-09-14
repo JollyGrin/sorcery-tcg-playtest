@@ -13,6 +13,7 @@ import { TbMap2 as IconMap } from "react-icons/tb";
 import { GiPirateGrave as IconGrave } from "react-icons/gi";
 import { GiHealthNormal as IconHealth } from "react-icons/gi";
 import { cva } from "styled-system/css/cva.mjs";
+import css from "styled-jsx/css";
 
 export const PlayerBox = ({
   name,
@@ -28,7 +29,7 @@ export const PlayerBox = ({
 
   return (
     <HStack fontSize="1rem" gap={1}>
-      <p>{name}</p>
+      <p className={textStyle({ visual: "bold" })}>{name}</p>
 
       <Flex
         bg="rgba(0,255,100,0.5)"
@@ -96,8 +97,17 @@ const Stat = ({
   );
 };
 
-const iconStyle = cva({
+const textStyle = cva({
   base: {
-    width: "1rem",
+    fontFamily: "monospace",
+  },
+  variants: {
+    visual: {
+      bold: { fontWeight: 600, fontFamily: "serif" },
+    },
+    // size: {
+    //   sm: { padding: '4', fontSize: '12px' },
+    //   lg: { padding: '8', fontSize: '24px' }
+    // }
   },
 });

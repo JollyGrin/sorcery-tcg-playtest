@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { PlayersState } from "@/types/card";
-import { GRIDS, LAYOUT_HEIGHTS } from "../constants";
-import { Box, HStack } from "styled-system/jsx";
+import { LAYOUT_HEIGHTS } from "../constants";
 import { PlayerBox } from "./PlayerBox";
 
 export const GameHeader = (props: { players?: PlayersState }) => {
@@ -12,12 +11,13 @@ export const GameHeader = (props: { players?: PlayersState }) => {
     <div
       style={{
         background: "rgba(0,200,200,0.2)",
-        padding: "0.5rem",
+        padding: "0.5rem 1rem",
         height: LAYOUT_HEIGHTS.nav,
         display: "flex",
         gap: "2rem",
         overflowX: "auto",
         maxWidth: "100vw",
+        scrollbarGutter: "stable both-edges",
       }}
     >
       {playerKeys?.map((key) => (
