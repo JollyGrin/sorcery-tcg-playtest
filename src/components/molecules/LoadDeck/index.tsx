@@ -6,6 +6,8 @@ import { useState } from "react";
 import { Box, Flex } from "styled-system/jsx";
 import { button, input } from "styled-system/recipes";
 
+import { v4 as uuid } from "uuid";
+
 export const LoadDeck = (props: GameStateActions) => {
   const [deckId, setDeckId] = useState<string>("");
   const { data: deck } = useCuriosaDeck(deckId);
@@ -27,7 +29,7 @@ export const LoadDeck = (props: GameStateActions) => {
         })).map(
           (rest, index) =>
             ({
-              id: rest.identifier + index + Date.now(),
+              id: rest.identifier + index + uuid(),
               img: rest.identifier,
               type: "site",
             }) as GameCard,
@@ -42,7 +44,7 @@ export const LoadDeck = (props: GameStateActions) => {
         })).map(
           (rest, i) =>
             ({
-              id: rest.identifier + i + Date.now(),
+              id: rest.identifier + uuid(),
               img: rest.identifier,
               type: "minion",
             }) as GameCard,
@@ -53,7 +55,7 @@ export const LoadDeck = (props: GameStateActions) => {
     newGrid[GRIDS.HAND] = deck?.avatar?.map(
       (avatar) =>
         ({
-          id: avatar.identifier,
+          id: avatar.identifier + "-avatar-" + uuid(),
           img: avatar.identifier,
           type: "avatar",
         }) as GameCard,
