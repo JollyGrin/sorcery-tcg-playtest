@@ -13,4 +13,4 @@ Playtest Sorcery TCG in the browser
 - [ ] support battlebox (shared deck)
 
 ## Bugs
-- [x] graveyard sorting. Ensure that in the handle drag it ignores ordering conditions
+- [ ] graveyard sorting. Ensure that in the handle drag it ignores ordering conditions
