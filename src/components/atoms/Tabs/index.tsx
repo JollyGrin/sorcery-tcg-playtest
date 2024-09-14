@@ -13,7 +13,7 @@ type Props = {
 
 export const Tabs = ({ tabs, content }: Props) => {
   return (
-    <TabsWrapper defaultValue="1">
+    <TabsWrapper defaultValue="0">
       <TabsList>
         {tabs.map((tab, index) => (
           <TabsTrigger key={index + "trigger"} value={index.toString()}>

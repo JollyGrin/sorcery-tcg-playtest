@@ -8,14 +8,14 @@ import { mapDeckCuriosa } from "./mappers";
 import { actShuffleDeck } from "@/utils/actions";
 import { CuriosaResponse } from "@/utils/api/curiosa/api";
 import { Tabs } from "@/components/atoms/Tabs";
+import { UseQueryResult } from "@tanstack/react-query";
 
 export const LoadDeck = (
   props: GameStateActions & { children?: ReactNode },
 ) => {
   const [deckId, setDeckId] = useState<string>("");
-  const { data: deck } = useCuriosaDeck(deckId);
 
-  function setDeck() {
+  function setDeck(deck?: CuriosaResponse) {
     const newGrid = mapDeckCuriosa({ deck, gridItems: props.gridItems });
     if (!newGrid) return;
     const shuffledDeck = actShuffleDeck(newGrid, "deck");
@@ -32,30 +32,25 @@ export const LoadDeck = (
         bg="blue.200"
         overflowX="hidden"
       >
-        <Tabs
-          tabs={["curiosa"]}
-          content={[
-            <InputLoader
-              deckId={deckId}
-              setDeckId={setDeckId}
-              setDeck={setDeck}
-              deck={deck}
-            />,
-          ]}
-        />
         <Box
           bg="white"
           w="100%"
-          maxW={!!deck ? "900px" : "400px"}
+          maxW={!!deckId ? "900px" : "400px"}
           m="0 auto"
           p="1rem"
         >
           {props.children}
-          <InputLoader
-            deckId={deckId}
-            setDeckId={setDeckId}
-            setDeck={setDeck}
-            deck={deck}
+          <Tabs
+            tabs={["curiosa"]}
+            content={[
+              <InputLoader
+                deckId={deckId}
+                setDeckId={setDeckId}
+                setDeck={setDeck}
+                // deck={deck}
+                useDeck={useCuriosaDeck}
+              />,
+            ]}
           />
         </Box>
       </Grid>
@@ -67,13 +62,15 @@ const InputLoader = ({
   deckId,
   setDeckId,
   setDeck,
-  deck,
+  useDeck,
 }: {
   deckId: string;
   setDeckId(value: string): void;
-  setDeck(): void;
-  deck?: CuriosaResponse;
+  setDeck(deck?: CuriosaResponse): void;
+  useDeck(deckId: string): UseQueryResult<CuriosaResponse, Error>;
 }) => {
+  const { data: deck } = useDeck(deckId);
+
   const cards = [
     ...(deck?.avatar ?? []),
     ...(deck?.spellbook ?? []),
@@ -104,7 +101,7 @@ const InputLoader = ({
         <button
           className={button()}
           style={{ marginTop: "1rem" }}
-          onClick={setDeck}
+          onClick={() => setDeck(deck)}
         >
           Use this deck
         </button>
