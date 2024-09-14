@@ -50,12 +50,10 @@ export type GridItem = GameCard[];
 export type GameState = GridItem[];
 
 export type PlayerData = {
-  resources: {
-    earth: number;
-    wind: number;
-    fire: number;
-    water: number;
-  };
+  earth: number;
+  wind: number;
+  fire: number;
+  water: number;
   life: number;
 };
 type PState = { state: GameState; data: PlayerData };

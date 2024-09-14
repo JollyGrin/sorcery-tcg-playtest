@@ -7,7 +7,10 @@ import { useMemo, useState } from "react";
 
 const initGameState: GameCard[][] = Array.from({ length: 36 }, () => []);
 const initGameData: PlayerData = {
-  resources: { earth: 0, wind: 0, fire: 0, water: 0 },
+  earth: 0,
+  wind: 0,
+  fire: 0,
+  water: 0,
   life: 20,
 };
 

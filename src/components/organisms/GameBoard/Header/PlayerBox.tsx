@@ -24,7 +24,7 @@ export const PlayerBox = ({
   name: string;
   player: PlayersState["GLOBAL"];
 }) => {
-  const life = 20;
+  const life = player.data.life;
 
   function length(position: number) {
     return player.state[position].length;
@@ -64,10 +64,10 @@ export const PlayerBox = ({
         gap={2}
         alignItems="center"
       >
-        <Resource icon="earth" value={3} />
-        <Resource icon="fire" value={5} />
-        <Resource icon="water" value={9} />
-        <Resource icon="wind" value={3} />
+        <Resource icon="earth" value={player.data.earth} />
+        <Resource icon="fire" value={player.data.fire} />
+        <Resource icon="water" value={player.data.water} />
+        <Resource icon="wind" value={player.data.wind} />
       </Flex>
 
       <Flex
@@ -85,10 +85,7 @@ export const PlayerBox = ({
   );
 };
 
-const Resource = (props: {
-  value: number;
-  icon: keyof PlayerData["resources"];
-}) => (
+const Resource = (props: { value: number; icon: keyof PlayerData }) => (
   <HStack gap={1}>
     <img
       src={`/icon/${props.icon}.webp`}
@@ -120,9 +117,5 @@ const textStyle = cva({
     visual: {
       bold: { fontWeight: 600, fontFamily: "serif" },
     },
-    // size: {
-    //   sm: { padding: '4', fontSize: '12px' },
-    //   lg: { padding: '8', fontSize: '24px' }
-    // }
   },
 });

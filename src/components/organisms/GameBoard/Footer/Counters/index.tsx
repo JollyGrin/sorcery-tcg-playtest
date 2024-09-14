@@ -1,10 +1,22 @@
-import { PlayerDataProps } from "@/types/card";
+import { PlayerData, PlayerDataProps } from "@/types/card";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { cva } from "styled-system/css/cva.mjs";
 import { Flex, Grid, HStack, VStack } from "styled-system/jsx";
 import { button } from "styled-system/recipes";
 
 export const CountersTray = (props: PlayerDataProps) => {
+  const { query } = useRouter();
+  const name = query?.name ?? "p1";
+  const me = props?.players?.[name as string].data;
+
+  function setField(field: keyof PlayerData) {
+    return (value: number) => {
+      const newData = { ...me, [field]: value };
+      props.setMyData(newData as PlayerData);
+    };
+  }
+
   return (
     <Flex
       direction="column"
@@ -16,20 +28,29 @@ export const CountersTray = (props: PlayerDataProps) => {
       alignItems="center"
     >
       {(["earth", "fire", "water", "wind"] as const).map((type) => (
-        <Resource key={type} type={type} />
+        <Resource
+          key={type}
+          type={type}
+          setValue={setField(type)}
+          value={me?.[type] ?? 0}
+        />
       ))}
     </Flex>
   );
 };
 
-const Resource = (props: { type: "fire" | "water" | "wind" | "earth" }) => {
-  const [amount, setAmount] = useState(0);
+const Resource = (props: {
+  type: "fire" | "water" | "wind" | "earth";
+  setValue(value: number): void;
+  value: number;
+}) => {
   function increment() {
-    setAmount((prev) => prev + 1);
+    props.setValue(props.value + 1);
   }
 
   function decrement() {
-    setAmount((prev) => (prev === 0 ? prev : prev - 1));
+    if (props.value === 0) return;
+    props.setValue(props.value - 1);
   }
 
   return (
@@ -41,7 +62,7 @@ const Resource = (props: { type: "fire" | "water" | "wind" | "earth" }) => {
           className={iconStyle()}
           style={{ height: "21px", width: "20px" }}
         />
-        <p style={{ justifySelf: "end", fontSize: "0.8rem" }}>{amount}</p>
+        <p style={{ justifySelf: "end", fontSize: "0.8rem" }}>{props.value}</p>
       </Grid>
       <HStack
         gap={0}
