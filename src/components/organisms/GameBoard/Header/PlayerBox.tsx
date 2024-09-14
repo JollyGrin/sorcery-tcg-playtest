@@ -1,9 +1,8 @@
-import Link from "next/link";
 import { PlayerData, PlayersState } from "@/types/card";
-import { GRIDS, LAYOUT_HEIGHTS } from "../constants";
-import { Box, Flex, HStack } from "styled-system/jsx";
+import { GRIDS } from "../constants";
+import { Flex, HStack } from "styled-system/jsx";
 
-import { ReactNode, useMemo } from "react";
+import { useMemo } from "react";
 import { IconType } from "react-icons";
 import { JsxStyleProps } from "styled-system/types";
 
@@ -13,7 +12,6 @@ import { TbMap2 as IconMap } from "react-icons/tb";
 import { GiPirateGrave as IconGrave } from "react-icons/gi";
 import { GiHealthNormal as IconHealth } from "react-icons/gi";
 import { cva } from "styled-system/css/cva.mjs";
-import css from "styled-jsx/css";
 
 import { mix } from "polished";
 
