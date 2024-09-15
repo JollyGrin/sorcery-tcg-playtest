@@ -16,7 +16,18 @@ export type CuriosaResponse = {
   sideboard: SideboardCard[];
 };
 
-export async function getCuriosaDeck(deckId: string) {
+export async function getCuriosaDeck(_deckId: string) {
+  let deckId;
+  const regex = /\/([^\/]+)$/;
+  const match = _deckId.match(regex);
+
+  // incase the user submits the TTS link, this handles it
+  if (match) {
+    deckId = match[1];
+  } else {
+    deckId = _deckId;
+  }
+
   const res = await axios.get<CuriosaResponse>(
     `${CORS_PROXY}https://curiosa.io/api/decks/${deckId}`,
   );
@@ -33,7 +44,18 @@ type RealmsAppResponse = {
   avatar: RealmsCard[];
   spellbook: RealmsCard[];
 };
-export async function getRealmsAppDeck(deckId: string) {
+export async function getRealmsAppDeck(_deckId: string) {
+  let deckId;
+  const regex = /\/(\d+)\//;
+  const match = _deckId.match(regex);
+
+  // incase the user submits the TTS link, this handles it
+  if (match) {
+    deckId = match[1];
+  } else {
+    deckId = _deckId;
+  }
+
   const res = await axios.get<RealmsAppResponse>(
     `${CORS_PROXY}https://www.realmsapp.com/sorcery_tcg/decklists/${deckId}/exports/TTS/share.json`,
   );
