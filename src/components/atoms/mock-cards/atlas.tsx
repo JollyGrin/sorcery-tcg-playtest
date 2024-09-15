@@ -4,9 +4,11 @@ import { Box } from "styled-system/jsx";
 export const CardAtlas = ({
   height = "90px",
   img = "atlas_rift_valley.webp",
+  ...props
 }: {
   img?: string;
   height?: string;
+  isMine?: boolean;
 }) => {
   return (
     <Box
@@ -18,7 +20,13 @@ export const CardAtlas = ({
       borderRadius="1rem"
       isolation="isolate"
       overflow="clip"
-      style={{ height }}
+      style={{
+        height,
+        border:
+          props.isMine === undefined || !!props.isMine
+            ? ""
+            : "solid 2px tomato",
+      }}
     >
       <Box
         style={{

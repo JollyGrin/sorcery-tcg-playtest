@@ -18,6 +18,7 @@ export const CardImage = ({
   isTapped?: boolean;
   show?: boolean;
   height?: string;
+  isMine?: boolean;
 }) => {
   const hoverRef = useRef(null);
   const isHovering = useHover(hoverRef);
@@ -50,7 +51,13 @@ export const CardImage = ({
       opacity={isTapped && !isHovering ? "0.8" : "1"}
       transition="all 0.25s ease"
       onMouseOut={() => setPreview(false)}
-      style={{ height }}
+      style={{
+        height,
+        border:
+          props.isMine === undefined || !!props.isMine
+            ? ""
+            : "solid 2px tomato",
+      }}
     >
       <Box
         ref={hoverRef}

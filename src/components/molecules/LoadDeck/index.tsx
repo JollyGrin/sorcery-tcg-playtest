@@ -12,18 +12,24 @@ import { actShuffleDeck } from "@/utils/actions";
 import { CuriosaResponse } from "@/utils/api/curiosa/api";
 import { Tabs } from "@/components/atoms/Tabs";
 import { UseQueryResult } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 export const LoadDeck = (
-  props: GameStateActions & { children?: ReactNode },
+  props: GameStateActions & { children?: ReactNode; playerName: string },
 ) => {
   const [deckId, setDeckId] = useState<string>("");
 
   function setDeck(deck?: CuriosaResponse) {
-    const newGrid = mapDeckCuriosa({ deck, gridItems: props.gridItems });
+    const newGrid = mapDeckCuriosa({
+      deck,
+      gridItems: props.gridItems,
+      playerName: props.playerName,
+    });
     if (!newGrid) return;
     const shuffledDeck = actShuffleDeck(newGrid, "deck");
     const shuffledAtlas = actShuffleDeck(shuffledDeck, "atlas");
     if (newGrid) props.setGridItems(shuffledAtlas);
+    toast.success(`${props.playerName}'s deck was loaded`);
   }
 
   return (
@@ -47,6 +53,7 @@ export const LoadDeck = (
             tabs={["curiosa", "realms app"]}
             content={[
               <InputLoader
+                key="curiosa"
                 deckId={deckId}
                 setDeckId={setDeckId}
                 setDeck={setDeck}
@@ -54,6 +61,7 @@ export const LoadDeck = (
                 provider="curiosa"
               />,
               <InputLoader
+                key="realms"
                 deckId={deckId}
                 setDeckId={setDeckId}
                 setDeck={setDeck}
@@ -82,7 +90,6 @@ const InputLoader = ({
   provider: "curiosa" | "realms app";
 }) => {
   const { data: deck } = useDeck(deckId);
-  console.log({ deck });
 
   const cards = [
     ...(deck?.avatar ?? []),
