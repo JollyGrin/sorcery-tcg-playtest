@@ -69,11 +69,12 @@ export default function GamePage() {
   if (needsDeck(players["p2"].state))
     return (
       <div>
-        <p>Load deck for player 2</p>
         <LoadDeck
           gridItems={players["p2"].state}
           setGridItems={setPlayerState("p2")}
-        />
+        >
+          <p>Load deck for player 2</p>
+        </LoadDeck>
       </div>
     );
 
