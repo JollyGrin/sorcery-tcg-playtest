@@ -6,7 +6,9 @@ import { button, input } from "styled-system/recipes";
 export const Solo = () => {
   const { push } = useRouter();
 
-  function returnDeckId(deckId: string) {}
+  function returnDeckId(deckId: string) {
+    // TODO: detect if curiosa or realms
+  }
 
   const [deckIds, setDeckIds] = useState({
     p1: "",
