@@ -2,8 +2,10 @@ Playtest Sorcery TCG in the browser
 
 ## Todo 
 - [ ] landing page
-- [ ] add realms app deck loader
+- [ ] setup pages for solo play (1p, 2p rotate self)
 - [ ] add websocket for multiplayer
+- [ ] add url loading for decks
+- [x] add realms app deck loader
 - [x] add solo turn rotator (play against yourself)
 - [x] add health counter
 - [x] use top header for info
