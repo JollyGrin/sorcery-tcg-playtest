@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Box, HStack } from "styled-system/jsx";
+import { HStack } from "styled-system/jsx";
 
 export const Nav = () => {
   return (

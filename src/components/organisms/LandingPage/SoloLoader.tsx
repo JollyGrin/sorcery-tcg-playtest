@@ -1,16 +1,12 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import { Flex, HStack } from "styled-system/jsx";
 import { button, input } from "styled-system/recipes";
 import { css } from "styled-system/css";
-
 import { FaDice as IconDice } from "react-icons/fa6";
 import { DECK_URLS } from "./constants";
 
 export const Solo = () => {
-  const { push } = useRouter();
-
   // detect if realms or curiosa and return query
   function getDeckQuery(deckId: string) {
     const urlParts = deckId.split("/");
@@ -30,8 +26,6 @@ export const Solo = () => {
       if (match) deckQuery = `realms-${match[1]}`;
     }
 
-    console.log({ deckId, deckQuery });
-
     return deckQuery;
   }
 
@@ -48,7 +42,6 @@ export const Solo = () => {
     // TODO: detect if curiosa or realms
     return (value: string) => {
       const query = getDeckQuery(value);
-      console.log({ query });
       setDeckIds((prev) => ({
         ...prev,
         [player]: value,
