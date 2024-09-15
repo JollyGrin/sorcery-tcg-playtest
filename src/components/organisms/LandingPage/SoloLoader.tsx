@@ -52,10 +52,20 @@ export const Solo = () => {
         className={input()}
         placeholder="Player 1: Load TTS export from Curiosa or RealmsApp"
         onChange={(e) => setDeckId("p1")(e.target.value)}
+        style={{
+          color: "black",
+          fontFamily: "monospace",
+          letterSpacing: "-0.5px",
+        }}
       />
       <input
         className={input()}
         placeholder="Player 2: Load TTS export from Curiosa or RealmsApp"
+        style={{
+          color: "black",
+          fontFamily: "monospace",
+          letterSpacing: "-0.5px",
+        }}
       />
       <button className={button()} style={{ justifySelf: "end" }}>
         Play
