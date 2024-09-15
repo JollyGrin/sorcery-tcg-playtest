@@ -18,14 +18,14 @@ export const useDeckQuery = (props: {
   p2: GameStateActions;
 }) => {
   const { query } = useRouter();
-  const deck1Query = query.p1 as DECK_ID;
-  const deck2Query = query.p2 as DECK_ID;
+  const deck1Query = (query.p1 ?? "") as DECK_ID;
+  const deck2Query = (query.p2 ?? "") as DECK_ID;
 
-  const [deckTypeP1, deckIdP1] = deck1Query.split("-");
+  const [deckTypeP1, deckIdP1] = deck1Query?.split("-");
   const useP1Deck = getDeckHook(deckTypeP1 as DECK_TYPE);
   const { data: p1Deck } = useP1Deck(deckIdP1 ?? "");
 
-  const [deckTypeP2, deckIdP2] = deck2Query.split("-");
+  const [deckTypeP2, deckIdP2] = deck2Query?.split("-");
   const useP2Deck = getDeckHook(deckTypeP2 as DECK_TYPE);
   const { data: p2Deck } = useP2Deck(deckIdP2 ?? "");
 
