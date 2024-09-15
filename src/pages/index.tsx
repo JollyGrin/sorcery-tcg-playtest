@@ -1,10 +1,102 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { Box, Flex, Grid, HStack } from "styled-system/jsx";
+import { css } from "styled-system/css";
+import { IconBase } from "react-icons";
+import { IconLogo } from "@/components/atoms/Icons";
+import { Disclaimer } from "@/components/organisms/LandingPage/Disclaimer";
+import {
+  containerStyle,
+  soloStyle,
+} from "@/components/organisms/LandingPage/styles";
+import { Nav } from "@/components/organisms/LandingPage/Nav";
+import { Tabs } from "@/components/atoms/Tabs";
+import { Solo } from "@/components/organisms/LandingPage/SoloLoader";
 
 export default function Home() {
-  const router = useRouter();
-  useEffect(() => {
-    router.push("/game?name=p1");
-  }, []);
-  return null;
+  // const router = useRouter();
+  // useEffect(() => {
+  //   router.push("/game?name=p1");
+  // }, []);
+  return (
+    <Grid
+      minW="100vw"
+      minH="100vh"
+      bgImage="url(/bg/tavern-min.png)"
+      bgRepeat="no-repeat"
+      bgSize="cover"
+    >
+      <Flex
+        direction="column"
+        w="100%"
+        maxW="900px"
+        m="0 auto"
+        gap="1.5rem"
+        mt="1rem"
+      >
+        <Nav />
+        <Box
+          color="white"
+          bgImage="url(/bg/solo-forest.png)"
+          bgSize="cover"
+          bgPosition="center"
+          borderRadius="0.5rem"
+          p="2rem"
+          minH="20rem"
+          overflow="hidden"
+        >
+          <Grid gridTemplateColumns={{ base: "1fr", md: "6fr 8fr" }} h="100%">
+            <Box>
+              <HStack>
+                <IconLogo size="2.5rem" />
+                <p className={css({ fontWeight: 700, fontSize: "3rem" })}>
+                  Spells Bar
+                </p>
+              </HStack>
+              <p className={css({ fontSize: "1.5rem" })}>
+                Playtest decks from Sorcery TCG
+              </p>
+              <ul style={{ opacity: 0.5 }}>
+                <li>No accounts</li>
+                <li>Load Table Top Simulator decks</li>
+                <li>Open Sourced</li>
+              </ul>
+            </Box>
+            <Box
+              h="100%"
+              bg="rgba(0,0,0,0.25)"
+              borderRadius="0.5rem"
+              p="0.5rem"
+            >
+              <Tabs
+                tabs={["Solo", "Battlebox", "Online"]}
+                content={[<Solo />, <Battlebox />, <Multiplayer />]}
+              />
+            </Box>
+          </Grid>
+        </Box>
+        <Disclaimer />
+      </Flex>
+    </Grid>
+  );
 }
+
+const Multiplayer = () => {
+  return (
+    <div>
+      <p>Play Sorcery online in the browser.</p>
+      <p>Two players join a lobby, choose their decks, and duel</p>
+      <p>Coming soon! Currently in development</p>
+    </div>
+  );
+};
+
+const Battlebox = () => {
+  return (
+    <div>
+      <p>Playtest a a deck in battlebox mode</p>
+      <p>In Battlebox, both players share the same deck</p>
+      <p>Coming soon! Currently in development</p>
+    </div>
+  );
+};
