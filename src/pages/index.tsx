@@ -57,7 +57,11 @@ export default function Home() {
             >
               <Tabs
                 tabs={["Solo", "Battlebox", "Online"]}
-                content={[<Solo />, <Battlebox />, <Multiplayer />]}
+                content={[
+                  <Solo key="solo" />,
+                  <Battlebox key="battlebox" />,
+                  <Multiplayer key="multiplayer" />,
+                ]}
               />
             </Box>
           </Grid>

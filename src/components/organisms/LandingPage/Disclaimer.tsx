@@ -20,7 +20,7 @@ export const Disclaimer = () => {
         </Link>{" "}
         or{" "}
         <Link href="https://sorcerytcg.com/about">
-          <strong>Erik's Curiosa Limited</strong>
+          <strong>Erik&apos;s Curiosa Limited</strong>
         </Link>
         .
         <br /> All rights to Sorcery and its content are owned by{" "}
