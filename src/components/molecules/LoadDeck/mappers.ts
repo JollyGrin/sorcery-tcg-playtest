@@ -1,15 +1,16 @@
 import { GRIDS } from "@/components/organisms/GameBoard/constants";
 import { GameCard, GameState } from "@/types/card";
-import { actShuffleDeck } from "@/utils/actions";
 import { CuriosaResponse } from "@/utils/api/curiosa/api";
 import { v4 as uuid } from "uuid";
 
 export function mapDeckCuriosa({
   deck,
+  playerName,
   ...props
 }: {
   deck?: CuriosaResponse;
   gridItems: GameState;
+  playerName: string;
 }) {
   if (!deck) return;
   const newGrid = [...props.gridItems];
@@ -25,6 +26,7 @@ export function mapDeckCuriosa({
             id: rest.identifier + index + uuid(),
             img: rest.identifier,
             type: "site",
+            playerName,
           }) as GameCard,
       ), // Actually remove quantity in the final object
   );
@@ -40,6 +42,7 @@ export function mapDeckCuriosa({
             id: rest.identifier + uuid(),
             img: rest.identifier,
             type: "minion",
+            playerName,
           }) as GameCard,
       ), // Actually remove quantity in the final object
   );
@@ -51,6 +54,7 @@ export function mapDeckCuriosa({
         id: avatar.identifier + "-avatar-" + uuid(),
         img: avatar.identifier,
         type: "avatar",
+        playerName,
       }) as GameCard,
   );
 

@@ -24,6 +24,7 @@ export type SorceryCard = {
 type GameProps = {
   id: string;
   isTapped?: boolean;
+  playerName?: string;
 };
 
 /**

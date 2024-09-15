@@ -60,6 +60,7 @@ export default function GamePage() {
         <LoadDeck
           gridItems={players["p1"].state}
           setGridItems={setPlayerState("p1")}
+          playerName="p1"
         >
           <p>Load deck for player 1</p>
         </LoadDeck>
@@ -72,6 +73,7 @@ export default function GamePage() {
         <LoadDeck
           gridItems={players["p2"].state}
           setGridItems={setPlayerState("p2")}
+          playerName="p2"
         >
           <p>Load deck for player 2</p>
         </LoadDeck>

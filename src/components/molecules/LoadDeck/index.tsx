@@ -14,12 +14,16 @@ import { Tabs } from "@/components/atoms/Tabs";
 import { UseQueryResult } from "@tanstack/react-query";
 
 export const LoadDeck = (
-  props: GameStateActions & { children?: ReactNode },
+  props: GameStateActions & { children?: ReactNode; playerName: string },
 ) => {
   const [deckId, setDeckId] = useState<string>("");
 
   function setDeck(deck?: CuriosaResponse) {
-    const newGrid = mapDeckCuriosa({ deck, gridItems: props.gridItems });
+    const newGrid = mapDeckCuriosa({
+      deck,
+      gridItems: props.gridItems,
+      playerName: props.playerName,
+    });
     if (!newGrid) return;
     const shuffledDeck = actShuffleDeck(newGrid, "deck");
     const shuffledAtlas = actShuffleDeck(shuffledDeck, "atlas");
@@ -82,7 +86,6 @@ const InputLoader = ({
   provider: "curiosa" | "realms app";
 }) => {
   const { data: deck } = useDeck(deckId);
-  console.log({ deck });
 
   const cards = [
     ...(deck?.avatar ?? []),
