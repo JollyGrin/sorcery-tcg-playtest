@@ -19,7 +19,16 @@ export const HowToPlay = () => {
         <Step
           img="shop"
           title="1) Buy Sorcery Cards"
-          desc="Buy some Sorcery TCG cards from your favorite cardboard dealer"
+          desc={
+            <p>
+              Buy some Sorcery TCG cards from your{" "}
+              <strong>
+                <Link href="https://sorcerytcg.com/locator">
+                  favorite cardboard dealer
+                </Link>
+              </strong>
+            </p>
+          }
         />
 
         <Step
@@ -27,7 +36,16 @@ export const HowToPlay = () => {
           title="2) Build your deck"
           desc={
             <p>
-              Build your deck on <Link href="https://curiosa.io/">Curiosa</Link>
+              Build your deck on <br />
+              <strong>
+                <Link href="https://curiosa.io/">Curiosa</Link>
+              </strong>{" "}
+              or{" "}
+              <strong>
+                <Link href="https://www.realmsapp.com/sorcery_tcg/cards">
+                  Realms app
+                </Link>
+              </strong>
             </p>
           }
         />
@@ -37,7 +55,7 @@ export const HowToPlay = () => {
           title="3) Test your deck"
           desc={
             <p>
-              Build your deck on <Link href="https://curiosa.io/">Curiosa</Link>
+              Load a TTS (Table Top Simulator) deck export link and playtest!
             </p>
           }
         />
