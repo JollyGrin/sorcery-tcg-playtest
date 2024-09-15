@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { Flex } from "styled-system/jsx";
@@ -8,22 +9,24 @@ export const Solo = () => {
 
   // detect if realms or curiosa and return query
   function getDeckQuery(deckId: string) {
-    const urlParts = deckId.split(".");
+    const urlParts = deckId.split("/");
     const isCuriosa = urlParts.includes("curiosa.io");
-    const isRealms = urlParts.includes("realmsapp");
+    const isRealms = urlParts.includes("www.realmsapp.com");
 
     let deckQuery;
 
     if (isCuriosa) {
       const regex = /\/([^\/]+)$/;
       const match = deckId.match(regex);
-      if (match) deckQuery = `curiosa:${match[1]}`;
+      if (match) deckQuery = `curiosa-${match[1]}`;
     }
     if (isRealms) {
       const regex = /\/(\d+)\//;
       const match = deckId.match(regex);
-      if (match) deckQuery = `realms:${match[1]}`;
+      if (match) deckQuery = `realms-${match[1]}`;
     }
+
+    console.log({ deckId, deckQuery });
 
     return deckQuery;
   }
@@ -40,7 +43,7 @@ export const Solo = () => {
       console.log({ query });
       return setDeckIds((prev) => ({
         ...prev,
-        [player]: value,
+        [player]: query,
       }));
     };
   }
@@ -61,15 +64,18 @@ export const Solo = () => {
       <input
         className={input()}
         placeholder="Player 2: Load TTS export from Curiosa or RealmsApp"
+        onChange={(e) => setDeckId("p2")(e.target.value)}
         style={{
           color: "black",
           fontFamily: "monospace",
           letterSpacing: "-0.5px",
         }}
       />
-      <button className={button()} style={{ justifySelf: "end" }}>
-        Play
-      </button>
+      <Link href={{ pathname: "/solo", query: { ...deckIds, name: "p1" } }}>
+        <button className={button()} style={{ justifySelf: "end" }}>
+          Play
+        </button>
+      </Link>
     </Flex>
   );
 };
