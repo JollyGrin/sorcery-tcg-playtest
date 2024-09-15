@@ -1,23 +1,12 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
 import { Box, Flex, Grid, HStack } from "styled-system/jsx";
 import { css } from "styled-system/css";
-import { IconBase } from "react-icons";
 import { IconLogo } from "@/components/atoms/Icons";
 import { Disclaimer } from "@/components/organisms/LandingPage/Disclaimer";
-import {
-  containerStyle,
-  soloStyle,
-} from "@/components/organisms/LandingPage/styles";
 import { Nav } from "@/components/organisms/LandingPage/Nav";
 import { Tabs } from "@/components/atoms/Tabs";
 import { Solo } from "@/components/organisms/LandingPage/SoloLoader";
 
 export default function Home() {
-  // const router = useRouter();
-  // useEffect(() => {
-  //   router.push("/game?name=p1");
-  // }, []);
   return (
     <Grid
       minW="100vw"
@@ -56,7 +45,7 @@ export default function Home() {
               <p className={css({ fontSize: "1.5rem" })}>
                 Playtest decks from Sorcery TCG
               </p>
-              <ul style={{ opacity: 0.5 }}>
+              <ul style={{ opacity: 0.5, marginTop: "2rem" }}>
                 <li>No accounts</li>
                 <li>Load Table Top Simulator decks</li>
                 <li>Open Sourced</li>
