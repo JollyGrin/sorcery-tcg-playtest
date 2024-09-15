@@ -53,6 +53,7 @@ export const LoadDeck = (
             tabs={["curiosa", "realms app"]}
             content={[
               <InputLoader
+                key="curiosa"
                 deckId={deckId}
                 setDeckId={setDeckId}
                 setDeck={setDeck}
@@ -60,6 +61,7 @@ export const LoadDeck = (
                 provider="curiosa"
               />,
               <InputLoader
+                key="realms"
                 deckId={deckId}
                 setDeckId={setDeckId}
                 setDeck={setDeck}
