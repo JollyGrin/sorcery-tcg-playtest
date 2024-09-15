@@ -17,6 +17,17 @@ const semanticTokens = {
   },
 };
 
+const keyframes = {
+  bgZoomOut: {
+    "0%": { bgSize: "135%" },
+    "100%": { bgSize: "120%" },
+  },
+  bgZoomIn: {
+    "0%": { bgSize: "110%" },
+    "100%": { bgSize: "125%" },
+  },
+};
+
 export default defineConfig({
   // Required: Add the preset to your config.
   presets: ["@shadow-panda/preset"],
@@ -35,7 +46,7 @@ export default defineConfig({
 
   // Useful for theme customization
   theme: {
-    extend: { semanticTokens, recipes },
+    extend: { semanticTokens, recipes, keyframes },
   },
 
   outdir: "styled-system",
