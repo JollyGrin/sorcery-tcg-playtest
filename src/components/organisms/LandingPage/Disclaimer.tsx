@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { HStack } from "styled-system/jsx";
 
 export const Disclaimer = () => {
@@ -13,8 +14,15 @@ export const Disclaimer = () => {
     >
       <p>
         <strong>spells.bar</strong> an open-source project and is not affiliated
-        with <strong>Sorcery: Contested Realm</strong> or{" "}
-        <strong>Erik's Curiosa Limited</strong>.
+        with{" "}
+        <Link href="https://sorcerytcg.com/">
+          <strong>Sorcery: Contested Realm</strong>
+        </Link>{" "}
+        or{" "}
+        <Link href="https://sorcerytcg.com/about">
+          <strong>Erik's Curiosa Limited</strong>
+        </Link>
+        .
         <br /> All rights to Sorcery and its content are owned by{" "}
         <strong>Erik&apos;s Curiosa Limited</strong>.
       </p>

@@ -5,6 +5,7 @@ import { Disclaimer } from "@/components/organisms/LandingPage/Disclaimer";
 import { Nav } from "@/components/organisms/LandingPage/Nav";
 import { Tabs } from "@/components/atoms/Tabs";
 import { Solo } from "@/components/organisms/LandingPage/SoloLoader";
+import { HowToPlay } from "@/components/organisms/LandingPage/HowToPlay";
 
 export default function Home() {
   return (
@@ -13,16 +14,11 @@ export default function Home() {
       minH="100vh"
       bgImage="url(/bg/tavern-min.png)"
       bgRepeat="no-repeat"
-      bgSize="cover"
+      bgSize="125%"
+      bgPosition="center"
+      animation="bgZoomIn 5s"
     >
-      <Flex
-        direction="column"
-        w="100%"
-        maxW="900px"
-        m="0 auto"
-        gap="1.5rem"
-        mt="1rem"
-      >
+      <Flex direction="column" w="100%" maxW="900px" m="0 auto" gap="1.5rem">
         <Nav />
         <Box
           color="white"
@@ -47,6 +43,7 @@ export default function Home() {
               </p>
               <ul style={{ opacity: 0.5, marginTop: "2rem" }}>
                 <li>No accounts</li>
+                <li>All in the browser</li>
                 <li>Load Table Top Simulator decks</li>
                 <li>Open Sourced</li>
               </ul>
@@ -65,6 +62,7 @@ export default function Home() {
           </Grid>
         </Box>
         <Disclaimer />
+        <HowToPlay />
       </Flex>
     </Grid>
   );
