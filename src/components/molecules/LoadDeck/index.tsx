@@ -12,6 +12,7 @@ import { actShuffleDeck } from "@/utils/actions";
 import { CuriosaResponse } from "@/utils/api/curiosa/api";
 import { Tabs } from "@/components/atoms/Tabs";
 import { UseQueryResult } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 export const LoadDeck = (
   props: GameStateActions & { children?: ReactNode; playerName: string },
@@ -28,6 +29,7 @@ export const LoadDeck = (
     const shuffledDeck = actShuffleDeck(newGrid, "deck");
     const shuffledAtlas = actShuffleDeck(shuffledDeck, "atlas");
     if (newGrid) props.setGridItems(shuffledAtlas);
+    toast.success(`${props.playerName}'s deck was loaded`);
   }
 
   return (

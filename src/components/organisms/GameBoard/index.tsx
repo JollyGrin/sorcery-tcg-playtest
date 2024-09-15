@@ -100,15 +100,20 @@ const SortItemWrapper = ({
   cardIndex: number;
   amountOfCards?: number;
 } & GameStateActions) => {
+  const { query } = useRouter();
+  const name = query?.name as string;
+
+  // opens modal with card actions
   const [preview, setPreview] = useState(false);
 
+  // Adjusts the height of card based on amount in cell
   const heightCalc = () => {
     if (amountOfCards === 1) return 120;
     if (amountOfCards === 2) return 75;
     if (amountOfCards === 3) return 65;
-
     return 90 - Math.min(amountOfCards, 4) * 15;
   };
+
   const height = `${heightCalc()}px`;
 
   const isTapped = card.isTapped;
@@ -148,8 +153,20 @@ const SortItemWrapper = ({
         gridIndex={gridIndex}
         index={cardIndex}
       >
-        {card.type === "site" && <CardAtlas height={height} img={card.img} />}
-        {card.type !== "site" && <CardImage height={height} img={card.img} />}
+        {card.type === "site" && (
+          <CardAtlas
+            height={height}
+            img={card.img}
+            isMine={name === card.playerName}
+          />
+        )}
+        {card.type !== "site" && (
+          <CardImage
+            height={height}
+            img={card.img}
+            isMine={name === card.playerName}
+          />
+        )}
       </SortableItem>
       <Modal
         wrapperProps={{ open: preview, onOpenChange: setPreview }}
