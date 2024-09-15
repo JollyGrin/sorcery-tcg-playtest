@@ -5,12 +5,16 @@ import { button, input } from "styled-system/recipes";
 
 export const Solo = () => {
   const { push } = useRouter();
+
+  function returnDeckId(deckId: string) {}
+
   const [deckIds, setDeckIds] = useState({
     p1: "",
     p2: "",
   });
 
   function setDeckId(player: "p1" | "p2") {
+    // TODO: detect if curiosa or realms
     return (value: string) =>
       setDeckIds((prev) => ({
         ...prev,
