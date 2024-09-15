@@ -19,13 +19,7 @@ export default function Home() {
       animation="bgZoomIn 5s"
       overflowX="hidden"
     >
-      <Flex
-        direction="column"
-        w="100%"
-        maxW="900px"
-        m="0 auto 5rem"
-        gap="1.5rem"
-      >
+      <Flex direction="column" w="100%" maxW="900px" m="0 auto 5rem" gap="1rem">
         <Nav />
         <Box
           color="white"
