@@ -1,3 +1,5 @@
+import { GameCard, PlayerData } from "@/types/card";
+
 /**
  * CDN Images
  * */
@@ -63,3 +65,15 @@ export enum GRIDS {
  * used to splice playerstate from global state
  * */
 export const GRIDS_PERSONAL_LENGTH = GRIDS.GRAVE - GRIDS.AURA_12;
+
+/**
+ * Initialize game state
+ * */
+export const initGameState: GameCard[][] = Array.from({ length: 36 }, () => []);
+export const initGameData: PlayerData = {
+  earth: 0,
+  wind: 0,
+  fire: 0,
+  water: 0,
+  life: 20,
+};
