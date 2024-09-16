@@ -1,8 +1,6 @@
-import { Online } from "@/components/organisms/Online";
 import { CreateLobby } from "@/components/organisms/Online/CreateLobby";
-import { useWebGame, WebGameProvider } from "@/lib/contexts/WebGameProvider";
+import { WebGameProvider, useWebGame } from "@/lib/contexts/WebGameProvider";
 import { useRouter } from "next/router";
-import { input } from "styled-system/recipes";
 
 export default function OnlinePage() {
   const { query } = useRouter();
@@ -16,3 +14,8 @@ export default function OnlinePage() {
     </WebGameProvider>
   );
 }
+
+const Online = () => {
+  const { gameState, setPlayerState } = useWebGame();
+  return <p>{JSON.stringify(gameState)}</p>;
+};
