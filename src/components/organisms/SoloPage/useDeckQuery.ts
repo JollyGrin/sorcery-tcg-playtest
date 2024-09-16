@@ -15,7 +15,7 @@ type DECK_ID = `${DECK_TYPE}-${string}`;
 
 export const useDeckQuery = (props: {
   p1: GameStateActions;
-  p2: GameStateActions;
+  p2?: GameStateActions;
 }) => {
   const { query } = useRouter();
   const deck1Query = (query.p1 ?? "") as DECK_ID;
@@ -39,7 +39,7 @@ export const useDeckQuery = (props: {
       });
     }
 
-    if (deck2Query && p2Deck && !hasDeck(props.p2.gridItems)) {
+    if (props.p2 && deck2Query && p2Deck && !hasDeck(props.p2.gridItems)) {
       setDeck({
         deck: p2Deck,
         gridItems: props.p2.gridItems,
