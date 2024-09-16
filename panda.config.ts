@@ -23,8 +23,8 @@ const keyframes = {
     "100%": { bgSize: "120%" },
   },
   bgZoomIn: {
-    "0%": { bgSize: "110%" },
-    "100%": { bgSize: "125%" },
+    "0%": { bgSize: "125%" },
+    "100%": { bgSize: "135%" },
   },
 };
 
