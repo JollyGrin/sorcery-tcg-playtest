@@ -92,7 +92,12 @@ export const useWebGame = (): WebGameProviderValue => {
   const context = useContext(WebGameContext);
 
   if (!context) {
-    throw new Error("useWebGame should be used inside of <WebGameProvider />");
+    // throw new Error("useWebGame should be used inside of <WebGameProvider />");
+    return {
+      gameState: undefined,
+      gamePositions: undefined,
+      setPlayerState: () => () => {},
+    };
   }
 
   return context;

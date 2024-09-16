@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useLocalServerStorage } from "./";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { RefObject, useState } from "react";
 import { useRouter } from "next/router";
 import { toast } from "react-hot-toast";
@@ -25,9 +25,12 @@ export function useCreateLobby({ gidRef, nameRef }: Props) {
     onClose: () => setModal(false),
   };
 
-  async function createLobby() {
+  async function createLobby(gid?: string) {
     if (!gidRef?.current?.value) return;
-    const createLobbyURL = new URL(`/lobby/${gidRef.current.value}`, serverURL);
+    const createLobbyURL = new URL(
+      `/lobby/${gid ?? gidRef.current.value}`,
+      serverURL,
+    );
     try {
       const result = await axios.get(createLobbyURL.toString());
       return result.data;
@@ -52,11 +55,9 @@ export function useCreateLobby({ gidRef, nameRef }: Props) {
     }, 10000);
   }
 
-  const { refetch } = useQuery({
-    queryKey: ["create-lobby"],
-    queryFn: createLobby,
-    enabled: false,
-    refetchOnWindowFocus: false,
+  const { mutate: refetch } = useMutation({
+    mutationKey: ["create-lobby"],
+    mutationFn: createLobby,
   });
 
   return {
