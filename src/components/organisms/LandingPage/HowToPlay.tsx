@@ -15,7 +15,7 @@ export const HowToPlay = () => {
       gap="2rem"
     >
       <p className={css({ fontWeight: 700, fontSize: "2rem" })}>How to play</p>
-      <Grid gridTemplateColumns="repeat(3, 1fr)">
+      <Grid gridTemplateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }}>
         <Step
           img="shop"
           title="1) Buy Sorcery Cards"
