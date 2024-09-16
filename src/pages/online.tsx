@@ -68,6 +68,8 @@ const Body = () => {
         onChange={(e) => setPlayerState()({ pool: e.target.value })}
         className={input()}
       />
+      <p>gamestate</p>
+      <p>{JSON.stringify(gameState)}</p>
     </>
   );
 };
