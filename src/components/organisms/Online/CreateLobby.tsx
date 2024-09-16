@@ -1,14 +1,11 @@
-import { useWebGame, WebGameProvider } from "@/lib/contexts/WebGameProvider";
 import { useCreateLobby } from "@/lib/hooks";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Box, Grid } from "styled-system/jsx";
 import { button, input } from "styled-system/recipes";
 
 export const CreateLobby = () => {
   const { push, query } = useRouter();
-  const { gameState } = useWebGame();
-  const { name: queryName, gid: queryGid } = query;
 
   const [fields, setFields] = useState({ name: "", gid: "" });
   const gidRef = useRef(null);
@@ -21,11 +18,6 @@ export const CreateLobby = () => {
     push({ query: { ...fields } });
     refetch(undefined);
   }
-
-  useEffect(() => {
-    if (gameState) return;
-    if (queryGid) refetch(queryGid as string);
-  }, [gameState, queryGid]);
 
   return (
     <Grid w="100vw" h="100vh" placeItems="center">
