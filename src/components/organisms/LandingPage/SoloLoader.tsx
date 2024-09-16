@@ -119,7 +119,10 @@ export const Solo = () => {
           }}
         />
       </HStack>
-      <Link href={{ pathname: "/solo", query: { ...deckQueries, name: "p1" } }}>
+      <Link
+        href={{ pathname: "/solo", query: { ...deckQueries, name: "p1" } }}
+        prefetch
+      >
         <button
           disabled={deckQueries.p1 === "" || deckQueries.p2 === ""}
           className={button()}
