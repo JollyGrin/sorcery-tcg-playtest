@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import { button, input } from "styled-system/recipes";
 
-export default function OnlinePage() {
+export default function WebsocketDebug() {
   const { query } = useRouter();
   const { name, gid } = query;
   if (!name || !gid) return <CreateLobby />;
