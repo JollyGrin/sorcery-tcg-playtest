@@ -11,13 +11,14 @@ export default function Home() {
   return (
     <Grid
       minW="100vw"
-      minH="100vh"
+      h="100vh"
       bgImage="url(/bg/tavern-min.png)"
       bgRepeat="no-repeat"
       bgSize="cover"
       bgPosition="center"
-      animation="bgZoomIn 5s"
+      // animation="bgZoomIn 5s"
       overflowX="clip"
+      overflowY="auto"
     >
       <Flex direction="column" maxW="900px" m="0 auto 10rem" gap="1rem">
         <Nav />
