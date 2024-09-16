@@ -14,12 +14,12 @@ export default function Home() {
       minH="100vh"
       bgImage="url(/bg/tavern-min.png)"
       bgRepeat="no-repeat"
-      bgSize="125%"
+      bgSize="cover"
       bgPosition="center"
       animation="bgZoomIn 5s"
-      overflowX="hidden"
+      overflowX="clip"
     >
-      <Flex direction="column" w="100%" maxW="900px" m="0 auto 5rem" gap="1rem">
+      <Flex direction="column" maxW="900px" m="0 auto 10rem" gap="1rem">
         <Nav />
         <Box
           color="white"
@@ -27,7 +27,7 @@ export default function Home() {
           bgSize="cover"
           bgPosition="center"
           borderRadius="0.5rem"
-          p="2rem"
+          p={{ base: "0.25rem", sm: "2rem" }}
           minH="20rem"
           overflow="hidden"
         >
@@ -42,7 +42,7 @@ export default function Home() {
               <p className={css({ fontSize: "1.5rem" })}>
                 Playtest decks from Sorcery TCG
               </p>
-              <ul style={{ opacity: 0.5, marginTop: "2rem" }}>
+              <ul style={{ opacity: 0.75, marginTop: "2rem" }}>
                 <li>No accounts</li>
                 <li>All in the browser</li>
                 <li>Load Table Top Simulator decks</li>
@@ -54,6 +54,7 @@ export default function Home() {
               bg="rgba(0,0,0,0.25)"
               borderRadius="0.5rem"
               p="0.5rem"
+              // display={{ base: "none", sm: "block" }}
             >
               <Tabs
                 tabs={["Solo", "Battlebox", "Online"]}
