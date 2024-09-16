@@ -1,3 +1,4 @@
+import { Online } from "@/components/organisms/Online";
 import { CreateLobby } from "@/components/organisms/Online/CreateLobby";
 import { useWebGame, WebGameProvider } from "@/lib/contexts/WebGameProvider";
 import { useRouter } from "next/router";
@@ -11,22 +12,7 @@ export default function OnlinePage() {
 
   return (
     <WebGameProvider>
-      <Body />
+      <Online />
     </WebGameProvider>
   );
 }
-
-const Body = () => {
-  const { gameState, setPlayerState } = useWebGame();
-  console.log({ gameState });
-  return (
-    <>
-      <input
-        onChange={(e) => setPlayerState()({ pool: e.target.value })}
-        className={input()}
-      />
-      <p>gamestate</p>
-      <p>{JSON.stringify(gameState)}</p>
-    </>
-  );
-};
