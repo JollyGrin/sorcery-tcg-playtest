@@ -1,9 +1,5 @@
-import {
-  WebsocketMessage,
-  pingMessage,
-  pongMessage,
-  PlayerState,
-} from "./message";
+import { PlayerState } from "@/types/card";
+import { WebsocketMessage, pingMessage, pongMessage } from "./message";
 
 export interface WebsocketProps {
   // Game lobby id
