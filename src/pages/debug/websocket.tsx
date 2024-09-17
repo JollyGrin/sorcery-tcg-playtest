@@ -27,7 +27,7 @@ const CreateLobby = () => {
   });
   function onSubmit() {
     push({ query: { ...fields } });
-    refetch();
+    refetch(undefined);
   }
   return (
     <>
