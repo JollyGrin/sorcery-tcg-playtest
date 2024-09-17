@@ -20,12 +20,7 @@ export const CreateLobby = () => {
   const [isLoading, setIsLoading] = useState(false);
   function onSubmit() {
     refetch(queryGid);
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      console.log({ fields });
-      push({ query: { ...fields } });
-    }, 1000);
+    push({ query: { ...fields } });
   }
 
   if (isLoading) return "Creating Lobby...";

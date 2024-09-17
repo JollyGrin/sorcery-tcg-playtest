@@ -6,7 +6,7 @@ import {
 } from "@/components/organisms/GameBoard/constants";
 import { CreateLobby } from "@/components/organisms/Online/CreateLobby";
 import { WebGameProvider, useWebGame } from "@/lib/contexts/WebGameProvider";
-import { GameState, PlayerState, PlayersState } from "@/types/card";
+import { GameState, PlayerData, PlayerState, PlayersState } from "@/types/card";
 import { useRouter } from "next/router";
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import { button, input } from "styled-system/recipes";
@@ -14,16 +14,8 @@ import { button, input } from "styled-system/recipes";
 export default function OnlinePage() {
   const { query } = useRouter();
   const { name, gid } = query;
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-  }, []);
 
   if (!name || !gid) return <CreateLobby />;
-  if (isLoading) return "fake timeout";
 
   return (
     <WebGameProvider>
@@ -39,33 +31,21 @@ export default function OnlinePage() {
   );
 }
 
-const Init = (props: { name: string; children: ReactNode }) => {
-  const { gameState: socketState, setPlayerState: setMySocketState } =
-    useWebGame();
-
-  console.log({ socketState });
-
-  const socketPlayers = socketState?.content?.players as Record<
-    string,
-    PlayerState
-  >;
-  const mySocketState = socketPlayers?.[props.name] as PlayerState;
-
-  if (mySocketState?.data === undefined || mySocketState?.state === undefined)
-    return (
-      <button
-        className={button()}
-        onClick={() => {
-          const setState = setMySocketState();
-          console.log({ setState });
-          setState({ data: initGameData, state: initGameState });
-        }}
-      >
-        Init Data
-      </button>
-    );
-
-  return props.children;
+const Init = (props: {
+  name: string;
+  setState(state: GameState): void;
+  setData(data: PlayerData): void;
+}) => {
+  return (
+    <button
+      className={button()}
+      onClick={() => {
+        props.setState(initGameState);
+      }}
+    >
+      Init Data
+    </button>
+  );
 };
 
 const Online = (props: { name: string }) => {
@@ -79,27 +59,12 @@ const Online = (props: { name: string }) => {
   const mySocketState = socketPlayers?.[props.name] as PlayerState;
 
   function setPlayerState(state: GameState) {
-    setMySocketState()({ state, data: mySocketState.data });
+    setMySocketState()({ state, data: mySocketState?.data ?? initGameData });
   }
 
   function setPlayerData(data: PlayerState["data"]) {
-    setMySocketState()({ state: mySocketState.state, data });
+    setMySocketState()({ state: mySocketState.state ?? initGameState, data });
   }
-
-  useEffect(() => {
-    if (
-      mySocketState?.state === undefined ||
-      mySocketState?.data === undefined
-    ) {
-      const setState = setMySocketState();
-      console.log({ setState }, "1");
-      if (!setState) return;
-      console.log({ setState }, "2");
-      const newState = { data: initGameData, state: initGameState };
-      console.log({ newState }, "3");
-      setState(newState);
-    }
-  }, []);
 
   /**
    * Combines the game state arrays (1-32) from all players into one merged state.
@@ -130,7 +95,13 @@ const Online = (props: { name: string }) => {
 
   console.log({ mySocketState });
   if (mySocketState?.data === undefined || mySocketState?.state === undefined)
-    return "loading state";
+    return (
+      <Init
+        name={props.name}
+        setState={setPlayerState}
+        setData={setPlayerData}
+      />
+    );
 
   return (
     <>
