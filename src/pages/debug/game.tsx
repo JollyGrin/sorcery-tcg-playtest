@@ -83,16 +83,19 @@ const Body = () => {
   console.log({ gameState });
 
   function setState(state: GameState) {
-    setPlayerState()({ state, data: initGameData });
+    setPlayerState()({ state, data: myState?.data ?? initGameData });
   }
+
+  const noState = Object.keys(myState ?? {}).length === 0;
+  const isEmpty = noState || myState?.state?.[GRIDS.DECK]?.length === 0;
 
   return (
     <Box maxW="500px" m="5rem auto">
-      {myState?.state?.[GRIDS.DECK]?.length === 0 && (
+      {isEmpty && (
         <button
           className={button()}
           onClick={() => {
-            const newState = [...myState?.state];
+            const newState = [...(myState?.state ?? initGameState)];
             newState[GRIDS.DECK] = cards;
             setState(newState);
           }}
