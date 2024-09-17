@@ -6,6 +6,7 @@ import { button, input } from "styled-system/recipes";
 
 export const CreateLobby = () => {
   const { push, query } = useRouter();
+  const queryGid = query?.gid as string | undefined;
 
   const [fields, setFields] = useState({ name: "", gid: "" });
   const gidRef = useRef(null);
@@ -14,10 +15,20 @@ export const CreateLobby = () => {
     gidRef,
     nameRef,
   });
+
+  // after creating lobby, short wait until push
+  const [isLoading, setIsLoading] = useState(false);
   function onSubmit() {
-    push({ query: { ...fields } });
-    refetch(undefined);
+    refetch(queryGid);
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      console.log({ fields });
+      push({ query: { ...fields } });
+    }, 1000);
   }
+
+  if (isLoading) return "Creating Lobby...";
 
   return (
     <Grid w="100vw" h="100vh" placeItems="center">

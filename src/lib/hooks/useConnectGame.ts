@@ -26,11 +26,8 @@ export function useCreateLobby({ gidRef, nameRef }: Props) {
   };
 
   async function createLobby(gid?: string) {
-    if (!gidRef?.current?.value) return;
-    const createLobbyURL = new URL(
-      `/lobby/${gid ?? gidRef.current.value}`,
-      serverURL,
-    );
+    const gameId = gid ?? gidRef?.current?.value ?? "";
+    const createLobbyURL = new URL(`/lobby/${gameId}`, serverURL);
     try {
       const result = await axios.get(createLobbyURL.toString());
       return result.data;
