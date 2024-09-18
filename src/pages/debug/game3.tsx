@@ -84,11 +84,19 @@ const Body = () => {
   const myState = gameState?.content?.players?.[name ?? ""];
 
   function setState(state: GameState) {
-    setPlayerState()({ state, data: myState?.data ?? initGameData });
+    setPlayerState()({
+      state,
+      data: myState?.data ?? initGameData,
+      timestamp: Date.now(),
+    });
   }
 
   function setData(data: PlayerData) {
-    setPlayerState()({ state: myState?.state ?? initGameState, data });
+    setPlayerState()({
+      state: myState?.state ?? initGameState,
+      data,
+      timestamp: Date.now(),
+    });
   }
 
   const noState = Object.keys(myState ?? {}).length === 0;
@@ -119,20 +127,11 @@ const Body = () => {
     const combinedState: GameState = Array.from({ length: 32 }, () => []);
 
     if (!playersState) return combinedState;
-
-    console.log(1, gameState);
-    // Iterate over each player, merging their state into the combined state.
-    Object.values(playersState).forEach((playerState) => {
-      console.log(2);
-      const localState = playerState?.state ?? combinedState;
-      console.log(3, playerState.state);
-      localState.slice(0, 32).forEach((cards, index) => {
-        console.log(4);
-        combinedState[index] = cards; // Overwrite earlier player's state
-      });
-    });
-
-    return combinedState;
+    const [mostRecentState] = Object.values(playersState).sort(
+      (a, b) => (b.timestamp ?? 0) - (a.timestamp ?? 0),
+    );
+    console.log({ mostRecentState });
+    return mostRecentState?.state?.slice(0, 32);
   }
 
   const state = useMemo(() => {
