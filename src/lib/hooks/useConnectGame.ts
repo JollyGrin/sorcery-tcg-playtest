@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useLocalServerStorage } from "./";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { RefObject, useState } from "react";
 import { useRouter } from "next/router";
 import { toast } from "react-hot-toast";

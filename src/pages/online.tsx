@@ -14,28 +14,45 @@ import { useWebGame, WebGameProvider } from "@/lib/contexts/WebGameProvider";
 import { useCreateLobby } from "@/lib/hooks";
 import { GameState, PlayerData, PlayersState, PlayerState } from "@/types/card";
 import { useRouter } from "next/router";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Box } from "styled-system/jsx";
 import { button, input } from "styled-system/recipes";
+import ErrorBoundary from "@/utils/helpers/ErrorBoundary";
 
 export default function WebsocketDebug() {
   const { query } = useRouter();
   const { name, gid } = query;
+
+  const [isDelayed, setIsDelayed] = useState(true);
+
+  useEffect(() => {
+    if (name && gid) {
+      console.log("start");
+      setTimeout(() => {
+        setIsDelayed(false);
+        console.log("fin");
+      }, 1000);
+    }
+  }, [name, gid]);
+
   if (!name || !gid) return <CreateLobby />;
+  if (isDelayed) return "loading";
 
   return (
     <WebGameProvider>
-      <Body />
+      <ErrorBoundary>
+        <Body />
+      </ErrorBoundary>
     </WebGameProvider>
   );
 }
 
 const CreateLobby = () => {
-  const { push, query } = useRouter();
+  const { push } = useRouter();
   const [fields, setFields] = useState({ name: "", gid: "" });
   const gidRef = useRef(null);
   const nameRef = useRef(null);
-  const { refetch, loading, setLoading, disclosure } = useCreateLobby({
+  const { refetch } = useCreateLobby({
     gidRef,
     nameRef,
   });
@@ -77,7 +94,7 @@ const CreateLobby = () => {
 
 const Body = () => {
   const { query } = useRouter();
-  const name = query.name as string | undefined;
+  const name = query?.name as string | undefined;
   const { gameState, setPlayerState } = useWebGame();
   const myState = gameState?.content?.players?.[name ?? ""];
 
@@ -97,8 +114,33 @@ const Body = () => {
     });
   }
 
-  const noState = Object.keys(myState ?? {}).length === 0;
-  const isEmpty = noState || myState?.state?.[GRIDS.DECK]?.length === 0;
+  const socketPlayers =
+    gameState?.content?.players ?? ({} as Record<string, PlayerState>);
+
+  const [firstJoiner] =
+    Object.entries(socketPlayers ?? {})?.sort((a, b) => {
+      const [, valueA] = a;
+      const [, valueB] = b;
+      const timeA = valueA.joinTimestamp ?? 0;
+      const timeB = valueB.joinTimestamp ?? 0;
+      return timeA - timeB;
+    }) ?? [];
+  const [firstName] = firstJoiner ?? "";
+  const isReversed = name !== firstName;
+
+  function combineGameStates(): GameState {
+    const playersState = socketPlayers ?? {};
+    const [mostRecentState] =
+      Object.values(playersState).sort(
+        (a, b) => (b.timestamp ?? 0) - (a.timestamp ?? 0),
+      ) ?? [];
+    return mostRecentState?.state?.slice(0, 32) ?? [];
+  }
+
+  const state = useMemo(() => {
+    const localState = myState?.state ?? initGameState;
+    return [...combineGameStates(), ...localState.slice(GRIDS.HAND)];
+  }, [socketPlayers]);
 
   if (myState?.state === undefined && name) {
     return (
@@ -120,34 +162,6 @@ const Body = () => {
   }
 
   if (myState?.state === undefined) return null;
-
-  const socketPlayers = gameState?.content?.players as Record<
-    string,
-    PlayerState
-  >;
-
-  const [firstJoiner] = Object.entries(socketPlayers).sort((a, b) => {
-    const [_, valueA] = a;
-    const [__, valueB] = b;
-    const timeA = valueA.joinTimestamp ?? 0;
-    const timeB = valueB.joinTimestamp ?? 0;
-    return timeA - timeB;
-  });
-  const [firstName] = firstJoiner;
-  const isReversed = name !== firstName;
-
-  function combineGameStates(): GameState {
-    const playersState = socketPlayers;
-    const [mostRecentState] = Object.values(playersState).sort(
-      (a, b) => (b.timestamp ?? 0) - (a.timestamp ?? 0),
-    );
-    return mostRecentState?.state?.slice(0, 32);
-  }
-
-  const state = useMemo(() => {
-    const localState = myState?.state ?? initGameState;
-    return [...combineGameStates(), ...localState.slice(GRIDS.HAND)];
-  }, [socketPlayers]);
 
   return (
     <GameBoard

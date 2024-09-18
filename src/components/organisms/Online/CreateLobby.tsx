@@ -11,19 +11,16 @@ export const CreateLobby = () => {
   const [fields, setFields] = useState({ name: "", gid: "" });
   const gidRef = useRef(null);
   const nameRef = useRef(null);
-  const { refetch, loading, setLoading, disclosure } = useCreateLobby({
+  const { refetch } = useCreateLobby({
     gidRef,
     nameRef,
   });
 
   // after creating lobby, short wait until push
-  const [isLoading, setIsLoading] = useState(false);
   function onSubmit() {
     refetch(queryGid);
     push({ query: { ...fields } });
   }
-
-  if (isLoading) return "Creating Lobby...";
 
   return (
     <Grid w="100vw" h="100vh" placeItems="center">
