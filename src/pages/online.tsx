@@ -59,7 +59,6 @@ const Body = () => {
     setPlayerState()({
       state: myState?.state ?? initGameState,
       data,
-      timestamp: Date.now(),
     });
   }
 
