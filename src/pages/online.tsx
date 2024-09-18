@@ -14,7 +14,7 @@ import { useWebGame, WebGameProvider } from "@/lib/contexts/WebGameProvider";
 import { useCreateLobby } from "@/lib/hooks";
 import { GameState, PlayerData, PlayersState, PlayerState } from "@/types/card";
 import { useRouter } from "next/router";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Box } from "styled-system/jsx";
 import { button, input } from "styled-system/recipes";
 import ErrorBoundary from "@/utils/helpers/ErrorBoundary";
@@ -22,7 +22,21 @@ import ErrorBoundary from "@/utils/helpers/ErrorBoundary";
 export default function WebsocketDebug() {
   const { query } = useRouter();
   const { name, gid } = query;
+
+  const [isDelayed, setIsDelayed] = useState(true);
+
+  useEffect(() => {
+    if (name && gid) {
+      console.log("start");
+      setTimeout(() => {
+        setIsDelayed(false);
+        console.log("fin");
+      }, 1000);
+    }
+  }, [name, gid]);
+
   if (!name || !gid) return <CreateLobby />;
+  if (isDelayed) return "loading";
 
   return (
     <WebGameProvider>
@@ -111,7 +125,7 @@ const Body = () => {
       const timeB = valueB.joinTimestamp ?? 0;
       return timeA - timeB;
     }) ?? [];
-  const [firstName] = firstJoiner;
+  const [firstName] = firstJoiner ?? "";
   const isReversed = name !== firstName;
 
   function combineGameStates(): GameState {
