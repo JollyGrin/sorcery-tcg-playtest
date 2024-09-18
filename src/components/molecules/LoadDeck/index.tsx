@@ -50,7 +50,7 @@ export const LoadDeck = (
         >
           {props.children}
           <Tabs
-            tabs={["curiosa", "realms app"]}
+            tabs={["curiosa", "realms"]}
             content={[
               <InputLoader
                 key="curiosa"

@@ -6,15 +6,25 @@ import { Box, Flex, Grid } from "styled-system/jsx";
 export const HowToPlay = () => {
   return (
     <Flex
+      className="wood"
       bg="rgba(200,100,0,0.5)"
       color="white"
-      backdropFilter="blur(3px) brightness(90%)"
+      backdropFilter="blur(5px) brightness(90%)"
+      boxShadow="0 3px 6px rgba(0,0,0,0.5)"
       p="1rem"
       borderRadius="0.5rem"
       direction="column"
       gap="2rem"
     >
-      <p className={css({ fontWeight: 700, fontSize: "2rem" })}>How to play</p>
+      <p
+        className={css({
+          fontWeight: 700,
+          fontSize: "2rem",
+          textShadow: "0 2px 2px rgba(0,0,0,0.5)",
+        })}
+      >
+        How to play
+      </p>
       <Grid gridTemplateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }}>
         <Step
           img="shop"
@@ -43,7 +53,7 @@ export const HowToPlay = () => {
               or{" "}
               <strong>
                 <Link href="https://www.realmsapp.com/sorcery_tcg/cards">
-                  Realms app
+                  Realms
                 </Link>
               </strong>
             </p>
@@ -67,7 +77,14 @@ export const HowToPlay = () => {
 const Step = (props: { img: string; title: string; desc: ReactNode }) => {
   return (
     <Box>
-      <p className={css({ fontWeight: 600, fontSize: "1.25rem" })}>
+      <p
+        className={css({
+          fontWeight: 600,
+          fontSize: "1.25rem",
+
+          textShadow: "0 2px 2px rgba(0,0,0,0.5)",
+        })}
+      >
         {props.title}
       </p>
       <img

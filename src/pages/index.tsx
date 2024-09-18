@@ -82,15 +82,22 @@ const Multiplayer = () => {
     <div>
       <p>Play Sorcery online in the browser.</p>
       <p>Two players join a lobby, choose their decks, and duel</p>
-      <p>Curently in ALPHA. EXPECT BUGS. Features incoming</p>
-      <ul>
-        <li>choose a name</li>
+      <HStack fontFamily="monospace" my="0.5rem">
+        <p>Version:</p>
+        <Box p="0 0.5rem" borderRadius="0.5rem" bg="gray.700">
+          ALPHA
+        </Box>
+        <p>Expect bugs!</p>
+      </HStack>
+      <ol style={{ listStyle: "inside", marginBottom: "0.5rem" }}>
         <li>start a lobby</li>
+        <li>choose a name</li>
         <li>share lobbyname with friend</li>
-        <li>wait to draw until both join</li>
-      </ul>
+      </ol>
       <Link href="/online">
-        <button className={button()}>Create a lobby</button>
+        <button className={button()} style={{ width: "100%" }}>
+          Create a lobby
+        </button>
       </Link>
     </div>
   );
