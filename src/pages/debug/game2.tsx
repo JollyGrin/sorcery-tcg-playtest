@@ -1,8 +1,3 @@
-/**
- * ALMOST DONE
- * TODO: add a way to ensure the 2nd player rotates their screen
- * */
-
 import { LoadDeck } from "@/components/molecules/LoadDeck";
 import { GameBoard } from "@/components/organisms/GameBoard";
 import {
@@ -12,7 +7,15 @@ import {
 } from "@/components/organisms/GameBoard/constants";
 import { useWebGame, WebGameProvider } from "@/lib/contexts/WebGameProvider";
 import { useCreateLobby } from "@/lib/hooks";
-import { GameState, PlayerData, PlayersState, PlayerState } from "@/types/card";
+import {
+  GameCard,
+  GameState,
+  PlayerData,
+  PlayersState,
+  PlayerState,
+} from "@/types/card";
+import { actDrawDeck } from "@/utils/actions";
+import { debugState } from "@/utils/helpers/debugState";
 import { useRouter } from "next/router";
 import { useMemo, useRef, useState } from "react";
 import { Box } from "styled-system/jsx";
@@ -75,6 +78,12 @@ const CreateLobby = () => {
   );
 };
 
+const cards: GameCard[] = Array.from({ length: 20 }).map((_, index) => ({
+  id: index + ":card",
+  img: index + ".png",
+  type: "magic",
+}));
+
 const Body = () => {
   const { query } = useRouter();
   const name = query.name as string | undefined;
@@ -82,19 +91,11 @@ const Body = () => {
   const myState = gameState?.content?.players?.[name ?? ""];
 
   function setState(state: GameState) {
-    setPlayerState()({
-      state,
-      data: myState?.data ?? initGameData,
-      timestamp: Date.now(),
-    });
+    setPlayerState()({ state, data: myState?.data ?? initGameData });
   }
 
   function setData(data: PlayerData) {
-    setPlayerState()({
-      state: myState?.state ?? initGameState,
-      data,
-      timestamp: Date.now(),
-    });
+    setPlayerState()({ state: myState?.state ?? initGameState, data });
   }
 
   const noState = Object.keys(myState ?? {}).length === 0;
@@ -105,14 +106,7 @@ const Body = () => {
       <LoadDeck
         playerName={name}
         gridItems={myState?.state ?? initGameState}
-        setGridItems={(state: GameState) => {
-          setPlayerState()({
-            state,
-            data: myState?.data ?? initGameData,
-            timestamp: Date.now(),
-            joinTimestamp: Date.now(),
-          });
-        }}
+        setGridItems={setState}
       >
         pick one
       </LoadDeck>
@@ -126,34 +120,12 @@ const Body = () => {
     PlayerState
   >;
 
-  const [firstJoiner] = Object.entries(socketPlayers).sort((a, b) => {
-    const [_, valueA] = a;
-    const [__, valueB] = b;
-    const timeA = valueA.joinTimestamp ?? 0;
-    const timeB = valueB.joinTimestamp ?? 0;
-    return timeA - timeB;
-  });
-  const [firstName] = firstJoiner;
-  const isReversed = name !== firstName;
-
-  function combineGameStates(): GameState {
-    const playersState = socketPlayers;
-    const [mostRecentState] = Object.values(playersState).sort(
-      (a, b) => (b.timestamp ?? 0) - (a.timestamp ?? 0),
-    );
-    return mostRecentState?.state?.slice(0, 32);
-  }
-
-  const state = useMemo(() => {
-    const localState = myState?.state ?? initGameState;
-    return [...combineGameStates(), ...localState.slice(GRIDS.HAND)];
-  }, [socketPlayers]);
+  debugState(myState.state);
 
   return (
     <GameBoard
-      isReversed={isReversed}
       players={socketPlayers as PlayersState}
-      gridItems={state}
+      gridItems={myState.state}
       setGridItems={setState}
       setMyData={setData}
     />

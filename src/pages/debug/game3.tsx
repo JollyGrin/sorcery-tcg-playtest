@@ -1,8 +1,3 @@
-/**
- * ALMOST DONE
- * TODO: add a way to ensure the 2nd player rotates their screen
- * */
-
 import { LoadDeck } from "@/components/molecules/LoadDeck";
 import { GameBoard } from "@/components/organisms/GameBoard";
 import {
@@ -12,7 +7,14 @@ import {
 } from "@/components/organisms/GameBoard/constants";
 import { useWebGame, WebGameProvider } from "@/lib/contexts/WebGameProvider";
 import { useCreateLobby } from "@/lib/hooks";
-import { GameState, PlayerData, PlayersState, PlayerState } from "@/types/card";
+import {
+  GameCard,
+  GameState,
+  PlayerData,
+  PlayersState,
+  PlayerState,
+} from "@/types/card";
+import { debugState } from "@/utils/helpers/debugState";
 import { useRouter } from "next/router";
 import { useMemo, useRef, useState } from "react";
 import { Box } from "styled-system/jsx";
@@ -105,14 +107,7 @@ const Body = () => {
       <LoadDeck
         playerName={name}
         gridItems={myState?.state ?? initGameState}
-        setGridItems={(state: GameState) => {
-          setPlayerState()({
-            state,
-            data: myState?.data ?? initGameData,
-            timestamp: Date.now(),
-            joinTimestamp: Date.now(),
-          });
-        }}
+        setGridItems={setState}
       >
         pick one
       </LoadDeck>
@@ -126,21 +121,16 @@ const Body = () => {
     PlayerState
   >;
 
-  const [firstJoiner] = Object.entries(socketPlayers).sort((a, b) => {
-    const [_, valueA] = a;
-    const [__, valueB] = b;
-    const timeA = valueA.joinTimestamp ?? 0;
-    const timeB = valueB.joinTimestamp ?? 0;
-    return timeA - timeB;
-  });
-  const [firstName] = firstJoiner;
-  const isReversed = name !== firstName;
-
   function combineGameStates(): GameState {
     const playersState = socketPlayers;
+    // Create an empty array to hold the combined state for the first 32 slots.
+    const combinedState: GameState = Array.from({ length: 32 }, () => []);
+
+    if (!playersState) return combinedState;
     const [mostRecentState] = Object.values(playersState).sort(
       (a, b) => (b.timestamp ?? 0) - (a.timestamp ?? 0),
     );
+    console.log({ mostRecentState });
     return mostRecentState?.state?.slice(0, 32);
   }
 
@@ -151,7 +141,6 @@ const Body = () => {
 
   return (
     <GameBoard
-      isReversed={isReversed}
       players={socketPlayers as PlayersState}
       gridItems={state}
       setGridItems={setState}

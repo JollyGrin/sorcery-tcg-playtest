@@ -1,4 +1,4 @@
-type PoolType = any;
+import { PlayerState } from "@/types/card";
 
 export interface WebsocketMessage {
   msgtype: string;
@@ -10,15 +10,9 @@ export interface WebsocketMessage {
 export interface OnlineState {
   // gid is the Game ID
   gid: string;
-  players: Record<string, { pool?: any }>;
+  players: Record<string, PlayerState>;
   // TODO: Parse this
   last_updated: string;
-}
-
-// PlayerState can be w/e json payload the game wants to send.
-// The golang backend just passes this to all clients.
-export interface PlayerState {
-  pool: PoolType;
 }
 
 export const pingMessage = {

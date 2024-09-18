@@ -1,9 +1,5 @@
-import {
-  WebsocketMessage,
-  pingMessage,
-  pongMessage,
-  PlayerState,
-} from "./message";
+import { PlayerState } from "@/types/card";
+import { WebsocketMessage, pingMessage, pongMessage } from "./message";
 
 export interface WebsocketProps {
   // Game lobby id
@@ -13,7 +9,6 @@ export interface WebsocketProps {
   connectURL: URL;
   // Callbacks
   onGameState: (state: string) => void;
-  onGamePositions: (state: string) => void;
 }
 
 export interface WebsocketReturn {
@@ -28,7 +23,6 @@ export const initializeWebsocket = ({
   gid,
   connectURL,
   onGameState,
-  onGamePositions,
 }: WebsocketProps): WebsocketReturn => {
   const url = new URL(`/ws/${gid}`, connectURL);
 
@@ -50,9 +44,9 @@ export const initializeWebsocket = ({
       case "gamestate":
         onGameState(event.data as string);
         return;
-      case "playerposition":
-        onGamePositions(event.data as string);
-        return;
+      // case "playerposition":
+      //   onGamePositions(event.data as string);
+      //   return;
     }
   };
   ws.onerror = (event: any): void => {
