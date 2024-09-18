@@ -11,7 +11,8 @@ import { GameHeader } from "./Header";
 const { nav, body, footer } = LAYOUT_HEIGHTS;
 
 export const GameLayout = (
-  props: GameStateActions & PlayerDataProps & { children: ReactNode },
+  props: GameStateActions &
+    PlayerDataProps & { isReversed?: boolean; children: ReactNode },
 ) => {
   return (
     <Grid style={{ gridTemplateRows: `${nav} ${body} ${footer}` }} gap={0}>

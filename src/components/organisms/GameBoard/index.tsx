@@ -41,6 +41,7 @@ export const GameBoard = ({
       <GameLayout
         gridItems={gridItems}
         setGridItems={setGridItems}
+        isReversed={isReversed}
         {...playerDataProps}
       >
         {(isReversed
