@@ -60,7 +60,14 @@ export type PlayerData = {
 export type PlayerState = {
   state: GameState;
   data: PlayerData;
+  /**
+   * use this on every update
+   * */
   timestamp?: number;
+  /**
+   * only update this when joining lobby
+   * */
+  joinTimestamp?: number;
 };
 export type PlayersState = Record<string, PlayerState> & {
   GLOBAL: PlayerState;

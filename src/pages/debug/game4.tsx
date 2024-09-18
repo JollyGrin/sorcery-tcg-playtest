@@ -105,7 +105,14 @@ const Body = () => {
       <LoadDeck
         playerName={name}
         gridItems={myState?.state ?? initGameState}
-        setGridItems={setState}
+        setGridItems={() => {
+          setPlayerState()({
+            state,
+            data: myState?.data ?? initGameData,
+            timestamp: Date.now(),
+            joinTimestamp: Date.now(),
+          });
+        }}
       >
         pick one
       </LoadDeck>
