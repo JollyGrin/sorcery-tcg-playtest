@@ -77,7 +77,7 @@ export const Solo = () => {
         />
         <input
           className={input()}
-          placeholder="Player 1: Load TTS export from Curiosa or RealmsApp"
+          placeholder="Player 1: Load TTS export from Curiosa or Realms"
           value={deckIds.p1}
           onChange={(e) => setDeckId("p1")(e.target.value)}
           style={{
@@ -109,7 +109,7 @@ export const Solo = () => {
         />
         <input
           className={input()}
-          placeholder="Player 2: Load TTS export from Curiosa or RealmsApp"
+          placeholder="Player 2: Load TTS export from Curiosa or Realms"
           value={deckIds.p2}
           onChange={(e) => setDeckId("p2")(e.target.value)}
           style={{
