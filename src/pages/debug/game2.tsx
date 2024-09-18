@@ -1,3 +1,4 @@
+import { LoadDeck } from "@/components/molecules/LoadDeck";
 import { GameBoard } from "@/components/organisms/GameBoard";
 import {
   GRIDS,
@@ -6,10 +7,17 @@ import {
 } from "@/components/organisms/GameBoard/constants";
 import { useWebGame, WebGameProvider } from "@/lib/contexts/WebGameProvider";
 import { useCreateLobby } from "@/lib/hooks";
-import { GameCard, GameState, PlayerData } from "@/types/card";
+import {
+  GameCard,
+  GameState,
+  PlayerData,
+  PlayersState,
+  PlayerState,
+} from "@/types/card";
 import { actDrawDeck } from "@/utils/actions";
+import { debugState } from "@/utils/helpers/debugState";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Box } from "styled-system/jsx";
 import { button, input } from "styled-system/recipes";
 
@@ -93,23 +101,31 @@ const Body = () => {
   const noState = Object.keys(myState ?? {}).length === 0;
   const isEmpty = noState || myState?.state?.[GRIDS.DECK]?.length === 0;
 
-  if (myState?.state === undefined)
+  if (myState?.state === undefined && name) {
     return (
-      <button
-        className={button()}
-        onClick={() => {
-          const newState = [...(myState?.state ?? initGameState)];
-          newState[GRIDS.DECK] = cards;
-          setState(newState);
-        }}
+      <LoadDeck
+        playerName={name}
+        gridItems={myState?.state ?? initGameState}
+        setGridItems={setState}
       >
-        init
-      </button>
+        pick one
+      </LoadDeck>
     );
+  }
+
+  if (myState?.state === undefined) return null;
+
+  const socketPlayers = gameState?.content?.players as Record<
+    string,
+    PlayerState
+  >;
+
+  debugState(myState.state);
 
   return (
     <GameBoard
-      gridItems={myState?.state}
+      players={socketPlayers as PlayersState}
+      gridItems={myState.state}
       setGridItems={setState}
       setMyData={setData}
     />

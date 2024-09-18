@@ -22,7 +22,7 @@ export const PlayerBox = ({
   name: string;
   player: PlayersState["GLOBAL"];
 }) => {
-  const life = player.data.life;
+  const life = player?.data?.life ?? 0;
 
   function length(position: number) {
     return player.state[position].length;
