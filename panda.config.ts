@@ -26,6 +26,20 @@ const keyframes = {
     "0%": { bgSize: "125%" },
     "100%": { bgSize: "135%" },
   },
+  fall: {
+    "0%": {
+      top: "-150px",
+      left: "500px", // Random left position across the viewport width
+    },
+    "100%": {
+      top: "100vh",
+      left: "random(0%, 100%)", // Optional: cards can move horizontally as they fall
+    },
+  },
+  sway: {
+    "0%": { transform: "rotate(0deg)" },
+    "100%": { transform: "rotate(10deg)" },
+  },
 };
 
 export default defineConfig({
