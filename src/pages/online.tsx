@@ -1,8 +1,3 @@
-/**
- * ALMOST DONE
- * TODO: add a way to ensure the 2nd player rotates their screen
- * */
-
 import { LoadDeck } from "@/components/molecules/LoadDeck";
 import { GameBoard } from "@/components/organisms/GameBoard";
 import {
@@ -11,13 +6,12 @@ import {
   initGameState,
 } from "@/components/organisms/GameBoard/constants";
 import { useWebGame, WebGameProvider } from "@/lib/contexts/WebGameProvider";
-import { useCreateLobby } from "@/lib/hooks";
 import { GameState, PlayerData, PlayersState, PlayerState } from "@/types/card";
 import { useRouter } from "next/router";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { Box } from "styled-system/jsx";
-import { button, input } from "styled-system/recipes";
+import { useEffect, useMemo, useState } from "react";
+
 import ErrorBoundary from "@/utils/helpers/ErrorBoundary";
+import { CreateLobby } from "@/components/organisms/Online/CreateLobby";
 
 export default function WebsocketDebug() {
   const { query } = useRouter();
@@ -46,51 +40,6 @@ export default function WebsocketDebug() {
     </WebGameProvider>
   );
 }
-
-const CreateLobby = () => {
-  const { push } = useRouter();
-  const [fields, setFields] = useState({ name: "", gid: "" });
-  const gidRef = useRef(null);
-  const nameRef = useRef(null);
-  const { refetch } = useCreateLobby({
-    gidRef,
-    nameRef,
-  });
-  function onSubmit() {
-    push({ query: { ...fields } });
-    refetch(undefined);
-  }
-  return (
-    <Box maxW="500px" m="0 auto" mt="10rem">
-      <input
-        ref={nameRef}
-        placeholder="name"
-        onChange={(e) =>
-          setFields((prev) => ({
-            ...prev,
-            name: e.target.value,
-          }))
-        }
-        className={input()}
-      />
-
-      <input
-        ref={gidRef}
-        placeholder="gid"
-        onChange={(e) =>
-          setFields((prev) => ({
-            ...prev,
-            gid: e.target.value,
-          }))
-        }
-        className={input()}
-      />
-      <button className={button()} onClick={onSubmit}>
-        submit
-      </button>
-    </Box>
-  );
-};
 
 const Body = () => {
   const { query } = useRouter();
