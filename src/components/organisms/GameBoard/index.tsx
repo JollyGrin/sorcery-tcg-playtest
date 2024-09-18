@@ -23,8 +23,9 @@ export type GameStateActions = {
 export const GameBoard = ({
   gridItems,
   setGridItems,
+  isReversed: reversed,
   ...playerDataProps
-}: GameStateActions & PlayerDataProps) => {
+}: GameStateActions & PlayerDataProps & { isReversed?: boolean }) => {
   const { query } = useRouter();
 
   const { activeCard, activeId, ...dragProps } = useHandleDrag({
@@ -33,7 +34,7 @@ export const GameBoard = ({
   });
 
   const name = query?.name ?? "p1";
-  const isReversed = name === "p2";
+  const isReversed = reversed ?? name === "p2";
 
   return (
     <DndContext {...dragProps}>

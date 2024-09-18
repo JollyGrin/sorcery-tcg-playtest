@@ -36,6 +36,10 @@ export const PlayerBox = ({
     return "purple";
   }, [life]);
 
+  if (!player) return null;
+  if (!player?.data) return null;
+  if (player?.data?.earth === undefined) return null;
+
   return (
     <HStack fontSize="1rem" gap={1}>
       <p className={textStyle({ visual: "bold" })}>{name}</p>
