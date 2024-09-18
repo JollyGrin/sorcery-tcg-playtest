@@ -57,7 +57,11 @@ export type PlayerData = {
   water: number;
   life: number;
 };
-export type PlayerState = { state: GameState; data: PlayerData };
+export type PlayerState = {
+  state: GameState;
+  data: PlayerData;
+  timestamp?: number;
+};
 export type PlayersState = Record<string, PlayerState> & {
   GLOBAL: PlayerState;
 };
