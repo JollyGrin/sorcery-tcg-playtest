@@ -133,7 +133,7 @@ export const CreateLobby = () => {
                   transform: "scale(1.05)",
                 }}
                 onClick={() => {
-                  const text = `http://spells.bar/online?gid=${fields.gid}`;
+                  const text = `https://spells.bar/online?gid=${fields.gid}`;
                   copy(text);
                   toast.success(`Copied to clipboard`);
                 }}
