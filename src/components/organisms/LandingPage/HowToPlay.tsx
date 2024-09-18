@@ -53,7 +53,7 @@ export const HowToPlay = () => {
               or{" "}
               <strong>
                 <Link href="https://www.realmsapp.com/sorcery_tcg/cards">
-                  Realms app
+                  Realms
                 </Link>
               </strong>
             </p>
