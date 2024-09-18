@@ -22,7 +22,7 @@ export const PlayerBox = ({
   name: string;
   player: PlayersState["GLOBAL"];
 }) => {
-  const life = player.data.life;
+  const life = player?.data?.life ?? 0;
 
   function length(position: number) {
     return player.state[position].length;
@@ -35,6 +35,10 @@ export const PlayerBox = ({
 
     return "purple";
   }, [life]);
+
+  if (!player) return null;
+  if (!player?.data) return null;
+  if (player?.data?.earth === undefined) return null;
 
   return (
     <HStack fontSize="1rem" gap={1}>

@@ -6,6 +6,8 @@ import { Nav } from "@/components/organisms/LandingPage/Nav";
 import { Tabs } from "@/components/atoms/Tabs";
 import { Solo } from "@/components/organisms/LandingPage/SoloLoader";
 import { HowToPlay } from "@/components/organisms/LandingPage/HowToPlay";
+import Link from "next/link";
+import { button } from "styled-system/recipes";
 
 export default function Home() {
   return (
@@ -80,7 +82,16 @@ const Multiplayer = () => {
     <div>
       <p>Play Sorcery online in the browser.</p>
       <p>Two players join a lobby, choose their decks, and duel</p>
-      <p>Coming soon! Currently in development</p>
+      <p>Curently in ALPHA. EXPECT BUGS. Features incoming</p>
+      <ul>
+        <li>choose a name</li>
+        <li>start a lobby</li>
+        <li>share lobbyname with friend</li>
+        <li>wait to draw until both join</li>
+      </ul>
+      <Link href="/online">
+        <button className={button()}>Create a lobby</button>
+      </Link>
     </div>
   );
 };

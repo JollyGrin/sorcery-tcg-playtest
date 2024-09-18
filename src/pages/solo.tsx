@@ -1,19 +1,14 @@
 import { LoadDeck } from "@/components/molecules/LoadDeck";
 import { GameBoard } from "@/components/organisms/GameBoard";
-import { GRIDS } from "@/components/organisms/GameBoard/constants";
+import {
+  GRIDS,
+  initGameData,
+  initGameState,
+} from "@/components/organisms/GameBoard/constants";
 import { useDeckQuery } from "@/components/organisms/SoloPage/useDeckQuery";
-import { GameCard, GameState, PlayerData, PlayersState } from "@/types/card";
+import { GameState, PlayersState } from "@/types/card";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
-
-const initGameState: GameCard[][] = Array.from({ length: 36 }, () => []);
-const initGameData: PlayerData = {
-  earth: 0,
-  wind: 0,
-  fire: 0,
-  water: 0,
-  life: 20,
-};
 
 export default function GamePage() {
   const { query } = useRouter();
