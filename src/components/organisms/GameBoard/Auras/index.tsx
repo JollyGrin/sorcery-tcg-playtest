@@ -10,7 +10,7 @@ import { CardImage as FullCard } from "@/components/atoms/card-view/card";
 import { CARD_CDN, GRIDS } from "../constants";
 import { useRouter } from "next/router";
 
-export const Auras = (props: GameStateActions) => {
+export const Auras = (props: GameStateActions & { isReversed?: boolean }) => {
   return (
     <Box position="absolute" w="100%" h="100%">
       {Array.from({ length: 12 })
@@ -21,16 +21,22 @@ export const Auras = (props: GameStateActions) => {
             card={props.gridItems?.[GRIDS.AURA_1 + index]?.[0]}
             gridIndex={GRIDS.AURA_1 + index}
             index={0}
+            isReversed={props.isReversed}
           />
         ))}
     </Box>
   );
 };
 
-const Aura = (props: { card: GameCard; gridIndex: number; index: number }) => {
+const Aura = (props: {
+  card: GameCard;
+  gridIndex: number;
+  index: number;
+  isReversed?: boolean;
+}) => {
   const { query } = useRouter();
   const name = query?.name ?? "p1";
-  const isReversed = name === "p2";
+  const isReversed = props.isReversed ?? name === "p2";
 
   const auraCard = props.card;
   const auraIndex = props.gridIndex - GRIDS.AURA_1; // normalize to zero
