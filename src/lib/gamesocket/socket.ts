@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import { PlayerState } from "@/types/card";
 import { WebsocketMessage, pingMessage, pongMessage } from "./message";
 

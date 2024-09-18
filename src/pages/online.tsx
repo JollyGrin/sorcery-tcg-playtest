@@ -31,11 +31,11 @@ export default function WebsocketDebug() {
 }
 
 const CreateLobby = () => {
-  const { push, query } = useRouter();
+  const { push } = useRouter();
   const [fields, setFields] = useState({ name: "", gid: "" });
   const gidRef = useRef(null);
   const nameRef = useRef(null);
-  const { refetch, loading, setLoading, disclosure } = useCreateLobby({
+  const { refetch } = useCreateLobby({
     gidRef,
     nameRef,
   });
@@ -96,9 +96,6 @@ const Body = () => {
       timestamp: Date.now(),
     });
   }
-
-  const noState = Object.keys(myState ?? {}).length === 0;
-  const isEmpty = noState || myState?.state?.[GRIDS.DECK]?.length === 0;
 
   if (myState?.state === undefined && name) {
     return (
