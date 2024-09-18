@@ -1,16 +1,25 @@
 import { useCreateLobby } from "@/lib/hooks";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Box, Divider, Flex, Grid, HStack } from "styled-system/jsx";
 import { button, input } from "styled-system/recipes";
 import { css } from "styled-system/css";
 
+import { FaDice as IconDice } from "react-icons/fa6";
+import { FaRegCopy as IconCopy } from "react-icons/fa";
+import { generateRandomName } from "./random-names";
+import { useCopyToClipboard } from "@/utils/hooks/useCopy";
+import toast from "react-hot-toast";
+
 export const CreateLobby = () => {
-  const { push } = useRouter();
+  const { push, query } = useRouter();
+  const { gid } = query;
+
+  const [, copy] = useCopyToClipboard();
   const [fields, setFields] = useState({ name: "", gid: "" });
-  const gidRef = useRef(null);
-  const nameRef = useRef(null);
+  const gidRef = useRef<HTMLInputElement>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
   const { refetch } = useCreateLobby({
     gidRef,
     nameRef,
@@ -19,6 +28,17 @@ export const CreateLobby = () => {
     push({ query: { ...fields } });
     refetch(undefined);
   }
+
+  useEffect(() => {
+    if (gid) {
+      console.log({ gid }, "xxx");
+      setFields((prev) => ({
+        ...prev,
+        gid: gid as string,
+      }));
+    }
+  }, [gid, query]);
+
   return (
     <Grid
       w="100vw"
@@ -37,37 +57,94 @@ export const CreateLobby = () => {
           p="2rem"
           borderRadius="1rem"
         >
-          <img
-            src="/logo.svg"
-            alt="logo"
-            style={{ width: "100px", margin: "0 auto" }}
-          />
-          <input
-            ref={nameRef}
-            placeholder="Your name"
-            onChange={(e) =>
-              setFields((prev) => ({
-                ...prev,
-                name: e.target.value,
-              }))
-            }
-            className={input()}
-          />
+          <Link href="/">
+            <img
+              src="/logo.svg"
+              alt="logo"
+              style={{ width: "100px", margin: "0 auto" }}
+            />
+          </Link>
+          <HStack>
+            <IconDice
+              className={DiceStyle}
+              onClick={() =>
+                setFields((prev) => ({
+                  ...prev,
+                  name: generateRandomName(),
+                }))
+              }
+            />
+            <input
+              ref={nameRef}
+              placeholder="Your name"
+              value={fields.name}
+              onChange={(e) =>
+                setFields((prev) => ({
+                  ...prev,
+                  name: e.target.value,
+                }))
+              }
+              className={input()}
+            />
+          </HStack>
 
-          <input
-            ref={gidRef}
-            placeholder="Lobby name"
-            onChange={(e) =>
-              setFields((prev) => ({
-                ...prev,
-                gid: e.target.value,
-              }))
-            }
-            className={input()}
-          />
-          <button className={button()} onClick={onSubmit}>
-            submit
-          </button>
+          <HStack>
+            <IconDice
+              className={DiceStyle}
+              onClick={() =>
+                setFields((prev) => ({
+                  ...prev,
+                  gid: generateRandomName(),
+                }))
+              }
+            />
+            <input
+              ref={gidRef}
+              placeholder="Lobby name"
+              value={fields.gid}
+              onChange={(e) =>
+                setFields((prev) => ({
+                  ...prev,
+                  gid: e.target.value,
+                }))
+              }
+              className={input()}
+            />
+          </HStack>
+
+          <Box w="100%">
+            <button
+              className={button()}
+              onClick={onSubmit}
+              style={{ width: "100%" }}
+            >
+              Create lobby
+            </button>
+            {fields.gid && (
+              <HStack
+                justifyContent="center"
+                mt="1rem"
+                cursor="pointer"
+                transition="all 0.25s ease"
+                _hover={{
+                  transform: "scale(1.1)",
+                }}
+                _active={{
+                  transform: "scale(1.05)",
+                }}
+                onClick={() => {
+                  const text = `http://spells.bar/online?gid=${fields.gid}`;
+                  copy(text);
+                  toast.success(`Copied to clipboard`);
+                }}
+              >
+                <IconCopy />
+                <p style={{ width: "fit-content" }}>
+                  share this lobby with a friend
+                </p>
+              </HStack>
+            )}
+          </Box>
         </Flex>
         <Flex
           mt="1rem"
@@ -86,7 +163,7 @@ export const CreateLobby = () => {
           </p>
           <ul style={{ listStyle: "inside" }}>
             <li>Enter a name for yourself and a lobby name</li>
-            <li>Find a deck and copy it's TTS export link</li>
+            <li>Find a deck and copy it&apos;s TTS export link</li>
             <li>Load your deck</li>
             <li>Share the lobby name for your opponent to connect to</li>
           </ul>
@@ -110,6 +187,7 @@ export const CreateLobby = () => {
       <Box className={fallingCardsContainer}>
         {cards.slice(0, 6).map((img, index, original) => (
           <img
+            key={"image" + index}
             src={`https://card.cards.army/cards/50/${img}.webp`}
             alt={"card" + index}
             className={fallingCard}
@@ -176,4 +254,17 @@ const fallingCard = css({
   "&:nth-child(4)": { animationDelay: "6s" },
   "&:nth-child(5)": { animationDelay: "8s" },
   // Add more nth-child styles for additional cards
+});
+
+const DiceStyle = css({
+  userSelect: "none",
+  transform: "scale(1)",
+  transition: "all 0.25s ease",
+  cursor: "pointer",
+  _hover: {
+    transform: "scale(1.25)",
+  },
+  _active: {
+    transform: "scale(1.1)",
+  },
 });

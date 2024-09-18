@@ -28,7 +28,7 @@ const keyframes = {
   },
   fall: {
     "0%": {
-      top: "-150px",
+      top: "-400px",
       left: "500px", // Random left position across the viewport width
     },
     "100%": {
@@ -37,7 +37,10 @@ const keyframes = {
     },
   },
   sway: {
-    "0%": { transform: "rotate(0deg)" },
+    "0%": { transform: "rotate(0deg)", opacity: 0 },
+    "5%": {
+      opacity: 1,
+    },
     "100%": { transform: "rotate(10deg)" },
   },
 };
