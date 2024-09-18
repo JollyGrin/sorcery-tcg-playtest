@@ -10,6 +10,7 @@ export const HowToPlay = () => {
       bg="rgba(200,100,0,0.5)"
       color="white"
       backdropFilter="blur(5px) brightness(90%)"
+      boxShadow="0 3px 6px rgba(0,0,0,0.5)"
       p="1rem"
       borderRadius="0.5rem"
       direction="column"
