@@ -99,7 +99,6 @@ const Body = () => {
           setPlayerState()({
             state,
             data: myState?.data ?? initGameData,
-            timestamp: Date.now(),
             joinTimestamp: Date.now(),
           });
         }}
