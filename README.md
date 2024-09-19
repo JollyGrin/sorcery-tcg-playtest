@@ -34,6 +34,6 @@ Playtest Sorcery TCG in the browser
     - draw from bottom
 - [ ] add remaining / total mana
 - [ ] roll dice (d6/d20)
-- [ ] grid numbers 1-20
+- [x] grid numbers 1-20
 
 
