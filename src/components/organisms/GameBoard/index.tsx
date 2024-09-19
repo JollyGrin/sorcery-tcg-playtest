@@ -29,6 +29,7 @@ export const GameBoard = ({
   });
 
   const name = query?.name ?? "p1";
+  // online will send reversed, solo will not and default to p2
   const isReversed = reversed ?? name === "p2";
 
   return (
