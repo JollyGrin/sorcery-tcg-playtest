@@ -88,6 +88,7 @@ const Step = (props: { img: string; title: string; desc: ReactNode }) => {
         {props.title}
       </p>
       <img
+        alt="step background"
         src={`/bg/${props.img}.png`}
         style={{
           maxWidth: "250px",
