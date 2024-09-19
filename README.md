@@ -27,7 +27,7 @@ Playtest Sorcery TCG in the browser
 - [ ] spawn card/token modal
     - cache the sorcery api data on cards.army
     - make a modal that spawns a card to your hand
-- [ ] add counters on cards
+- [x] add counters on cards
     - some cards have effects that require counter on the card
 - [ ] manipulation action window:
     - move card from top of deck to bottom
