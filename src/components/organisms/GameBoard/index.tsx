@@ -5,14 +5,8 @@ import { DroppableGridItem } from "@/components/molecules/DropGridItem";
 import { DndContext, DragOverlay } from "@dnd-kit/core";
 import { useHandleDrag } from "./useHandleDrag";
 import { CardImage } from "@/components/atoms/mock-cards/card";
-import { CardImage as FullCard } from "@/components/atoms/card-view/card";
-import { SortableItem } from "@/components/molecules/SortItem";
 import { Box } from "styled-system/jsx";
-import { Modal } from "@/components/atoms/Modal";
-
-import { useState } from "react";
-import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
-import { GameCard, GameState, PlayerDataProps } from "@/types/card";
+import { GameState, PlayerDataProps } from "@/types/card";
 import { GRIDS } from "./constants";
 import { useRouter } from "next/router";
 import { SortItemWrapper } from "./SortItemWrapper";
