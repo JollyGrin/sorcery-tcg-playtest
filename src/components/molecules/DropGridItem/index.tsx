@@ -36,7 +36,18 @@ export const DroppableGridItem = (props: {
         h="100%"
         bg={isOver ? "green.200" : "gray.200"}
         zIndex={-1000}
-      />
+      >
+        <p
+          style={{
+            position: "absolute",
+            opacity: 0.25,
+            bottom: "0.75rem",
+            left: "calc(50% - 1rem)",
+          }}
+        >
+          {props.gridIndex <= 19 ? props.gridIndex + 1 : ""}
+        </p>
+      </Box>
     </div>
   );
 };
