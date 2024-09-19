@@ -11,11 +11,13 @@ import { useRouter } from "next/router";
 import { css } from "styled-system/css";
 
 export const GameHeader = (props: { players?: PlayersState }) => {
-  const { query } = useRouter();
+  const { query, pathname } = useRouter();
   const [, copy] = useCopyToClipboard();
   const playerKeys = Object.keys(props?.players ?? {}).filter(
     (key) => key !== "GLOBAL",
   );
+
+  const isSolo = pathname === "/solo";
   return (
     <div
       style={{
@@ -31,11 +33,21 @@ export const GameHeader = (props: { players?: PlayersState }) => {
       }}
     >
       {playerKeys?.map((key) => (
-        <Link key={key} href={{ query: { name: key } }}>
-          {props?.players?.[key] && (
-            <PlayerBox player={props?.players[key]} name={key} />
+        <>
+          {isSolo ? (
+            <Link key={key} href={{ query: { name: key } }}>
+              {props?.players?.[key] && (
+                <PlayerBox player={props?.players[key]} name={key} />
+              )}
+            </Link>
+          ) : (
+            <>
+              {props?.players?.[key] && (
+                <PlayerBox player={props?.players[key]} name={key} />
+              )}
+            </>
           )}
-        </Link>
+        </>
       ))}
       <HStack
         position="absolute"
