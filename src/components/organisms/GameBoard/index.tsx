@@ -15,6 +15,7 @@ import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
 import { GameCard, GameState, PlayerDataProps } from "@/types/card";
 import { GRIDS } from "./constants";
 import { useRouter } from "next/router";
+import { SortItemWrapper } from "./SortItemWrapper";
 
 export type GameStateActions = {
   gridItems: GameState;
@@ -87,98 +88,5 @@ export const GameBoard = ({
         ) : null}
       </DragOverlay>
     </DndContext>
-  );
-};
-
-const SortItemWrapper = ({
-  amountOfCards = 0,
-  card,
-  gridIndex,
-  cardIndex,
-  ...props
-}: {
-  card: GameCard;
-  gridIndex: number;
-  cardIndex: number;
-  amountOfCards?: number;
-} & GameStateActions) => {
-  const { query } = useRouter();
-  const name = query?.name as string;
-
-  // opens modal with card actions
-  const [preview, setPreview] = useState(false);
-
-  // Adjusts the height of card based on amount in cell
-  const heightCalc = () => {
-    if (amountOfCards === 1) return 120;
-    if (amountOfCards === 2) return 75;
-    if (amountOfCards === 3) return 65;
-    return 90 - Math.min(amountOfCards, 4) * 15;
-  };
-
-  const height = `${heightCalc()}px`;
-
-  const isTapped = card.isTapped;
-  function toggleTap() {
-    const newGrid = [...props.gridItems];
-    const card = newGrid[gridIndex][cardIndex];
-    newGrid[gridIndex][cardIndex] = {
-      ...card,
-      isTapped: !card.isTapped,
-    } as GameCard;
-    props.setGridItems(newGrid);
-  }
-
-  return (
-    <div
-      onClick={(e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        toggleTap();
-      }}
-      onContextMenu={(e) => {
-        e.preventDefault();
-        setPreview(true);
-      }}
-      data-testid={"sortable-item-wrapper-" + card.id}
-      style={{
-        height: heightCalc() + 7 + "px",
-        transform: isTapped ? "rotate(5deg)" : "",
-        filter: isTapped ? "saturate(0)" : "",
-        transition: "all 0.25s ease",
-      }}
-    >
-      <SortableItem
-        key={`card-${gridIndex}-${cardIndex}`}
-        data-testid={"sortable-item-" + card.id}
-        id={card.id}
-        gridIndex={gridIndex}
-        index={cardIndex}
-      >
-        {card.type === "site" && (
-          <CardAtlas
-            height={height}
-            img={card.img}
-            isMine={name === card.playerName}
-          />
-        )}
-        {card.type !== "site" && (
-          <CardImage
-            height={height}
-            img={card.img}
-            isMine={name === card.playerName}
-          />
-        )}
-      </SortableItem>
-      <Modal
-        wrapperProps={{ open: preview, onOpenChange: setPreview }}
-        content={
-          <Box h="600px" w="460px">
-            {card.type === "site" && <FullCardAtlas img={card.img} />}
-            {card.type !== "site" && <FullCard img={card.img} />}
-          </Box>
-        }
-      />
-    </div>
   );
 };
