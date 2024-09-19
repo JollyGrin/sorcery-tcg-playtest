@@ -91,7 +91,7 @@ const Resource = (props: { value: number; icon: keyof PlayerData }) => (
   <HStack gap={1}>
     <img
       src={`/icon/${props.icon}.webp`}
-      alt="fire"
+      alt="resource icon"
       style={{ height: "1rem", width: "1rem" }}
     />
     <p style={{ fontFamily: "monospace" }}>{props.value}</p>

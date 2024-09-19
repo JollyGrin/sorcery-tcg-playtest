@@ -25,6 +25,7 @@ type GameProps = {
   id: string;
   isTapped?: boolean;
   playerName?: string;
+  counter?: number;
 };
 
 /**
