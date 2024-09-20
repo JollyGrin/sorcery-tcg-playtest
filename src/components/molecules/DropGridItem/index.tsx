@@ -1,9 +1,12 @@
-import { CSSProperties, ReactNode } from "react";
+import { CSSProperties, ReactNode, useState } from "react";
 import { css } from "styled-system/css";
 import { Box } from "styled-system/jsx";
 import { useDroppable } from "@dnd-kit/core";
+import { Modal } from "@/components/atoms/Modal";
+import { GRIDS } from "@/components/organisms/GameBoard/constants";
 
 export const DroppableGridItem = (props: {
+  contextMenu: ReactNode;
   children: ReactNode;
   id: string;
   gridIndex: number;
@@ -14,6 +17,9 @@ export const DroppableGridItem = (props: {
     data: { gridIndex: props.gridIndex },
   });
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const isGrid = props.gridIndex <= GRIDS.GRID_20;
   return (
     <div
       data-testid={"droppable-" + props.id}
@@ -26,6 +32,10 @@ export const DroppableGridItem = (props: {
       })}
       onContextMenu={(e) => {
         e.preventDefault();
+        const Div = e.target as Element;
+        const testId = Div.getAttribute("data-testid");
+        const [isDroppable] = testId?.split("-") ?? [];
+        isDroppable && setIsOpen(true);
       }}
     >
       {props.children}
@@ -48,6 +58,13 @@ export const DroppableGridItem = (props: {
           {props.gridIndex <= 19 ? props.gridIndex + 1 : ""}
         </p>
       </Box>
+      <Modal
+        wrapperProps={{
+          open: isGrid && isOpen,
+          onOpenChange: () => setIsOpen(false),
+        }}
+        content={props.contextMenu}
+      />
     </div>
   );
 };
