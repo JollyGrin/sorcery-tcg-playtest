@@ -76,4 +76,6 @@ export const initGameData: PlayerData = {
   fire: 0,
   water: 0,
   life: 20,
+  mana: 0,
+  manaRemaining: 0,
 };
