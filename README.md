@@ -1,4 +1,13 @@
-Playtest Sorcery TCG in the browser
+# Playtest Sorcery TCG in the browser
+https://spells.bar
+
+spells.bar an open-source project and is not affiliated with Sorcery: Contested Realm or Erik's Curiosa Limited.
+All rights to Sorcery and its content are owned by Erik's Curiosa Limited.
+
+# Server
+Spells.bar uses the websocket go server from https://github.com/JollyGrin/unbrewed-p2p
+Find instructions if you wish to setup your own game server.
+
 
 ## Todo 
 - [ ] view enemy graveyard
