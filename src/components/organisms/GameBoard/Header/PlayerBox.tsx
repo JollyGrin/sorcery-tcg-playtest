@@ -1,19 +1,18 @@
 import { PlayerData, PlayersState } from "@/types/card";
 import { GRIDS } from "../constants";
 import { Flex, HStack } from "styled-system/jsx";
-
 import { useMemo } from "react";
 import { IconType } from "react-icons";
 import { JsxStyleProps } from "styled-system/types";
-
-import { PiCardsThreeFill as IconDeck } from "react-icons/pi";
-import { TbCardsFilled as IconHand } from "react-icons/tb";
-import { TbMap2 as IconMap } from "react-icons/tb";
-import { GiPirateGrave as IconGrave } from "react-icons/gi";
-import { GiHealthNormal as IconHealth } from "react-icons/gi";
 import { cva } from "styled-system/css/cva.mjs";
-
 import { mix } from "polished";
+import { PiCardsThreeFill as IconDeck } from "react-icons/pi";
+import { TbCardsFilled as IconHand, TbMap2 as IconMap } from "react-icons/tb";
+import {
+  GiBoltSpellCast as IconMana,
+  GiPirateGrave as IconGrave,
+  GiHealthNormal as IconHealth,
+} from "react-icons/gi";
 
 export const PlayerBox = ({
   name,
@@ -70,6 +69,16 @@ export const PlayerBox = ({
         <Resource icon="fire" value={player.data.fire} />
         <Resource icon="water" value={player.data.water} />
         <Resource icon="wind" value={player.data.wind} />
+        <IconMana color="gray" size={15} style={{ marginLeft: "0.25rem" }} />
+        <p
+          style={{
+            color: "gray",
+          }}
+        >
+          {player.data.manaRemaining}
+          {"/"}
+          {player.data.mana}
+        </p>
       </Flex>
 
       <Flex
