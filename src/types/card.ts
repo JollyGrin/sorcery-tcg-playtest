@@ -57,6 +57,8 @@ export type PlayerData = {
   fire: number;
   water: number;
   life: number;
+  mana: number;
+  manaRemaining: number;
 };
 export type PlayerState = {
   state: GameState;
