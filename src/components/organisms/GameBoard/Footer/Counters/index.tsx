@@ -1,18 +1,9 @@
-import { PlayerData, PlayerDataProps, PlayerState } from "@/types/card";
-import { useHover } from "@/utils/hooks/useHover";
+import { PlayerData, PlayerDataProps } from "@/types/card";
 import { useRouter } from "next/router";
-import { useMemo, useRef } from "react";
-import { cva } from "styled-system/css/cva.mjs";
-import { Flex, Grid, HStack, VStack } from "styled-system/jsx";
-import { button } from "styled-system/recipes";
-
-import { GiHealthNormal as IconHealth } from "react-icons/gi";
-import { GiBoltSpellCast as IconMana } from "react-icons/gi";
-
-import { mix } from "polished";
-import { Pretty } from "styled-system/types";
+import { Flex, HStack } from "styled-system/jsx";
 import { Resource } from "./Resource";
 import { ManaNumber } from "./Mana";
+import { GiBoltSpellCast as IconMana } from "react-icons/gi";
 
 export const CountersTray = (props: PlayerDataProps) => {
   const { query } = useRouter();
@@ -51,6 +42,14 @@ export const CountersTray = (props: PlayerDataProps) => {
           setValue={setField("manaRemaining")}
           value={me?.manaRemaining ?? 0}
         />
+        <p
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            setField("manaRemaining")(me?.mana ?? 0);
+          }}
+        >
+          /
+        </p>
         <ManaNumber
           type="mana"
           setValue={setField("mana")}

@@ -1,13 +1,8 @@
 import { PlayerData } from "@/types/card";
 import { useHover } from "@/utils/hooks/useHover";
-import { useMemo, useRef } from "react";
-import { cva } from "styled-system/css/cva.mjs";
+import { useRef } from "react";
 import { Grid, HStack, VStack } from "styled-system/jsx";
 import { button } from "styled-system/recipes";
-
-import { GiHealthNormal as IconHealth } from "react-icons/gi";
-
-import { mix } from "polished";
 
 // bit lengthy but maintains type safety
 type ManaKey = keyof Pick<PlayerData, "manaRemaining" | "mana">;
