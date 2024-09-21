@@ -9,7 +9,7 @@ export async function getCardsData() {
   const res = await axios.get<CardDataMinimized[]>(
     `/card-data/processed_cards.json`,
   );
-  return [...res.data, ...TOKEN_CARDS];
+  return res.data;
 }
 
 export const TOKEN_CARDS: CardDataMinimized[] = [
