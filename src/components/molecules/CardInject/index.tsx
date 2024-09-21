@@ -17,6 +17,9 @@ import { GameStateActions } from "@/components/organisms/GameBoard";
 import { Button } from "@/components/ui/button";
 import { actSpawnCard } from "@/utils/actions/card";
 import { useRouter } from "next/router";
+import { Switch } from "@/components/ui/switch";
+import { css } from "styled-system/css";
+import { TOKEN_CARDS } from "@/utils/api/cardData/api";
 
 type Status = {
   value: string;
@@ -30,10 +33,11 @@ export const CardInject = (props: {
 }) => {
   const { query } = useRouter();
   const name = query.name as string | undefined;
+  const [isChecked, setIsChecked] = useState(false);
   const { data: cards } = useCardData();
 
   const statuses: Status[] =
-    cards?.map((card) => ({
+    (isChecked ? TOKEN_CARDS : cards)?.map((card) => ({
       value: card.slug,
       label: card.name,
       type: card.type,
@@ -58,6 +62,28 @@ export const CardInject = (props: {
 
   return (
     <Box>
+      <HStack mb="1rem">
+        <p
+          className={css({
+            opacity: isChecked ? 0.5 : 1,
+          })}
+        >
+          Cards
+        </p>
+        <Switch
+          id="card-type"
+          onCheckedChange={(check) => setIsChecked(check)}
+        />
+
+        <p
+          className={css({
+            opacity: !isChecked ? 0.5 : 1,
+          })}
+        >
+          Tokens
+        </p>
+      </HStack>
+
       <Grid gridTemplateColumns="1fr 1fr">
         <Command>
           <CommandInput

@@ -1,9 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { css, cx } from "styled-system/css";
-import { muted } from "styled-system/recipes";
-import { Button } from "@/components/ui/button";
+import { css } from "styled-system/css";
 import {
   Command,
   CommandEmpty,
@@ -12,12 +10,6 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-
 import { FaChevronDown as IconChevDown } from "react-icons/fa";
 import { IconType } from "react-icons";
 
@@ -54,20 +46,9 @@ const statuses: Status[] = [
     icon: IconChevDown,
   },
 ];
-const languages = [
-  { label: "English", value: "en" },
-  { label: "French", value: "fr" },
-  { label: "German", value: "de" },
-  { label: "Spanish", value: "es" },
-  { label: "Portuguese", value: "pt" },
-  { label: "Russian", value: "ru" },
-  { label: "Japanese", value: "ja" },
-  { label: "Korean", value: "ko" },
-  { label: "Chinese", value: "zh" },
-] as const;
 
 export function ComboBox() {
-  const [open, setOpen] = React.useState(false);
+  const [, setOpen] = React.useState(false);
   const [selectedStatus, setSelectedStatus] = React.useState<Status | null>(
     null,
   );
@@ -91,10 +72,8 @@ export function ComboBox() {
             <CommandItem
               key={status.value}
               onSelect={(value) => {
-                console.log({ value });
                 const newStatus =
                   statuses.find((priority) => priority.label === value) || null;
-                console.log({ newStatus });
                 setSelectedStatus(newStatus);
                 setInput(newStatus?.label ?? "");
                 setOpen(false);

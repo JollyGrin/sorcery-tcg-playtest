@@ -6,7 +6,7 @@ import { Modal } from "@/components/atoms/Modal";
 import { GRIDS } from "@/components/organisms/GameBoard/constants";
 
 export const DroppableGridItem = (props: {
-  contextMenu: ReactNode;
+  contextMenu?: ReactNode;
   children: ReactNode;
   id: string;
   gridIndex: number;
@@ -63,7 +63,7 @@ export const DroppableGridItem = (props: {
           open: isGrid && isOpen,
           onOpenChange: () => setIsOpen(false),
         }}
-        content={props.contextMenu}
+        content={props?.contextMenu}
       />
     </div>
   );
