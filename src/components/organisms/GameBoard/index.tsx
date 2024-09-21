@@ -10,6 +10,7 @@ import { GameState, PlayerDataProps } from "@/types/card";
 import { GRIDS } from "./constants";
 import { useRouter } from "next/router";
 import { SortItemWrapper } from "./SortItemWrapper";
+import { CardInject } from "@/components/molecules/CardInject";
 
 export type GameStateActions = {
   gridItems: GameState;
@@ -55,6 +56,14 @@ export const GameBoard = ({
               id={gridIndex.toString()}
               gridIndex={gridIndex}
               style={{ overflowY: "auto", overflowX: "clip" }}
+              contextMenu={
+                <Box maxW="900px" w="100%">
+                  <CardInject
+                    gridIndex={gridIndex}
+                    gameState={{ gridItems, setGridItems }}
+                  />
+                </Box>
+              }
             >
               <SortableContext
                 id={`grid-${gridIndex}`}

@@ -33,9 +33,9 @@ export const GameHeader = (props: { players?: PlayersState }) => {
       }}
     >
       {playerKeys?.map((key) => (
-        <>
+        <div key={key}>
           {isSolo ? (
-            <Link key={key} href={{ query: { name: key } }}>
+            <Link href={{ query: { name: key } }}>
               {props?.players?.[key] && (
                 <PlayerBox player={props?.players[key]} name={key} />
               )}
@@ -47,7 +47,7 @@ export const GameHeader = (props: { players?: PlayersState }) => {
               )}
             </>
           )}
-        </>
+        </div>
       ))}
       <HStack
         position="absolute"
