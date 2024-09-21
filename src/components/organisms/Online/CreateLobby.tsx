@@ -162,9 +162,8 @@ export const CreateLobby = () => {
             enforcement, no accounts, and loads decks from curiosa and realms.
           </p>
           <ul style={{ listStyle: "inside" }}>
-            <li>Enter a name for yourself and a lobby name</li>
-            <li>Find a deck and copy it&apos;s TTS export link</li>
-            <li>Load your deck</li>
+            <li>Enter a name for yourself and lobby</li>
+            <li>Load a deck via Curiosa/Realms via TTS export links</li>
             <li>Share the lobby name for your opponent to connect to</li>
           </ul>
           <Divider opacity={0.1} />
@@ -181,6 +180,14 @@ export const CreateLobby = () => {
               <p>Realms</p>
             </Link>
           </HStack>
+          <Divider opacity={0.1} />
+          <p>In game tips:</p>
+          <ul style={{ listStyle: "inside" }}>
+            <li>Click on decks to draw, right click to view</li>
+            <li>Drag cards between fields and within them</li>
+            <li>Right click on cards for more actions.</li>
+            <li>Spawn cards or tokens by right clicking empty grid</li>
+          </ul>
         </Flex>
       </Box>
 
