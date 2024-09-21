@@ -70,16 +70,19 @@ export const ActScryX = (props: GameStateActions) => {
       />
       <Flex flexWrap="wrap" maxW="500px" maxH="600px" overflowY="auto" gap={2}>
         {scry > 0 &&
-          deck?.slice(0, scry).map((card) => (
-            <img
-              key={card.id + card.img}
-              src={getCardImage(card.img)}
-              alt="card-img"
-              className={css({
-                width: "150px",
-              })}
-            />
-          ))}
+          deck
+            ?.reverse()
+            ?.slice(0, scry)
+            .map((card) => (
+              <img
+                key={card.id + card.img}
+                src={getCardImage(card.img)}
+                alt="card-img"
+                className={css({
+                  width: "150px",
+                })}
+              />
+            ))}
       </Flex>
     </VStack>
   );
