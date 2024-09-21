@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { LiteralUnion } from "styled-system/types";
 
 type KeyboardEventKey = LiteralUnion<
+  | PunctuationKeys
   | ModifierKeys
   | WhitespaceKeys
   | NavigationKeys
@@ -9,14 +10,6 @@ type KeyboardEventKey = LiteralUnion<
   | NumericKeypadKeys,
   string
 >;
-
-// type KeyboardEventKey =
-//   | string
-//   | ModifierKeys
-//   | WhitespaceKeys
-//   | NavigationKeys
-//   | FunctionKeys
-//   | NumericKeypadKeys;
 
 export function useKeyPress(targetKey: KeyboardEventKey) {
   // State for keeping track of whether key is pressed
@@ -26,6 +19,7 @@ export function useKeyPress(targetKey: KeyboardEventKey) {
     // If pressed key is our target key then set to true
     // eslint-disable-next-line
     function downHandler({ key }: any) {
+      console.log({ key });
       if (!keyPressed && key === targetKey) {
         setKeyPressed(true);
         // rather than rely on keyup to unpress, use a timeout to workaround the fact that
@@ -62,7 +56,11 @@ type ModifierKeys = LiteralUnion<
   | "Symbol"
   | "SymbolLock"
 >;
+
 type WhitespaceKeys = "Enter" | "Tab" | " ";
+
+type PunctuationKeys = "?" | "!";
+
 type NavigationKeys =
   | "ArrowDown"
   | "ArrowLeft"
@@ -72,6 +70,7 @@ type NavigationKeys =
   | "Home"
   | "PageDown"
   | "PageUp";
+
 type FunctionKeys =
   | "F1"
   | "F2"
@@ -97,6 +96,7 @@ type FunctionKeys =
   | "Soft2"
   | "Soft3"
   | "Soft4";
+
 type NumericKeypadKeys =
   | "Decimal"
   | "Key11"
