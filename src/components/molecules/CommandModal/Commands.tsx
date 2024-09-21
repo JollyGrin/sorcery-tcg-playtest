@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { actDrawDeck, actDrawDeckBottom } from "@/utils/actions";
 import { useState } from "react";
 import { css } from "styled-system/css";
-import { Flex, VStack } from "styled-system/jsx";
+import { Box, Flex, VStack } from "styled-system/jsx";
 import { input } from "styled-system/recipes";
 
 export const actions = [
@@ -71,17 +71,22 @@ export const ActScryX = (props: GameStateActions) => {
       <Flex flexWrap="wrap" maxW="500px" maxH="600px" overflowY="auto" gap={2}>
         {scry > 0 &&
           deck
-            ?.reverse()
+            ?.reverse() // top of deck is last item in array
             ?.slice(0, scry)
-            .map((card) => (
-              <img
-                key={card.id + card.img}
-                src={getCardImage(card.img)}
-                alt="card-img"
-                className={css({
-                  width: "150px",
-                })}
-              />
+            .map((card, cardIndex, original) => (
+              <Box>
+                <p>{deck.length}</p>
+                <p>{cardIndex}</p>
+                <p>{deck.length - cardIndex}</p>
+                <img
+                  key={card.id + card.img}
+                  src={getCardImage(card.img)}
+                  alt="card-img"
+                  className={css({
+                    width: "150px",
+                  })}
+                />
+              </Box>
             ))}
       </Flex>
     </VStack>
