@@ -5,7 +5,10 @@ import { useKeyPress } from "@/utils/hooks/useKeyPress";
 import { Command } from "./Command";
 import { useEffect, useState } from "react";
 
-export const CommandModalWrapper = (props: Children & GameStateActions) => {
+export const CommandModalWrapper = ({
+  children,
+  ...props
+}: Children & GameStateActions) => {
   const { isOpen, onClose } = useDisclosure();
 
   return (
@@ -16,10 +19,10 @@ export const CommandModalWrapper = (props: Children & GameStateActions) => {
             open: isOpen,
             onOpenChange: onClose,
           }}
-          content={<Command />}
+          content={<Command {...props} />}
         />
       </div>
-      {props.children}
+      {children}
     </div>
   );
 };

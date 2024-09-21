@@ -19,7 +19,6 @@ export function useKeyPress(targetKey: KeyboardEventKey) {
     // If pressed key is our target key then set to true
     // eslint-disable-next-line
     function downHandler({ key }: any) {
-      console.log({ key });
       if (!keyPressed && key === targetKey) {
         setKeyPressed(true);
         // rather than rely on keyup to unpress, use a timeout to workaround the fact that
