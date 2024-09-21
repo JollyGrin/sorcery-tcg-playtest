@@ -24,7 +24,7 @@ Find instructions if you wish to setup your own game server.
 
 
 ## Feedback
-- [ ] spawn card/token modal
+- [x] spawn card/token modal
     - cache the sorcery api data on cards.army
     - make a modal that spawns a card to your hand
     - will cover rubble and many other mechanics
