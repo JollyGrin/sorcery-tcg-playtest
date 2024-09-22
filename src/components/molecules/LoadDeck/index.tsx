@@ -100,7 +100,7 @@ const InputLoader = ({
   provider: "curiosa" | "realms" | "four cores";
 }) => {
   // if the deckId is a url, find the ID in the url
-  const [_source, id] = getDeckQuery(deckId)?.split("-") ?? [];
+  const [, id] = getDeckQuery(deckId)?.split("-") ?? [];
   const { data: deck } = useDeck(id ?? deckId);
 
   const cards = [
