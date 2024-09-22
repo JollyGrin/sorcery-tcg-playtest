@@ -20,6 +20,10 @@ export const actions = [
   //   label: "Roll a D6",
   // },
   {
+    value: "spawn_token",
+    label: "Spawn a token onto the grid",
+  },
+  {
     value: "draw_deck_top",
     label: "Draw top of spellbook",
   },
@@ -95,6 +99,7 @@ export const ActScryX = ({
             ?.slice(0, scry)
             .map((card, cardIndex) => (
               <Box
+                key={card.id + cardIndex}
                 onClick={() => moveCardToTopOfDeck(deck.length - cardIndex - 1)}
               >
                 <Button fontSize="0.65rem" paddingBlock={0} h="1rem">
