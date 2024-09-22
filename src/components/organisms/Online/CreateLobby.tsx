@@ -158,11 +158,12 @@ export const CreateLobby = () => {
           <p style={{ fontWeight: 500, fontSize: "1.5rem" }}>How to play</p>
           <p>
             Play Sorcery TCG online with a friend! SpellsBar has no rules
-            enforcement, no accounts, and loads decks from curiosa and realms.
+            enforcement, no accounts, and loads decks from curiosa, realms, or
+            fourcores.
           </p>
           <ul style={{ listStyle: "inside" }}>
             <li>Enter a name for yourself and lobby</li>
-            <li>Load a deck via Curiosa/Realms via TTS export links</li>
+            <li>Load a deck via TTS export links</li>
             <li>Share the lobby name for your opponent to connect to</li>
           </ul>
           <Divider opacity={0.1} />
@@ -177,6 +178,10 @@ export const CreateLobby = () => {
               target="_blank"
             >
               <p>Realms</p>
+            </Link>
+
+            <Link href="https://fourcores.xyz/" target="_blank">
+              <p>Four cores</p>
             </Link>
           </HStack>
           <Divider opacity={0.1} />
