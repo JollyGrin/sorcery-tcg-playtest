@@ -66,7 +66,30 @@ export const GameFooter = (props: GameStateActions & PlayerDataProps) => {
               h="100%"
               justifyContent="start"
               overflowX="auto"
+              position="relative"
             >
+              <Box
+                position="absolute"
+                bottom="0.25rem"
+                left="0.5rem"
+                opacity={0.25}
+              >
+                <p>
+                  Right click cards for options. Press{" "}
+                  <span
+                    style={{
+                      borderRadius: "0.25rem",
+                      background: "rgba(0,0,0,0.2)",
+                      padding: "2px 4px",
+                      fontFamily: "monospace",
+                      borderBottom: "solid 1px black",
+                    }}
+                  >
+                    ?
+                  </span>{" "}
+                  for more commands
+                </p>
+              </Box>
               {props.gridItems?.[gridIndex]?.map((card, index) => (
                 <HandCard
                   key={card.id + index}
