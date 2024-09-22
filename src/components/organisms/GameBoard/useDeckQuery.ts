@@ -16,7 +16,7 @@ type DECK_ID = `${DECK_TYPE}-${string}`;
 
 export const useDeckQuery = (props: {
   name: string;
-  stateActions: GameStateActions;
+  stateActions?: GameStateActions;
 }) => {
   const { query } = useRouter();
   const deckQuery = (query[props.name] ?? "") as DECK_ID;
@@ -26,6 +26,7 @@ export const useDeckQuery = (props: {
   const { data: deck } = useDeck(deckId ?? "");
 
   useEffect(() => {
+    if (!props.stateActions?.gridItems) return;
     if (deckQuery && deck && !hasDeck(props.stateActions.gridItems)) {
       setDeck({
         deck,
