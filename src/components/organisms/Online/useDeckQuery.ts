@@ -7,7 +7,6 @@ import toast from "react-hot-toast";
 import {
   useCuriosaDeck,
   useRealmsAppDeck,
-  useFourCoresDeck,
 } from "@/utils/api/curiosa/useCuriosa";
 import { useEffect } from "react";
 

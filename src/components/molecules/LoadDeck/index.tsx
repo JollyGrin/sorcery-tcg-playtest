@@ -1,6 +1,7 @@
 import { GameStateActions } from "@/components/organisms/GameBoard";
 import {
   useCuriosaDeck,
+  useFourCoresDeck,
   useRealmsAppDeck,
 } from "@/utils/api/curiosa/useCuriosa";
 import { ReactNode, useState } from "react";
@@ -50,7 +51,7 @@ export const LoadDeck = (
         >
           {props.children}
           <Tabs
-            tabs={["curiosa", "realms"]}
+            tabs={["curiosa", "realms", "four cores"]}
             content={[
               <InputLoader
                 key="curiosa"
@@ -66,7 +67,15 @@ export const LoadDeck = (
                 setDeckId={setDeckId}
                 setDeck={setDeck}
                 useDeck={useRealmsAppDeck}
-                provider="realms app"
+                provider="realms"
+              />,
+              <InputLoader
+                key="fourcores"
+                deckId={deckId}
+                setDeckId={setDeckId}
+                setDeck={setDeck}
+                useDeck={useFourCoresDeck}
+                provider="four cores"
               />,
             ]}
           />
@@ -87,7 +96,7 @@ const InputLoader = ({
   setDeckId(value: string): void;
   setDeck(deck?: CuriosaResponse): void;
   useDeck(deckId: string): UseQueryResult<CuriosaResponse, Error>;
-  provider: "curiosa" | "realms app";
+  provider: "curiosa" | "realms" | "four cores";
 }) => {
   const { data: deck } = useDeck(deckId);
 
