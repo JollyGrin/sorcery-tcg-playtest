@@ -78,3 +78,38 @@ export async function getRealmsAppDeck(_deckId: string) {
 
   return newResponse;
 }
+
+export async function getFourCoresDeck(_deckId: string) {
+  let deckId;
+  const regex = /\/(\d+)\//;
+  const match = _deckId.match(regex);
+
+  // incase the user submits the TTS link, this handles it
+  if (match) {
+    deckId = match[1];
+  } else {
+    deckId = _deckId;
+  }
+
+  const res = await axios.get<RealmsAppResponse>(
+    `${CORS_PROXY}https://fourcores.xyz/api/tts/${deckId}`,
+  );
+
+  /**
+   * Convert to Curiosa card
+   * */
+  function mapper(card: RealmsCard) {
+    return { ...card, quantity: card.count, identifier: card.id } as Card;
+  }
+  /**
+   * Normalize to Curiosa Response
+   * */
+  const newResponse: CuriosaResponse = {
+    avatar: res.data.avatar.map(mapper),
+    spellbook: res.data.spellbook.map(mapper),
+    atlas: res.data.atlas.map(mapper),
+    sideboard: [],
+  };
+
+  return newResponse;
+}
