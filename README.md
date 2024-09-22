@@ -11,7 +11,7 @@ Find instructions if you wish to setup your own game server.
 
 ## Todo 
 - [ ] view enemy graveyard
-- [ ] add four cores deck import https://fourcores.xyz/api/tts/T33jdoAJy8PGY9Agq1fo
+- [x] add four cores deck import https://fourcores.xyz/api/tts/T33jdoAJy8PGY9Agq1fo
 
 ## Feature ideas
 - [ ] support 4players
