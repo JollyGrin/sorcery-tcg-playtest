@@ -5,7 +5,7 @@ import {
   initGameData,
   initGameState,
 } from "@/components/organisms/GameBoard/constants";
-import { useDeckQuery } from "@/components/organisms/SoloPage/useDeckQuery";
+import { useDeckQuery } from "@/components/organisms/GameBoard/useDeckQuery";
 import { GameState, PlayersState } from "@/types/card";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
@@ -47,11 +47,15 @@ export default function GamePage() {
    * Query the URL bar to get the decks and load them
    * */
   useDeckQuery({
-    p1: {
+    name: "p1",
+    stateActions: {
       gridItems: players?.["p1"].state,
       setGridItems: setPlayerState("p1"),
     },
-    p2: {
+  });
+  useDeckQuery({
+    name: "p2",
+    stateActions: {
       gridItems: players?.["p2"].state,
       setGridItems: setPlayerState("p2"),
     },

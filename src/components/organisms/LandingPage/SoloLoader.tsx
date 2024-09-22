@@ -5,30 +5,9 @@ import { button, input } from "styled-system/recipes";
 import { css } from "styled-system/css";
 import { FaDice as IconDice } from "react-icons/fa6";
 import { DECK_URLS } from "./constants";
+import { getDeckQuery } from "../GameBoard/useDeckQuery";
 
 export const Solo = () => {
-  // detect if realms or curiosa and return query
-  function getDeckQuery(deckId: string) {
-    const urlParts = deckId.split("/");
-    const isCuriosa = urlParts.includes("curiosa.io");
-    const isRealms = urlParts.includes("www.realmsapp.com");
-
-    let deckQuery;
-
-    if (isCuriosa) {
-      const regex = /\/([^\/]+)$/;
-      const match = deckId.match(regex);
-      if (match) deckQuery = `curiosa-${match[1]}`;
-    }
-    if (isRealms) {
-      const regex = /\/(\d+)\//;
-      const match = deckId.match(regex);
-      if (match) deckQuery = `realms-${match[1]}`;
-    }
-
-    return deckQuery;
-  }
-
   const [deckIds, setDeckIds] = useState({
     p1: "",
     p2: "",

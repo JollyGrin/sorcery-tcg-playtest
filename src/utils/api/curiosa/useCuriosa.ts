@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getCuriosaDeck, getRealmsAppDeck } from "./api";
+import { getCuriosaDeck, getFourCoresDeck, getRealmsAppDeck } from "./api";
 
 export const useCuriosaDeck = (deckId?: string) => {
   return useQuery({
@@ -13,6 +13,14 @@ export const useRealmsAppDeck = (deckId?: string) => {
   return useQuery({
     queryKey: ["deck:realms", deckId],
     queryFn: () => getRealmsAppDeck(deckId as string),
+    enabled: !!deckId,
+  });
+};
+
+export const useFourCoresDeck = (deckId?: string) => {
+  return useQuery({
+    queryKey: ["deck:fourcores", deckId],
+    queryFn: () => getFourCoresDeck(deckId as string),
     enabled: !!deckId,
   });
 };
