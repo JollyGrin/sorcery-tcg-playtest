@@ -12,6 +12,9 @@ export const Solo = () => {
     const urlParts = deckId.split("/");
     const isCuriosa = urlParts.includes("curiosa.io");
     const isRealms = urlParts.includes("www.realmsapp.com");
+    const isFourCores = urlParts.includes("fourcores.xyz");
+
+    // https://fourcores.xyz/api/tts/T33jdoAJy8PGY9Agq1fo
 
     let deckQuery;
 
@@ -24,6 +27,11 @@ export const Solo = () => {
       const regex = /\/(\d+)\//;
       const match = deckId.match(regex);
       if (match) deckQuery = `realms-${match[1]}`;
+    }
+    if (isFourCores) {
+      const regex = /\/tts\/([A-Za-z0-9]+)/;
+      const match = deckId.match(regex);
+      if (match) deckQuery = `fourcores-${match[1]}`;
     }
 
     return deckQuery;
