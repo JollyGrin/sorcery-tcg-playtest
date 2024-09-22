@@ -54,7 +54,6 @@ export const CardInject = (props: {
       type: selectedStatus?.type as SorceryCard["type"],
       playerName: name,
     };
-    console.log({ newCard });
     props.gameState.setGridItems(
       actSpawnCard(props.gameState.gridItems, props.gridIndex ?? 0, newCard),
     );

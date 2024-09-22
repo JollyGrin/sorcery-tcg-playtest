@@ -21,10 +21,8 @@ export function actShuffleDeck(state: GameState, deckType: "deck" | "atlas") {
 }
 
 export function actDrawDeck(state: GameState) {
-  // Create a shallow copy of the previous grid items array
   const newState = [...state];
 
-  // Make a copy of the deck and hand arrays, preserving their positions
   const newDeck = [...newState[GRIDS.DECK]];
   const newHand = [...newState[GRIDS.HAND]];
 
@@ -32,19 +30,15 @@ export function actDrawDeck(state: GameState) {
   const card = newDeck.pop();
   if (card) newHand.push(card);
 
-  // Update the newState array with the updated deck and hand arrays
   newState[GRIDS.DECK] = newDeck;
   newState[GRIDS.HAND] = newHand;
 
-  // Return the updated newState array to trigger a re-render
   return newState;
 }
 
 export function actDrawDeckBottom(state: GameState) {
-  // Create a shallow copy of the previous grid items array
   const newState = [...state];
 
-  // Make a copy of the deck and hand arrays, preserving their positions
   const newDeck = [...newState[GRIDS.DECK]];
   const newHand = [...newState[GRIDS.HAND]];
 
@@ -52,16 +46,13 @@ export function actDrawDeckBottom(state: GameState) {
   const card = newDeck.shift();
   if (card) newHand.push(card);
 
-  // Update the newState array with the updated deck and hand arrays
   newState[GRIDS.DECK] = newDeck;
   newState[GRIDS.HAND] = newHand;
 
-  // Return the updated newState array to trigger a re-render
   return newState;
 }
 
 export function actDrawAtlas(state: GameState) {
-  // Create a shallow copy of the previous grid items array
   const newState = [...state];
 
   // Make a copy of the deck and hand arrays, preserving their positions
@@ -72,11 +63,9 @@ export function actDrawAtlas(state: GameState) {
   const card = newDeck.pop();
   if (card) newHand.push(card);
 
-  // Update the newState array with the updated deck and hand arrays
   newState[GRIDS.ATLAS_DECK] = newDeck;
   newState[GRIDS.HAND] = newHand;
 
-  // Return the updated newState array to trigger a re-render
   return newState;
 }
 
@@ -85,11 +74,9 @@ export function actDrawDeckIndex(
   deckType: "deck" | "atlas",
   cardIndex: number,
 ) {
-  // Create a shallow copy of the previous grid items array
   const newState = [...state];
   const GRID_DECK_TYPE = deckType === "deck" ? GRIDS.DECK : GRIDS.ATLAS_DECK;
 
-  // Make a copy of the deck and hand arrays, preserving their positions
   const newDeck = [...newState[GRID_DECK_TYPE]];
   const newHand = [...newState[GRIDS.HAND]];
 
@@ -97,7 +84,6 @@ export function actDrawDeckIndex(
   if (cardIndex >= 0 && cardIndex < newDeck.length) {
     // Remove the card at the specified index from the deck
     const [card] = newDeck.splice(cardIndex, 1);
-
     // Push the card to the hand if it exists
     if (card) newHand.push(card);
   }
@@ -106,6 +92,30 @@ export function actDrawDeckIndex(
   newState[GRID_DECK_TYPE] = newDeck;
   newState[GRIDS.HAND] = newHand;
 
-  // Return the updated newState array to trigger a re-render
+  return newState;
+}
+
+/**
+ * Move a card within a deck to the top of the deck
+ * */
+export function actDeckMoveToTop(
+  state: GameState,
+  deckType: "deck" | "atlas",
+  cardIndex: number,
+) {
+  const newState = [...state];
+  const GRID_DECK_TYPE = deckType === "deck" ? GRIDS.DECK : GRIDS.ATLAS_DECK;
+  const newDeck = [...newState[GRID_DECK_TYPE]];
+
+  // Ensure the cardIndex is within bounds
+  if (cardIndex >= 0 && cardIndex < newDeck.length) {
+    // Remove the card at the specified index from the deck
+    const [card] = newDeck.splice(cardIndex, 1);
+    // Push the card to the hand if it exists
+    if (card) newDeck.push(card);
+  }
+
+  newState[GRID_DECK_TYPE] = newDeck;
+
   return newState;
 }

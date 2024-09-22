@@ -21,10 +21,8 @@ export default function WebsocketDebug() {
 
   useEffect(() => {
     if (name && gid) {
-      console.log("start");
       setTimeout(() => {
         setIsDelayed(false);
-        console.log("fin");
       }, 1000);
     }
   }, [name, gid]);

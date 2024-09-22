@@ -24,10 +24,14 @@ export const Command = (props: GameStateActions) => {
         {({ action }) => {
           const id = action.value as ActionIds;
 
+          if (id === "spawn_token")
+            return "To spawn a token, right click empty space on a grid";
           if (id === "draw_deck_top") return <ActDrawDeckTop {...props} />;
           if (id === "draw_deck_bottom")
             return <ActDrawDeckBottom {...props} />;
-          if (id === "scry_x") return <ActScryX {...props} />;
+          if (id === "scry_x") return <ActScryX {...props} deckType="deck" />;
+          if (id === "scry_x_atlas")
+            return <ActScryX {...props} deckType="atlas" />;
 
           return <Box>No action setup</Box>;
         }}

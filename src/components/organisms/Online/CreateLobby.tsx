@@ -31,7 +31,6 @@ export const CreateLobby = () => {
 
   useEffect(() => {
     if (gid) {
-      console.log({ gid }, "xxx");
       setFields((prev) => ({
         ...prev,
         gid: gid as string,
