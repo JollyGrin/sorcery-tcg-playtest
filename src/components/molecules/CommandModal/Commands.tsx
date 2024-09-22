@@ -4,7 +4,11 @@ import {
   GRIDS,
 } from "@/components/organisms/GameBoard/constants";
 import { Button } from "@/components/ui/button";
-import { actDrawDeck, actDrawDeckBottom } from "@/utils/actions";
+import {
+  actDeckMoveToTop,
+  actDrawDeck,
+  actDrawDeckBottom,
+} from "@/utils/actions";
 import { useState } from "react";
 import { css } from "styled-system/css";
 import { Box, Flex, VStack } from "styled-system/jsx";
@@ -26,6 +30,10 @@ export const actions = [
   {
     value: "scry_x",
     label: "View top X cards of spellbook",
+  },
+  {
+    value: "scry_x_atlas",
+    label: "View top X cards of atlas deck",
   },
 ] as const;
 export type ActionIds = (typeof actions)[number]["value"];
@@ -56,9 +64,21 @@ export const ActDrawDeckBottom = (props: GameStateActions) => (
   </VStack>
 );
 
-export const ActScryX = (props: GameStateActions) => {
+export const ActScryX = ({
+  deckType = "deck",
+  ...props
+}: GameStateActions & {
+  deckType: "deck" | "atlas";
+}) => {
+  const GRID_DECK_TYPE = deckType === "deck" ? GRIDS.DECK : GRIDS.ATLAS_DECK;
   const [scry, setScry] = useState(0);
-  const deck = [...props.gridItems[GRIDS.DECK]];
+  const deck = [...props.gridItems[GRID_DECK_TYPE]];
+
+  function moveCardToTopOfDeck(cardIndex: number) {
+    const state = actDeckMoveToTop(props.gridItems, deckType, cardIndex);
+    props.setGridItems(state);
+  }
+
   return (
     <VStack alignItems="start">
       <p>Look at the top X cards of your spellbook</p>
@@ -73,11 +93,13 @@ export const ActScryX = (props: GameStateActions) => {
           deck
             ?.reverse() // top of deck is last item in array
             ?.slice(0, scry)
-            .map((card, cardIndex, original) => (
-              <Box>
-                <p>{deck.length}</p>
-                <p>{cardIndex}</p>
-                <p>{deck.length - cardIndex}</p>
+            .map((card, cardIndex) => (
+              <Box
+                onClick={() => moveCardToTopOfDeck(deck.length - cardIndex - 1)}
+              >
+                <Button fontSize="0.65rem" paddingBlock={0} h="1rem">
+                  Move to top
+                </Button>
                 <img
                   key={card.id + card.img}
                   src={getCardImage(card.img)}

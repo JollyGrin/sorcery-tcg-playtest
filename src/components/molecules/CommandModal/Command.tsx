@@ -27,7 +27,9 @@ export const Command = (props: GameStateActions) => {
           if (id === "draw_deck_top") return <ActDrawDeckTop {...props} />;
           if (id === "draw_deck_bottom")
             return <ActDrawDeckBottom {...props} />;
-          if (id === "scry_x") return <ActScryX {...props} />;
+          if (id === "scry_x") return <ActScryX {...props} deckType="deck" />;
+          if (id === "scry_x_atlas")
+            return <ActScryX {...props} deckType="atlas" />;
 
           return <Box>No action setup</Box>;
         }}
