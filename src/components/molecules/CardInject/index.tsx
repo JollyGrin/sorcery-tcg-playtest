@@ -9,7 +9,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { useCardData } from "@/utils/api/cardData/useCardData";
+import { useCardData, useTokenData } from "@/utils/api/cardData/useCardData";
 import { Box, Grid, HStack } from "styled-system/jsx";
 import { getCardImage } from "@/components/organisms/GameBoard/constants";
 import { GameCard, SorceryCard } from "@/types/card";
@@ -19,7 +19,7 @@ import { actSpawnCard } from "@/utils/actions/card";
 import { useRouter } from "next/router";
 import { Switch } from "@/components/ui/switch";
 import { css } from "styled-system/css";
-import { TOKEN_CARDS } from "@/utils/api/cardData/api";
+import { TOKEN_CARDS, TOKEN_RUBBLE } from "@/utils/api/cardData/api";
 
 type Status = {
   value: string;
@@ -36,8 +36,22 @@ export const CardInject = (props: {
   const [isChecked, setIsChecked] = useState(false);
   const { data: cards } = useCardData();
 
+  const { data: tokens } = useTokenData();
+  const tokenCards: typeof TOKEN_CARDS =
+    tokens
+      ?.filter((token) => token !== "rubble")
+      ?.map((token) => {
+        const name = token.split("_").join(" ");
+        const nameUppercase = name.charAt(0).toUpperCase() + name.slice(1);
+        return {
+          slug: token,
+          name: nameUppercase,
+          type: "minion",
+        };
+      }) ?? [];
+
   const statuses: Status[] =
-    (isChecked ? TOKEN_CARDS : cards)?.map((card) => ({
+    (isChecked ? [...tokenCards, TOKEN_RUBBLE] : cards)?.map((card) => ({
       value: card.slug,
       label: card.name,
       type: card.type,

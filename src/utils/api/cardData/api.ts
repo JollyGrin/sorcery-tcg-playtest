@@ -12,6 +12,11 @@ export async function getCardsData() {
   return res.data;
 }
 
+export async function getTokensData() {
+  const res = await axios.get<string[]>(`https://card.cards.army/tokens.json`);
+  return res.data;
+}
+
 export const TOKEN_CARDS: CardDataMinimized[] = [
   {
     slug: "frog",
@@ -34,3 +39,9 @@ export const TOKEN_CARDS: CardDataMinimized[] = [
     type: "site",
   },
 ];
+
+export const TOKEN_RUBBLE: CardDataMinimized = {
+  slug: "rubble",
+  name: "Rubble",
+  type: "site",
+};
