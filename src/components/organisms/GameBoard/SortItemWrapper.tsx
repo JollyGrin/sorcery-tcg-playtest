@@ -66,63 +66,67 @@ export const SortItemWrapper = ({
 
   return (
     <div
-      onClick={(e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        toggleTap();
-      }}
       onContextMenu={(e) => {
         e.preventDefault();
+        e.stopPropagation();
         setPreview(true);
       }}
-      data-testid={"sortable-item-wrapper-" + card.id}
-      style={{
-        height: heightCalc() + 7 + "px",
-        transform: isTapped ? "rotate(5deg)" : "",
-        filter: isTapped ? "saturate(0)" : "",
-        transition: "all 0.25s ease",
-        position: "relative",
-      }}
     >
-      <SortableItem
-        key={`card-${gridIndex}-${cardIndex}`}
-        data-testid={"sortable-item-" + card.id}
-        id={card.id}
-        gridIndex={gridIndex}
-        index={cardIndex}
+      <div
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleTap();
+        }}
+        data-testid={"sortable-item-wrapper-" + card.id}
+        style={{
+          height: heightCalc() + 7 + "px",
+          transform: isTapped ? "rotate(5deg)" : "",
+          filter: isTapped ? "saturate(0)" : "",
+          transition: "all 0.25s ease",
+          position: "relative",
+        }}
       >
-        {card.counter && card.counter !== 0 ? (
-          <Box
-            position="absolute"
-            right={0}
-            bottom={0}
-            zIndex={10}
-            bg="rgba(255,255,255,0.25)"
-            backdropFilter="blur(4px)"
-            filter="drop-shadow(0 1px 1px black)"
-            p="0.25rem 0.5rem"
-            borderRadius="100%"
-            color="white"
-            minW="1.65rem"
-          >
-            <p style={{ fontSize: "0.75rem" }}>{card.counter}</p>
-          </Box>
-        ) : null}
-        {card.type === "site" && (
-          <CardAtlas
-            height={height}
-            img={card.img}
-            isMine={name === card.playerName}
-          />
-        )}
-        {card.type !== "site" && (
-          <CardImage
-            height={height}
-            img={card.img}
-            isMine={name === card.playerName}
-          />
-        )}
-      </SortableItem>
+        <SortableItem
+          key={`card-${gridIndex}-${cardIndex}`}
+          data-testid={"sortable-item-" + card.id}
+          id={card.id}
+          gridIndex={gridIndex}
+          index={cardIndex}
+        >
+          {card.counter && card.counter !== 0 ? (
+            <Box
+              position="absolute"
+              right={0}
+              bottom={0}
+              zIndex={10}
+              bg="rgba(255,255,255,0.25)"
+              backdropFilter="blur(4px)"
+              filter="drop-shadow(0 1px 1px black)"
+              p="0.25rem 0.5rem"
+              borderRadius="100%"
+              color="white"
+              minW="1.65rem"
+            >
+              <p style={{ fontSize: "0.75rem" }}>{card.counter}</p>
+            </Box>
+          ) : null}
+          {card.type === "site" && (
+            <CardAtlas
+              height={height}
+              img={card.img}
+              isMine={name === card.playerName}
+            />
+          )}
+          {card.type !== "site" && (
+            <CardImage
+              height={height}
+              img={card.img}
+              isMine={name === card.playerName}
+            />
+          )}
+        </SortableItem>
+      </div>
       <Modal
         wrapperProps={{ open: preview, onOpenChange: setPreview }}
         content={
