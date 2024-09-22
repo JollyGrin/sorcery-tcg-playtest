@@ -80,6 +80,13 @@ export const ActionRollDice = (props: GameStateActions & PlayerDataProps) => {
     });
   }
 
+  function clearDice() {
+    props.setMyData({
+      ...myData,
+      dice: undefined,
+    });
+  }
+
   return (
     <VStack alignItems="start">
       <p>Roll a dice</p>
@@ -87,6 +94,7 @@ export const ActionRollDice = (props: GameStateActions & PlayerDataProps) => {
       <p>d20: {myData?.dice?.d20}</p>
       <Button onClick={rollD6}>Roll d6</Button>
       <Button onClick={rollD20}>Roll d20</Button>
+      <Button onClick={clearDice}>Clear Rolls</Button>
     </VStack>
   );
 };
