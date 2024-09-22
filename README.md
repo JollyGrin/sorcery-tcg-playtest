@@ -25,7 +25,7 @@ Find instructions if you wish to setup your own game server.
 
 
 ## Feedback
-- [ ] roll dice (d6/d20)
+- [x] roll dice (d6/d20)
 - [x] spawn card/token modal
     - cache the sorcery api data on cards.army
     - make a modal that spawns a card to your hand
