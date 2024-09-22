@@ -19,20 +19,20 @@ Find instructions if you wish to setup your own game server.
 ## Bugs
 - [ ] graveyard sorting. Ensure that in the handle drag it ignores ordering conditions
 - [ ] firefox maybe shows context menu on right click
-- [ ] right click modal, taps card
+- [x] right click modal, taps card
 
 
 
 ## Feedback
+- [ ] roll dice (d6/d20)
 - [x] spawn card/token modal
     - cache the sorcery api data on cards.army
     - make a modal that spawns a card to your hand
     - will cover rubble and many other mechanics
     - some cards have effects that require counter on the card
-- [ ] manipulation action window:
+- [x] manipulation action window:
     - move card from top of deck to bottom
     - draw from bottom
-- [ ] roll dice (d6/d20)
 - [x] grid numbers 1-20
 - [x] add counters on cards
 - [x] add remaining / total mana
