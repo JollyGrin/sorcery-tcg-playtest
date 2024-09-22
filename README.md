@@ -11,6 +11,7 @@ Find instructions if you wish to setup your own game server.
 
 ## Todo 
 - [ ] view enemy graveyard
+- [ ] add four cores deck import https://fourcores.xyz/api/tts/T33jdoAJy8PGY9Agq1fo
 
 ## Feature ideas
 - [ ] support 4players
@@ -33,7 +34,7 @@ Find instructions if you wish to setup your own game server.
 - [x] manipulation action window:
     - move card from top of deck to bottom
     - draw from bottom
-- [x] grid numbers 1-20
+- [x] add numbers to grid: numbers 1-20
 - [x] add counters on cards
 - [x] add remaining / total mana
 
