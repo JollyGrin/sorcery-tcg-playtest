@@ -34,7 +34,7 @@ export const GameBoard = ({
   });
 
   return (
-    <CommandModalWrapper {...{ gridItems, setGridItems }}>
+    <CommandModalWrapper {...{ gridItems, setGridItems, ...playerDataProps }}>
       <DndContext {...dragProps}>
         <GameLayout
           gridItems={gridItems}

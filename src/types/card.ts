@@ -59,6 +59,10 @@ export type PlayerData = {
   life: number;
   mana: number;
   manaRemaining: number;
+  dice?: {
+    d6?: number;
+    d20?: number;
+  };
 };
 export type PlayerState = {
   state: GameState;
