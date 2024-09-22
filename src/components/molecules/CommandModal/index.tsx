@@ -4,11 +4,12 @@ import { Children } from "@/utils/helpers/types";
 import { useKeyPress } from "@/utils/hooks/useKeyPress";
 import { Command } from "./Command";
 import { useEffect, useState } from "react";
+import { PlayerDataProps } from "@/types/card";
 
 export const CommandModalWrapper = ({
   children,
   ...props
-}: Children & GameStateActions) => {
+}: Children & GameStateActions & PlayerDataProps) => {
   const { isOpen, onClose } = useDisclosure();
 
   return (

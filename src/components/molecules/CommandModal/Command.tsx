@@ -6,10 +6,12 @@ import {
   ActDrawDeckBottom,
   ActDrawDeckTop,
   ActionIds,
+  ActionRollDice,
   ActScryX,
 } from "./Commands";
+import { PlayerDataProps } from "@/types/card";
 
-export const Command = (props: GameStateActions) => {
+export const Command = (props: GameStateActions & PlayerDataProps) => {
   return (
     <Flex direction="column" minW="800px" minH="500px">
       <p
@@ -24,6 +26,7 @@ export const Command = (props: GameStateActions) => {
         {({ action }) => {
           const id = action.value as ActionIds;
 
+          if (id === "dice") return <ActionRollDice {...props} />;
           if (id === "spawn_token")
             return "To spawn a token, right click empty space on a grid";
           if (id === "draw_deck_top") return <ActDrawDeckTop {...props} />;

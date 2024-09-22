@@ -13,6 +13,8 @@ import {
   GiPirateGrave as IconGrave,
   GiHealthNormal as IconHealth,
 } from "react-icons/gi";
+import { LiaDiceD6Solid as IconD6 } from "react-icons/lia";
+import { FaDiceD20 as IconD20 } from "react-icons/fa";
 
 export const PlayerBox = ({
   name,
@@ -91,6 +93,12 @@ export const PlayerBox = ({
         <Stat Icon={IconDeck} value={length(GRIDS.DECK)} />
         <Stat Icon={IconMap} value={length(GRIDS.ATLAS_DECK)} />
         <Stat Icon={IconHand} value={length(GRIDS.HAND)} />
+        {player?.data?.dice?.d6 !== undefined && (
+          <Stat Icon={IconD6} value={player?.data?.dice?.d6} />
+        )}
+        {player?.data?.dice?.d20 !== undefined && (
+          <Stat Icon={IconD20} value={player?.data?.dice?.d20} />
+        )}
       </Flex>
     </HStack>
   );
