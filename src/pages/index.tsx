@@ -84,10 +84,10 @@ const Multiplayer = () => {
       <p>Two players join a lobby, choose their decks, and duel</p>
       <HStack fontFamily="monospace" my="0.5rem">
         <p>Version:</p>
-        <Box p="0 0.5rem" borderRadius="0.5rem" bg="gray.700">
-          ALPHA
+        <Box p="0 0.5rem" borderRadius="0.5rem" bg="blue.600">
+          BETA
         </Box>
-        <p>Expect bugs!</p>
+        <p>Share feedback/bugs!</p>
       </HStack>
       <ol style={{ listStyle: "inside", marginBottom: "0.5rem" }}>
         <li>start a lobby</li>
