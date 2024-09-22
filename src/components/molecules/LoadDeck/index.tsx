@@ -14,6 +14,7 @@ import { CuriosaResponse } from "@/utils/api/curiosa/api";
 import { Tabs } from "@/components/atoms/Tabs";
 import { UseQueryResult } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { getDeckQuery } from "@/components/organisms/GameBoard/useDeckQuery";
 
 export const LoadDeck = (
   props: GameStateActions & { children?: ReactNode; playerName: string },
@@ -98,7 +99,9 @@ const InputLoader = ({
   useDeck(deckId: string): UseQueryResult<CuriosaResponse, Error>;
   provider: "curiosa" | "realms" | "four cores";
 }) => {
-  const { data: deck } = useDeck(deckId);
+  // if the deckId is a url, find the ID in the url
+  const [_source, id] = getDeckQuery(deckId)?.split("-") ?? [];
+  const { data: deck } = useDeck(id ?? deckId);
 
   const cards = [
     ...(deck?.avatar ?? []),
