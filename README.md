@@ -12,6 +12,8 @@ Find instructions if you wish to setup your own game server.
 ## Todo 
 - [ ] view enemy graveyard
 - [x] add four cores deck import https://fourcores.xyz/api/tts/T33jdoAJy8PGY9Agq1fo
+- [ ] add hand drawing mode (for mobile, just deck and hand)
+- [ ] add setting to flip enemy card upside down
 
 ## Feature ideas
 - [ ] support 4players
