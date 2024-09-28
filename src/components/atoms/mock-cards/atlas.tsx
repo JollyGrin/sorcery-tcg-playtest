@@ -10,6 +10,7 @@ export const CardAtlas = ({
   height?: string;
   isMine?: boolean;
 }) => {
+  const isMe = props.isMine === undefined || !!props.isMine;
   return (
     <Box
       position="relative"
@@ -22,10 +23,8 @@ export const CardAtlas = ({
       overflow="clip"
       style={{
         height,
-        border:
-          props.isMine === undefined || !!props.isMine
-            ? ""
-            : "solid 2px tomato",
+        border: isMe ? "" : "solid 2px tomato",
+        transform: isMe ? "rotate(0deg)" : "rotate(180deg)",
       }}
     >
       <Box

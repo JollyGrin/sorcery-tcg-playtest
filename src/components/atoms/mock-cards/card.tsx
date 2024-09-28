@@ -32,6 +32,7 @@ export const CardImage = ({
   }, [isPressed]);
 
   const show = props.show || (preview && isHovering);
+  const isMe = props.isMine === undefined || !!props.isMine;
 
   return (
     <Box
@@ -53,10 +54,8 @@ export const CardImage = ({
       onMouseOut={() => setPreview(false)}
       style={{
         height,
-        border:
-          props.isMine === undefined || !!props.isMine
-            ? ""
-            : "solid 2px tomato",
+        transform: isMe ? "rotate(0deg)" : "rotate(180deg)",
+        border: isMe ? "" : "solid 2px tomato",
       }}
     >
       <Box
