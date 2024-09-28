@@ -60,6 +60,12 @@ export enum GRIDS {
   GRAVE,
 }
 
+export const LOCALSTORAGE_KEYS = {
+  SETTINGS: {
+    rotateEnemy: "SETTINGS:ROTATE_ENEMY",
+  },
+};
+
 /**
  * Length of hand, deck, deck-atlas, and grave (4)
  * used to splice playerstate from global state
