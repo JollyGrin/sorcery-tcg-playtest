@@ -2,7 +2,7 @@ import { CardImage } from "@/components/atoms/card-view/card";
 import { Modal } from "@/components/atoms/Modal";
 import { GridItem } from "@/types/card";
 import { css } from "styled-system/css";
-import { Box, Flex, styled } from "styled-system/jsx";
+import { Box, Flex } from "styled-system/jsx";
 
 export const ViewGraveyardModal = (props: {
   cards: GridItem;
