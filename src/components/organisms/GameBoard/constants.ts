@@ -80,6 +80,9 @@ export const initGameData: PlayerData = {
   manaRemaining: 0,
 };
 
+/**
+ * Returns the webp
+ * */
 export function getCardImage(identifier: string, quality: 50 | 100 = 100) {
   return `https://card.cards.army/cards/${quality === 100 ? "" : "/50"}${identifier}.webp`;
 }

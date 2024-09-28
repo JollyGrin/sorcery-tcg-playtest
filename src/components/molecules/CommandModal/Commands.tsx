@@ -14,8 +14,9 @@ import {
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { css } from "styled-system/css";
-import { Box, Flex, VStack } from "styled-system/jsx";
+import { Box, Flex, HStack, VStack } from "styled-system/jsx";
 import { input } from "styled-system/recipes";
+import { GiPirateGrave as IconGrave } from "react-icons/gi";
 
 export const actions = [
   {
@@ -41,6 +42,10 @@ export const actions = [
   {
     value: "scry_x_atlas",
     label: "View top X cards of atlas deck",
+  },
+  {
+    value: "view_cemetary",
+    label: "View enemy cemetary",
   },
 ] as const;
 export type ActionIds = (typeof actions)[number]["value"];
@@ -168,5 +173,18 @@ export const ActScryX = ({
             ))}
       </Flex>
     </VStack>
+  );
+};
+
+export const ViewCemetary = () => {
+  return (
+    <Box>
+      <p>To view an enemy cemetary:</p>
+      <HStack flexWrap="wrap">
+        <p>click on the</p>
+        <IconGrave />
+        <p>icon next to the player&apos;s name</p>
+      </HStack>
+    </Box>
   );
 };

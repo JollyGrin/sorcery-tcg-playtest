@@ -8,6 +8,7 @@ import {
   ActionIds,
   ActionRollDice,
   ActScryX,
+  ViewCemetary,
 } from "./Commands";
 import { PlayerDataProps } from "@/types/card";
 
@@ -35,6 +36,7 @@ export const Command = (props: GameStateActions & PlayerDataProps) => {
           if (id === "scry_x") return <ActScryX {...props} deckType="deck" />;
           if (id === "scry_x_atlas")
             return <ActScryX {...props} deckType="atlas" />;
+          if (id === "view_cemetary") return <ViewCemetary />;
 
           return <Box>No action setup</Box>;
         }}
