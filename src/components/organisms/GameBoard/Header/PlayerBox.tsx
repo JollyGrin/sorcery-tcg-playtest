@@ -1,7 +1,7 @@
 import { PlayerData, PlayersState } from "@/types/card";
 import { GRIDS } from "../constants";
 import { Flex, HStack } from "styled-system/jsx";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { IconType } from "react-icons";
 import { JsxStyleProps } from "styled-system/types";
 import { cva } from "styled-system/css/cva.mjs";
@@ -15,6 +15,7 @@ import {
 } from "react-icons/gi";
 import { LiaDiceD6Solid as IconD6 } from "react-icons/lia";
 import { FaDiceD20 as IconD20 } from "react-icons/fa";
+import { ViewGraveyardModal } from "./ViewGraveyardModal";
 
 export const PlayerBox = ({
   name,
@@ -23,6 +24,13 @@ export const PlayerBox = ({
   name: string;
   player: PlayersState["GLOBAL"];
 }) => {
+  const [modal, setModal] = useState(false);
+  const disclosure = {
+    onOpen: () => setModal(true),
+    isOpen: modal === true,
+    onClose: () => setModal(false),
+  };
+
   const life = player?.data?.life ?? 0;
 
   function length(position: number) {
@@ -42,65 +50,75 @@ export const PlayerBox = ({
   if (player?.data?.earth === undefined) return null;
 
   return (
-    <HStack fontSize="1rem" gap={1}>
-      <p className={textStyle({ visual: "bold" })}>{name}</p>
+    <>
+      {disclosure.isOpen && (
+        <ViewGraveyardModal
+          cards={player.state[GRIDS.GRAVE]}
+          onClose={disclosure.onClose}
+        />
+      )}
+      <HStack fontSize="1rem" gap={1}>
+        <p className={textStyle({ visual: "bold" })}>{name}</p>
 
-      <Flex
-        minW="3rem"
-        p="0.1rem 0.5rem"
-        borderRadius="0.75rem"
-        alignItems="center"
-        justifyContent="center"
-        gap={1}
-        style={{
-          background: bg,
-        }}
-      >
-        <IconHealth fontSize="0.75rem" />
-        <p>{life}</p>
-      </Flex>
-
-      <Flex
-        bg="rgba(255,255,255,0.5)"
-        p="0.1rem 0.5rem"
-        borderRadius="0.75rem"
-        gap={2}
-        alignItems="center"
-      >
-        <Resource icon="earth" value={player.data.earth} />
-        <Resource icon="fire" value={player.data.fire} />
-        <Resource icon="water" value={player.data.water} />
-        <Resource icon="wind" value={player.data.wind} />
-        <IconMana color="gray" size={15} style={{ marginLeft: "0.25rem" }} />
-        <p
+        <Flex
+          minW="3rem"
+          p="0.1rem 0.5rem"
+          borderRadius="0.75rem"
+          alignItems="center"
+          justifyContent="center"
+          gap={1}
           style={{
-            color: "gray",
+            background: bg,
           }}
         >
-          {player.data.manaRemaining}
-          {"/"}
-          {player.data.mana}
-        </p>
-      </Flex>
+          <IconHealth fontSize="0.75rem" />
+          <p>{life}</p>
+        </Flex>
 
-      <Flex
-        bg="rgba(255,255,255,0.5)"
-        p="0.1rem 0.5rem"
-        borderRadius="0.75rem"
-        gap={2}
-      >
-        <Stat Icon={IconGrave} value={length(GRIDS.GRAVE)} />
-        <Stat Icon={IconDeck} value={length(GRIDS.DECK)} />
-        <Stat Icon={IconMap} value={length(GRIDS.ATLAS_DECK)} />
-        <Stat Icon={IconHand} value={length(GRIDS.HAND)} />
-        {player?.data?.dice?.d6 !== undefined && (
-          <Stat Icon={IconD6} value={player?.data?.dice?.d6} />
-        )}
-        {player?.data?.dice?.d20 !== undefined && (
-          <Stat Icon={IconD20} value={player?.data?.dice?.d20} />
-        )}
-      </Flex>
-    </HStack>
+        <Flex
+          bg="rgba(255,255,255,0.5)"
+          p="0.1rem 0.5rem"
+          borderRadius="0.75rem"
+          gap={2}
+          alignItems="center"
+        >
+          <Resource icon="earth" value={player.data.earth} />
+          <Resource icon="fire" value={player.data.fire} />
+          <Resource icon="water" value={player.data.water} />
+          <Resource icon="wind" value={player.data.wind} />
+          <IconMana color="gray" size={15} style={{ marginLeft: "0.25rem" }} />
+          <p
+            style={{
+              color: "gray",
+            }}
+          >
+            {player.data.manaRemaining}
+            {"/"}
+            {player.data.mana}
+          </p>
+        </Flex>
+
+        <Flex
+          bg="rgba(255,255,255,0.5)"
+          p="0.1rem 0.5rem"
+          borderRadius="0.75rem"
+          gap={2}
+        >
+          <span onClick={disclosure.onOpen}>
+            <Stat Icon={IconGrave} value={length(GRIDS.GRAVE)} />
+          </span>
+          <Stat Icon={IconDeck} value={length(GRIDS.DECK)} />
+          <Stat Icon={IconMap} value={length(GRIDS.ATLAS_DECK)} />
+          <Stat Icon={IconHand} value={length(GRIDS.HAND)} />
+          {player?.data?.dice?.d6 !== undefined && (
+            <Stat Icon={IconD6} value={player?.data?.dice?.d6} />
+          )}
+          {player?.data?.dice?.d20 !== undefined && (
+            <Stat Icon={IconD20} value={player?.data?.dice?.d20} />
+          )}
+        </Flex>
+      </HStack>
+    </>
   );
 };
 
