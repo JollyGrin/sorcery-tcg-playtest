@@ -3,6 +3,7 @@ import {
   getCardImage,
   GRIDS,
   initGameData,
+  LOCALSTORAGE_KEYS,
 } from "@/components/organisms/GameBoard/constants";
 import { Button } from "@/components/ui/button";
 import { PlayerDataProps } from "@/types/card";
@@ -14,9 +15,11 @@ import {
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { css } from "styled-system/css";
-import { Box, Flex, HStack, VStack } from "styled-system/jsx";
+import { Box, Flex, Grid, HStack, VStack } from "styled-system/jsx";
 import { input } from "styled-system/recipes";
 import { GiPirateGrave as IconGrave } from "react-icons/gi";
+import { useLocalStorage } from "@/utils/hooks";
+import { CardImage } from "@/components/atoms/mock-cards/card";
 
 export const actions = [
   {
@@ -46,6 +49,10 @@ export const actions = [
   {
     value: "view_cemetary",
     label: "View enemy cemetary",
+  },
+  {
+    value: "rotate_enemy",
+    label: "Rotate enemy cards on grid",
   },
 ] as const;
 export type ActionIds = (typeof actions)[number]["value"];
@@ -176,7 +183,7 @@ export const ActScryX = ({
   );
 };
 
-export const ViewCemetary = () => {
+export const ActViewCemetary = () => {
   return (
     <Box>
       <p>To view an enemy cemetary:</p>
@@ -185,6 +192,32 @@ export const ViewCemetary = () => {
         <IconGrave />
         <p>icon next to the player&apos;s name</p>
       </HStack>
+    </Box>
+  );
+};
+
+export const ActRotateEnemyCards = () => {
+  const { key, ...options } = LOCALSTORAGE_KEYS.SETTINGS.rotateEnemy;
+  const [rotateEnemy, setRotateEnemy] = useLocalStorage(key, false, options);
+
+  return (
+    <Box>
+      <p>
+        Rotate the enemy cards on the board. The ordering (top to bottom)
+        remains the same, but visually each enemy card will be flipped.
+      </p>
+      <Grid gridTemplateColumns="1fr 1fr">
+        <Box>
+          <p>Rotate enemy: {`${rotateEnemy}`}</p>
+          <Button onClick={() => setRotateEnemy(!rotateEnemy)}>
+            Rotate enemy card
+          </Button>
+        </Box>
+
+        <Box>
+          <CardImage img={"autumn_unicorn"} />
+        </Box>
+      </Grid>
     </Box>
   );
 };
