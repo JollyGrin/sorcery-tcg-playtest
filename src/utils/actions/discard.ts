@@ -20,3 +20,16 @@ export function actDrawDiscard(state: GameState, graveCardIndex: number) {
   // Return the updated newState array to trigger a re-render
   return newState;
 }
+
+export function actToggleBanishCard(state: GameState, graveCardIndex: number) {
+  const newState = [...state];
+
+  const newGrave = [...newState[GRIDS.GRAVE]];
+
+  const card = newGrave[graveCardIndex];
+  card.isBanished = !card.isBanished;
+  newGrave[graveCardIndex] = card;
+  newState[GRIDS.GRAVE] = newGrave;
+
+  return newState;
+}
