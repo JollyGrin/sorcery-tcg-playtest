@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { PlayerData } from "@/types/card";
-import { Divider, Flex, Grid, HStack } from "styled-system/jsx";
+import { Divider, Grid } from "styled-system/jsx";
 
 export const DefaultDecks = (props: { setDeckId(id: string): void }) => {
   return (
