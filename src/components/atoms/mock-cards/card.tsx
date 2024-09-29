@@ -28,9 +28,7 @@ export const CardImage = ({
   const isHovering = useHover(hoverRef);
 
   const { key, ...options } = LOCALSTORAGE_KEYS.SETTINGS.rotateEnemy;
-  const [rotateEnemy, setRotateEnemy] = useLocalStorage(key, false, options);
-
-  console.log("card", { rotateEnemy });
+  const [rotateEnemy] = useLocalStorage(key, false, options);
 
   const isPressed = useKeyPress("Alt");
   const [preview, setPreview] = useState(false);
