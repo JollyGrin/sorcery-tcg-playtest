@@ -15,6 +15,7 @@ import { Tabs } from "@/components/atoms/Tabs";
 import { UseQueryResult } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { getDeckQuery } from "@/components/organisms/GameBoard/useDeckQuery";
+import { DefaultDecks } from "./DefaultDecks";
 
 export const LoadDeck = (
   props: GameStateActions & { children?: ReactNode; playerName: string },
@@ -119,14 +120,8 @@ const InputLoader = ({
       />
       {deckId === "" && (
         <>
-          <p>copy the deckid from {provider}</p>
-          <button
-            className={button()}
-            style={{ marginTop: "1rem" }}
-            onClick={() => setDeckId("clytk3k08009d3dya1cu989e3")}
-          >
-            Load Default Deck
-          </button>
+          <p style={{ margin: "0.25rem 0" }}>copy the deckid from {provider}</p>
+          <DefaultDecks {...{ setDeckId }} />
         </>
       )}
       {deckId !== "" && (
