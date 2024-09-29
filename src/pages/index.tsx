@@ -13,15 +13,12 @@ import { Button } from "@/components/ui/button";
 export default function Home() {
   return (
     <Grid w="100vw" h="100vh" bg="brand.secondary" p="2rem">
-      <Flex direction="column" maxW="900px" w="100%" m="0 auto">
-        <HStack alignItems="end">
-          <Button>Github</Button>
-          <Button>Request a feature</Button>
-        </HStack>
+      <Flex direction="column" maxW="900px" w="100%" m="0 auto" gap={3}>
+        <Nav />
         <Grid
           minH="300px"
           gridTemplateColumns="1fr 1fr"
-          bg="brand.shadow"
+          bg="linear-gradient(45deg, rgba(177,116,87,1) 0%, rgba(139,90,67,1) 99%)"
           padding="1rem"
           borderRadius="0.25rem"
           justifyContent="space-between"
@@ -45,6 +42,8 @@ export default function Home() {
           </Box>
           <Selector />
         </Grid>
+        <Disclaimer />
+        <Grid gridTemplateColumns="1fr 1fr"></Grid>
       </Flex>
     </Grid>
   );
