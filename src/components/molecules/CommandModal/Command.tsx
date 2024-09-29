@@ -9,6 +9,7 @@ import {
   ActionRollDice,
   ActRotateEnemyCards,
   ActScryX,
+  ActUntapAll,
   ActViewCemetary,
 } from "./Commands";
 import { PlayerDataProps } from "@/types/card";
@@ -28,6 +29,7 @@ export const Command = (props: GameStateActions & PlayerDataProps) => {
         {({ action }) => {
           const id = action.value as ActionIds;
 
+          if (id === "untap_all") return <ActUntapAll />;
           if (id === "dice") return <ActionRollDice {...props} />;
           if (id === "spawn_token")
             return "To spawn a token, right click empty space on a grid";

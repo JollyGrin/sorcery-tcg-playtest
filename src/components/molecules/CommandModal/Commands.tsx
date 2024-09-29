@@ -24,6 +24,10 @@ import { CardAtlas } from "@/components/atoms/mock-cards/atlas";
 
 export const actions = [
   {
+    value: "untap_all",
+    label: "Untap all your cards",
+  },
+  {
     value: "dice",
     label: "Roll dice",
   },
@@ -63,6 +67,28 @@ export type ActionIds = (typeof actions)[number]["value"];
  *
  * These are displayed with if conditions to do actions without worrying about UI
  * */
+
+export const ActUntapAll = () => {
+  return (
+    <Box>
+      <p>
+        You can untap all your tapped cards by pressed{" "}
+        <span
+          style={{
+            borderRadius: "0.25rem",
+            background: "rgba(0,0,0,0.2)",
+            padding: "2px 4px",
+            fontFamily: "monospace",
+            borderBottom: "solid 1px black",
+          }}
+        >
+          u
+        </span>{" "}
+        on your keyboard
+      </p>
+    </Box>
+  );
+};
 
 export const ActionRollDice = (props: GameStateActions & PlayerDataProps) => {
   const { query } = useRouter();
