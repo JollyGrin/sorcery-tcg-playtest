@@ -4,6 +4,7 @@ import { Box, Grid, HStack } from "styled-system/jsx";
 import { button } from "styled-system/recipes";
 
 import { PiHandWithdrawFill as IconHand } from "react-icons/pi";
+import { GiSilenced as IconBanish } from "react-icons/gi";
 import { useHover } from "@/utils/hooks/useHover";
 import { useRef } from "react";
 import { GameStateActions } from "../..";
@@ -24,7 +25,7 @@ export const DiscardModalBody = (
     props.setGridItems(actToggleBanishCard(props.gridItems, cardIndex));
   }
 
-  const hasFunctions = !!props.setGridItems && !!props.gridItems;
+  const hasFunctions = !!props.setGridItems;
 
   return (
     <Grid
@@ -118,8 +119,8 @@ const Card = ({
           }}
         >
           <HStack gap={0}>
-            <p>Toggle Banish</p>
-            <IconHand
+            <p>{card.isBanished ? "Unbanish" : "Banish"}</p>
+            <IconBanish
               size="2rem"
               style={{ fontSize: "2rem", color: "white" }}
             />
