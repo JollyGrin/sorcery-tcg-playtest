@@ -16,6 +16,8 @@ import {
 import { LiaDiceD6Solid as IconD6 } from "react-icons/lia";
 import { FaDiceD20 as IconD20 } from "react-icons/fa";
 import { ViewGraveyardModal } from "./ViewGraveyardModal";
+import { Modal } from "@/components/atoms/Modal";
+import { DiscardModalBody } from "../Footer/Grave/DiscardModal";
 
 export const PlayerBox = ({
   name,
@@ -52,9 +54,17 @@ export const PlayerBox = ({
   return (
     <>
       {disclosure.isOpen && (
-        <ViewGraveyardModal
-          cards={player.state[GRIDS.GRAVE]}
-          onClose={disclosure.onClose}
+        <Modal
+          wrapperProps={{
+            open: disclosure.isOpen,
+            onOpenChange: disclosure.onClose,
+          }}
+          content={
+            <DiscardModalBody
+              cards={player?.state[GRIDS.GRAVE]}
+              gridItems={player?.state}
+            />
+          }
         />
       )}
       <HStack fontSize="1rem" gap={1}>
