@@ -8,11 +8,16 @@ import { Solo } from "@/components/organisms/LandingPage/SoloLoader";
 import { HowToPlay } from "@/components/organisms/LandingPage/HowToPlay";
 import Link from "next/link";
 import { button } from "styled-system/recipes";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
     <Grid w="100vw" h="100vh" bg="brand.secondary" p="2rem">
       <Flex direction="column" maxW="900px" w="100%" m="0 auto">
+        <HStack alignItems="end">
+          <Button>Github</Button>
+          <Button>Request a feature</Button>
+        </HStack>
         <Grid
           minH="300px"
           gridTemplateColumns="1fr 1fr"
@@ -21,7 +26,23 @@ export default function Home() {
           borderRadius="0.25rem"
           justifyContent="space-between"
         >
-          <Box>hjk</Box>
+          <Box color="brand.highlight">
+            <HStack>
+              <IconLogo size="2.5rem" />
+              <p className={css({ fontWeight: 700, fontSize: "3rem" })}>
+                Spells Bar
+              </p>
+            </HStack>
+            <p className={css({ fontSize: "1.5rem" })}>
+              Playtest decks from Sorcery TCG
+            </p>
+            <ul style={{ opacity: 0.75, marginTop: "2rem" }}>
+              <li>No accounts</li>
+              <li>All in the browser</li>
+              <li>Load Table Top Simulator decks</li>
+              <li>Open Sourced</li>
+            </ul>
+          </Box>
           <Selector />
         </Grid>
       </Flex>
