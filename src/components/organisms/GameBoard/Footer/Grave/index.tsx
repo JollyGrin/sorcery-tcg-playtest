@@ -12,6 +12,7 @@ import { DiscardModalBody } from "./DiscardModal";
 export const GraveTray = (props: GameStateActions) => {
   const graveCards = props.gridItems[GRIDS.GRAVE];
   const graveAmount = graveCards?.length ?? 0;
+  console.log({ graveAmount });
   const hasCards = graveCards?.length > 0;
 
   const [preview, setPreview] = useState(false);
@@ -51,7 +52,10 @@ export const GraveTray = (props: GameStateActions) => {
           >
             {graveAmount > 0 && (
               <Box w="100px" h="120px" position="absolute">
-                <CardImage img={graveCards?.[0].img} minH={"0"} />
+                <CardImage
+                  img={graveCards?.[graveAmount - 1 - 0].img}
+                  minH={"0"}
+                />
               </Box>
             )}
 
@@ -64,7 +68,10 @@ export const GraveTray = (props: GameStateActions) => {
                 top={9}
                 rotate="4deg"
               >
-                <CardImage img={graveCards?.[1].img} minH={"0"} />
+                <CardImage
+                  img={graveCards?.[graveAmount - 1 - 1].img}
+                  minH={"0"}
+                />
               </Box>
             )}
 
@@ -77,7 +84,10 @@ export const GraveTray = (props: GameStateActions) => {
                 top={8}
                 rotate="-2deg"
               >
-                <CardImage img={graveCards?.[2].img} minH={"0"} />
+                <CardImage
+                  img={graveCards?.[graveAmount - 1 - 2].img}
+                  minH={"0"}
+                />
               </Box>
             )}
 
@@ -90,7 +100,10 @@ export const GraveTray = (props: GameStateActions) => {
                 top={4}
                 rotate="3deg"
               >
-                <CardImage img={graveCards?.[3].img} minH={"0"} />
+                <CardImage
+                  img={graveCards?.[graveAmount - 1 - 3].img}
+                  minH={"0"}
+                />
               </Box>
             )}
 
@@ -103,7 +116,7 @@ export const GraveTray = (props: GameStateActions) => {
                 top={9}
                 rotate="0deg"
               >
-                <CardImage img={graveCards?.[graveAmount - 1].img} minH={"0"} />
+                <CardImage img={graveCards?.[0].img} minH={"0"} />
               </Box>
             )}
           </Grid>
