@@ -53,13 +53,6 @@ const Body = () => {
     });
   }
 
-  function setData(data: PlayerData) {
-    setPlayerState()({
-      state: myState?.state ?? initGameState,
-      data,
-    });
-  }
-
   const socketPlayers =
     gameState?.content?.players ?? ({} as Record<string, PlayerState>);
 
@@ -87,6 +80,14 @@ const Body = () => {
     const localState = myState?.state ?? initGameState;
     return [...combineGameStates(), ...localState.slice(GRIDS.HAND)];
   }, [socketPlayers]);
+
+  function setData(data: PlayerData) {
+    setPlayerState()({
+      state: state ?? initGameState,
+      data,
+      timestamp: Date.now(),
+    });
+  }
 
   if (myState?.state === undefined && name) {
     return (
