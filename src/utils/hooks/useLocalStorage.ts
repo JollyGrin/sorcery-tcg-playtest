@@ -19,6 +19,21 @@ type UseLocalStorageOptions<T> = {
 
 const IS_SERVER = typeof window === "undefined";
 
+/**
+ * Custom hook that uses the localStorage API to persist state across page reloads.
+ *
+ * @props
+ *
+  key: string,
+  initialValue: T | (() => T),
+  options: UseLocalStorageOptions<T> = {},
+  - serializer?: (value: T) => string; // A function to serialize the value before storing it.
+  - deserializer?: (value: string) => T; // A function to deserialize the stored value.
+  - initializeWithValue?: boolean; // If true (default), the hook will initialize reading the local storage. In SSR, you should set it to false, returning the initial value initially. Default ts true
+ *
+ * @example
+ * const [value, setValue, removeValue] = useLocalStorage('test-key', 0)
+ * */
 export function useLocalStorage<T>(
   key: string,
   initialValue: T | (() => T),
