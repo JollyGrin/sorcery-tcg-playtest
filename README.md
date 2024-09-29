@@ -13,6 +13,7 @@ Find instructions if you wish to setup your own game server.
 
 
 ## Todo 
+- [ ] keypress listener for mana/life increase
 - [x] view enemy graveyard
 - [x] add four cores deck import https://fourcores.xyz/api/tts/T33jdoAJy8PGY9Agq1fo
 - [ ] add hand drawing mode (for mobile, just deck and hand)
