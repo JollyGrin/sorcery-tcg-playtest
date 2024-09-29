@@ -15,7 +15,6 @@ import {
 } from "react-icons/gi";
 import { LiaDiceD6Solid as IconD6 } from "react-icons/lia";
 import { FaDiceD20 as IconD20 } from "react-icons/fa";
-import { ViewGraveyardModal } from "./ViewGraveyardModal";
 import { Modal } from "@/components/atoms/Modal";
 import { DiscardModalBody } from "../Footer/Grave/DiscardModal";
 
