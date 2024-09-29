@@ -1,4 +1,8 @@
-import { CARD_CDN } from "@/components/organisms/GameBoard/constants";
+import {
+  CARD_CDN,
+  LOCALSTORAGE_KEYS,
+} from "@/components/organisms/GameBoard/constants";
+import { useLocalStorage } from "@/utils/hooks";
 import { useHover } from "@/utils/hooks/useHover";
 import { useKeyPress } from "@/utils/hooks/useKeyPress";
 import { useEffect, useRef, useState } from "react";
@@ -22,6 +26,17 @@ export const CardImage = ({
 }) => {
   const hoverRef = useRef(null);
   const isHovering = useHover(hoverRef);
+
+  const [rotateEnemy] = useLocalStorage(
+    LOCALSTORAGE_KEYS.SETTINGS.rotateEnemy,
+    false,
+    {
+      serializer: (bool) => `${bool}`,
+      deserializer: (string) => string === "true",
+    },
+  );
+
+  console.log({ rotateEnemy });
 
   const isPressed = useKeyPress("Alt");
   const [preview, setPreview] = useState(false);

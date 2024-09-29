@@ -62,7 +62,11 @@ export enum GRIDS {
 
 export const LOCALSTORAGE_KEYS = {
   SETTINGS: {
-    rotateEnemy: "SETTINGS:ROTATE_ENEMY",
+    rotateEnemy: {
+      key: "SETTINGS:ROTATE_ENEMY",
+      serializer: (bool: boolean) => `${bool}`,
+      deserializer: (string: string) => string === "true",
+    },
   },
 };
 
