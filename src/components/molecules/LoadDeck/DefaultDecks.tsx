@@ -10,6 +10,7 @@ export const DefaultDecks = (props: { setDeckId(id: string): void }) => {
       <Grid gridTemplateColumns="repeat(4,1fr)" mt="1rem">
         {precons.map((precon) => (
           <PreconButton
+            key={precon.deckId}
             setDeckId={() => props.setDeckId(precon.deckId)}
             {...precon}
           />
