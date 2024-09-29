@@ -117,7 +117,7 @@ export const CreateLobby = () => {
               onClick={onSubmit}
               style={{ width: "100%" }}
             >
-              Create lobby
+              Create/Join lobby
             </button>
             {fields.gid && (
               <HStack

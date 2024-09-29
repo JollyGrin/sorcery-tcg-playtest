@@ -20,6 +20,7 @@ Find instructions if you wish to setup your own game server.
 - [ ] support battlebox (shared deck)
 
 ## Bugs
+- [x] updating mana or rolling dice causes board state to clear
 - [ ] graveyard sorting. Ensure that in the handle drag it ignores ordering conditions
 - [ ] firefox maybe shows context menu on right click
 - [x] right click modal, taps card
@@ -27,6 +28,11 @@ Find instructions if you wish to setup your own game server.
 
 
 ## Feedback
+- [ ] 
+
+
+
+## Recently finished
 - [x] roll dice (d6/d20)
 - [x] spawn card/token modal
     - cache the sorcery api data on cards.army
@@ -39,10 +45,6 @@ Find instructions if you wish to setup your own game server.
 - [x] add numbers to grid: numbers 1-20
 - [x] add counters on cards
 - [x] add remaining / total mana
-
-
-
-## Recently finished
 - [x] add websocket for multiplayer
 - [x] landing page
 - [x] setup pages for solo play (1p, 2p rotate self)
