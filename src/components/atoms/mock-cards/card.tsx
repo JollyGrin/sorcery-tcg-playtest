@@ -1,4 +1,8 @@
-import { CARD_CDN } from "@/components/organisms/GameBoard/constants";
+import {
+  CARD_CDN,
+  LOCALSTORAGE_KEYS,
+} from "@/components/organisms/GameBoard/constants";
+import { useLocalStorage } from "@/utils/hooks";
 import { useHover } from "@/utils/hooks/useHover";
 import { useKeyPress } from "@/utils/hooks/useKeyPress";
 import { useEffect, useRef, useState } from "react";
@@ -23,6 +27,11 @@ export const CardImage = ({
   const hoverRef = useRef(null);
   const isHovering = useHover(hoverRef);
 
+  const { key, ...options } = LOCALSTORAGE_KEYS.SETTINGS.rotateEnemy;
+  const [rotateEnemy, setRotateEnemy] = useLocalStorage(key, false, options);
+
+  console.log("card", { rotateEnemy });
+
   const isPressed = useKeyPress("Alt");
   const [preview, setPreview] = useState(false);
   useEffect(() => {
@@ -32,6 +41,11 @@ export const CardImage = ({
   }, [isPressed]);
 
   const show = props.show || (preview && isHovering);
+  const isMe = props.isMine === undefined || !!props.isMine;
+  function shouldRotate() {
+    if (rotateEnemy === false) return "rotate(0deg)";
+    return isMe ? "rotate(0deg)" : "rotate(180deg)";
+  }
 
   return (
     <Box
@@ -53,10 +67,8 @@ export const CardImage = ({
       onMouseOut={() => setPreview(false)}
       style={{
         height,
-        border:
-          props.isMine === undefined || !!props.isMine
-            ? ""
-            : "solid 2px tomato",
+        transform: shouldRotate(),
+        border: isMe ? "" : "solid 2px tomato",
       }}
     >
       <Box
