@@ -14,6 +14,8 @@ Find instructions if you wish to setup your own game server.
 - [x] add four cores deck import https://fourcores.xyz/api/tts/T33jdoAJy8PGY9Agq1fo
 - [ ] add hand drawing mode (for mobile, just deck and hand)
 - [x] add setting to flip enemy card upside down
+- [x] add precon decks to default load
+- [ ] banish cards from cemetary
 
 ## Feature ideas
 - [ ] support 4players
@@ -21,7 +23,7 @@ Find instructions if you wish to setup your own game server.
 
 ## Bugs
 - [x] updating mana or rolling dice causes board state to clear
-- [ ] graveyard sorting. Ensure that in the handle drag it ignores ordering conditions
+- [x] graveyard sorting. Ensure that in the handle drag it ignores ordering conditions
 - [ ] firefox maybe shows context menu on right click
 - [x] right click modal, taps card
 
