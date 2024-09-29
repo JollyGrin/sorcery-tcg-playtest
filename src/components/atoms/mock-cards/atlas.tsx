@@ -1,4 +1,8 @@
-import { CARD_CDN } from "@/components/organisms/GameBoard/constants";
+import {
+  CARD_CDN,
+  LOCALSTORAGE_KEYS,
+} from "@/components/organisms/GameBoard/constants";
+import { useLocalStorage } from "@/utils/hooks";
 import { Box } from "styled-system/jsx";
 
 export const CardAtlas = ({
@@ -10,7 +14,14 @@ export const CardAtlas = ({
   height?: string;
   isMine?: boolean;
 }) => {
+  const { key, ...options } = LOCALSTORAGE_KEYS.SETTINGS.rotateEnemy;
+  const [rotateEnemy] = useLocalStorage(key, false, options);
+
   const isMe = props.isMine === undefined || !!props.isMine;
+  function shouldRotate() {
+    if (rotateEnemy === false) return "rotate(0deg)";
+    return isMe ? "rotate(0deg)" : "rotate(180deg)";
+  }
   return (
     <Box
       position="relative"
@@ -21,10 +32,11 @@ export const CardAtlas = ({
       borderRadius="1rem"
       isolation="isolate"
       overflow="clip"
+      transition="all 0.25s ease"
       style={{
         height,
         border: isMe ? "" : "solid 2px tomato",
-        transform: isMe ? "rotate(0deg)" : "rotate(180deg)",
+        transform: shouldRotate(),
       }}
     >
       <Box

@@ -27,16 +27,10 @@ export const CardImage = ({
   const hoverRef = useRef(null);
   const isHovering = useHover(hoverRef);
 
-  const [rotateEnemy] = useLocalStorage(
-    LOCALSTORAGE_KEYS.SETTINGS.rotateEnemy,
-    false,
-    {
-      serializer: (bool) => `${bool}`,
-      deserializer: (string) => string === "true",
-    },
-  );
+  const { key, ...options } = LOCALSTORAGE_KEYS.SETTINGS.rotateEnemy;
+  const [rotateEnemy, setRotateEnemy] = useLocalStorage(key, false, options);
 
-  console.log({ rotateEnemy });
+  console.log("card", { rotateEnemy });
 
   const isPressed = useKeyPress("Alt");
   const [preview, setPreview] = useState(false);
@@ -48,6 +42,10 @@ export const CardImage = ({
 
   const show = props.show || (preview && isHovering);
   const isMe = props.isMine === undefined || !!props.isMine;
+  function shouldRotate() {
+    if (rotateEnemy === false) return "rotate(0deg)";
+    return isMe ? "rotate(0deg)" : "rotate(180deg)";
+  }
 
   return (
     <Box
@@ -69,7 +67,7 @@ export const CardImage = ({
       onMouseOut={() => setPreview(false)}
       style={{
         height,
-        transform: isMe ? "rotate(0deg)" : "rotate(180deg)",
+        transform: shouldRotate(),
         border: isMe ? "" : "solid 2px tomato",
       }}
     >
