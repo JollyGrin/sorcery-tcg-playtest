@@ -20,6 +20,7 @@ import { input } from "styled-system/recipes";
 import { GiPirateGrave as IconGrave } from "react-icons/gi";
 import { useLocalStorage } from "@/utils/hooks";
 import { CardImage } from "@/components/atoms/mock-cards/card";
+import { CardAtlas } from "@/components/atoms/mock-cards/atlas";
 
 export const actions = [
   {
@@ -202,11 +203,21 @@ export const ActRotateEnemyCards = () => {
 
   return (
     <Box>
-      <p>
-        Rotate the enemy cards on the board. The ordering (top to bottom)
-        remains the same, but visually each enemy card will be flipped.
-      </p>
-      <Grid gridTemplateColumns="1fr 1fr">
+      <p>Rotate the enemy cards on the board.</p>
+      <Box
+        className={css({
+          bg: "rgba(0,100,200,0.1)",
+          padding: "1rem",
+          border: "solid 2px",
+          borderColor: "rgba(0,100,200,0.3)",
+          borderRadius: "0.25rem",
+        })}
+      >
+        <p>The ordering (top to bottom) remains the same.</p>
+        <p>Visually each enemy card will be flipped.</p>
+        <p>Keep this in mind when ordering.</p>
+      </Box>
+      <Grid gridTemplateColumns="1fr 1fr" mt="2rem">
         <Box>
           <p>Rotate enemy: {`${rotateEnemy}`}</p>
           <Button onClick={() => setRotateEnemy(!rotateEnemy)}>
@@ -214,9 +225,10 @@ export const ActRotateEnemyCards = () => {
           </Button>
         </Box>
 
-        <Box>
-          <CardImage img={"autumn_unicorn"} />
-        </Box>
+        <VStack>
+          <CardImage img={"autumn_unicorn"} isMine={false} />
+          <CardAtlas img={"windmill"} isMine={false} />
+        </VStack>
       </Grid>
     </Box>
   );
