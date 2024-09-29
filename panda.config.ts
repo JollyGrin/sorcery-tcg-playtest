@@ -4,6 +4,12 @@ import { defineConfig } from "@pandacss/dev";
 const semanticTokens = {
   // Example: Set primary color to another value
   colors: {
+    brand: {
+      primary: { value: "#FAF7F0" },
+      secondary: { value: "#4A4947" },
+      highlight: { value: "#D8D2C2" },
+      shadow: { value: "#B17457" },
+    },
     primary: {
       DEFAULT: {
         value: {

@@ -14,12 +14,8 @@ Find instructions if you wish to setup your own game server.
 
 ## Todo 
 - [ ] keypress listener for mana/life increase
-- [x] view enemy graveyard
-- [x] add four cores deck import https://fourcores.xyz/api/tts/T33jdoAJy8PGY9Agq1fo
 - [ ] add hand drawing mode (for mobile, just deck and hand)
-- [x] add setting to flip enemy card upside down
-- [x] add precon decks to default load
-- [ ] banish cards from cemetary
+
 
 ## Feature ideas
 - [ ] support 4players
@@ -39,6 +35,11 @@ Find instructions if you wish to setup your own game server.
 
 
 ## Recently finished
+- [x] view enemy graveyard
+- [x] add four cores deck import https://fourcores.xyz/api/tts/T33jdoAJy8PGY9Agq1fo
+- [x] add setting to flip enemy card upside down
+- [x] add precon decks to default load
+- [x] banish cards from cemetary
 - [x] roll dice (d6/d20)
 - [x] spawn card/token modal
     - cache the sorcery api data on cards.army
