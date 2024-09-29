@@ -14,6 +14,8 @@ Find instructions if you wish to setup your own game server.
 - [x] add four cores deck import https://fourcores.xyz/api/tts/T33jdoAJy8PGY9Agq1fo
 - [ ] add hand drawing mode (for mobile, just deck and hand)
 - [x] add setting to flip enemy card upside down
+- [x] add precon decks to default load
+- [ ] banish cards from cemetary
 
 ## Feature ideas
 - [ ] support 4players
