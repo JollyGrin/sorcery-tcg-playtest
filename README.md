@@ -23,7 +23,7 @@ Find instructions if you wish to setup your own game server.
 
 ## Bugs
 - [x] updating mana or rolling dice causes board state to clear
-- [ ] graveyard sorting. Ensure that in the handle drag it ignores ordering conditions
+- [x] graveyard sorting. Ensure that in the handle drag it ignores ordering conditions
 - [ ] firefox maybe shows context menu on right click
 - [x] right click modal, taps card
 
