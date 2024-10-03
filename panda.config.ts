@@ -1,7 +1,11 @@
 import recipes from "@/components/ui/recipes";
-import { defineConfig } from "@pandacss/dev";
+import { defineConfig, SemanticTokens } from "@pandacss/dev";
 
-const semanticTokens = {
+const semanticTokens: SemanticTokens = {
+  fonts: {
+    body: { value: "var(--body)" },
+    header: { value: "var(--header)" },
+  },
   // Example: Set primary color to another value
   colors: {
     brand: {
@@ -70,6 +74,12 @@ export default defineConfig({
   // Useful for theme customization
   theme: {
     extend: { semanticTokens, recipes, keyframes },
+    textStyles: {
+      body: {
+        description: "default font",
+        value: { fontFamily: "var(--body)" },
+      },
+    },
   },
 
   outdir: "styled-system",

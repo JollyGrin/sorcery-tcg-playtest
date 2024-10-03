@@ -1,5 +1,9 @@
 @layer reset, base, tokens, recipes, utilities;
 
+body {
+  font-family: var(--body);
+}
+
 /* custom scrollbar */
 ::-webkit-scrollbar {
   width: 20px;
