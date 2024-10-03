@@ -73,12 +73,12 @@ export const ActUntapAll = () => {
   return (
     <Box>
       <p>
-        You can untap all your tapped cards by pressed{" "}
+        You can untap all your tapped cards by pressing{" "}
         <span
           style={{
             borderRadius: "0.25rem",
             background: "rgba(0,0,0,0.2)",
-            padding: "2px 4px",
+            padding: "2px 6px",
             fontFamily: "monospace",
             borderBottom: "solid 1px black",
           }}
