@@ -15,7 +15,7 @@ Find instructions if you wish to setup your own game server.
 ## Todo 
 - [ ] keypress listener for mana/life increase
 - [ ] add hand drawing mode (for mobile, just deck and hand)
-- [ ] command: scry -> add bottom deck in addition to top deck
+- [x] command: scry -> add bottom deck in addition to top deck
 
 
 ## Feature ideas
