@@ -5,20 +5,18 @@ import { Disclaimer } from "@/components/organisms/LandingPage/Disclaimer";
 import { Nav } from "@/components/organisms/LandingPage/Nav";
 import { Tabs } from "@/components/atoms/Tabs";
 import { Solo } from "@/components/organisms/LandingPage/SoloLoader";
-import { HowToPlay } from "@/components/organisms/LandingPage/HowToPlay";
 import Link from "next/link";
 import { button } from "styled-system/recipes";
-import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <Grid w="100vw" h="100vh" bg="brand.secondary" p="2rem">
+    <Grid w="100vw" h="100vh" bg="brand.shadow" p="2rem">
       <Flex direction="column" maxW="900px" w="100%" m="0 auto" gap={3}>
         <Nav />
         <Grid
           minH="300px"
           gridTemplateColumns="1fr 1fr"
-          bg="linear-gradient(45deg, rgba(177,116,87,1) 0%, rgba(139,90,67,1) 99%)"
+          bg="linear-gradient(45deg, rgba(100,50,150,1) 0%, rgba(200,100,100,1) 99%)"
           padding="1rem"
           borderRadius="0.25rem"
           justifyContent="space-between"
@@ -43,15 +41,22 @@ export default function Home() {
           <Selector />
         </Grid>
         <Disclaimer />
-        <Grid gridTemplateColumns="1fr 1fr">
+        <Grid
+          gridTemplateColumns="1fr 1fr"
+          py="1rem"
+          fontSize="2rem"
+          fontWeight="700"
+          alignItems="center"
+        >
+          <p>Load your favorite decks from Curiosa, Realms, or Four Cores</p>
           <img
             src="/landing/cards3.png"
             alt="cards"
             style={{
+              justifySelf: "end",
               height: "250px",
             }}
           />
-          <p>Load</p>
         </Grid>
       </Flex>
     </Grid>
