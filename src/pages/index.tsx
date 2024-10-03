@@ -43,7 +43,16 @@ export default function Home() {
           <Selector />
         </Grid>
         <Disclaimer />
-        <Grid gridTemplateColumns="1fr 1fr"></Grid>
+        <Grid gridTemplateColumns="1fr 1fr">
+          <img
+            src="/landing/cards3.png"
+            alt="cards"
+            style={{
+              height: "250px",
+            }}
+          />
+          <p>Load</p>
+        </Grid>
       </Flex>
     </Grid>
   );
