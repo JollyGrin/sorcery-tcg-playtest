@@ -4,6 +4,7 @@ import { defineConfig, SemanticTokens } from "@pandacss/dev";
 const semanticTokens: SemanticTokens = {
   fonts: {
     body: { value: "var(--body)" },
+    title: { value: "var(--title)" },
     header: { value: "var(--header)" },
   },
   // Example: Set primary color to another value

@@ -10,22 +10,31 @@ import { button } from "styled-system/recipes";
 
 export default function Home() {
   return (
-    <Grid w="100vw" h="100vh" bg="brand.shadow" p="2rem">
+    <Grid w="100vw" h="100vh" bg="brand.shadow" p="2rem" className="wood">
       <Flex direction="column" maxW="900px" w="100%" m="0 auto" gap={3}>
         <Nav />
         <Grid
           minH="300px"
           gridTemplateColumns="1fr 1fr"
           bg="linear-gradient(45deg, rgba(100,50,150,1) 0%, rgba(200,100,100,1) 99%)"
+          borderBottom="solid 5px"
+          borderBottomColor="rgba(80,30,120,1)"
           padding="1rem"
-          borderRadius="0.25rem"
+          borderRadius="0.5rem"
           justifyContent="space-between"
+          filter="drop-shadow(0 0.25rem 0.25rem rgba(0,0,0,0.35))"
         >
           <Box color="brand.highlight">
             <HStack>
               <IconLogo size="2.5rem" />
-              <p className={css({ fontWeight: 700, fontSize: "3rem" })}>
-                Spells Bar
+              <p
+                className={css({
+                  fontWeight: 700,
+                  fontSize: "3rem",
+                  fontFamily: "title",
+                })}
+              >
+                Spells.Bar
               </p>
             </HStack>
             <p className={css({ fontSize: "1.5rem" })}>
@@ -57,6 +66,25 @@ export default function Home() {
               height: "250px",
             }}
           />
+        </Grid>
+
+        <Grid
+          gridTemplateColumns="1fr 1fr"
+          py="1rem"
+          fontSize="2rem"
+          fontWeight="700"
+          alignItems="center"
+        >
+          <img
+            src="/landing/cards3.png"
+            alt="cards"
+            style={{
+              height: "250px",
+            }}
+          />
+          <p>
+            Duel against friends! Completely free and entirely in the browser
+          </p>
         </Grid>
       </Flex>
     </Grid>

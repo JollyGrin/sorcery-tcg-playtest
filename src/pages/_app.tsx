@@ -14,6 +14,10 @@ const fontHeader = Caudex({
   weight: ["400", "700"],
   subsets: ["latin"],
 });
+const fontTitle = Cinzel_Decorative({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
 
 const queryClient = new QueryClient();
 
@@ -38,6 +42,7 @@ const Style = () => (
     {`
       :root {
         --header: ${fontHeader.style.fontFamily};
+        --title: ${fontTitle.style.fontFamily};
         --body: ${fontBody.style.fontFamily};
       }
     `}
