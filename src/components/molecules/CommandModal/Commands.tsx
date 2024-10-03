@@ -8,6 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { PlayerDataProps } from "@/types/card";
 import {
+  actDeckMoveToBottom,
   actDeckMoveToTop,
   actDrawDeck,
   actDrawDeckBottom,
@@ -173,28 +174,60 @@ export const ActScryX = ({
     props.setGridItems(state);
   }
 
+  function moveCardToBottomOfDeck(cardIndex: number) {
+    const state = actDeckMoveToBottom(props.gridItems, deckType, cardIndex);
+    props.setGridItems(state);
+  }
+
   return (
     <VStack alignItems="start">
       <p>Look at the top X cards of your spellbook</p>
+      <p style={{ fontSize: "0.85rem", opacity: 0.5 }}>
+        Select input and use arrow keys on keyboard to go up and down
+      </p>
       <input
         className={input()}
         type="number"
         onChange={(e) => setScry(+e.target.value)}
         value={scry.toString()}
       />
+
+      {scry > 0 && (
+        <p style={{ fontSize: "0.85rem", opacity: 0.5 }}>
+          You can move individual cards to the top or bottom of your deck
+        </p>
+      )}
       <Flex flexWrap="wrap" maxW="500px" maxH="600px" overflowY="auto" gap={2}>
         {scry > 0 &&
           deck
             ?.reverse() // top of deck is last item in array
             ?.slice(0, scry)
             .map((card, cardIndex) => (
-              <Box
-                key={card.id + cardIndex}
-                onClick={() => moveCardToTopOfDeck(deck.length - cardIndex - 1)}
-              >
-                <Button fontSize="0.65rem" paddingBlock={0} h="1rem">
-                  Move to top
-                </Button>
+              <Box key={card.id + cardIndex}>
+                <HStack py="2px">
+                  <Button
+                    w="fit-content"
+                    fontSize="0.65rem"
+                    paddingBlock={0}
+                    h="1rem"
+                    onClick={() =>
+                      moveCardToTopOfDeck(deck.length - cardIndex - 1)
+                    }
+                  >
+                    {"<-"} Top
+                  </Button>
+
+                  <Button
+                    fontSize="0.65rem"
+                    paddingBlock={0}
+                    h="1rem"
+                    onClick={() =>
+                      moveCardToBottomOfDeck(deck.length - cardIndex - 1)
+                    }
+                  >
+                    Bottom {"->"}
+                  </Button>
+                </HStack>
                 <img
                   key={card.id + card.img}
                   src={getCardImage(card.img)}
