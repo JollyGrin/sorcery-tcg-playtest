@@ -1,9 +1,10 @@
-import { Box } from "styled-system/jsx";
+import { CardImage } from "@/components/atoms/card-view/card";
+import { Box, Flex, Grid } from "styled-system/jsx";
 
 export const DraftCard = () => {
   return (
-    <Box bg="red" w="100px" h="180px">
-      Hi
-    </Box>
+    <Flex justifyContent="center" w="16.4rem" h="23rem" bg="plum">
+      <CardImage img="battlemage" />
+    </Flex>
   );
 };

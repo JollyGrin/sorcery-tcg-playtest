@@ -28,9 +28,8 @@ export const DraftBoard = () => {
         p="4rem 0.5rem"
         h={hCards}
         overflow="auto"
-        gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))"
+        gridTemplateColumns="repeat(auto-fit, minmax(16.4rem, 1fr))"
         position="relative"
-        gap="1rem"
         bg="gray.500"
       >
         {Array.from({ length: 15 }).map((_, index) => (
