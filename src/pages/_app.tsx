@@ -4,10 +4,10 @@ import type { AppProps } from "next/app";
 import Script from "next/script";
 import { Toaster } from "react-hot-toast";
 
-import { MedievalSharp, Caudex, Cinzel_Decorative } from "next/font/google";
+import { Caudex, Cinzel_Decorative, Della_Respira } from "next/font/google";
 
-const fontBody = Caudex({
-  weight: ["400", "700"],
+const fontBody = Della_Respira({
+  weight: ["400"],
   subsets: ["latin"],
 });
 const fontHeader = Caudex({
