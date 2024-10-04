@@ -1,42 +1,17 @@
 import { DraftCard } from "@/components/organisms/Draft/Card";
-import { Tabs } from "@/components/atoms/Tabs";
-import { Box, Grid, HStack } from "styled-system/jsx";
-import { Button } from "@/components/ui/button";
+import { Box, Grid } from "styled-system/jsx";
 import { DraftPlayerData } from "./types";
-import { useCardFullData } from "@/utils/api/cardData/useCardData";
+import { Ribbon } from "./Ribbon";
 
 const hTop = "20vh";
 const hTabs = "5vh";
 const hCards = "75vh";
 export const gridHeight = { top: hTop, tabs: hTabs, cards: hCards };
 
-export const DraftBoard = ({
-  player,
-  setPlayerData,
-}: {
+export const DraftBoard = (props: {
   player: DraftPlayerData;
   setPlayerData(data: DraftPlayerData): void;
 }) => {
-  const { data: cardData = [] } = useCardFullData();
-
-  function generateNewBooster() {
-    const arr = [...cardData];
-    const count = 15;
-    let shuffled = arr.slice(); // Shallow copy to avoid mutating the original array
-    for (let i = arr.length - 1; i > arr.length - 1 - count; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap elements
-    }
-    return shuffled.slice(-count); // Return the last `count` items
-  }
-
-  function crackBooster() {
-    const newBooster = generateNewBooster();
-    setPlayerData({
-      ...player,
-    });
-  }
-
   return (
     <Grid
       h="100vh"
@@ -45,13 +20,8 @@ export const DraftBoard = ({
       gridTemplateRows={`${hTop} ${hTabs} ${hCards}`}
       gap={0}
     >
-      <Box>hi</Box>
-      <Box p="1rem" bg="red">
-        <HStack>
-          <Tabs tabs={["Yours", "Pack 1"]} />
-          <Button>Crack a Pack</Button>
-        </HStack>
-      </Box>
+      <Box>todo: player data</Box>
+      <Ribbon {...props} />
       <Grid
         p="4rem 0.5rem"
         h={hCards}
@@ -61,8 +31,8 @@ export const DraftBoard = ({
         position="relative"
         bg="gray.500"
       >
-        {Array.from({ length: 15 }).map((_, index) => (
-          <DraftCard key={"draftcard" + index} />
+        {props.player.activePack.map((card, index) => (
+          <DraftCard key={"draftcard" + card.name} {...card} />
         ))}
       </Grid>
     </Grid>

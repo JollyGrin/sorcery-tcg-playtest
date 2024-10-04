@@ -2,8 +2,9 @@ import { CardImage } from "@/components/atoms/card-view/card";
 import { Box, Flex, Grid } from "styled-system/jsx";
 import Tilt, { GlareProps } from "react-parallax-tilt";
 import { useState } from "react";
+import { CardDTO } from "@/utils/api/cardData/CardDataType";
 
-export const DraftCard = () => {
+export const DraftCard = (cardDTO: CardDTO) => {
   const [isOver, setIsOver] = useState(false);
   function over() {
     setIsOver(true);
@@ -30,7 +31,7 @@ export const DraftCard = () => {
           onMouseOut={out}
           alignItems="center"
         >
-          <CardImage img="battlemage" />
+          <CardImage img={cardDTO.slug} />
         </Flex>
       </Tilt>
     </Box>

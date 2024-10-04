@@ -14,3 +14,11 @@ export type DraftPlayerData = {
   finishedPacks: CardDTO[][]; // packs you've picked and ready to pass (ready to pass to other player)
   deck?: CardDTO[]; // after draft, the deck you construct from selectedCards
 };
+
+/**
+ * Your individual state and setter to update it
+ * */
+export type DraftProps = {
+  player: DraftPlayerData;
+  setPlayerData(data: DraftPlayerData): void;
+};

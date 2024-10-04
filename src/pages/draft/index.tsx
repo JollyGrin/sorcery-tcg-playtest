@@ -1,6 +1,5 @@
 import { DraftBoard } from "@/components/organisms/Draft";
 import { DraftPlayerData } from "@/components/organisms/Draft/types";
-import { useCardFullData } from "@/utils/api/cardData/useCardData";
 import { useState } from "react";
 
 export default function DraftPage() {
@@ -18,7 +17,7 @@ export default function DraftPage() {
     return setPlayers((prev) => ({
       ...prev,
       p1: {
-        data,
+        ...data,
       },
     }));
   }
