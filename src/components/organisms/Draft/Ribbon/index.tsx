@@ -9,11 +9,8 @@ export const Ribbon = (props: DraftProps) => {
   const { data: cardData = [] } = useCardFullData();
 
   const types = cardData?.map((card) => card.guardian.rarity);
-  console.log({ rarity: new Set(types) });
 
-  function generateNewBooster() {
-    const arr = [...cardData];
-    const count = 15;
+  function generateNewBooster(arr: any[], count = 15) {
     let shuffled = arr.slice(); // Shallow copy to avoid mutating the original array
     for (let i = arr.length - 1; i > arr.length - 1 - count; i--) {
       let j = Math.floor(Math.random() * (i + 1));
@@ -22,7 +19,7 @@ export const Ribbon = (props: DraftProps) => {
     return shuffled.slice(-count); // Return the last `count` items
   }
   function crackBooster() {
-    const newBooster = generateNewBooster();
+    const newBooster = generateNewBooster([...cardData]);
     props.setPlayerData({
       ...props.player,
       activePack: newBooster,
