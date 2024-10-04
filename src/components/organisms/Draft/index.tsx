@@ -3,9 +3,9 @@ import { Tabs } from "@/components/atoms/Tabs";
 import { Box, Grid, HStack } from "styled-system/jsx";
 import { Button } from "@/components/ui/button";
 
-const hTop = "25vh";
+const hTop = "20vh";
 const hTabs = "5vh";
-const hCards = "70vh";
+const hCards = "75vh";
 export const gridHeight = { top: hTop, tabs: hTabs, cards: hCards };
 
 export const DraftBoard = () => {
@@ -27,7 +27,8 @@ export const DraftBoard = () => {
       <Grid
         p="4rem 0.5rem"
         h={hCards}
-        overflow="auto"
+        overflowY="auto"
+        overflowX="clip"
         gridTemplateColumns="repeat(auto-fit, minmax(16.4rem, 1fr))"
         position="relative"
         bg="gray.500"
