@@ -15,11 +15,15 @@ Find instructions if you wish to setup your own game server.
 ## Todo 
 - [ ] keypress listener for mana/life increase
 - [ ] add hand drawing mode (for mobile, just deck and hand)
+- [x] command: scry -> add bottom deck in addition to top deck
 
 
 ## Feature ideas
 - [ ] support 4players
 - [ ] support battlebox (shared deck)
+- [ ] draft mode
+    - include websocket support
+    - statistics on openings https://www.reddit.com/r/SorceryTCG/comments/18y5bs4/personal_beta_opening_stats_100_boxes/
 
 ## Bugs
 - [x] updating mana or rolling dice causes board state to clear

@@ -119,3 +119,28 @@ export function actDeckMoveToTop(
 
   return newState;
 }
+
+/**
+ * Move a card within a deck to the bottom of the deck
+ * */
+export function actDeckMoveToBottom(
+  state: GameState,
+  deckType: "deck" | "atlas",
+  cardIndex: number,
+) {
+  const newState = [...state];
+  const GRID_DECK_TYPE = deckType === "deck" ? GRIDS.DECK : GRIDS.ATLAS_DECK;
+  const newDeck = [...newState[GRID_DECK_TYPE]];
+
+  // Ensure the cardIndex is within bounds
+  if (cardIndex >= 0 && cardIndex < newDeck.length) {
+    // Remove the card at the specified index from the deck
+    const [card] = newDeck.splice(cardIndex, 1);
+    // Push the card to the hand if it exists
+    if (card) newDeck.unshift(card);
+  }
+
+  newState[GRID_DECK_TYPE] = newDeck;
+
+  return newState;
+}
