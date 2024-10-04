@@ -6,8 +6,8 @@ type Thresholds = {
 };
 
 type Guardian = {
-  rarity: string;
-  type: string;
+  rarity: "Ordinary" | "Elite" | "Exceptional" | "Unique";
+  type: "Minion" | "Magic" | "Aura" | "Artifact" | "Site" | "Avatar";
   typeText: string;
   subType: string;
   rulesText: string;

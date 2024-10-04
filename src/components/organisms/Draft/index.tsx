@@ -3,9 +3,9 @@ import { Box, Grid } from "styled-system/jsx";
 import { DraftPlayerData } from "./types";
 import { Ribbon } from "./Ribbon";
 
-const hTop = "20vh";
+const hTop = "7vh";
 const hTabs = "5vh";
-const hCards = "75vh";
+const hCards = "88vh";
 export const gridHeight = { top: hTop, tabs: hTabs, cards: hCards };
 
 export const DraftBoard = (props: {
@@ -23,7 +23,7 @@ export const DraftBoard = (props: {
       <Box>todo: player data</Box>
       <Ribbon {...props} />
       <Grid
-        p="4rem 0.5rem"
+        p="3rem 4rem"
         h={hCards}
         overflowY="auto"
         overflowX="clip"

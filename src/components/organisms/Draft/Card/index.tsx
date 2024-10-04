@@ -18,7 +18,9 @@ export const DraftCard = (cardDTO: CardDTO) => {
       transition="all 0.25s ease"
       style={{
         zIndex: isOver ? 10000 : 1,
-        filter: isOver ? "saturate(1.5)" : "saturate(1)",
+        transform:
+          isOver && cardDTO.guardian.type === "Site" ? " rotate(90deg)" : "",
+        filter: isOver ? `saturate(1.5)` : "saturate(1)",
       }}
     >
       <Tilt {...tiltOptions} scale={isOver ? 1.2 : 1}>

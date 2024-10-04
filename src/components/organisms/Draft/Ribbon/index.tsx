@@ -7,6 +7,10 @@ import { DraftProps } from "../types";
 
 export const Ribbon = (props: DraftProps) => {
   const { data: cardData = [] } = useCardFullData();
+
+  const types = cardData?.map((card) => card.guardian.rarity);
+  console.log({ rarity: new Set(types) });
+
   function generateNewBooster() {
     const arr = [...cardData];
     const count = 15;
