@@ -1,17 +1,18 @@
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { HStack } from "styled-system/jsx";
 
 export const Nav = () => {
   return (
-    <HStack color="white" justifyContent="end" minH="3rem" gap={8}>
+    <HStack color="white" justifyContent="end" gap={2}>
       <Link href={"https://github.com/JollyGrin/sorcery-tcg-playtest"}>
-        <p>Github</p>
+        <Button>Github</Button>
       </Link>
 
       <Link
         href={"https://github.com/JollyGrin/sorcery-tcg-playtest/issues/new"}
       >
-        <p>Report a Bug/Request Feature</p>
+        <Button>Report a Bug/Request Feature</Button>
       </Link>
     </HStack>
   );

@@ -1,9 +1,20 @@
 import recipes from "@/components/ui/recipes";
-import { defineConfig } from "@pandacss/dev";
+import { defineConfig, SemanticTokens } from "@pandacss/dev";
 
-const semanticTokens = {
+const semanticTokens: SemanticTokens = {
+  fonts: {
+    body: { value: "var(--body)" },
+    title: { value: "var(--title)" },
+    header: { value: "var(--header)" },
+  },
   // Example: Set primary color to another value
   colors: {
+    brand: {
+      primary: { value: "#FAF7F0" },
+      secondary: { value: "#4A4947" },
+      highlight: { value: "#D8D2C2" },
+      shadow: { value: "#B17457" },
+    },
     primary: {
       DEFAULT: {
         value: {
@@ -64,6 +75,12 @@ export default defineConfig({
   // Useful for theme customization
   theme: {
     extend: { semanticTokens, recipes, keyframes },
+    textStyles: {
+      body: {
+        description: "default font",
+        value: { fontFamily: "var(--body)" },
+      },
+    },
   },
 
   outdir: "styled-system",

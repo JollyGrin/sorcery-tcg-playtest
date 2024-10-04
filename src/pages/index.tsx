@@ -5,77 +5,91 @@ import { Disclaimer } from "@/components/organisms/LandingPage/Disclaimer";
 import { Nav } from "@/components/organisms/LandingPage/Nav";
 import { Tabs } from "@/components/atoms/Tabs";
 import { Solo } from "@/components/organisms/LandingPage/SoloLoader";
-import { HowToPlay } from "@/components/organisms/LandingPage/HowToPlay";
 import Link from "next/link";
 import { button } from "styled-system/recipes";
 
 export default function Home() {
   return (
-    <Grid
-      minW="100vw"
-      h="100vh"
-      bgImage="url(/bg/tavern-min.png)"
-      bgRepeat="no-repeat"
-      bgSize="cover"
-      bgPosition="center"
-      // animation="bgZoomIn 5s"
-      overflowX="clip"
-      overflowY="auto"
-    >
-      <Flex direction="column" maxW="900px" m="0 auto 10rem" gap="1rem">
+    <Grid minH="100vh" bg="brand.shadow" p="2rem" className="wood">
+      <Flex direction="column" maxW="900px" w="100%" m="0 auto" gap={3}>
         <Nav />
-        <Box
-          color="white"
-          bgImage="url(/bg/solo-forest.png)"
-          bgSize="cover"
-          bgPosition="center"
+        <Grid
+          minH="300px"
+          gridTemplateColumns="1fr 1fr"
+          bg="linear-gradient(45deg, rgba(100,50,150,1) 0%, rgba(200,100,100,1) 99%)"
+          borderBottom="solid 5px"
+          borderBottomColor="rgba(80,30,120,1)"
+          padding="1rem"
           borderRadius="0.5rem"
-          p={{ base: "0.25rem", sm: "2rem" }}
-          minH="20rem"
-          overflow="hidden"
+          justifyContent="space-between"
+          filter="drop-shadow(0 0.25rem 0.25rem rgba(0,0,0,0.35))"
         >
-          <Grid gridTemplateColumns={{ base: "1fr", md: "6fr 8fr" }} h="100%">
-            <Box>
-              <HStack>
-                <IconLogo size="2.5rem" />
-                <p className={css({ fontWeight: 700, fontSize: "3rem" })}>
-                  Spells Bar
-                </p>
-              </HStack>
-              <p className={css({ fontSize: "1.5rem" })}>
-                Playtest decks from Sorcery TCG
+          <Box color="brand.highlight">
+            <HStack>
+              <IconLogo size="2.5rem" />
+              <p
+                className={css({
+                  fontWeight: 700,
+                  fontSize: "3rem",
+                  fontFamily: "title",
+                })}
+              >
+                Spells.Bar
               </p>
-              <ul style={{ opacity: 0.75, marginTop: "2rem" }}>
-                <li>No accounts</li>
-                <li>All in the browser</li>
-                <li>Load Table Top Simulator decks</li>
-                <li>Open Sourced</li>
-              </ul>
-            </Box>
-            <Box
-              h="100%"
-              bg="rgba(0,0,0,0.25)"
-              borderRadius="0.5rem"
-              p="0.5rem"
-              // display={{ base: "none", sm: "block" }}
-            >
-              <Tabs
-                tabs={["Solo", "Battlebox", "Online"]}
-                content={[
-                  <Solo key="solo" />,
-                  <Battlebox key="battlebox" />,
-                  <Multiplayer key="multiplayer" />,
-                ]}
-              />
-            </Box>
-          </Grid>
-        </Box>
+            </HStack>
+            <p className={css({ fontSize: "1.5rem" })}>
+              Playtest decks from Sorcery TCG
+            </p>
+            <ul style={{ opacity: 0.75, marginTop: "2rem" }}>
+              <li>No accounts</li>
+              <li>All in the browser</li>
+              <li>Load Table Top Simulator decks</li>
+              <li>Open Sourced</li>
+            </ul>
+          </Box>
+          <Selector />
+        </Grid>
         <Disclaimer />
-        <HowToPlay />
+        <Grid
+          gridTemplateColumns="1fr 1fr"
+          py="1rem"
+          fontSize="2rem"
+          fontWeight="700"
+          alignItems="center"
+        >
+          <p>Load your favorite decks from Curiosa, Realms, or Four Cores</p>
+          <img
+            src="/landing/cards3.png"
+            alt="cards"
+            style={{
+              justifySelf: "end",
+              height: "250px",
+            }}
+          />
+        </Grid>
       </Flex>
     </Grid>
   );
 }
+
+const Selector = () => (
+  <Box
+    h="100%"
+    bg="rgba(0,0,0,0.25)"
+    borderRadius="0.5rem"
+    p="0.5rem"
+    // display={{ base: "none", sm: "block" }}
+  >
+    <Tabs
+      tabs={["Solo", "Battlebox", "Online"]}
+      content={[
+        <Solo key="solo" />,
+        <Battlebox key="battlebox" />,
+        <Multiplayer key="multiplayer" />,
+      ]}
+    />
+  </Box>
+);
 
 const Multiplayer = () => {
   return (
