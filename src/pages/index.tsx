@@ -10,7 +10,7 @@ import { button } from "styled-system/recipes";
 
 export default function Home() {
   return (
-    <Grid w="100vw" h="100vh" bg="brand.shadow" p="2rem" className="wood">
+    <Grid minH="100vh" bg="brand.shadow" p="2rem" className="wood">
       <Flex direction="column" maxW="900px" w="100%" m="0 auto" gap={3}>
         <Nav />
         <Grid
@@ -66,25 +66,6 @@ export default function Home() {
               height: "250px",
             }}
           />
-        </Grid>
-
-        <Grid
-          gridTemplateColumns="1fr 1fr"
-          py="1rem"
-          fontSize="2rem"
-          fontWeight="700"
-          alignItems="center"
-        >
-          <img
-            src="/landing/cards3.png"
-            alt="cards"
-            style={{
-              height: "250px",
-            }}
-          />
-          <p>
-            Duel against friends! Completely free and entirely in the browser
-          </p>
         </Grid>
       </Flex>
     </Grid>
