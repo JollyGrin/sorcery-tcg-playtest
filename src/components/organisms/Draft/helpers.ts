@@ -1,4 +1,5 @@
 import { CardDTO } from "@/utils/api/cardData/CardDataType";
+import { DraftPlayerData } from "./types";
 
 function shuffleAndSelect(arr: CardDTO[], count = 15) {
   const shuffled = arr.slice(); // Shallow copy to avoid mutating the original array
@@ -66,3 +67,43 @@ export function generateBoosterPack(props: {
 
   return newBooster;
 }
+
+/**
+ * SORT PLAYERS BASED ON JOIN
+ * */
+type PlayersEntry = [string, DraftPlayerData];
+export function sortPlayersByJoin(a: PlayersEntry, b: PlayersEntry) {
+  const [, valueA] = a;
+  const [, valueB] = b;
+  return valueA.joinedSessionTimestamp - valueB.joinedSessionTimestamp;
+}
+
+/**
+ * FIND ADJACENT SEATS IN DRAFT
+ * */
+export const findAdjacentPlayers = (
+  currentPlayer: DraftPlayerData,
+  _players: Record<string, DraftPlayerData>,
+) => {
+  const players = Object.entries(_players).sort(sortPlayersByJoin);
+
+  const currentIndex = players.findIndex(
+    ([, value]) =>
+      value.joinedSessionTimestamp === currentPlayer.joinedSessionTimestamp,
+  );
+
+  const previousPlayer =
+    currentIndex === 0
+      ? players[players.length - 1] // If first player, return the last player
+      : players[currentIndex - 1]; // Else, return the previous player
+
+  const nextPlayer =
+    currentIndex === players.length - 1
+      ? players[0] // If last player, return the first player
+      : players[currentIndex + 1]; // Else, return the next player
+
+  return {
+    previousPlayer,
+    nextPlayer,
+  };
+};

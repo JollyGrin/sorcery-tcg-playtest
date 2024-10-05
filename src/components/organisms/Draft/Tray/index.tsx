@@ -3,15 +3,12 @@ import { DraftPlayerData } from "../types";
 
 import { LuArrowBigRightDash as IconRight } from "react-icons/lu";
 import { RiArrowGoBackLine as IconReturnArrow } from "react-icons/ri";
+import { sortPlayersByJoin } from "../helpers";
 
 export const DraftTray = (props: {
   players: Record<string, DraftPlayerData>;
 }) => {
-  const players = Object.entries(props.players).sort((a, b) => {
-    const [, valueA] = a;
-    const [, valueB] = b;
-    return valueA.joinedSessionTimestamp - valueB.joinedSessionTimestamp;
-  });
+  const players = Object.entries(props.players).sort(sortPlayersByJoin);
 
   return (
     <HStack data-testid="stats" p="1rem">
