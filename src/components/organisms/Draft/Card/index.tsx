@@ -13,8 +13,16 @@ export const DraftCard = (cardDTO: CardDTO) => {
     setIsOver(false);
   }
 
+  const rarityColor: Record<CardDTO["guardian"]["rarity"], string> = {
+    Ordinary: "#fff",
+    Exceptional: "rgba(0,100,150,1)",
+    Elite: "rgba(150,0,250,1)",
+    Unique: "rgba(230,180,50,1)",
+  };
+
   return (
     <Box
+      data-testid={"draftcard-" + cardDTO.slug}
       transition="all 0.25s ease"
       style={{
         zIndex: isOver ? 10000 : 1,
@@ -23,7 +31,11 @@ export const DraftCard = (cardDTO: CardDTO) => {
         filter: isOver ? `saturate(1.5)` : "saturate(1)",
       }}
     >
-      <Tilt {...tiltOptions} scale={isOver ? 1.2 : 1}>
+      <Tilt
+        {...tiltOptions}
+        glareColor={rarityColor[cardDTO.guardian.rarity]}
+        scale={isOver ? 1.2 : 1}
+      >
         <Flex
           justifyContent="center"
           w="100%"
