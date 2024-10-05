@@ -15,7 +15,7 @@ export const DraftBoard = (props: {
   player: DraftPlayerData;
   setPlayerData(data: DraftPlayerData): void;
 }) => {
-  const [activeView, setActiveView] = useState(0);
+  const [activeView] = useState(0);
   const cardView = useMemo(() => {
     return props.player.finishedPacks?.[activeView];
   }, [activeView, props.player.finishedPacks.length]);
