@@ -3,18 +3,19 @@ import { DraftProps } from "../types";
 import { CardDTO } from "@/utils/api/cardData/CardDataType";
 
 function filterRarity(rarity: CardDTO["guardian"]["rarity"]) {
-  return (card: CardDTO) => card.guardian.rarity === rarity;
+  return (card: CardDTO) => card?.guardian?.rarity === rarity;
 }
 
 export const DraftStats = (props: DraftProps) => {
+  if (props.player.finishedPacks.length === 0) return <div />;
   const flat = props.player.finishedPacks.flat();
 
   const exceptionals = flat.filter(filterRarity("Exceptional"));
   const elites = flat.filter(filterRarity("Elite"));
   const uniques = flat.filter(filterRarity("Unique"));
 
-  const sites = flat.filter((card) => card.guardian.type === "Site");
-  const avatars = flat.filter((card) => card.guardian.type === "Avatar");
+  const sites = flat.filter((card) => card?.guardian?.type === "Site");
+  const avatars = flat.filter((card) => card?.guardian?.type === "Avatar");
 
   return (
     <HStack justifyContent="space-between">
