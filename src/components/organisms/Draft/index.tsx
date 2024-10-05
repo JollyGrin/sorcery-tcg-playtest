@@ -42,6 +42,9 @@ export const DraftBoard = (props: {
         position="relative"
         bg="gray.500"
       >
+        {(!cardView || cardView?.length === 0) && (
+          <p>No packs... yet! Click "Crack a Pack!"</p>
+        )}
         {cardView?.map((card, index) => (
           <DraftCard key={"draftcard" + card?.name + index} {...card} />
         ))}
