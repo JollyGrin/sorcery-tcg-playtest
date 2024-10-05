@@ -17,7 +17,9 @@ export const Tabs = ({
   tabs,
   content,
   selectedIndex,
-  onSelect = (_: number) => {},
+  onSelect = (index: number) => {
+    console.info(index + " selected");
+  },
 }: Props) => {
   const value =
     selectedIndex !== undefined ? selectedIndex.toString() : undefined;
