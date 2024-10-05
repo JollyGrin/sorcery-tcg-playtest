@@ -23,7 +23,7 @@ export const DraftBoard = (props: {
       gap={0}
     >
       <DraftTray players={props.players} />
-      <DraftRibbon />
+      <DraftRibbon {...props} />
       <Grid
         p="3rem 4rem"
         h={hCards}
