@@ -1,17 +1,13 @@
 import { DraftBoard } from "@/components/organisms/Draft";
-import { DraftPlayerData } from "@/components/organisms/Draft/types";
+import {
+  DraftPlayerData,
+  initPlayers,
+} from "@/components/organisms/Draft/types";
 import { useState } from "react";
 
-export default function CrackPacksPage() {
-  const [players, setPlayers] = useState<Record<string, DraftPlayerData>>({
-    p1: {
-      joinedSessionTimestamp: 1,
-      selectedCards: [],
-      activePack: [],
-      pendingPacks: [[]],
-      finishedPacks: [],
-    },
-  });
+export default function DraftSoloPage() {
+  const [players, setPlayers] =
+    useState<Record<string, DraftPlayerData>>(initPlayers);
 
   function setPlayer(data: DraftPlayerData) {
     return setPlayers((prev) => ({
@@ -22,5 +18,11 @@ export default function CrackPacksPage() {
     }));
   }
 
-  return <DraftBoard player={players?.p1} setPlayerData={setPlayer} />;
+  return (
+    <DraftBoard
+      players={players}
+      player={players?.p1}
+      setPlayerData={setPlayer}
+    />
+  );
 }
