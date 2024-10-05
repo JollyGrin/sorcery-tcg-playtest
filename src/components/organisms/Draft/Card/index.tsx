@@ -4,7 +4,12 @@ import Tilt, { GlareProps } from "react-parallax-tilt";
 import { useState } from "react";
 import { CardDTO } from "@/utils/api/cardData/CardDataType";
 
-export const DraftCard = (cardDTO: CardDTO) => {
+export const DraftCard = (
+  cardDTO: CardDTO & {
+    isSelected?: boolean;
+    onSelect?(index: number): void;
+  },
+) => {
   const [isOver, setIsOver] = useState(false);
   function over() {
     setIsOver(true);

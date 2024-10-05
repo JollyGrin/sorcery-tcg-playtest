@@ -3,6 +3,7 @@ import { Grid } from "styled-system/jsx";
 import { DraftPlayerData } from "./types";
 import { DraftRibbon } from "./Ribbon";
 import { DraftTray } from "./Tray";
+import { useState } from "react";
 
 const hTop = "7vh";
 const hTabs = "5vh";
@@ -14,6 +15,8 @@ export const DraftBoard = (props: {
   player: DraftPlayerData;
   setPlayerData(data: DraftPlayerData): void;
 }) => {
+  const [selectedIndex, setSelectedIndex] = useState<number | undefined>();
+
   return (
     <Grid
       h="100vh"
@@ -34,7 +37,12 @@ export const DraftBoard = (props: {
         bg="gray.500"
       >
         {props.player.activePack?.map((card, index) => (
-          <DraftCard key={"draftcard" + card?.name + index} {...card} />
+          <DraftCard
+            key={"draftcard" + card?.name + index}
+            {...card}
+            isSelected={index === selectedIndex}
+            onSelect={setSelectedIndex}
+          />
         ))}
       </Grid>
     </Grid>
