@@ -16,11 +16,15 @@ type Props = {
 export const Tabs = ({
   tabs,
   content,
-  selectedIndex = 0,
+  selectedIndex,
   onSelect = (_: number) => {},
 }: Props) => {
+  const value =
+    selectedIndex !== undefined ? selectedIndex.toString() : undefined;
+  const options = value !== undefined ? { value } : {};
+
   return (
-    <TabsWrapper defaultValue="0" value={selectedIndex.toString()}>
+    <TabsWrapper defaultValue="0" {...options}>
       <TabsList>
         {tabs.map((tab, index) => (
           <TabsTrigger
