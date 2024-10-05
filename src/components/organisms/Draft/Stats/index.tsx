@@ -1,4 +1,4 @@
-import { Box, Flex } from "styled-system/jsx";
+import { Box, Flex, HStack } from "styled-system/jsx";
 import { DraftProps } from "../types";
 import { CardDTO } from "@/utils/api/cardData/CardDataType";
 
@@ -17,17 +17,30 @@ export const DraftStats = (props: DraftProps) => {
   const avatars = flat.filter((card) => card.guardian.type === "Avatar");
 
   return (
-    <Flex p="0 1.25rem" gap="2rem">
-      <Box>
-        <p>Exceptionals: {exceptionals.length.toString()}</p>
-        <p>Elites: {elites.length.toString()}</p>
-        <p>Uniques: {uniques.length.toString()}</p>
+    <HStack justifyContent="space-between">
+      <Flex p="0 1.25rem" gap="2rem" fontSize={{ base: "0.85rem", md: "1rem" }}>
+        <Flex
+          alignItems="start"
+          direction={{ base: "row", md: "column" }}
+          gap={{ base: 2, md: 0 }}
+        >
+          <p>Exceptionals: {exceptionals.length.toString()}</p>
+          <p>Elites: {elites.length.toString()}</p>
+          <p>Uniques: {uniques.length.toString()}</p>
+        </Flex>
+        <Flex
+          alignItems="start"
+          direction={{ base: "row", md: "column" }}
+          gap={{ base: 2, md: 0 }}
+        >
+          <p>Total Cards: {flat.length.toString()}</p>
+          <p>Sites: {sites.length.toString()}</p>
+          <p>Avatars: {avatars.length.toString()}</p>
+        </Flex>
+      </Flex>
+      <Box display={{ base: "none", lg: "block" }} p="1rem" mx="1rem" bg="plum">
+        <p>Online draft currently in development!</p>
       </Box>
-      <Box>
-        <p>Total Cards: {flat.length.toString()}</p>
-        <p>Sites: {sites.length.toString()}</p>
-        <p>Avatars: {avatars.length.toString()}</p>
-      </Box>
-    </Flex>
+    </HStack>
   );
 };

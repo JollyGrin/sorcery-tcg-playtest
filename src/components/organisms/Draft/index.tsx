@@ -1,5 +1,5 @@
 import { DraftCard } from "@/components/organisms/Draft/Card";
-import { Box, Grid } from "styled-system/jsx";
+import { Grid } from "styled-system/jsx";
 import { DraftPlayerData } from "./types";
 import { Ribbon } from "./Ribbon";
 import { useMemo, useState } from "react";

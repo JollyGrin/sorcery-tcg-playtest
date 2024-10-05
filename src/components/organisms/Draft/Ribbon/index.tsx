@@ -1,4 +1,4 @@
-import { Box, HStack } from "styled-system/jsx";
+import { Box, Grid, HStack } from "styled-system/jsx";
 import { Button } from "@/components/ui/button";
 import { Tabs } from "@/components/atoms/Tabs";
 
@@ -35,7 +35,7 @@ export const Ribbon = (
 
   return (
     <Box p="1rem" bg="brown">
-      <HStack>
+      <Grid gridTemplateColumns="1fr 7fr">
         <Button minW="9rem" onClick={crackBooster}>
           Crack a Pack
         </Button>
@@ -48,7 +48,7 @@ export const Ribbon = (
             />
           )}
         </HStack>
-      </HStack>
+      </Grid>
     </Box>
   );
 };

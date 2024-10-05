@@ -1,5 +1,5 @@
 import { CardImage } from "@/components/atoms/card-view/card";
-import { Box, Flex, Grid } from "styled-system/jsx";
+import { Box, Flex } from "styled-system/jsx";
 import Tilt, { GlareProps } from "react-parallax-tilt";
 import { useState } from "react";
 import { CardDTO } from "@/utils/api/cardData/CardDataType";
