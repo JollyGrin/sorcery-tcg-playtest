@@ -15,6 +15,25 @@ export type DraftPlayerData = {
   deck?: CardDTO[]; // after draft, the deck you construct from selectedCards
 };
 
+export const initPlayer: DraftPlayerData = {
+  joinedSessionTimestamp: 0,
+  selectedCards: [],
+  activePack: [],
+  pendingPacks: [],
+  finishedPacks: [],
+};
+
+export const initPlayers: Record<string, DraftPlayerData> = [1, 2, 3, 4].reduce(
+  (acc, player) => {
+    acc[`p${player}`] = {
+      ...initPlayer,
+      joinedSessionTimestamp: player,
+    };
+    return acc;
+  },
+  {} as { [key: string]: DraftPlayerData },
+);
+
 /**
  * Your individual state and setter to update it
  * */
