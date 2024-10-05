@@ -3,6 +3,7 @@ import { Box, Grid } from "styled-system/jsx";
 import { DraftPlayerData } from "./types";
 import { Ribbon } from "./Ribbon";
 import { useMemo, useState } from "react";
+import { DraftStats } from "./Stats";
 
 const hTop = "7vh";
 const hTabs = "5vh";
@@ -26,7 +27,7 @@ export const DraftBoard = (props: {
       gridTemplateRows={`${hTop} ${hTabs} ${hCards}`}
       gap={0}
     >
-      <Box>todo: player data</Box>
+      <DraftStats {...props} />
       <Ribbon
         {...props}
         activeViewIndex={activeView}
