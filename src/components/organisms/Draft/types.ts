@@ -8,6 +8,7 @@ export type BoosterPack = {
 
 export type DraftPlayerData = {
   joinedSessionTimestamp: number; // time of joining the session. Used for ordering
+  selectedIndex?: number; // index of card ready for selection from activePack
   selectedCards: CardDTO[]; // cards you've picked
   activePack: CardDTO[]; // pack actively picking from
   pendingPacks: CardDTO[][]; // packs ready for pick (passed by other player)
