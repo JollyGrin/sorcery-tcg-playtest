@@ -1,4 +1,4 @@
-import { DraftBoard } from "@/components/organisms/Draft";
+import { CrackBoard } from "@/components/organisms/Crack";
 import { DraftPlayerData } from "@/components/organisms/Draft/types";
 import { useState } from "react";
 
@@ -22,5 +22,5 @@ export default function CrackPacksPage() {
     }));
   }
 
-  return <DraftBoard player={players?.p1} setPlayerData={setPlayer} />;
+  return <CrackBoard player={players?.p1} setPlayerData={setPlayer} />;
 }

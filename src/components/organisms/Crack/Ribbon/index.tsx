@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Tabs } from "@/components/atoms/Tabs";
 
 import { useCardFullData } from "@/utils/api/cardData/useCardData";
-import { DraftProps } from "../types";
-import { generateBoosterPack } from "../helpers";
+import { DraftProps } from "@/components/organisms/Draft/types";
+import { generateBoosterPack } from "@/components/organisms/Draft/helpers";
 
 export const Ribbon = (
   props: DraftProps & {

@@ -1,12 +1,12 @@
 import { Box, Flex, HStack } from "styled-system/jsx";
-import { DraftProps } from "../types";
+import { DraftProps } from "@/components/organisms/Draft/types";
 import { CardDTO } from "@/utils/api/cardData/CardDataType";
 
 function filterRarity(rarity: CardDTO["guardian"]["rarity"]) {
   return (card: CardDTO) => card?.guardian?.rarity === rarity;
 }
 
-export const DraftStats = (props: DraftProps) => {
+export const CrackStats = (props: DraftProps) => {
   if (props.player.finishedPacks.length === 0) return <div />;
   const flat = props.player.finishedPacks.flat();
 
