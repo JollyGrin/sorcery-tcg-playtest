@@ -1,9 +1,9 @@
 import { CardDTO } from "@/utils/api/cardData/CardDataType";
 
-function shuffleAndSelect(arr: any[], count = 15) {
-  let shuffled = arr.slice(); // Shallow copy to avoid mutating the original array
+function shuffleAndSelect(arr: CardDTO[], count = 15) {
+  const shuffled = arr.slice(); // Shallow copy to avoid mutating the original array
   for (let i = arr.length - 1; i > arr.length - 1 - count; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
+    const j = Math.floor(Math.random() * (i + 1));
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap elements
   }
   return shuffled.slice(-count); // Return the last `count` items
@@ -14,7 +14,7 @@ export function generateBoosterPack(props: {
   cardData: CardDTO[];
   expansionSlug: Expansion | "all";
 }) {
-  let cards = props.cardData.slice(); // shallow copy
+  const cards = props.cardData.slice(); // shallow copy
   const cardsInSet = cards.filter((card) => {
     if (props.expansionSlug === "all") return true;
     const setsFoundIn = card.sets.map((set) => set.slug);
