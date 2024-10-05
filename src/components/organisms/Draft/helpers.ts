@@ -21,26 +21,40 @@ export function generateBoosterPack(props: {
     return setsFoundIn.includes(props.expansionSlug);
   });
 
+  // 3 exceptionals
+  const exceptionals = cardsInSet?.filter(
+    (card) => card.guardian.rarity === "Exceptional",
+  );
+
+  // special pull card
+  const pullCard = cardsInSet?.filter((card) => {
+    const weightedCoinFlip = Math.random() <= 0.2; // 20% chance of success
+    const rarity: CardDTO["guardian"]["rarity"] = weightedCoinFlip
+      ? "Unique"
+      : "Elite";
+
+    // const isSpecialRarity = !["Exceptional", "Ordinary"].includes(
+    //   card.guardian.rarity,
+    // );
+    //
+    const isSpecialRarity = card.guardian.rarity === rarity;
+    const isAvatar = card.guardian.type === "Avatar";
+    return isSpecialRarity || isAvatar;
+  });
+
+  // 10 ordinaries
   const ordinaries = cardsInSet?.filter((card) => {
     const isOrdinary = card.guardian.rarity === "Ordinary";
     const isAvatar = card.guardian.type === "Avatar";
     const isSite = card.guardian.type === "Site";
     return isOrdinary && !isAvatar && !isSite;
   });
+
+  // 1 ordinary land
   const ordinarySite = cardsInSet?.filter((card) => {
     const isOrdinary = card.guardian.rarity === "Ordinary";
     const isSite = card.guardian.type === "Site";
     return isOrdinary && isSite;
-  });
-  const exceptionals = cardsInSet?.filter(
-    (card) => card.guardian.rarity === "Exceptional",
-  );
-  const pullCard = cardsInSet?.filter((card) => {
-    const isSpecialRarity = !["Exceptional", "Ordinary"].includes(
-      card.guardian.rarity,
-    );
-    const isAvatar = card.guardian.type === "Avatar";
-    return isSpecialRarity || isAvatar;
   });
 
   const newBooster = [

@@ -9,16 +9,18 @@ import { ReactNode } from "react";
 type Props = {
   tabs: ReactNode[];
   content?: ReactNode[];
+  selectedIndex?: number;
   onSelect?(index: number): void;
 };
 
 export const Tabs = ({
   tabs,
   content,
+  selectedIndex = 0,
   onSelect = (_: number) => {},
 }: Props) => {
   return (
-    <TabsWrapper defaultValue="0">
+    <TabsWrapper defaultValue="0" value={selectedIndex.toString()}>
       <TabsList>
         {tabs.map((tab, index) => (
           <TabsTrigger

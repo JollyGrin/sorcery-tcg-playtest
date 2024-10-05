@@ -2,6 +2,7 @@ import { DraftCard } from "@/components/organisms/Draft/Card";
 import { Box, Grid } from "styled-system/jsx";
 import { DraftPlayerData } from "./types";
 import { Ribbon } from "./Ribbon";
+import { useMemo, useState } from "react";
 
 const hTop = "7vh";
 const hTabs = "5vh";
@@ -12,6 +13,11 @@ export const DraftBoard = (props: {
   player: DraftPlayerData;
   setPlayerData(data: DraftPlayerData): void;
 }) => {
+  const [activeView, setActiveView] = useState(0);
+  const cardView = useMemo(() => {
+    return props.player.finishedPacks?.[activeView];
+  }, [activeView, props.player.finishedPacks.length]);
+
   return (
     <Grid
       h="100vh"
@@ -21,7 +27,11 @@ export const DraftBoard = (props: {
       gap={0}
     >
       <Box>todo: player data</Box>
-      <Ribbon {...props} />
+      <Ribbon
+        {...props}
+        activeViewIndex={activeView}
+        setActiveView={setActiveView}
+      />
       <Grid
         p="3rem 4rem"
         h={hCards}
@@ -31,8 +41,8 @@ export const DraftBoard = (props: {
         position="relative"
         bg="gray.500"
       >
-        {props.player.activePack.map((card, index) => (
-          <DraftCard key={"draftcard" + card.name} {...card} />
+        {cardView?.map((card, index) => (
+          <DraftCard key={"draftcard" + card?.name + index} {...card} />
         ))}
       </Grid>
     </Grid>

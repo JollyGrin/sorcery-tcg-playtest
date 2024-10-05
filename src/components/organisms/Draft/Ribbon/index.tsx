@@ -5,33 +5,49 @@ import { Tabs } from "@/components/atoms/Tabs";
 import { useCardFullData } from "@/utils/api/cardData/useCardData";
 import { DraftProps } from "../types";
 import { generateBoosterPack } from "../helpers";
-import { useEffect } from "react";
 
-export const Ribbon = (props: DraftProps) => {
+export const Ribbon = (
+  props: DraftProps & {
+    activeViewIndex: number;
+    setActiveView(index: number): void;
+  },
+) => {
   const { data: cardData = [] } = useCardFullData();
 
   function crackBooster() {
     const newBooster = generateBoosterPack({
       cardData,
-      expansionSlug: "alp",
+      expansionSlug: "bet",
     });
-    const existingActive = props.player.activePack;
+    const { finishedPacks } = props.player;
+    const isEmpty = finishedPacks.length === 0;
     props.setPlayerData({
       ...props.player,
-      activePack: newBooster,
-      finishedPacks: [...props.player.finishedPacks, existingActive],
+      finishedPacks: isEmpty ? [newBooster] : [...finishedPacks, newBooster],
     });
+    props.setActiveView(props.player.finishedPacks.length);
   }
 
-  useEffect(() => {
-    if (props.player.activePack.length === 0) crackBooster();
-  }, []);
+  const packTabs =
+    props.player?.finishedPacks?.length > 0
+      ? props.player?.finishedPacks?.map((_, index) => `Pack ${index + 1}`)
+      : [];
 
   return (
-    <Box p="1rem" bg="red">
+    <Box p="1rem" bg="brown">
       <HStack>
-        <Tabs tabs={["Yours", "Pack 1"]} />
-        <Button onClick={crackBooster}>Crack a Pack</Button>
+        <Button minW="9rem" onClick={crackBooster}>
+          Crack a Pack
+        </Button>
+        <HStack maxW="70vw" overflowX="auto" overflowY="clip">
+          {props.player.finishedPacks.length > 0 && (
+            <Tabs
+              tabs={packTabs}
+              onSelect={props.setActiveView}
+              selectedIndex={props.activeViewIndex}
+            />
+          )}
+        </HStack>
       </HStack>
     </Box>
   );

@@ -10,7 +10,7 @@ export default function DraftPage() {
       selectedCards: [],
       activePack: [],
       pendingPacks: [[]],
-      finishedPacks: [[]],
+      finishedPacks: [],
     },
   });
 
