@@ -41,7 +41,11 @@ export const DraftBoard = (props: {
             key={"draftcard" + card?.name + index}
             {...card}
             isSelected={index === selectedIndex}
-            onSelect={setSelectedIndex}
+            onSelect={() =>
+              selectedIndex === index
+                ? setSelectedIndex(undefined)
+                : setSelectedIndex(index)
+            }
           />
         ))}
       </Grid>
