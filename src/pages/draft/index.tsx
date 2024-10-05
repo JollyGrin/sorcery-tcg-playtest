@@ -24,7 +24,7 @@ export default function DraftSoloPage() {
   }
 
   const { previousPlayer, nextPlayer } = useMemo(() => {
-    return findAdjacentPlayers(players.p1, players);
+    return findAdjacentPlayers(players[name], players);
   }, [Object.values(players).map((player) => player.joinedSessionTimestamp)]);
 
   const player = useMemo(() => {

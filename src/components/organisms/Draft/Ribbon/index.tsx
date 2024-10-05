@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Box, Grid } from "styled-system/jsx";
+import { Box, Flex, Grid } from "styled-system/jsx";
 import { DraftPlayerData, DraftProps } from "../types";
 import { generateBoosterPack } from "../helpers";
 import { useCardFullData } from "@/utils/api/cardData/useCardData";
@@ -23,7 +23,7 @@ export const DraftRibbon = (props: DraftProps) => {
     const { activePack, finishedPacks, selectedIndex, selectedCards } =
       props.player;
 
-    if (!selectedIndex) return;
+    if (selectedIndex === undefined) return;
 
     const updatedPack = [...activePack];
     const updatedSelected = [...selectedCards];
@@ -39,11 +39,31 @@ export const DraftRibbon = (props: DraftProps) => {
     });
   }
 
+  function activatePendingPack() {
+    const { pendingPacks } = props.player;
+    const updatedPending = [...pendingPacks];
+    const [pack] = updatedPending.splice(0, 1);
+
+    props.setPlayerData({
+      ...props.player,
+      pendingPacks: updatedPending,
+      activePack: pack,
+    });
+  }
+
   return (
     <Grid h="100%" bg="brown" gap={0} gridTemplateColumns="1fr 4fr 1fr">
-      <Box bg="red">
-        <p>pending</p>
-      </Box>
+      <Flex alignItems="center" justifyContent="center">
+        <Button
+          disabled={
+            props.player.pendingPacks.length === 0 ||
+            props.player.activePack.length > 0
+          }
+          onClick={activatePendingPack}
+        >
+          Flip pack ({props.player.pendingPacks.length ?? "0"} ready)
+        </Button>
+      </Flex>
       <Grid
         gridTemplateColumns="repeat(3,1fr)"
         alignItems="center"
@@ -54,7 +74,12 @@ export const DraftRibbon = (props: DraftProps) => {
         </div>
 
         {props.player.activePack.length === 0 ? (
-          <Button onClick={crackBooster}>Open a Pack</Button>
+          <Button
+            disabled={props.player.pendingPacks.length > 0}
+            onClick={crackBooster}
+          >
+            Open a Pack
+          </Button>
         ) : (
           <Button
             disabled={props.player.selectedIndex === undefined}
@@ -64,9 +89,9 @@ export const DraftRibbon = (props: DraftProps) => {
           </Button>
         )}
       </Grid>
-      <Box bg="blue">
-        <p>finished</p>
-      </Box>
+      <Flex alignItems="center" justifyContent="center">
+        <p>{props.player.finishedPacks.length} ready for next</p>
+      </Flex>
     </Grid>
   );
 };

@@ -29,6 +29,7 @@ export const DraftTray = (props: {
           <Flex alignItems="center" gap={1}>
             <Flex
               key={key}
+              direction="column"
               bg="lightblue"
               p="1rem"
               borderRadius="0.5rem"
@@ -39,9 +40,8 @@ export const DraftTray = (props: {
                   query.name === key ? "gold" : "rgba(0,200,250,0.5)",
               }}
             >
-              <p>
-                {key}:{value.joinedSessionTimestamp}
-              </p>
+              <p>{key}</p>
+              <p>{getStatus(value)}</p>
             </Flex>
             {index !== players.length - 1 ? (
               <IconRight size="2rem" />
@@ -54,3 +54,13 @@ export const DraftTray = (props: {
     </HStack>
   );
 };
+
+function getStatus(props: DraftPlayerData) {
+  const activeIsEmpty = props.activePack.length === 0;
+  const pendingIsEmpty = props.pendingPacks.length === 0;
+  const isSelecting = props.selectedIndex !== undefined;
+
+  if (activeIsEmpty) return "waiting";
+  if (!activeIsEmpty && !isSelecting) return "thinking";
+  if (!activeIsEmpty && isSelecting) return "selecting";
+}
