@@ -4,27 +4,28 @@ import { Tabs } from "@/components/atoms/Tabs";
 
 import { useCardFullData } from "@/utils/api/cardData/useCardData";
 import { DraftProps } from "../types";
+import { generateBoosterPack } from "../helpers";
+import { useEffect } from "react";
 
 export const Ribbon = (props: DraftProps) => {
   const { data: cardData = [] } = useCardFullData();
 
-  const types = cardData?.map((card) => card.guardian.rarity);
-
-  function generateNewBooster(arr: any[], count = 15) {
-    let shuffled = arr.slice(); // Shallow copy to avoid mutating the original array
-    for (let i = arr.length - 1; i > arr.length - 1 - count; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap elements
-    }
-    return shuffled.slice(-count); // Return the last `count` items
-  }
   function crackBooster() {
-    const newBooster = generateNewBooster([...cardData]);
+    const newBooster = generateBoosterPack({
+      cardData,
+      expansionSlug: "alp",
+    });
+    const existingActive = props.player.activePack;
     props.setPlayerData({
       ...props.player,
       activePack: newBooster,
+      finishedPacks: [...props.player.finishedPacks, existingActive],
     });
   }
+
+  useEffect(() => {
+    if (props.player.activePack.length === 0) crackBooster();
+  }, []);
 
   return (
     <Box p="1rem" bg="red">
