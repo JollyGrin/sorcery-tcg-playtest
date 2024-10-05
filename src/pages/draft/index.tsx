@@ -4,16 +4,20 @@ import {
   DraftPlayerData,
   initPlayers,
 } from "@/components/organisms/Draft/types";
+import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 
 export default function DraftSoloPage() {
+  const { query } = useRouter();
+  const name = (query?.name as string) ?? ("p1" as string);
+
   const [players, setPlayers] =
     useState<Record<string, DraftPlayerData>>(initPlayers);
 
   function setPlayer(data: DraftPlayerData) {
     return setPlayers((prev) => ({
       ...prev,
-      p1: {
+      [name]: {
         ...data,
       },
     }));
@@ -24,11 +28,11 @@ export default function DraftSoloPage() {
   }, [Object.values(players).map((player) => player.joinedSessionTimestamp)]);
 
   const player = useMemo(() => {
-    const data: DraftPlayerData = { ...players.p1 };
+    const data: DraftPlayerData = { ...players[name] };
     data.pendingPacks = previousPlayer[1].finishedPacks;
     data.finishedPacks = nextPlayer[1].pendingPacks;
     return data;
-  }, [players]);
+  }, [players, name]);
 
   return (
     <DraftBoard players={players} player={player} setPlayerData={setPlayer} />
