@@ -8,20 +8,37 @@ import { ReactNode } from "react";
 
 type Props = {
   tabs: ReactNode[];
-  content: ReactNode[];
+  content?: ReactNode[];
+  selectedIndex?: number;
+  onSelect?(index: number): void;
 };
 
-export const Tabs = ({ tabs, content }: Props) => {
+export const Tabs = ({
+  tabs,
+  content,
+  selectedIndex,
+  onSelect = (index: number) => {
+    console.info(index + " selected");
+  },
+}: Props) => {
+  const value =
+    selectedIndex !== undefined ? selectedIndex.toString() : undefined;
+  const options = value !== undefined ? { value } : {};
+
   return (
-    <TabsWrapper defaultValue="0">
+    <TabsWrapper defaultValue="0" {...options}>
       <TabsList>
         {tabs.map((tab, index) => (
-          <TabsTrigger key={index + "trigger"} value={index.toString()}>
+          <TabsTrigger
+            key={index + "trigger"}
+            value={index.toString()}
+            onClick={() => onSelect(index)}
+          >
             {tab}
           </TabsTrigger>
         ))}
       </TabsList>
-      {content.map((content, index) => (
+      {content?.map((content, index) => (
         <TabsContent key={"content" + index} value={index.toString()}>
           {content}
         </TabsContent>

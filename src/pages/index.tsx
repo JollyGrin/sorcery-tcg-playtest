@@ -67,6 +67,14 @@ export default function Home() {
             }}
           />
         </Grid>
+        <Box bg="plum" w="fit-content" p="1rem" borderRadius="1rem">
+          <p>Draft Mode in development!</p>
+          <Link href="/draft">
+            <p style={{ textDecoration: "underline" }}>
+              In the meantime, crack some packs!
+            </p>
+          </Link>
+        </Box>
       </Flex>
     </Grid>
   );

@@ -32,6 +32,10 @@ Find instructions if you wish to setup your own game server.
 - [x] right click modal, taps card
 
 
+## Missing Cards
+- [ ] [Winter river](https://curiosa.io/cards/winter_river)
+
+
 
 ## Feedback
 - [ ] 

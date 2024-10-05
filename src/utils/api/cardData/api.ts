@@ -1,4 +1,5 @@
 import axios from "axios";
+import { CardDTO } from "./CardDataType";
 
 type CardDataMinimized = {
   name: string;
@@ -45,3 +46,12 @@ export const TOKEN_RUBBLE: CardDataMinimized = {
   name: "Rubble",
   type: "site",
 };
+
+/**
+ * FUNCTIONS FOR DRAFT
+ * */
+
+export async function getCardsFullData() {
+  const res = await axios.get<CardDTO[]>(`/card-data/cards.json`);
+  return res.data;
+}

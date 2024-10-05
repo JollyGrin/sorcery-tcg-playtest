@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getCardsData, getTokensData } from "./api";
+import { getCardsData, getCardsFullData, getTokensData } from "./api";
 
 export const useCardData = () => {
   return useQuery({
@@ -13,6 +13,14 @@ export const useTokenData = () => {
   return useQuery({
     queryFn: getTokensData,
     queryKey: ["token-data"],
+    staleTime: Infinity,
+  });
+};
+
+export const useCardFullData = () => {
+  return useQuery({
+    queryFn: getCardsFullData,
+    queryKey: ["card-data-full"],
     staleTime: Infinity,
   });
 };
