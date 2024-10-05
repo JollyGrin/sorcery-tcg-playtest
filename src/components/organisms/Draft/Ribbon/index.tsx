@@ -16,6 +16,7 @@ export const DraftRibbon = (props: DraftProps) => {
     props.setPlayerData({
       ...props.player,
       activePack: newBooster,
+      packsOpened: (props.player.packsOpened ?? 0) + 1,
     });
   }
 
