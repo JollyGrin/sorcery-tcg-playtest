@@ -32,8 +32,8 @@ export default function DraftSoloPage() {
     const me = players?.[name];
     if (me.selectedIndex === undefined) return;
 
-    const updatedPack = me.activePack.splice(me.selectedIndex, 1);
-    const [selectedCard] = me.activePack.splice(me.selectedIndex, 1);
+    const updatedPack = [...me.activePack];
+    const [selectedCard] = updatedPack.splice(me.selectedIndex, 1);
     const newSelectedCards = [...me.selectedCards, selectedCard];
 
     const [nextPlayerName, nextPlayerData] = nextPlayer;
@@ -41,6 +41,12 @@ export default function DraftSoloPage() {
 
     setPlayers({
       ...players,
+      [name]: {
+        ...me,
+        activePack: [],
+        selectedIndex: undefined,
+        selectedCards: newSelectedCards,
+      },
       [nextPlayerName]: {
         ...nextPlayerData,
         pendingPacks: [...nextPlayerData.pendingPacks, updatedPack],
@@ -53,6 +59,7 @@ export default function DraftSoloPage() {
       players={players}
       player={players?.[name]} // displays combined pending/finished
       setPlayerData={setPlayer}
+      takeAndPass={takeAndPass}
     />
   );
 }

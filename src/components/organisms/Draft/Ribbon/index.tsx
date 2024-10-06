@@ -4,7 +4,11 @@ import { DraftPlayerData, DraftProps } from "../types";
 import { generateBoosterPack } from "../helpers";
 import { useCardFullData } from "@/utils/api/cardData/useCardData";
 
-export const DraftRibbon = (props: DraftProps) => {
+export const DraftRibbon = (
+  props: DraftProps & {
+    takeAndPass?(): void;
+  },
+) => {
   const { data: cardData = [] } = useCardFullData();
 
   function crackBooster() {
@@ -19,25 +23,25 @@ export const DraftRibbon = (props: DraftProps) => {
     });
   }
 
-  function takeAndPass() {
-    const { activePack, finishedPacks, selectedIndex, selectedCards } =
-      props.player;
+  // function takeAndPass() {
+  //   const { activePack, finishedPacks, selectedIndex, selectedCards } =
+  //     props.player;
 
-    if (selectedIndex === undefined) return;
+  //   if (selectedIndex === undefined) return;
 
-    const updatedPack = [...activePack];
-    const updatedSelected = [...selectedCards];
+  //   const updatedPack = [...activePack];
+  //   const updatedSelected = [...selectedCards];
 
-    const [card] = updatedPack.splice(selectedIndex, 1);
-    updatedSelected.push(card);
+  //   const [card] = updatedPack.splice(selectedIndex, 1);
+  //   updatedSelected.push(card);
 
-    props.setPlayerData({
-      ...props.player,
-      activePack: [],
-      finishedPacks: [...finishedPacks, updatedPack],
-      selectedIndex: undefined,
-    });
-  }
+  //   props.setPlayerData({
+  //     ...props.player,
+  //     activePack: [],
+  //     finishedPacks: [...finishedPacks, updatedPack],
+  //     selectedIndex: undefined,
+  //   });
+  // }
 
   function activatePendingPack() {
     const { pendingPacks } = props.player;
@@ -83,7 +87,7 @@ export const DraftRibbon = (props: DraftProps) => {
         ) : (
           <Button
             disabled={props.player.selectedIndex === undefined}
-            onClick={takeAndPass}
+            onClick={props.takeAndPass}
           >
             Take &amp; Pass
           </Button>

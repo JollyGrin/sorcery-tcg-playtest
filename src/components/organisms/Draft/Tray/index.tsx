@@ -76,7 +76,7 @@ const Dots = (props: DraftPlayerData) => {
       {props.pendingPacks.map((pack, index) => (
         <Box
           data-testid="pending-dot"
-          key={pack[0].slug + pack[1].slug + pack[3].slug + index}
+          key={pack[0]?.slug + index}
           left="-0.65rem"
           style={{ ...style, top: index ? `${index * 20}px` : 0 }}
         />
@@ -84,7 +84,7 @@ const Dots = (props: DraftPlayerData) => {
       {props.finishedPacks.map((pack, index) => (
         <Box
           data-testid="finished-dot"
-          key={pack[0].slug + pack[1].slug + pack[3].slug + index}
+          key={pack[0]?.slug + index}
           right="1.5rem"
           style={{ ...style, top: index ? `${index * 20}px` : 0 }}
         />
