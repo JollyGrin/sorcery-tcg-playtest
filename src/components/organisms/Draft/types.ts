@@ -8,10 +8,12 @@ export type BoosterPack = {
 
 export type DraftPlayerData = {
   joinedSessionTimestamp: number; // time of joining the session. Used for ordering
+  selectedIndex?: number; // index of card ready for selection from activePack
   selectedCards: CardDTO[]; // cards you've picked
   activePack: CardDTO[]; // pack actively picking from
   pendingPacks: CardDTO[][]; // packs ready for pick (passed by other player)
   finishedPacks: CardDTO[][]; // packs you've picked and ready to pass (ready to pass to other player)
+  packsOpened: number;
   deck?: CardDTO[]; // after draft, the deck you construct from selectedCards
 };
 
@@ -21,6 +23,7 @@ export const initPlayer: DraftPlayerData = {
   activePack: [],
   pendingPacks: [],
   finishedPacks: [],
+  packsOpened: 0,
 };
 
 export const initPlayers: Record<string, DraftPlayerData> = [1, 2, 3, 4].reduce(

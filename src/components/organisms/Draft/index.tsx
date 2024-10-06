@@ -1,7 +1,6 @@
 import { DraftCard } from "@/components/organisms/Draft/Card";
 import { Grid } from "styled-system/jsx";
 import { DraftPlayerData } from "./types";
-import { useMemo, useState } from "react";
 import { DraftRibbon } from "./Ribbon";
 import { DraftTray } from "./Tray";
 
@@ -14,11 +13,15 @@ export const DraftBoard = (props: {
   players: Record<string, DraftPlayerData>;
   player: DraftPlayerData;
   setPlayerData(data: DraftPlayerData): void;
+  takeAndPass?(): void;
 }) => {
-  const [activeView] = useState(0);
-  const cardView = useMemo(() => {
-    return props.player.finishedPacks?.[activeView];
-  }, [activeView, props.player.finishedPacks.length]);
+  // select a card from active pack, ready for taking
+  function setSelectedIndex(index?: number) {
+    props.setPlayerData({
+      ...props.player,
+      selectedIndex: index,
+    });
+  }
 
   return (
     <Grid
@@ -29,7 +32,7 @@ export const DraftBoard = (props: {
       gap={0}
     >
       <DraftTray players={props.players} />
-      <DraftRibbon />
+      <DraftRibbon {...props} />
       <Grid
         p="3rem 4rem"
         h={hCards}
@@ -39,11 +42,17 @@ export const DraftBoard = (props: {
         position="relative"
         bg="gray.500"
       >
-        {(!cardView || cardView?.length === 0) && (
-          <p>No packs... yet! Click Crack a Pack!</p>
-        )}
-        {cardView?.map((card, index) => (
-          <DraftCard key={"draftcard" + card?.name + index} {...card} />
+        {props.player.activePack?.map((card, index) => (
+          <DraftCard
+            key={"draftcard" + card?.name + index}
+            {...card}
+            isSelected={index === props.player.selectedIndex}
+            onSelect={() =>
+              props.player.selectedIndex === index
+                ? setSelectedIndex(undefined)
+                : setSelectedIndex(index)
+            }
+          />
         ))}
       </Grid>
     </Grid>

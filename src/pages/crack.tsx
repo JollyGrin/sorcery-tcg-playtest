@@ -10,6 +10,7 @@ export default function CrackPacksPage() {
       activePack: [],
       pendingPacks: [[]],
       finishedPacks: [],
+      packsOpened: 0,
     },
   });
 
