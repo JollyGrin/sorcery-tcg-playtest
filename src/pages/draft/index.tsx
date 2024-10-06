@@ -28,39 +28,30 @@ export default function DraftSoloPage() {
     return findAdjacentPlayers(players[name], players);
   }, [Object.values(players).map((player) => player.joinedSessionTimestamp)]);
 
-  const player = useMemo(() => {
-    const data: DraftPlayerData = { ...players[name] };
+  function takeAndPass() {
+    const me = players?.[name];
+    if (me.selectedIndex === undefined) return;
 
-    // NOTE: the transfer is buggy
-    // data.pendingPacks = previousPlayer[1].finishedPacks;
-    const prevFinishedKeys = previousPlayer[1].finishedPacks.map(mapPackKey);
-    const myPendingKeys = players[name].pendingPacks.map(mapPackKey);
-    const myFinishedKeys = players[name].finishedPacks.map(mapPackKey);
-    const [myActiveKey] = [players[name].activePack].map(mapPackKey);
+    const updatedPack = me.activePack.splice(me.selectedIndex, 1);
+    const [selectedCard] = me.activePack.splice(me.selectedIndex, 1);
+    const newSelectedCards = [...me.selectedCards, selectedCard];
 
-    const pendingPacks = previousPlayer[1].finishedPacks.filter((pack) => {
-      const packKey = mapPackKey(pack);
-      const isNotInActive = packKey !== myActiveKey;
-      return isNotInActive;
+    const [nextPlayerName, nextPlayerData] = nextPlayer;
+    const [previousPlayerName, previousPlayerData] = previousPlayer;
+
+    setPlayers({
+      ...players,
+      [nextPlayerName]: {
+        ...nextPlayerData,
+        pendingPacks: [...nextPlayerData.pendingPacks, updatedPack],
+      },
     });
-
-    console.table({
-      IMMU: prevFinishedKeys,
-      myActiveKey: [myActiveKey],
-      myFinishedKeys,
-    });
-
-    data.pendingPacks = pendingPacks;
-    data.finishedPacks = nextPlayer[1].pendingPacks;
-
-    return data;
-  }, [players, name]);
+  }
 
   return (
     <DraftBoard
       players={players}
-      player={player} // displays combined pending/finished
-      hiddenPlayer={players[name]} // values of your own state pre-combine
+      player={players?.[name]} // displays combined pending/finished
       setPlayerData={setPlayer}
     />
   );

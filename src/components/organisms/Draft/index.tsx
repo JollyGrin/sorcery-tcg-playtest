@@ -12,7 +12,6 @@ export const gridHeight = { top: hTop, tabs: hTabs, cards: hCards };
 export const DraftBoard = (props: {
   players: Record<string, DraftPlayerData>;
   player: DraftPlayerData;
-  hiddenPlayer: DraftPlayerData;
   setPlayerData(data: DraftPlayerData): void;
 }) => {
   // select a card from active pack, ready for taking
