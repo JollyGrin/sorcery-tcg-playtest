@@ -1,9 +1,11 @@
 import { Box, Flex, Grid } from "styled-system/jsx";
 import { Modal } from "@/components/atoms/Modal";
 import { getCardImage } from "../../GameBoard/constants";
-import { sortAlphabetical } from "./helpers";
+import { reduceCardCount, sortAlphabetical } from "./helpers";
 import { CardDTO } from "@/utils/api/cardData/CardDataType";
 import { Button } from "@/components/ui/button";
+import { useCopyToClipboard } from "@/utils/hooks";
+import toast from "react-hot-toast";
 
 export const SelectedCardsModal = ({
   cards = [],
@@ -14,6 +16,8 @@ export const SelectedCardsModal = ({
   isOpen?: boolean;
   onToggle?(): void;
 }) => {
+  const [, copy] = useCopyToClipboard();
+
   return (
     <>
       <Modal
@@ -55,31 +59,43 @@ export const SelectedCardsModal = ({
             <Box>
               {cards
                 .sort(sortAlphabetical)
-                .reduce<{ name: string; count: number }[]>(
-                  (acc, card: Card) => {
-                    const existingCard = acc.find(
-                      (item) => item.name === card.name,
-                    );
-                    if (existingCard) {
-                      existingCard.count += 1;
-                    } else {
-                      acc.push({ name: card.name, count: 1 });
-                    }
-                    return acc;
-                  },
-                  [],
-                )
+                .reduce(reduceCardCount, [])
                 .map((card, index) => {
                   return (
-                    <Grid gridTemplateColumns="1.5rem auto">
+                    <Grid
+                      key={card.name + index}
+                      gridTemplateColumns="1.5rem auto"
+                    >
                       <p>{card.count}x</p>
                       <p>{card.name}</p>
                     </Grid>
                   );
                 })}
-              <Button mt="2rem" w="100%">
+              <Button
+                mt="2rem"
+                w="100%"
+                onClick={() => {
+                  const list = cards
+                    .sort(sortAlphabetical)
+                    .reduce(reduceCardCount, [])
+                    .map((card) => `${card.count} ${card.name}`);
+                  const parsed = list.join("\n");
+                  copy(parsed);
+                  toast.success("Copied decklist to clipboard");
+                }}
+              >
                 Copy Bulk List
               </Button>
+              <p
+                style={{
+                  marginTop: "0.25rem",
+                  fontSize: "0.85rem",
+                  opacity: 0.6,
+                  textAlign: "center",
+                }}
+              >
+                Copy &amp; Paste into Curiosa "bulk add" in Create Deck
+              </p>
             </Box>
           </Grid>
         }
