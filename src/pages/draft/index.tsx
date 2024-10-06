@@ -4,6 +4,7 @@ import {
   DraftPlayerData,
   initPlayers,
 } from "@/components/organisms/Draft/types";
+import { CardDTO } from "@/utils/api/cardData/CardDataType";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 
@@ -29,12 +30,45 @@ export default function DraftSoloPage() {
 
   const player = useMemo(() => {
     const data: DraftPlayerData = { ...players[name] };
-    data.pendingPacks = previousPlayer[1].finishedPacks;
+
+    // NOTE: the transfer is buggy
+    // data.pendingPacks = previousPlayer[1].finishedPacks;
+    const prevFinishedKeys = previousPlayer[1].finishedPacks.map(mapPackKey);
+    const myPendingKeys = players[name].pendingPacks.map(mapPackKey);
+    const myFinishedKeys = players[name].finishedPacks.map(mapPackKey);
+    const [myActiveKey] = [players[name].activePack].map(mapPackKey);
+
+    const pendingPacks = previousPlayer[1].finishedPacks.filter((pack) => {
+      const packKey = mapPackKey(pack);
+      const isNotInActive = packKey !== myActiveKey;
+      return isNotInActive;
+    });
+
+    console.table({
+      IMMU: prevFinishedKeys,
+      myActiveKey: [myActiveKey],
+      myFinishedKeys,
+    });
+
+    data.pendingPacks = pendingPacks;
     data.finishedPacks = nextPlayer[1].pendingPacks;
+
     return data;
   }, [players, name]);
 
   return (
-    <DraftBoard players={players} player={player} setPlayerData={setPlayer} />
+    <DraftBoard
+      players={players}
+      player={player} // displays combined pending/finished
+      hiddenPlayer={players[name]} // values of your own state pre-combine
+      setPlayerData={setPlayer}
+    />
   );
+}
+
+function mapCardKey(card: CardDTO) {
+  return card.slug.slice(0, 2);
+}
+function mapPackKey(pack: CardDTO[]) {
+  return pack.map(mapCardKey).join("");
 }
