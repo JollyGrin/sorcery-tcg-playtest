@@ -59,9 +59,6 @@ export const DraftTray = (props: {
 
 const Dots = (props: DraftPlayerData) => {
   const s = "0.85rem"; // dot size
-  const pending = props.pendingPacks.length ?? 0;
-  const finished = props.finishedPacks.length ?? 0;
-  const isActive = props.activePack.length > 0;
 
   const style: Properties = {
     width: s,
@@ -98,7 +95,7 @@ const Dots = (props: DraftPlayerData) => {
 
 function getStatus(props: DraftPlayerData) {
   const activeIsEmpty = props.activePack.length === 0;
-  const pendingIsEmpty = props.pendingPacks.length === 0;
+  // const pendingIsEmpty = props.pendingPacks.length === 0;
   const isSelecting = props.selectedIndex !== undefined;
 
   if (activeIsEmpty) return "waiting";

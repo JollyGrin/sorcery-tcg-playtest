@@ -4,7 +4,6 @@ import {
   DraftPlayerData,
   initPlayers,
 } from "@/components/organisms/Draft/types";
-import { CardDTO } from "@/utils/api/cardData/CardDataType";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 
@@ -24,7 +23,7 @@ export default function DraftSoloPage() {
     }));
   }
 
-  const { previousPlayer, nextPlayer } = useMemo(() => {
+  const { nextPlayer } = useMemo(() => {
     return findAdjacentPlayers(players[name], players);
   }, [Object.values(players).map((player) => player.joinedSessionTimestamp)]);
 
@@ -37,7 +36,7 @@ export default function DraftSoloPage() {
     const newSelectedCards = [...me.selectedCards, selectedCard];
 
     const [nextPlayerName, nextPlayerData] = nextPlayer;
-    const [previousPlayerName, previousPlayerData] = previousPlayer;
+    // const [previousPlayerName, previousPlayerData] = previousPlayer;
 
     setPlayers({
       ...players,
@@ -62,11 +61,4 @@ export default function DraftSoloPage() {
       takeAndPass={takeAndPass}
     />
   );
-}
-
-function mapCardKey(card: CardDTO) {
-  return card.slug.slice(0, 2);
-}
-function mapPackKey(pack: CardDTO[]) {
-  return pack.map(mapCardKey).join("");
 }
