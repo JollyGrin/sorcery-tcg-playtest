@@ -1,12 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Box, Flex, Grid } from "styled-system/jsx";
-import { DraftPlayerData, DraftProps } from "../types";
+import { Flex, Grid } from "styled-system/jsx";
+import { DraftProps } from "../types";
 import { generateBoosterPack } from "../helpers";
 import { useCardFullData } from "@/utils/api/cardData/useCardData";
-import { Modal } from "@/components/atoms/Modal";
-import { DiscardModalBody } from "../../GameBoard/Footer/Grave/DiscardModal";
-import { GameCard } from "@/types/card";
 import { useState } from "react";
+import { SelectedCardsModal } from "./SelectedCardsModal";
 
 export const DraftRibbon = (
   props: DraftProps & {
@@ -71,21 +69,12 @@ export const DraftRibbon = (
 
   return (
     <>
-      <Modal
-        wrapperProps={{ open: isOpen, onOpenChange: disclosure.toggle }}
-        content={
-          <DiscardModalBody
-            cards={props.player.selectedCards.map((card) => {
-              const minimizedCard: GameCard = {
-                img: card.slug,
-                type: card.guardian.type === "Site" ? "site" : "minion",
-                id: card.slug,
-              };
-              return minimizedCard;
-            })}
-          />
-        }
+      <SelectedCardsModal
+        isOpen={disclosure.isOpen}
+        onToggle={disclosure.toggle}
+        cards={props.player.selectedCards}
       />
+
       <Grid h="100%" bg="brown" gap={0} gridTemplateColumns="1fr 4fr 1fr">
         <Flex alignItems="center" justifyContent="center">
           <Button
