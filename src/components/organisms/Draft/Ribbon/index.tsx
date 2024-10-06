@@ -55,17 +55,21 @@ export const DraftRibbon = (
     });
   }
 
+  const [nextPack] = props.player.pendingPacks ?? [];
+
   return (
     <Grid h="100%" bg="brown" gap={0} gridTemplateColumns="1fr 4fr 1fr">
       <Flex alignItems="center" justifyContent="center">
         <Button
           disabled={
             props.player.pendingPacks.length === 0 ||
-            props.player.activePack.length > 0
+            props.player.activePack.length > 0 ||
+            nextPack.length === 0
           }
           onClick={activatePendingPack}
         >
-          Flip pack ({props.player.pendingPacks.length ?? "0"} ready)
+          Flip pack -
+          {(nextPack?.length > 0 && props.player.pendingPacks.length) || " 0"}
         </Button>
       </Flex>
       <Grid
@@ -78,10 +82,7 @@ export const DraftRibbon = (
         </div>
 
         {props.player.activePack.length === 0 ? (
-          <Button
-            disabled={props.player.pendingPacks.length > 0}
-            onClick={crackBooster}
-          >
+          <Button disabled={(nextPack ?? []).length > 0} onClick={crackBooster}>
             Open a Pack
           </Button>
         ) : (
