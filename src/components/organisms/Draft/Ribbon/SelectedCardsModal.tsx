@@ -94,7 +94,8 @@ export const SelectedCardsModal = ({
                   textAlign: "center",
                 }}
               >
-                Copy &amp; Paste into Curiosa "bulk add" in Create Deck
+                Copy &amp; Paste into Curiosa &apos;bulk add&apos; in Create
+                Deck
               </p>
             </Box>
           </Grid>

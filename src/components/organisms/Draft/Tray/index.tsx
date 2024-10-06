@@ -14,10 +14,9 @@ export const DraftTray = (props: {
   const players = Object.entries(props.players).sort(sortPlayersByJoin);
 
   function changePlayer(name: string) {
-    const { name: nameQuery, ...restQuery } = query;
     push({
       query: {
-        ...restQuery,
+        ...query,
         name,
       },
     });
@@ -27,7 +26,12 @@ export const DraftTray = (props: {
     <HStack data-testid="stats" p="1rem">
       {players?.map(([key, value], index) => {
         return (
-          <Flex alignItems="center" gap={1} position="relative">
+          <Flex
+            key={key + index}
+            alignItems="center"
+            gap={1}
+            position="relative"
+          >
             <Dots {...value} />
             <Flex
               key={key}
