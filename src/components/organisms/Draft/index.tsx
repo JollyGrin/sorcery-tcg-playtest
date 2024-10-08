@@ -13,7 +13,6 @@ export const DraftBoard = (props: {
   players: Record<string, DraftPlayerData>;
   player: DraftPlayerData;
   setPlayerData(data: DraftPlayerData): void;
-  takeAndPass?(): void;
 }) => {
   // select a card from active pack, ready for taking
   function setSelectedIndex(index?: number) {

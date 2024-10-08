@@ -1,16 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Flex, Grid } from "styled-system/jsx";
-import { DraftProps } from "../types";
-import { generateBoosterPack } from "../helpers";
+import { DraftPlayerData, DraftProps } from "../types";
+import { findAdjacentPlayers, generateBoosterPack } from "../helpers";
 import { useCardFullData } from "@/utils/api/cardData/useCardData";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { SelectedCardsModal } from "./SelectedCardsModal";
+import { useRouter } from "next/router";
+import { mapPackKey } from "./helpers";
 
 export const DraftRibbon = (
   props: DraftProps & {
-    takeAndPass?(): void;
+    players: Record<string, DraftPlayerData>;
   },
 ) => {
+  const { query } = useRouter();
+  const name = (query?.name as string) ?? ("p1" as string);
   const [isOpen, setIsOpen] = useState(false);
   const disclosure = {
     isOpen,
@@ -20,6 +24,26 @@ export const DraftRibbon = (
   };
 
   const { data: cardData = [] } = useCardFullData();
+
+  const { nextPlayer, previousPlayer } = useMemo(() => {
+    return findAdjacentPlayers(props.players[name], props.players);
+  }, [
+    Object.values(props.players).map((player) => player.joinedSessionTimestamp),
+  ]);
+
+  const pendingPackKeys = useMemo(() => {
+    return props.player.pendingPacks.map(mapPackKey);
+  }, [props.player.pendingPacks]);
+
+  const unrequestedPacks = useMemo(() => {
+    const [_, values] = previousPlayer;
+    const { finishedPacks } = values;
+
+    return finishedPacks.filter((pack) => {
+      const packKey = mapPackKey(pack);
+      return !pendingPackKeys.includes(packKey);
+    });
+  }, [previousPlayer[1].finishedPacks, pendingPackKeys]);
 
   function crackBooster() {
     const newBooster = generateBoosterPack({
@@ -33,25 +57,12 @@ export const DraftRibbon = (
     });
   }
 
-  // function takeAndPass() {
-  //   const { activePack, finishedPacks, selectedIndex, selectedCards } =
-  //     props.player;
-
-  //   if (selectedIndex === undefined) return;
-
-  //   const updatedPack = [...activePack];
-  //   const updatedSelected = [...selectedCards];
-
-  //   const [card] = updatedPack.splice(selectedIndex, 1);
-  //   updatedSelected.push(card);
-
-  //   props.setPlayerData({
-  //     ...props.player,
-  //     activePack: [],
-  //     finishedPacks: [...finishedPacks, updatedPack],
-  //     selectedIndex: undefined,
-  //   });
-  // }
+  function copyToPending() {
+    props.setPlayerData({
+      ...props.player,
+      pendingPacks: [...props.player.pendingPacks, ...unrequestedPacks],
+    });
+  }
 
   function activatePendingPack() {
     const { pendingPacks } = props.player;
@@ -65,6 +76,26 @@ export const DraftRibbon = (
     });
   }
 
+  function takeAndPass() {
+    const { activePack, finishedPacks, selectedIndex, selectedCards } =
+      props.player;
+
+    if (selectedIndex === undefined) return;
+
+    const updatedPack = [...activePack];
+    const updatedSelected = [...selectedCards];
+
+    const [card] = updatedPack.splice(selectedIndex, 1);
+    updatedSelected.push(card);
+
+    props.setPlayerData({
+      ...props.player,
+      activePack: [],
+      finishedPacks: [...finishedPacks, updatedPack],
+      selectedIndex: undefined,
+    });
+  }
+
   const [nextPack] = props.player.pendingPacks ?? [];
 
   return (
@@ -75,8 +106,15 @@ export const DraftRibbon = (
         cards={props.player.selectedCards}
       />
 
-      <Grid h="100%" bg="brown" gap={0} gridTemplateColumns="1fr 4fr 1fr">
-        <Flex alignItems="center" justifyContent="center">
+      <Grid h="100%" bg="brown" gap={0} gridTemplateColumns="1fr 3fr 1fr">
+        <Flex alignItems="center" justifyContent="center" gap={1}>
+          <Button
+            disabled={unrequestedPacks.length === 0}
+            onClick={copyToPending}
+          >
+            Request: {unrequestedPacks.length.toString()}
+          </Button>
+          <p>{props.player.pendingPacks.length - unrequestedPacks.length}</p>
           <Button
             disabled={
               props.player.pendingPacks.length === 0 ||
@@ -85,7 +123,7 @@ export const DraftRibbon = (
             }
             onClick={activatePendingPack}
           >
-            Flip pack -
+            Flip -
             {(nextPack?.length > 0 && props.player.pendingPacks.length) || " 0"}
           </Button>
         </Flex>
@@ -108,20 +146,22 @@ export const DraftRibbon = (
           ) : (
             <Button
               disabled={props.player.selectedIndex === undefined}
-              onClick={props.takeAndPass}
+              onClick={takeAndPass}
             >
               Take &amp; Pass
             </Button>
           )}
         </Grid>
         <Flex alignItems="center" justifyContent="center">
-          <Button
-            bg="purple.800"
-            onClick={disclosure.onOpen}
-            borderRadius="10rem"
-          >
-            View Selected
-          </Button>
+          {props.player.selectedCards.length > 0 && (
+            <Button
+              bg="purple.800"
+              onClick={disclosure.onOpen}
+              borderRadius="10rem"
+            >
+              View Selected
+            </Button>
+          )}
         </Flex>
       </Grid>
     </>
