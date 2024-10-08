@@ -72,6 +72,9 @@ const Dots = (props: DraftPlayerData) => {
     background: "red",
   };
 
+  if (!props?.pendingPacks) return <div />;
+  if (!props?.finishedPacks) return <div />;
+
   return (
     <>
       {props.pendingPacks.map(
@@ -98,6 +101,10 @@ const Dots = (props: DraftPlayerData) => {
 };
 
 function getStatus(props: DraftPlayerData) {
+  if (!props) return;
+  if (!props.activePack) return;
+  if (!props.selectedIndex) return;
+
   const activeIsEmpty = props.activePack.length === 0;
   // const pendingIsEmpty = props.pendingPacks.length === 0;
   const isSelecting = props.selectedIndex !== undefined;
