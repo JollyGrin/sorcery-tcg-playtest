@@ -3,7 +3,7 @@ import { Flex, Grid } from "styled-system/jsx";
 import { DraftPlayerData, DraftProps } from "../types";
 import { findAdjacentPlayers, generateBoosterPack } from "../helpers";
 import { useCardFullData } from "@/utils/api/cardData/useCardData";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SelectedCardsModal } from "./SelectedCardsModal";
 import { useRouter } from "next/router";
 import { mapPackKey } from "./helpers";
@@ -35,14 +35,27 @@ export const DraftRibbon = (
     return props.player.pendingPacks.map(mapPackKey);
   }, [props.player.pendingPacks]);
 
-  const unrequestedPacks = useMemo(() => {
+  const { unrequestedPacks, requestedPacks, availablePacks } = useMemo(() => {
     const [_, values] = previousPlayer;
     const { finishedPacks } = values;
 
-    return finishedPacks.filter((pack) => {
+    const unrequestedPacks = finishedPacks.filter((pack) => {
       const packKey = mapPackKey(pack);
       return !pendingPackKeys.includes(packKey);
     });
+
+    const requestedPacks = finishedPacks.filter((pack) => {
+      const packKey = mapPackKey(pack);
+      return pendingPackKeys.includes(packKey);
+    });
+    const requestedPackKeys = requestedPacks.map(mapPackKey);
+
+    const availablePacks = props.player.pendingPacks.filter((pack) => {
+      const packKey = mapPackKey(pack);
+      return !requestedPackKeys.includes(packKey);
+    });
+
+    return { unrequestedPacks, requestedPacks, availablePacks };
   }, [previousPlayer[1].finishedPacks, pendingPackKeys]);
 
   function crackBooster() {
@@ -98,6 +111,10 @@ export const DraftRibbon = (
 
   const [nextPack] = props.player.pendingPacks ?? [];
 
+  useEffect(() => {
+    // if nextplayer has finished pack in their pending, delete from my finished
+  }, []);
+
   return (
     <>
       <SelectedCardsModal
@@ -114,17 +131,16 @@ export const DraftRibbon = (
           >
             Request: {unrequestedPacks.length.toString()}
           </Button>
-          <p>{props.player.pendingPacks.length - unrequestedPacks.length}</p>
+          <p>{requestedPacks.length.toString()}</p>
           <Button
             disabled={
-              props.player.pendingPacks.length === 0 ||
+              availablePacks.length === 0 ||
               props.player.activePack.length > 0 ||
               nextPack.length === 0
             }
             onClick={activatePendingPack}
           >
-            Flip -
-            {(nextPack?.length > 0 && props.player.pendingPacks.length) || " 0"}
+            Flip -{availablePacks.length}
           </Button>
         </Flex>
         <Grid
@@ -138,7 +154,9 @@ export const DraftRibbon = (
 
           {props.player.activePack.length === 0 ? (
             <Button
-              disabled={(nextPack ?? []).length > 0}
+              disabled={
+                (nextPack ?? []).length > 0 || unrequestedPacks.length > 0
+              }
               onClick={crackBooster}
             >
               Open a Pack
