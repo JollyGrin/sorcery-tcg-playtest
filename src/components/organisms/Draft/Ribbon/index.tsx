@@ -113,10 +113,26 @@ export const DraftRibbon = (
   const [nextPack] = props.player.pendingPacks ?? [];
 
   useEffect(() => {
-    console.log("HIT");
+    const [_, value] = previousPlayer;
+
+    const myPendingPackKeys = props.player.pendingPacks.map(mapPackKey);
+    const packsToRequest = value.finishedPacks.filter((pack) => {
+      const packKey = mapPackKey(pack);
+      return !myPendingPackKeys.includes(packKey);
+    });
+
+    props.setPlayerData({
+      ...props.player,
+      pendingPacks: [...props.player.pendingPacks, ...packsToRequest],
+    });
+  }, [previousPlayer[1].finishedPacks]);
+
+  useEffect(() => {
     // if nextplayer has matching pack in their pending, delete from my finished
     const [_, value] = nextPlayer;
+    // get keys of packs in next player's pending
     const pendingPackKeys = value.pendingPacks.map(mapPackKey);
+    // find packs that are not requested yet
     const unrequestedPacks = props.player.finishedPacks.filter((pack) => {
       const packKey = mapPackKey(pack);
       return !pendingPackKeys.includes(packKey);
@@ -140,13 +156,13 @@ export const DraftRibbon = (
 
       <Grid h="100%" bg="brown" gap={0} gridTemplateColumns="1fr 3fr 1fr">
         <Flex alignItems="center" justifyContent="center" gap={1}>
-          <Button
-            disabled={unrequestedPacks.length === 0}
-            onClick={copyToPending}
-          >
-            Request: {unrequestedPacks.length.toString()}
-          </Button>
-          <p>{requestedPacks.length.toString()}</p>
+          {/* <Button */}
+          {/*   disabled={unrequestedPacks.length === 0} */}
+          {/*   onClick={copyToPending} */}
+          {/* > */}
+          {/*   Request: {unrequestedPacks.length.toString()} */}
+          {/* </Button> */}
+          {/* <p>{requestedPacks.length.toString()}</p> */}
           <Button
             disabled={
               availablePacks.length === 0 ||
