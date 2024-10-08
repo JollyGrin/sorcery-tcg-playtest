@@ -36,7 +36,7 @@ export const DraftRibbon = (
   }, [props.player.pendingPacks]);
 
   // handle the state of copying finished packs and waiting for removal from prev player
-  const { unrequestedPacks, requestedPacks, availablePacks } = useMemo(() => {
+  const { unrequestedPacks, availablePacks } = useMemo(() => {
     const [_, values] = previousPlayer;
     const { finishedPacks } = values;
 
@@ -71,12 +71,12 @@ export const DraftRibbon = (
     });
   }
 
-  function copyToPending() {
-    props.setPlayerData({
-      ...props.player,
-      pendingPacks: [...props.player.pendingPacks, ...unrequestedPacks],
-    });
-  }
+  // function copyToPending() {
+  //   props.setPlayerData({
+  //     ...props.player,
+  //     pendingPacks: [...props.player.pendingPacks, ...unrequestedPacks],
+  //   });
+  // }
 
   function activatePendingPack() {
     const { pendingPacks } = props.player;
