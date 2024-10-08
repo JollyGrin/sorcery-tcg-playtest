@@ -1,11 +1,10 @@
 import { DraftBoard } from "@/components/organisms/Draft";
-import { findAdjacentPlayers } from "@/components/organisms/Draft/helpers";
 import {
   DraftPlayerData,
   initPlayers,
 } from "@/components/organisms/Draft/types";
 import { useRouter } from "next/router";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 export default function DraftSoloPage() {
   const { query } = useRouter();
