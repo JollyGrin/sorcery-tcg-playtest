@@ -1,4 +1,3 @@
-
 import {
   DraftPlayerData,
   initPlayer,
@@ -45,59 +44,36 @@ const Body = () => {
   const { query } = useRouter();
   const name = query?.name as string | undefined;
   const { draftState: gameState, setPlayerState } = useDraftGame();
-  const myState = gameState?.content?.players?.[name ?? ""];
-
-  function setState(state: DraftPlayerData) {
-    setPlayerState()(state);
-  }
 
   const socketPlayers =
     gameState?.content?.players ?? ({} as Record<string, DraftPlayerData>);
 
-  const [firstJoiner] =
-    Object.entries(socketPlayers ?? {})?.sort((a, b) => {
-      const [, valueA] = a;
-      const [, valueB] = b;
-      const timeA = valueA.joinTimestamp ?? 0;
-      const timeB = valueB.joinTimestamp ?? 0;
-      return timeA - timeB;
-    }) ?? [];
-  const [firstName] = firstJoiner ?? "";
+  // const [firstJoiner] =
+  //   Object.entries(socketPlayers ?? {})?.sort((a, b) => {
+  //     const [, valueA] = a;
+  //     const [, valueB] = b;
+  //     const timeA = valueA.joinedSessionTimestamp ?? 0;
+  //     const timeB = valueB.joinedSessionTimestamp ?? 0;
+  //     return timeA - timeB;
+  //   }) ?? [];
+  // const [firstName] = firstJoiner ?? "";
 
-
-  function setData(data: DraftPlayerData) {
+  function setState(data: DraftPlayerData) {
     setPlayerState()(data ?? initPlayer);
   }
 
-  const state: DraftPlayerData = useMemo(() => {
-    return myState as DraftPlayerData
+  const state = useMemo(() => {
+    const myState = gameState?.content?.players?.[name ?? ""];
+    return myState;
+  }, [gameState?.content?.players?.[name ?? ""]]);
 
-  },[])
-
-  // if (myState?.state === undefined && name) {
-  //   return (
-  //     <LoadDeck
-  //       playerName={name}
-  //       gridItems={myState?.state ?? initGameState}
-  //       setGridItems={(state: GameState) => {
-  //         setPlayerState()({
-  //           state,
-  //           data: myState?.data ?? initGameData,
-  //           joinTimestamp: Date.now(),
-  //         });
-  //       }}
-  //     >
-  //       pick one
-  //     </LoadDeck>
-  //   );
-  // }
-
-  if (myState?.state === undefined) return null;
+  if (state === undefined) return null;
 
   return (
     <DraftBoard
-      players={socketPlayers as Record<string,DraftPlayerData>}
-      player={( socketPlayers[name] as DraftPlayerData ) ?? initPlayer} // displays combined pending/finished
+      players={socketPlayers as Record<string, DraftPlayerData>}
+      player={state} // displays combined pending/finished
       setPlayerData={setState}
+    />
   );
 };
