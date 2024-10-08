@@ -6,10 +6,11 @@ import {
   FC,
   useContext,
 } from "react";
-import { WebsocketMessage } from "../gamesocket/message";
-import { initializeWebsocket } from "../gamesocket/socket";
+import { DraftWebsocketMessage as WebsocketMessage } from "../gamesocket/message";
+import { initializeDraftWebsocket as initializeWebsocket } from "../gamesocket/draft-socket";
 import { useRouter } from "next/router";
-import { PlayersState, PlayerState } from "@/types/card";
+import type { DraftPlayerData as PlayerState } from "@/components/organisms/Draft/types";
+type PlayersState = Record<string, PlayerState>;
 
 const useLocalServerStorage = () => {
   const defaultServer = "https://unbrewed-v2.fly.dev";
@@ -18,7 +19,7 @@ const useLocalServerStorage = () => {
 
 interface DraftGameProviderValue {
   draftState: WebsocketMessage | undefined;
-  setPlayerState: () => (state: PlayersState["GLOBAL"]) => void;
+  setPlayerState: () => (state: PlayersState[string]) => void;
 }
 
 export const DraftGameContext = createContext<
