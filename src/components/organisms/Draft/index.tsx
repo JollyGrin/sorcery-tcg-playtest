@@ -22,6 +22,8 @@ export const DraftBoard = (props: {
     });
   }
 
+  if (!props?.players) return "loading draft";
+
   return (
     <Grid
       h="100vh"

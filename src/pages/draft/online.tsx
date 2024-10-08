@@ -13,6 +13,7 @@ import {
   useDraftGame,
 } from "@/lib/contexts/DraftGameProvider";
 import { DraftBoard } from "@/components/organisms/Draft";
+import { Button } from "@/components/ui/button";
 
 export default function WebsocketDebug() {
   const { query } = useRouter();
@@ -59,15 +60,28 @@ const Body = () => {
   // const [firstName] = firstJoiner ?? "";
 
   function setState(data: DraftPlayerData) {
+    console.log("SETTING STATE");
     setPlayerState()(data ?? initPlayer);
   }
 
   const state = useMemo(() => {
-    const myState = gameState?.content?.players?.[name ?? ""];
+    const myState = socketPlayers?.[name ?? ""];
     return myState;
-  }, [gameState?.content?.players?.[name ?? ""]]);
+  }, [gameState]);
 
   if (state === undefined) return null;
+  if (state.joinedSessionTimestamp === undefined)
+    return (
+      <div>
+        <Button
+          onClick={() => {
+            setPlayerState()(initPlayer);
+          }}
+        >
+          Init
+        </Button>
+      </div>
+    );
 
   return (
     <DraftBoard

@@ -3,7 +3,7 @@ import { Flex, Grid } from "styled-system/jsx";
 import { DraftPlayerData, DraftProps } from "../types";
 import { findAdjacentPlayers, generateBoosterPack } from "../helpers";
 import { useCardFullData } from "@/utils/api/cardData/useCardData";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { SelectedCardsModal } from "./SelectedCardsModal";
 import { useRouter } from "next/router";
 import { mapPackKey } from "./helpers";
@@ -32,6 +32,7 @@ export const DraftRibbon = (
   ]);
 
   const pendingPackKeys = useMemo(() => {
+    if (!props?.player?.pendingPacks) return [];
     return props.player.pendingPacks.map(mapPackKey);
   }, [props.player.pendingPacks]);
 
@@ -39,6 +40,8 @@ export const DraftRibbon = (
   const { unrequestedPacks, availablePacks } = useMemo(() => {
     const [_, values] = previousPlayer;
     const { finishedPacks } = values;
+
+    if (!finishedPacks) return {};
 
     const unrequestedPacks = finishedPacks.filter((pack) => {
       const packKey = mapPackKey(pack);
@@ -111,23 +114,26 @@ export const DraftRibbon = (
   }
 
   const [nextPack] = props.player.pendingPacks ?? [];
+  const pendingRef = useRef();
+
+  // useEffect(() => {
+  //   if (!props.player.pendingPacks) return;
+  //   const [_, value] = previousPlayer;
+
+  //   const myPendingPackKeys = props.player.pendingPacks.map(mapPackKey);
+  //   const packsToRequest = value.finishedPacks.filter((pack) => {
+  //     const packKey = mapPackKey(pack);
+  //     return !myPendingPackKeys.includes(packKey);
+  //   });
+
+  //   props.setPlayerData({
+  //     ...props.player,
+  //     pendingPacks: [...props.player.pendingPacks, ...packsToRequest],
+  //   });
+  // }, [previousPlayer[1].finishedPacks]);
 
   useEffect(() => {
-    const [_, value] = previousPlayer;
-
-    const myPendingPackKeys = props.player.pendingPacks.map(mapPackKey);
-    const packsToRequest = value.finishedPacks.filter((pack) => {
-      const packKey = mapPackKey(pack);
-      return !myPendingPackKeys.includes(packKey);
-    });
-
-    props.setPlayerData({
-      ...props.player,
-      pendingPacks: [...props.player.pendingPacks, ...packsToRequest],
-    });
-  }, [previousPlayer[1].finishedPacks]);
-
-  useEffect(() => {
+    if (props.player.finishedPacks.length === 0) return;
     // if nextplayer has matching pack in their pending, delete from my finished
     const [_, value] = nextPlayer;
     // get keys of packs in next player's pending
@@ -138,13 +144,21 @@ export const DraftRibbon = (
       return !pendingPackKeys.includes(packKey);
     });
 
-    if (props.player.finishedPacks.length === 0) return;
+    const unrequestedPackKeys = unrequestedPacks.map(mapPackKey);
+    const isSame = props.player.finishedPacks.every((pack) => {
+      const packKey = mapPackKey(pack);
+      return unrequestedPackKeys.includes(packKey);
+    });
+
+    if (isSame) return;
 
     props.setPlayerData({
       ...props.player,
       finishedPacks: unrequestedPacks,
     });
   }, [nextPlayer[1].pendingPacks]);
+
+  if (!availablePacks) return null;
 
   return (
     <>
