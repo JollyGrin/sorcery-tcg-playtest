@@ -35,6 +35,7 @@ export const DraftRibbon = (
     return props.player.pendingPacks.map(mapPackKey);
   }, [props.player.pendingPacks]);
 
+  // handle the state of copying finished packs and waiting for removal from prev player
   const { unrequestedPacks, requestedPacks, availablePacks } = useMemo(() => {
     const [_, values] = previousPlayer;
     const { finishedPacks } = values;
@@ -61,7 +62,7 @@ export const DraftRibbon = (
   function crackBooster() {
     const newBooster = generateBoosterPack({
       cardData,
-      expansionSlug: "bet",
+      expansionSlug: "bet", // TODO: let players decide expansion
     });
     props.setPlayerData({
       ...props.player,
@@ -112,8 +113,22 @@ export const DraftRibbon = (
   const [nextPack] = props.player.pendingPacks ?? [];
 
   useEffect(() => {
-    // if nextplayer has finished pack in their pending, delete from my finished
-  }, []);
+    console.log("HIT");
+    // if nextplayer has matching pack in their pending, delete from my finished
+    const [_, value] = nextPlayer;
+    const pendingPackKeys = value.pendingPacks.map(mapPackKey);
+    const unrequestedPacks = props.player.finishedPacks.filter((pack) => {
+      const packKey = mapPackKey(pack);
+      return !pendingPackKeys.includes(packKey);
+    });
+
+    if (props.player.finishedPacks.length === 0) return;
+
+    props.setPlayerData({
+      ...props.player,
+      finishedPacks: unrequestedPacks,
+    });
+  }, [nextPlayer[1].pendingPacks]);
 
   return (
     <>
