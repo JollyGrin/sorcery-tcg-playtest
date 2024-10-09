@@ -86,7 +86,7 @@ const Body = () => {
     );
 
   const initPlayers = Object.entries(socketPlayers).filter((entry) => {
-    const [key, value] = entry;
+    const [, value] = entry;
     return !value.joinedSessionTimestamp;
   });
 
