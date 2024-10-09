@@ -3,7 +3,7 @@ import { Flex, Grid } from "styled-system/jsx";
 import { DraftPlayerData, DraftProps } from "../types";
 import { findAdjacentPlayers, generateBoosterPack } from "../helpers";
 import { useCardFullData } from "@/utils/api/cardData/useCardData";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SelectedCardsModal } from "./SelectedCardsModal";
 import { useRouter } from "next/router";
 import { mapPackKey } from "./helpers";
@@ -38,7 +38,7 @@ export const DraftRibbon = (
 
   // handle the state of copying finished packs and waiting for removal from prev player
   const { unrequestedPacks, availablePacks } = useMemo(() => {
-    const [_, values] = previousPlayer;
+    const [, values] = previousPlayer;
     const { finishedPacks } = values;
 
     if (!finishedPacks) return {};
@@ -118,7 +118,7 @@ export const DraftRibbon = (
 
   useEffect(() => {
     if (!props.player.pendingPacks) return;
-    const [_, value] = previousPlayer;
+    const [, value] = previousPlayer;
 
     // keys of my pending packs
     const myPendingPackKeys = props.player.pendingPacks.map(mapPackKey);
@@ -141,7 +141,7 @@ export const DraftRibbon = (
   useEffect(() => {
     if (props.player.finishedPacks.length === 0) return;
     // if nextplayer has matching pack in their pending, delete from my finished
-    const [_, value] = nextPlayer;
+    const [, value] = nextPlayer;
     // get keys of packs in next player's pending
     const pendingPackKeys = value.pendingPacks.map(mapPackKey);
     // find packs that are not requested yet

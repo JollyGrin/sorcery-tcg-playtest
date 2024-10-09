@@ -1,5 +1,4 @@
 import { CardDTO } from "@/utils/api/cardData/CardDataType";
-import { DraftPlayerData } from "../types";
 
 export function sortAlphabetical(a: CardDTO, b: CardDTO) {
   if (a.name < b.name) {

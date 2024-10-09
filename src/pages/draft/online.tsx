@@ -1,7 +1,6 @@
 import {
   DraftPlayerData,
   initPlayer,
-  initPlayers,
 } from "@/components/organisms/Draft/types";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
