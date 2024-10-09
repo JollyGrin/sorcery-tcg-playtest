@@ -60,7 +60,7 @@ const Body = () => {
   // const [firstName] = firstJoiner ?? "";
 
   function setState(data: DraftPlayerData) {
-    console.log("SETTING STATE");
+    console.log("SETTING STATE", state);
     setPlayerState()(data ?? initPlayer);
   }
 

@@ -114,12 +114,10 @@ export const DraftRibbon = (
   }
 
   const [nextPack] = props.player.pendingPacks ?? [];
-  const pendingRef = useRef();
 
   useEffect(() => {
     if (!props.player.pendingPacks) return;
     const [_, value] = previousPlayer;
-    console.log("previoys: ", _);
 
     // keys of my pending packs
     const myPendingPackKeys = props.player.pendingPacks.map(mapPackKey);
@@ -143,7 +141,6 @@ export const DraftRibbon = (
     if (props.player.finishedPacks.length === 0) return;
     // if nextplayer has matching pack in their pending, delete from my finished
     const [_, value] = nextPlayer;
-    console.log("next", _);
     // get keys of packs in next player's pending
     const pendingPackKeys = value.pendingPacks.map(mapPackKey);
     // find packs that are not requested yet
