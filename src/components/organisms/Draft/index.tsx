@@ -4,9 +4,9 @@ import { DraftPlayerData } from "./types";
 import { DraftRibbon } from "./Ribbon";
 import { DraftTray } from "./Tray";
 
-const hTop = "7vh";
-const hTabs = "5vh";
-const hCards = "88vh";
+const hTop = "9vh";
+const hTabs = "6vh";
+const hCards = "85vh";
 export const gridHeight = { top: hTop, tabs: hTabs, cards: hCards };
 
 export const DraftBoard = (props: {
