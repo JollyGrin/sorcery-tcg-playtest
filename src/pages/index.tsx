@@ -89,11 +89,11 @@ const Selector = () => (
     // display={{ base: "none", sm: "block" }}
   >
     <Tabs
-      tabs={["Solo", "Battlebox", "Online"]}
+      tabs={["Solo", "Online", "Online Draft"]}
       content={[
         <Solo key="solo" />,
-        <Battlebox key="battlebox" />,
         <Multiplayer key="multiplayer" />,
+        <Draft key="draft" />,
       ]}
     />
   </Box>
@@ -125,12 +125,28 @@ const Multiplayer = () => {
   );
 };
 
-const Battlebox = () => {
+const Draft = () => {
   return (
     <div>
-      <p>Playtest a a deck in battlebox mode</p>
-      <p>In Battlebox, both players share the same deck</p>
-      <p>Coming soon! Currently in development</p>
+      <p>Run a (mock) Sorcery Draft online in the browser.</p>
+      <p>Players join a lobby, select & pass, and can export decklist</p>
+      <HStack fontFamily="monospace" my="0.5rem">
+        <p>Version:</p>
+        <Box p="0 0.5rem" borderRadius="0.5rem" bg="yellow.600">
+          ALPHA
+        </Box>
+        <p>Expect bugs!</p>
+      </HStack>
+      <ol style={{ listStyle: "inside", marginBottom: "0.5rem" }}>
+        <li>start a lobby</li>
+        <li>choose a name</li>
+        <li>share lobbyname with friend</li>
+      </ol>
+      <Link href="/draft/online">
+        <button className={button()} style={{ width: "100%" }}>
+          Create a lobby
+        </button>
+      </Link>
     </div>
   );
 };
