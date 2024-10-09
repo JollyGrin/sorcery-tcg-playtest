@@ -109,6 +109,7 @@ export const DraftRibbon = (
       ...props.player,
       activePack: [],
       finishedPacks: [...finishedPacks, updatedPack],
+      selectedCards: updatedSelected,
       selectedIndex: undefined,
     });
   }
