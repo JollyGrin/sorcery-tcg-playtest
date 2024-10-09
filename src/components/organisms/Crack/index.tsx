@@ -5,9 +5,9 @@ import { Ribbon } from "@/components/organisms/Crack/Ribbon";
 import { useMemo, useState } from "react";
 import { CrackStats } from "@/components/organisms/Crack/Stats";
 
-const hTop = "7vh";
+const hTop = "10vh";
 const hTabs = "5vh";
-const hCards = "88vh";
+const hCards = "85vh";
 export const gridHeight = { top: hTop, tabs: hTabs, cards: hCards };
 
 export const CrackBoard = (props: {

@@ -67,14 +67,6 @@ export default function Home() {
             }}
           />
         </Grid>
-        <Box bg="plum" w="fit-content" p="1rem" borderRadius="1rem">
-          <p>Draft Mode in development!</p>
-          <Link href="/crack">
-            <p style={{ textDecoration: "underline" }}>
-              In the meantime, crack some packs!
-            </p>
-          </Link>
-        </Box>
       </Flex>
     </Grid>
   );
@@ -89,11 +81,12 @@ const Selector = () => (
     // display={{ base: "none", sm: "block" }}
   >
     <Tabs
-      tabs={["Solo", "Battlebox", "Online"]}
+      tabs={["Solo", "Online", "Crack Packs", "Online Draft"]}
       content={[
         <Solo key="solo" />,
-        <Battlebox key="battlebox" />,
         <Multiplayer key="multiplayer" />,
+        <Crack key="crack" />,
+        <Draft key="draft" />,
       ]}
     />
   </Box>
@@ -104,6 +97,7 @@ const Multiplayer = () => {
     <div>
       <p>Play Sorcery online in the browser.</p>
       <p>Two players join a lobby, choose their decks, and duel</p>
+      <p style={{ color: "transparent" }}>Sorcery: contested realms</p>
       <HStack fontFamily="monospace" my="0.5rem">
         <p>Version:</p>
         <Box p="0 0.5rem" borderRadius="0.5rem" bg="blue.600">
@@ -125,12 +119,86 @@ const Multiplayer = () => {
   );
 };
 
-const Battlebox = () => {
+const Draft = () => {
   return (
     <div>
-      <p>Playtest a a deck in battlebox mode</p>
-      <p>In Battlebox, both players share the same deck</p>
-      <p>Coming soon! Currently in development</p>
+      <p>Run a (mock) Sorcery Draft online in the browser.</p>
+      <p>Players join a lobby, select & pass, and can export decklist</p>
+      <HStack>
+        <p>Draft rates are NOT accurate.</p>
+        <Link href="https://github.com/JollyGrin/sorcery-tcg-playtest/blob/fa6510ea46ee0c5845aba1654944799a2eff2d1b/src/components/organisms/Draft/helpers.ts#L14">
+          <p
+            style={{
+              color: "blue",
+              textDecoration: "underline",
+            }}
+          >
+            Link to Code
+          </p>
+        </Link>
+      </HStack>
+      <HStack fontFamily="monospace" my="0.5rem">
+        <p>Version:</p>
+        <Box p="0 0.5rem" borderRadius="0.5rem" bg="yellow.600">
+          ALPHA
+        </Box>
+        <p>Expect bugs!</p>
+      </HStack>
+      <ol style={{ listStyle: "inside", marginBottom: "0.5rem" }}>
+        <li>start a lobby</li>
+        <li>choose a name</li>
+        <li>share lobbyname with friend</li>
+      </ol>
+      <Link href="/draft/online">
+        <button className={button()} style={{ width: "100%" }}>
+          Create a lobby
+        </button>
+      </Link>
+    </div>
+  );
+};
+
+const Crack = () => {
+  return (
+    <div>
+      <p>Crack Booster Packs</p>
+      <p>Open (mock) booster packs by yourself.</p>
+      <HStack>
+        <p>Draft rates are NOT accurate.</p>
+        <Link href="https://github.com/JollyGrin/sorcery-tcg-playtest/blob/fa6510ea46ee0c5845aba1654944799a2eff2d1b/src/components/organisms/Draft/helpers.ts#L14">
+          <p
+            style={{
+              color: "blue",
+              textDecoration: "underline",
+            }}
+          >
+            Link to Code
+          </p>
+        </Link>
+      </HStack>
+      <HStack fontFamily="monospace" my="0.5rem">
+        <p>Version:</p>
+        <Box p="0 0.5rem" borderRadius="0.5rem" bg="yellow.600">
+          BETA
+        </Box>
+        <p>Report bugs/feedback!</p>
+      </HStack>
+      <ol
+        style={{
+          listStyle: "inside",
+          marginBottom: "0.5rem",
+          color: "transparent",
+        }}
+      >
+        <li>start a lobby</li>
+        <li>choose a name</li>
+        <li>share lobbyname with friend</li>
+      </ol>
+      <Link href="/crack">
+        <button className={button()} style={{ width: "100%" }}>
+          Crack Packs
+        </button>
+      </Link>
     </div>
   );
 };

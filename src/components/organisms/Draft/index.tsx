@@ -4,16 +4,15 @@ import { DraftPlayerData } from "./types";
 import { DraftRibbon } from "./Ribbon";
 import { DraftTray } from "./Tray";
 
-const hTop = "7vh";
-const hTabs = "5vh";
-const hCards = "88vh";
+const hTop = "9vh";
+const hTabs = "6vh";
+const hCards = "85vh";
 export const gridHeight = { top: hTop, tabs: hTabs, cards: hCards };
 
 export const DraftBoard = (props: {
   players: Record<string, DraftPlayerData>;
   player: DraftPlayerData;
   setPlayerData(data: DraftPlayerData): void;
-  takeAndPass?(): void;
 }) => {
   // select a card from active pack, ready for taking
   function setSelectedIndex(index?: number) {
@@ -22,6 +21,8 @@ export const DraftBoard = (props: {
       selectedIndex: index,
     });
   }
+
+  if (!props?.players) return "loading draft";
 
   return (
     <Grid

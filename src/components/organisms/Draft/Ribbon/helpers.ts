@@ -22,3 +22,8 @@ export function reduceCardCount(
   }
   return acc;
 }
+
+export function mapPackKey(pack: CardDTO[]) {
+  const cardKeys = pack.map((card) => card.slug.slice(0, 2));
+  return cardKeys.join("");
+}
