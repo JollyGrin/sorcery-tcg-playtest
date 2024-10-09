@@ -18,7 +18,11 @@ const adjectives = [
   "daring", "cheerful", "quiet", "eager", "bold", "heroic", "bouncy", "frosty",
   "stormy", "melodic", "twisting", "serene", "dreamy", "majestic", "prickly",
   "noisy", "gentle", "massive", "tiny", "flickering", "whirling", "floating", 
-  "crunchy", "whistling", "buzzing", "colorful", "shadowy", "stealthy"
+  "crunchy", "whistling", "buzzing", "colorful", "shadowy", "stealthy",
+  "boisterous", "radiant", "vibrant", "fragrant", "harmonious", "elegant",
+  "enigmatic", "chaotic", "thundering", "calming", "whirling", "gritty",
+  "adventurous", "serious", "grumbling", "blazing", "radiant", "prickly", 
+  "gleaming", "melancholy", "glimmering", "spectral"
 ];
 
 // prettier-ignore
@@ -32,5 +36,8 @@ const nouns = [
   "chameleon", "mongoose", "iguana", "lemur", "raccoon", "skunk", "weasel",
   "parrot", "penguin", "chimp", "gorilla", "platypus", "walrus", "koala",
   "peacock", "porcupine", "armadillo", "gecko", "macaw", "octopus", "starfish",
-  "seahorse", "stingray", "puffin", "hedgehog", "ferret", "hamster", "crab"
+  "seahorse", "stingray", "puffin", "hedgehog", "ferret", "hamster", "crab",
+  "marmot", "kangaroo", "orca", "vulture", "jellyfish", "manta", "anaconda",
+  "woodpecker", "finch", "slug", "ladybug", "tarantula", "hippo", "gazelle",
+  "lynx", "newt", "badger", "caterpillar", "lemur", "albatross", "ox", "boar"
 ];
