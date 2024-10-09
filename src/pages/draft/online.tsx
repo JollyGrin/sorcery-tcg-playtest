@@ -85,6 +85,13 @@ const Body = () => {
       </div>
     );
 
+  const initPlayers = Object.entries(socketPlayers).filter((entry) => {
+    const [key, value] = entry;
+    return !value.joinedSessionTimestamp;
+  });
+
+  if (initPlayers.length > 0) return "loading new player";
+
   return (
     <DraftBoard
       players={socketPlayers as Record<string, DraftPlayerData>}
