@@ -1,17 +1,22 @@
 import { Box, Flex, HStack } from "styled-system/jsx";
 import { DraftPlayerData } from "../types";
+import { css } from "styled-system/css";
 
 import { LuArrowBigRightDash as IconRight } from "react-icons/lu";
 import { RiArrowGoBackLine as IconReturnArrow } from "react-icons/ri";
+import { FaRegCopy as IconCopy } from "react-icons/fa";
 import { sortPlayersByJoin } from "../helpers";
 import { useRouter } from "next/router";
 import { Properties } from "styled-system/types/csstype";
+import { useCopyToClipboard } from "@/utils/hooks";
+import toast from "react-hot-toast";
 
 export const DraftTray = (props: {
   players: Record<string, DraftPlayerData>;
 }) => {
   const { query, push, pathname } = useRouter();
   const players = Object.entries(props.players).sort(sortPlayersByJoin);
+  const [, copy] = useCopyToClipboard();
 
   function changePlayer(name: string) {
     if (pathname.split("/").includes("online")) return;
@@ -24,7 +29,25 @@ export const DraftTray = (props: {
   }
 
   return (
-    <HStack data-testid="stats" p="1rem">
+    <HStack data-testid="stats" p="1rem" position="relative">
+      <HStack
+        position="absolute"
+        right={3}
+        top={"0.5rem"}
+        p="0.25rem 1rem"
+        bg="teal.200"
+        borderRadius="2rem"
+        className={IconStyle}
+        onClick={() => {
+          const text = `https://spells.bar/draft/online?gid=${query.gid}`;
+          copy(text);
+          toast.success(`Copied to clipboard`);
+        }}
+      >
+        <IconCopy />
+        <p>Share Lobby</p>
+      </HStack>
+
       {players?.map(([key, value], index) => {
         return (
           <Flex
@@ -114,3 +137,17 @@ function getStatus(props: DraftPlayerData) {
   if (!activeIsEmpty && !isSelecting) return "thinking";
   if (!activeIsEmpty && isSelecting) return "selecting";
 }
+
+const IconStyle = css({
+  userSelect: "none",
+  transform: "scale(1)",
+  transition: "all 0.25s ease",
+  cursor: "pointer",
+  _hover: {
+    transform: "scale(1.1)",
+    filter: "drop-shadow(0 0 2px rgba(0,0,0,0.25))",
+  },
+  _active: {
+    transform: "scale(1.05)",
+  },
+});
