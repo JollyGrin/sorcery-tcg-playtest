@@ -10,10 +10,12 @@ import { Properties } from "styled-system/types/csstype";
 export const DraftTray = (props: {
   players: Record<string, DraftPlayerData>;
 }) => {
-  const { query, push } = useRouter();
+  const { query, push, pathname } = useRouter();
+  console.log({ query, pathname });
   const players = Object.entries(props.players).sort(sortPlayersByJoin);
 
   function changePlayer(name: string) {
+    if (pathname.split("/").includes("online")) return;
     push({
       query: {
         ...query,

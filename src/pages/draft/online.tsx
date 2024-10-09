@@ -75,7 +75,10 @@ const Body = () => {
       <div>
         <Button
           onClick={() => {
-            setPlayerState()(initPlayer);
+            setPlayerState()({
+              ...initPlayer,
+              joinedSessionTimestamp: Date.now(),
+            });
           }}
         >
           Init

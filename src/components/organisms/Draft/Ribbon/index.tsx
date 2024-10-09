@@ -116,26 +116,34 @@ export const DraftRibbon = (
   const [nextPack] = props.player.pendingPacks ?? [];
   const pendingRef = useRef();
 
-  // useEffect(() => {
-  //   if (!props.player.pendingPacks) return;
-  //   const [_, value] = previousPlayer;
+  useEffect(() => {
+    if (!props.player.pendingPacks) return;
+    const [_, value] = previousPlayer;
+    console.log("previoys: ", _);
 
-  //   const myPendingPackKeys = props.player.pendingPacks.map(mapPackKey);
-  //   const packsToRequest = value.finishedPacks.filter((pack) => {
-  //     const packKey = mapPackKey(pack);
-  //     return !myPendingPackKeys.includes(packKey);
-  //   });
+    // keys of my pending packs
+    const myPendingPackKeys = props.player.pendingPacks.map(mapPackKey);
+    // search for packs in previous player finished to add to my pending
+    // packs in previous players finished that are not in my pending
+    const packsToRequest = value.finishedPacks.filter((pack) => {
+      const packKey = mapPackKey(pack);
+      // find packs that are not in my pending
+      return !myPendingPackKeys.includes(packKey);
+    });
 
-  //   props.setPlayerData({
-  //     ...props.player,
-  //     pendingPacks: [...props.player.pendingPacks, ...packsToRequest],
-  //   });
-  // }, [previousPlayer[1].finishedPacks]);
+    if (packsToRequest.length === 0) return;
+
+    props.setPlayerData({
+      ...props.player,
+      pendingPacks: [...props.player.pendingPacks, ...packsToRequest],
+    });
+  }, [previousPlayer[1].finishedPacks]);
 
   useEffect(() => {
     if (props.player.finishedPacks.length === 0) return;
     // if nextplayer has matching pack in their pending, delete from my finished
     const [_, value] = nextPlayer;
+    console.log("next", _);
     // get keys of packs in next player's pending
     const pendingPackKeys = value.pendingPacks.map(mapPackKey);
     // find packs that are not requested yet

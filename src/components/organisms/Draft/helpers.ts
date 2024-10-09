@@ -102,6 +102,8 @@ export const findAdjacentPlayers = (
       ? players[0] // If last player, return the first player
       : players[currentIndex + 1]; // Else, return the next player
 
+  console.log({ players, previousPlayer, nextPlayer });
+
   return {
     previousPlayer,
     nextPlayer,
