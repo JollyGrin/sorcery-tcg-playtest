@@ -33,7 +33,7 @@ export const GridDisplayReversedCard = (props: {
         transform: "rotate(180deg)",
         ...isTapped,
         ...style,
-        top: type !== "site" ? props.index + 1.5 + "rem" : undefined,
+        top: type !== "site" ? props.index + 3 + "rem" : undefined,
       }}
     />
   );
