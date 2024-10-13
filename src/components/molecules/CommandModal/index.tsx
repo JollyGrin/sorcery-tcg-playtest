@@ -22,9 +22,9 @@ export const CommandModalWrapper = ({
 
   const { key, ...options } =
     LOCALSTORAGE_KEYS.DISCLAIMER.GAMEBOARD.lastSeenNote;
-  const [lastSeenNote, setLastSeenNote] = useLocalStorage(key, 0, options);
-  const now = Date.now();
-  const hasSeenUpdate = lastSeenNote < now;
+  const [lastSeenNote] = useLocalStorage(key, 0, options);
+  const lastPublishedNote = new Date("2024-10-13").getTime(); // later make this grab the most recent date, dynamic
+  const hasSeenUpdate = lastPublishedNote < lastSeenNote; // if last seen is after last publish
 
   return (
     <div>
@@ -39,8 +39,7 @@ export const CommandModalWrapper = ({
 
         <Modal
           wrapperProps={{
-            open: true,
-            onOpenChange: () => {},
+            open: !hasSeenUpdate,
           }}
           content={<ReleaseNoteBody />}
         />
