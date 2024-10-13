@@ -69,6 +69,7 @@ export const GameBoard = ({
                   onMouseOver={() => setGridHover(gridIndex)}
                   cards={cards}
                   myName={name as string}
+                  gridIndex={gridIndex + 1}
                 />
               );
             }

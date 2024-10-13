@@ -10,6 +10,7 @@ export const AltGridDisplay = ({
 }: Partial<{
   cards: GridItem;
   myName: string;
+  gridIndex: number;
   onMouseOver(): void;
   onMouseLeave(): void;
 }>) => {
@@ -23,6 +24,16 @@ export const AltGridDisplay = ({
       position="relative"
       {...props}
     >
+      <p
+        style={{
+          position: "absolute",
+          bottom: "0.75rem",
+          left: "calc(50% - 1rem)",
+          opacity: 0.1,
+        }}
+      >
+        {props.gridIndex}
+      </p>
       {cards?.map((card, index) => {
         const isMe = card.playerName === myName;
         const Display = isMe ? GridDisplayCard : GridDisplayReversedCard;
