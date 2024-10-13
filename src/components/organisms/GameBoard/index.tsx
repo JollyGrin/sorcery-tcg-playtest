@@ -12,6 +12,8 @@ import { useRouter } from "next/router";
 import { SortItemWrapper } from "./SortItemWrapper";
 import { CardInject } from "@/components/molecules/CardInject";
 import { CommandModalWrapper } from "@/components/molecules/CommandModal";
+import { useState } from "react";
+import { AltGridDisplay } from "./Grid/AltGridDisplay";
 
 export type GameStateActions = {
   gridItems: GameState;
@@ -33,6 +35,8 @@ export const GameBoard = ({
     setGridItems,
   });
 
+  const [gridHover, setGridHover] = useState<number | undefined>(undefined);
+
   return (
     <CommandModalWrapper {...{ gridItems, setGridItems, ...playerDataProps }}>
       <DndContext {...dragProps}>
@@ -50,6 +54,16 @@ export const GameBoard = ({
             const gridIndex = isReversed
               ? GRIDS.GRID_20 - _gridIndex
               : _gridIndex;
+
+            if (gridHover !== gridIndex && activeId === undefined) {
+              return (
+                <AltGridDisplay
+                  key={"preview" + gridIndex}
+                  onMouseOver={() => setGridHover(gridIndex)}
+                  cards={cards}
+                />
+              );
+            }
 
             return (
               <DroppableGridItem
@@ -71,14 +85,23 @@ export const GameBoard = ({
                   items={cards.map((card) => card.id)}
                   strategy={rectSortingStrategy}
                 >
-                  {cards.map((card, cardIndex) => (
-                    <SortItemWrapper
-                      key={card.id}
-                      amountOfCards={cards?.length}
-                      {...{ gridItems, setGridItems }}
-                      {...{ card, gridIndex, cardIndex }}
-                    />
-                  ))}
+                  <Box
+                    h="100%"
+                    w="100%"
+                    onMouseEnter={() => {
+                      console.log("xx");
+                      setGridHover(gridIndex);
+                    }}
+                  >
+                    {cards.map((card, cardIndex) => (
+                      <SortItemWrapper
+                        key={card.id}
+                        amountOfCards={cards?.length}
+                        {...{ gridItems, setGridItems }}
+                        {...{ card, gridIndex, cardIndex }}
+                      />
+                    ))}
+                  </Box>
                 </SortableContext>
               </DroppableGridItem>
             );
