@@ -7,13 +7,14 @@ import { useHandleDrag } from "./useHandleDrag";
 import { CardImage } from "@/components/atoms/mock-cards/card";
 import { Box } from "styled-system/jsx";
 import { GameState, PlayerDataProps } from "@/types/card";
-import { GRIDS } from "./constants";
+import { GRIDS, LOCALSTORAGE_KEYS } from "./constants";
 import { useRouter } from "next/router";
 import { SortItemWrapper } from "./SortItemWrapper";
 import { CardInject } from "@/components/molecules/CardInject";
 import { CommandModalWrapper } from "@/components/molecules/CommandModal";
 import { useState } from "react";
 import { AltGridDisplay } from "./Grid/AltGridDisplay";
+import { useLocalStorage } from "@/utils/hooks";
 
 export type GameStateActions = {
   gridItems: GameState;
@@ -36,6 +37,8 @@ export const GameBoard = ({
   });
 
   const [gridHover, setGridHover] = useState<number | undefined>(undefined);
+  const { key, ...options } = LOCALSTORAGE_KEYS.SETTINGS.DISPLAY.toggle;
+  const [isDisplay, setIsDisplay] = useLocalStorage(key, false, options);
 
   return (
     <CommandModalWrapper {...{ gridItems, setGridItems, ...playerDataProps }}>
@@ -55,13 +58,17 @@ export const GameBoard = ({
               ? GRIDS.GRID_20 - _gridIndex
               : _gridIndex;
 
-            if (gridHover !== gridIndex && activeId === undefined) {
+            if (
+              isDisplay &&
+              gridHover !== gridIndex &&
+              activeId === undefined
+            ) {
               return (
                 <AltGridDisplay
                   key={"preview" + gridIndex}
                   onMouseOver={() => setGridHover(gridIndex)}
                   cards={cards}
-                  myName={name}
+                  myName={name as string}
                 />
               );
             }
@@ -90,7 +97,6 @@ export const GameBoard = ({
                     h="100%"
                     w="100%"
                     onMouseEnter={() => {
-                      console.log("xx");
                       setGridHover(gridIndex);
                     }}
                   >

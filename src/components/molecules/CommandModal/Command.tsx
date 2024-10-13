@@ -9,6 +9,7 @@ import {
   ActionRollDice,
   ActRotateEnemyCards,
   ActScryX,
+  ActToggleDisplayCards,
   ActUntapAll,
   ActViewCemetary,
 } from "./Commands";
@@ -41,6 +42,7 @@ export const Command = (props: GameStateActions & PlayerDataProps) => {
             return <ActScryX {...props} deckType="atlas" />;
           if (id === "view_cemetary") return <ActViewCemetary />;
           if (id === "rotate_enemy") return <ActRotateEnemyCards />;
+          if (id === "toggle_display") return <ActToggleDisplayCards />;
 
           return <Box>No action setup</Box>;
         }}

@@ -6,7 +6,7 @@ import {
   LOCALSTORAGE_KEYS,
 } from "@/components/organisms/GameBoard/constants";
 import { Button } from "@/components/ui/button";
-import { PlayerDataProps } from "@/types/card";
+import { GridItem, PlayerDataProps } from "@/types/card";
 import {
   actDeckMoveToBottom,
   actDeckMoveToTop,
@@ -22,6 +22,7 @@ import { GiPirateGrave as IconGrave } from "react-icons/gi";
 import { useLocalStorage } from "@/utils/hooks";
 import { CardImage } from "@/components/atoms/mock-cards/card";
 import { CardAtlas } from "@/components/atoms/mock-cards/atlas";
+import { AltGridDisplay } from "@/components/organisms/GameBoard/Grid/AltGridDisplay";
 
 export const actions = [
   {
@@ -59,6 +60,10 @@ export const actions = [
   {
     value: "rotate_enemy",
     label: "Rotate enemy cards on grid",
+  },
+  {
+    value: "toggle_display",
+    label: "Display full/minimized cards view",
   },
 ] as const;
 export type ActionIds = (typeof actions)[number]["value"];
@@ -292,3 +297,76 @@ export const ActRotateEnemyCards = () => {
     </Box>
   );
 };
+
+/**
+ * Toggles the view on GridCells
+ * true = shows display
+ * false = maintains minimized view
+ * */
+export const ActToggleDisplayCards = () => {
+  const { query } = useRouter();
+  const name = query.name as string;
+  const { key, ...options } = LOCALSTORAGE_KEYS.SETTINGS.DISPLAY.toggle;
+  const [isDisplay, setIsDisplay] = useLocalStorage(key, false, options);
+  const [isFull, setIsFull] = useState(true);
+
+  const [gridHover, setGridHover] = useState<number | undefined>(undefined);
+
+  return (
+    <Box>
+      <p>Toggle between full view of cards on the grid or minimized view.</p>
+      <Box
+        className={css({
+          bg: "rgba(0,100,200,0.1)",
+          my: "1rem",
+          padding: "1rem",
+          border: "solid 2px",
+          borderColor: "rgba(0,100,200,0.3)",
+          borderRadius: "0.25rem",
+        })}
+      >
+        <p>
+          View will always switch to minimized view on drag/hover for
+          positioning
+        </p>
+      </Box>
+      <Box>
+        <p>Toggle card view</p>
+        <Button onClick={() => setIsDisplay(!isDisplay)}>
+          {isDisplay ? "Show min card view" : "Show full card"}
+        </Button>
+      </Box>
+
+      <Grid gridTemplateColumns="1fr 1fr" w="100%" minH="200px">
+        <div />
+        {isDisplay ? (
+          <AltGridDisplay
+            onMouseOver={() => setGridHover(1)}
+            cards={mockCards.map((card) => ({ ...card, playerName: name }))}
+            myName={name as string}
+          />
+        ) : (
+          <VStack>
+            {mockCards?.map((card) => {
+              const CardType = card.type === "site" ? CardAtlas : CardImage;
+              return <CardType img={card.img} isMine={true} />;
+            })}
+          </VStack>
+        )}
+      </Grid>
+    </Box>
+  );
+};
+
+const mockCards: GridItem = [
+  {
+    id: "1",
+    img: "flamecaller",
+    type: "avatar",
+  },
+  {
+    id: "3",
+    img: "red_desert",
+    type: "site",
+  },
+];
