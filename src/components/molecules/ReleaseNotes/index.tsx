@@ -8,7 +8,17 @@ export const ReleaseNoteBody = () => {
       w={{ base: "65vw", md: "80vw" }}
       maxH="600px"
       overflowY="auto"
+      position="relative"
     >
+      <Box
+        position="absolute"
+        right={0}
+        bg="gray.300"
+        padding="0.25rem 0.5rem"
+        borderRadius="4px"
+      >
+        X
+      </Box>
       <p
         style={{
           fontWeight: 700,
