@@ -61,6 +61,15 @@ export enum GRIDS {
 }
 
 export const LOCALSTORAGE_KEYS = {
+  DISCLAIMER: {
+    GAMEBOARD: {
+      lastSeenNote: {
+        key: "DISCLAIMER:GAMEBOARD:LAST_SEEN_NOTE",
+        serializer: (number: number) => `${number}`,
+        deserializer: (string: string) => Number(string),
+      },
+    },
+  },
   SETTINGS: {
     rotateEnemy: {
       key: "SETTINGS:ROTATE_ENEMY",
