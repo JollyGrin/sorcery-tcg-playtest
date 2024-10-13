@@ -344,9 +344,11 @@ export const ActToggleDisplayCards = () => {
           />
         ) : (
           <VStack>
-            {mockCards?.map((card) => {
+            {mockCards?.map((card, index) => {
               const CardType = card.type === "site" ? CardAtlas : CardImage;
-              return <CardType img={card.img} isMine={true} />;
+              return (
+                <CardType key={card.img + index} img={card.img} isMine={true} />
+              );
             })}
           </VStack>
         )}
