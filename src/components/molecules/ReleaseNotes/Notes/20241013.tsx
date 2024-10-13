@@ -6,7 +6,7 @@ import { AltGridDisplay } from "@/components/organisms/GameBoard/Grid/AltGridDis
 import { Button } from "@/components/ui/button";
 import { useLocalStorage } from "@/utils/hooks";
 import { mock_griditem_red } from "@/utils/mocks/mock_gamecards";
-import { Box, Grid, HStack, VStack } from "styled-system/jsx";
+import { Box, Divider, Grid, HStack, VStack } from "styled-system/jsx";
 
 export const Note20241013 = () => {
   const { key, ...options } = LOCALSTORAGE_KEYS.SETTINGS.DISPLAY.toggle;
@@ -19,7 +19,9 @@ export const Note20241013 = () => {
           <p style={{ fontSize: "1.5rem", opacity: 0.5, marginBottom: "1rem" }}>
             October 13, 2024
           </p>
-          <p>View the grid with full card previews!</p>
+          <p style={{ fontWeight: 600 }}>
+            View the grid with full card previews!
+          </p>
           <VStack alignItems="start" fontSize="0.825rem" gap={2}>
             <p>
               Have a more realistic view of the table to match your expectations
@@ -38,12 +40,19 @@ export const Note20241013 = () => {
               </Button>
             </HStack>
 
-            <p style={{ marginTop: "1rem" }}>
+            <Divider />
+
+            <p style={{ fontWeight: 600, fontSize: "1rem", marginTop: "1rem" }}>
               Wish to change this setting in the future?
             </p>
             <p>
-              While in game, press the keyboard key <KeyboardKey>?</KeyboardKey>{" "}
-              to open up the commands menu.
+              While in game, press <KeyboardKey>?</KeyboardKey> to open up the
+              commands menu.
+            </p>
+            <p style={{ opacity: 0.5 }}>
+              Question mark is achieved on most keyboards by pressing
+              simultaneously: <KeyboardKey>SHIFT</KeyboardKey>{" "}
+              <KeyboardKey>/</KeyboardKey>
             </p>
             <p>
               From there you can find these settings in the menu item:{" "}
@@ -53,7 +62,12 @@ export const Note20241013 = () => {
             </p>
           </VStack>
         </Box>
-        <Grid gridTemplateRows="repeat(2, 210px)" w="200px" minH="200px">
+        <Grid
+          justifySelf="end"
+          gridTemplateRows="repeat(2, 210px)"
+          w="200px"
+          minH="200px"
+        >
           {isDisplay ? (
             <>
               <AltGridDisplay
