@@ -19,6 +19,7 @@ Find instructions if you wish to setup your own game server.
 
 
 ## Feature ideas
+- [x] full preview of cards in grid cell
 - [ ] support 4players
 - [ ] support battlebox (shared deck)
 - [ ] draft mode
