@@ -24,7 +24,6 @@ export const AltGridDisplay = ({
       {...props}
     >
       {cards?.map((card, index) => {
-        console.log(card.playerName, myName);
         const isMe = card.playerName === myName;
         const Display = isMe ? GridDisplayCard : GridDisplayReversedCard;
         return (
