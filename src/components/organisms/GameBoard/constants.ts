@@ -67,6 +67,18 @@ export const LOCALSTORAGE_KEYS = {
       serializer: (bool: boolean) => `${bool}`,
       deserializer: (string: string) => string === "true",
     },
+    DISPLAY: {
+      toggle: {
+        key: "SETTINGS:DISPLAY:TOGGLE",
+        serializer: (bool: boolean) => `${bool}`,
+        deserializer: (string: string) => string === "true",
+      },
+      enemyTopHeight: {
+        key: "SETTINGS:DISPLAY:ENEMY_TOP_HEIGHT",
+        serializer: (number: number) => (number ? `${number}` : undefined),
+        deserializer: (string: string) => (string ? Number(string) : undefined),
+      },
+    },
   },
 };
 
