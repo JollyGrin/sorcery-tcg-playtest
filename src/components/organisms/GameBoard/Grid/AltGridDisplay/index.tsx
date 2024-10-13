@@ -2,6 +2,8 @@ import { GridItem } from "@/types/card";
 import { Box } from "styled-system/jsx";
 import { getCardImage } from "../../constants";
 import { CSSProperties } from "react";
+import { GridDisplayCard } from "./GridDisplayCard";
+import { GridDisplayReversedCard } from "./GridDisplayReversedCard";
 
 export const AltGridDisplay = ({
   cards = [],
@@ -24,48 +26,16 @@ export const AltGridDisplay = ({
       {...props}
     >
       {cards?.map((card, index) => {
-        const isReversed = card.playerName !== myName;
-        const style = card.type === "site" ? siteProps : spellProps;
-        const isTapped = card.isTapped
-          ? {
-              transform: "rotate(90deg)",
-              filter: "saturate(0.5)",
-            }
-          : undefined;
-
         console.log(card.playerName, myName);
+        const isMe = card.playerName === myName;
+        const Display = isMe ? GridDisplayCard : GridDisplayReversedCard;
         return (
-          <img
-            key={card.img + index}
-            src={getCardImage(card?.img)}
-            style={{
-              position: "absolute",
-              left: index * 0.5 + 2 + "rem",
-              zIndex: cardsLength - index,
-              transition: "all 0.25s ease",
-              filter: "drop-shadow(0 0 2px rgba(0,0,0,0.25))",
-              ...isTapped,
-              ...style,
-              top:
-                card.type !== "site"
-                  ? spellsLength - index + 0.5 + "rem"
-                  : undefined,
-            }}
+          <Display
+            length={{ spells: spellsLength, cards: cardsLength }}
+            {...{ card, index }}
           />
         );
       })}
     </Box>
   );
-};
-
-const spellProps: CSSProperties = {
-  height: "10rem",
-  width: "auto",
-};
-const siteProps: CSSProperties = {
-  width: "7.5rem",
-  height: "auto",
-  transform: "rotate(90deg)",
-  bottom: "-1.25rem",
-  left: "2.55rem",
 };
