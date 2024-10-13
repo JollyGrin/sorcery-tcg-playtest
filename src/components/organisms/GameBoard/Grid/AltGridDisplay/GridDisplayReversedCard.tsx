@@ -23,6 +23,7 @@ export const GridDisplayReversedCard = (props: {
   return (
     <img
       key={img + props.index}
+      alt={props.card.img + props.index}
       src={getCardImage(img)}
       style={{
         position: "absolute",

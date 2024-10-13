@@ -28,6 +28,7 @@ export const AltGridDisplay = ({
         const Display = isMe ? GridDisplayCard : GridDisplayReversedCard;
         return (
           <Display
+            key={card.img + index}
             length={{ spells: spellsLength, cards: cardsLength }}
             {...{ card, index }}
           />
