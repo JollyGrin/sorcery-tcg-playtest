@@ -38,7 +38,7 @@ export const GameBoard = ({
 
   const [gridHover, setGridHover] = useState<number | undefined>(undefined);
   const { key, ...options } = LOCALSTORAGE_KEYS.SETTINGS.DISPLAY.toggle;
-  const [isDisplay, setIsDisplay] = useLocalStorage(key, false, options);
+  const [isDisplay] = useLocalStorage(key, false, options);
 
   return (
     <CommandModalWrapper {...{ gridItems, setGridItems, ...playerDataProps }}>
