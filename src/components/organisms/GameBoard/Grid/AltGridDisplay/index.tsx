@@ -5,9 +5,11 @@ import { CSSProperties } from "react";
 
 export const AltGridDisplay = ({
   cards = [],
+  myName,
   ...props
 }: Partial<{
   cards: GridItem;
+  myName: string;
   onMouseOver(): void;
   onMouseLeave(): void;
 }>) => {
@@ -22,6 +24,7 @@ export const AltGridDisplay = ({
       {...props}
     >
       {cards?.map((card, index) => {
+        const isReversed = card.playerName !== myName;
         const style = card.type === "site" ? siteProps : spellProps;
         const isTapped = card.isTapped
           ? {
@@ -29,6 +32,8 @@ export const AltGridDisplay = ({
               filter: "saturate(0.5)",
             }
           : undefined;
+
+        console.log(card.playerName, myName);
         return (
           <img
             key={card.img + index}

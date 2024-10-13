@@ -61,6 +61,7 @@ export const GameBoard = ({
                   key={"preview" + gridIndex}
                   onMouseOver={() => setGridHover(gridIndex)}
                   cards={cards}
+                  myName={name}
                 />
               );
             }
