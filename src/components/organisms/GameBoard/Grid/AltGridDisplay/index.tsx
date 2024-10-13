@@ -1,7 +1,5 @@
 import { GridItem } from "@/types/card";
 import { Box } from "styled-system/jsx";
-import { getCardImage } from "../../constants";
-import { CSSProperties } from "react";
 import { GridDisplayCard } from "./GridDisplayCard";
 import { GridDisplayReversedCard } from "./GridDisplayReversedCard";
 
