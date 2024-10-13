@@ -25,7 +25,7 @@ export const GridDisplayCard = (props: {
       src={getCardImage(img)}
       style={{
         position: "absolute",
-        right: props.index * 0.5 + 2 + "rem",
+        right: props.index * -1 + 3 + "rem",
         zIndex: props.length.cards - props.index,
         transition: "all 0.25s ease",
         filter: "drop-shadow(0 0 2px rgba(0,0,0,0.25))",
