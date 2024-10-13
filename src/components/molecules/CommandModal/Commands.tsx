@@ -308,9 +308,6 @@ export const ActToggleDisplayCards = () => {
   const name = query.name as string;
   const { key, ...options } = LOCALSTORAGE_KEYS.SETTINGS.DISPLAY.toggle;
   const [isDisplay, setIsDisplay] = useLocalStorage(key, false, options);
-  const [isFull, setIsFull] = useState(true);
-
-  const [gridHover, setGridHover] = useState<number | undefined>(undefined);
 
   return (
     <Box>
@@ -341,7 +338,7 @@ export const ActToggleDisplayCards = () => {
         <div />
         {isDisplay ? (
           <AltGridDisplay
-            onMouseOver={() => setGridHover(1)}
+            onMouseOver={() => {}}
             cards={mockCards.map((card) => ({ ...card, playerName: name }))}
             myName={name as string}
           />
