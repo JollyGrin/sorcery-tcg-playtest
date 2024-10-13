@@ -16,10 +16,9 @@ export const AltGridDisplay = ({
 
   return (
     <Box
-      zIndex={1}
+      zIndex={0}
+      bg="radial-gradient(circle, rgba(224,224,224,1) 0%, rgba(0,0,0,0) 100%)"
       position="relative"
-      border="solid 0.5px"
-      color="gray.200"
       {...props}
     >
       {cards?.map((card, index) => {
