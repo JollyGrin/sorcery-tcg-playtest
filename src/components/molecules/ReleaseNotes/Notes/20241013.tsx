@@ -46,8 +46,10 @@ export const Note20241013 = () => {
               to open up the commands menu.
             </p>
             <p>
-              From there you can find these settings in the menu item: "Display
-              full/minimized cards view"
+              From there you can find these settings in the menu item:{" "}
+              <span style={{ fontWeight: 700 }}>
+                Display full/minimized cards view
+              </span>
             </p>
           </VStack>
         </Box>
