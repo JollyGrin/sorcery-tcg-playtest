@@ -4,7 +4,11 @@ import { Tabs } from "@/components/atoms/Tabs";
 
 import { useCardFullData } from "@/utils/api/cardData/useCardData";
 import { DraftProps } from "@/components/organisms/Draft/types";
-import { generateBoosterPack } from "@/components/organisms/Draft/helpers";
+import {
+  Expansion,
+  generateBoosterPack,
+} from "@/components/organisms/Draft/helpers";
+import { useState } from "react";
 
 export const Ribbon = (
   props: DraftProps & {
@@ -13,11 +17,12 @@ export const Ribbon = (
   },
 ) => {
   const { data: cardData = [] } = useCardFullData();
+  const [set, setSet] = useState<Expansion>("Beta");
 
   function crackBooster() {
     const newBooster = generateBoosterPack({
       cardData,
-      expansionSlug: "bet",
+      expansionSlug: set,
     });
     const { finishedPacks } = props.player;
     const isEmpty = finishedPacks.length === 0;
@@ -36,9 +41,16 @@ export const Ribbon = (
   return (
     <Box p="1rem" bg="brown">
       <Grid gridTemplateColumns="1fr 7fr">
-        <Button minW="9rem" onClick={crackBooster}>
-          Crack a Pack
-        </Button>
+        <HStack>
+          <select onChange={(e) => setSet(e.target.value as Expansion)}>
+            <option>Alpha</option>
+            <option>Beta</option>
+            <option>Arthurian Legends</option>
+          </select>
+          <Button minW="9rem" onClick={crackBooster}>
+            Crack a Pack
+          </Button>
+        </HStack>
         <HStack maxW="70vw" overflowX="auto" overflowY="clip">
           {props.player.finishedPacks.length > 0 && (
             <Tabs
