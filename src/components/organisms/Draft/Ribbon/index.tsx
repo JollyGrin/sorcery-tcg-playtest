@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Flex, Grid, HStack, VStack } from "styled-system/jsx";
+import { Flex, Grid, HStack } from "styled-system/jsx";
 import { DraftPlayerData, DraftProps } from "../types";
 import {
   Expansion,
