@@ -9,7 +9,8 @@
     "start": "npx serve@latest out",
     "lint": "next lint",
     "note": "node daily.js",
-    "process-cards": "ts-node minimizeCardData.ts"
+    "process-cards": "ts-node minimizeCardData.ts",
+    "patch-cards": "ts-node patchCardData.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.1.0",

@@ -23,6 +23,7 @@ type Variant = {
   product: string;
   artist: string;
   flavorText: string;
+  slug: string;
 };
 
 type SetMetadata = {

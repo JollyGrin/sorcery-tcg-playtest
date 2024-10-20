@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Flex, Grid } from "styled-system/jsx";
+import { Flex, Grid, HStack } from "styled-system/jsx";
 import { DraftPlayerData, DraftProps } from "../types";
-import { findAdjacentPlayers, generateBoosterPack } from "../helpers";
+import {
+  Expansion,
+  findAdjacentPlayers,
+  generateBoosterPack,
+} from "../helpers";
 import { useCardFullData } from "@/utils/api/cardData/useCardData";
 import { useEffect, useMemo, useState } from "react";
 import { SelectedCardsModal } from "./SelectedCardsModal";
@@ -22,6 +26,8 @@ export const DraftRibbon = (
     onOpen: () => setIsOpen(true),
     onClose: () => setIsOpen(true),
   };
+
+  const [set, setSet] = useState<Expansion>("Alpha");
 
   const { data: cardData = [] } = useCardFullData();
 
@@ -65,7 +71,7 @@ export const DraftRibbon = (
   function crackBooster() {
     const newBooster = generateBoosterPack({
       cardData,
-      expansionSlug: "bet", // TODO: let players decide expansion
+      expansionSlug: set, // TODO: let players decide expansion
     });
     props.setPlayerData({
       ...props.player,
@@ -204,14 +210,21 @@ export const DraftRibbon = (
           </div>
 
           {props.player.activePack.length === 0 ? (
-            <Button
-              disabled={
-                (nextPack ?? []).length > 0 || unrequestedPacks.length > 0
-              }
-              onClick={crackBooster}
-            >
-              Open a Pack
-            </Button>
+            <HStack>
+              <select onChange={(e) => setSet(e.target.value as Expansion)}>
+                <option>Alpha</option>
+                <option>Beta</option>
+                <option>Arthurian Legends</option>
+              </select>
+              <Button
+                disabled={
+                  (nextPack ?? []).length > 0 || unrequestedPacks.length > 0
+                }
+                onClick={crackBooster}
+              >
+                Open a Pack
+              </Button>
+            </HStack>
           ) : (
             <Button
               disabled={props.player.selectedIndex === undefined}

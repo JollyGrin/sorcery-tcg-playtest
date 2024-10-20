@@ -13,6 +13,7 @@ import {
 } from "@/lib/contexts/DraftGameProvider";
 import { DraftBoard } from "@/components/organisms/Draft";
 import { Button } from "@/components/ui/button";
+import { Grid, VStack } from "styled-system/jsx";
 
 export default function WebsocketDebug() {
   const { query } = useRouter();
@@ -29,7 +30,12 @@ export default function WebsocketDebug() {
   }, [name, gid]);
 
   if (!name || !gid) return <CreateLobby />;
-  if (isDelayed) return "loading";
+  if (isDelayed)
+    return (
+      <Grid minH="99vh" minW="99vw" placeItems="center" fontSize="3rem">
+        <p>loading...</p>
+      </Grid>
+    );
 
   return (
     <DraftGameProvider>
@@ -48,16 +54,6 @@ const Body = () => {
   const socketPlayers =
     gameState?.content?.players ?? ({} as Record<string, DraftPlayerData>);
 
-  // const [firstJoiner] =
-  //   Object.entries(socketPlayers ?? {})?.sort((a, b) => {
-  //     const [, valueA] = a;
-  //     const [, valueB] = b;
-  //     const timeA = valueA.joinedSessionTimestamp ?? 0;
-  //     const timeB = valueB.joinedSessionTimestamp ?? 0;
-  //     return timeA - timeB;
-  //   }) ?? [];
-  // const [firstName] = firstJoiner ?? "";
-
   function setState(data: DraftPlayerData) {
     setPlayerState()(data ?? initPlayer);
   }
@@ -70,18 +66,22 @@ const Body = () => {
   if (state === undefined) return null;
   if (state.joinedSessionTimestamp === undefined)
     return (
-      <div>
-        <Button
-          onClick={() => {
-            setPlayerState()({
-              ...initPlayer,
-              joinedSessionTimestamp: Date.now(),
-            });
-          }}
-        >
-          Init
-        </Button>
-      </div>
+      <Grid minW="99vw" minH="99vh" placeItems="center" fontSize="2rem">
+        <VStack>
+          <Button
+            p="2rem"
+            onClick={() => {
+              setPlayerState()({
+                ...initPlayer,
+                joinedSessionTimestamp: Date.now(),
+              });
+            }}
+          >
+            Initiate
+          </Button>
+          <p>The board is ready! Click the button to get started!</p>
+        </VStack>
+      </Grid>
     );
 
   const initPlayers = Object.entries(socketPlayers).filter((entry) => {
@@ -89,7 +89,12 @@ const Body = () => {
     return !value.joinedSessionTimestamp;
   });
 
-  if (initPlayers.length > 0) return "loading new player";
+  if (initPlayers.length > 0)
+    return (
+      <Grid minH="99vh" minW="99vw" placeItems="center" fontSize="3rem">
+        <p>loading new player...</p>
+      </Grid>
+    );
 
   return (
     <DraftBoard
