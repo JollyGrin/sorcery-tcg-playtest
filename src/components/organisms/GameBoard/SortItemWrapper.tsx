@@ -28,7 +28,15 @@ export const SortItemWrapper = ({
   gridIndex: number;
   cardIndex: number;
   amountOfCards?: number;
+  setHoverImage?(slug?: string): void;
 } & GameStateActions) => {
+  function over() {
+    if (props.setHoverImage) props.setHoverImage(card.img);
+  }
+  function out() {
+    if (props.setHoverImage) props.setHoverImage();
+  }
+
   const { query } = useRouter();
   const name = query?.name as string;
 
@@ -78,6 +86,8 @@ export const SortItemWrapper = ({
           e.stopPropagation();
           toggleTap();
         }}
+        onMouseOver={over}
+        onMouseOut={out}
         data-testid={"sortable-item-wrapper-" + card.id}
         style={{
           height: heightCalc() + 7 + "px",
