@@ -28,7 +28,13 @@ import { CountersTray } from "./Counters";
 /**
  * HAND - Drag and Drop tray of all the cards in your hand
  * */
-export const GameFooter = (props: GameStateActions & PlayerDataProps) => {
+export const GameFooter = ({
+  setHoverCard,
+  ...props
+}: GameStateActions &
+  PlayerDataProps & {
+    setHoverCard(slug: string): void;
+  }) => {
   const gridIndex = GRIDS.HAND;
   const cardsInHand = props.gridItems[gridIndex] ?? [];
 
@@ -97,6 +103,7 @@ export const GameFooter = (props: GameStateActions & PlayerDataProps) => {
                   gridIndex={gridIndex}
                   cardIndex={index}
                   gameStateActions={props}
+                  setHoverCard={setHoverCard}
                 />
               ))}
             </HStack>
@@ -112,12 +119,21 @@ const HandCard = ({
   gridIndex,
   cardIndex: index,
   gameStateActions,
+  ...props
 }: {
   card: GameCard;
   gridIndex: number;
   cardIndex: number;
   gameStateActions: GameStateActions;
+  setHoverCard(slug?: string): void;
 }) => {
+  function over() {
+    if (props.setHoverCard) props.setHoverCard(card.img);
+  }
+  function out() {
+    if (props.setHoverCard) props.setHoverCard();
+  }
+
   const [preview, setPreview] = useState(false);
   const deckType = card.type === "site" ? "atlas" : "deck";
 
@@ -139,6 +155,8 @@ const HandCard = ({
         e.preventDefault();
         setPreview(true);
       }}
+      onMouseOver={over}
+      onMouseOut={out}
       style={{
         position: "relative",
         width: "100%",

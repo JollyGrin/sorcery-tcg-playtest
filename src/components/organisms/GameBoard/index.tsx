@@ -36,6 +36,8 @@ export const GameBoard = ({
     setGridItems,
   });
 
+  const [hoverCard, setHoverCard] = useState<string>();
+
   const [gridHover, setGridHover] = useState<number | undefined>(undefined);
   const { key, ...options } = LOCALSTORAGE_KEYS.SETTINGS.DISPLAY.toggle;
   const [isDisplay] = useLocalStorage(key, false, options);
@@ -47,6 +49,8 @@ export const GameBoard = ({
           gridItems={gridItems}
           setGridItems={setGridItems}
           isReversed={isReversed}
+          activeCardSlug={hoverCard}
+          setHoverCard={setHoverCard}
           {...playerDataProps}
         >
           {(isReversed
@@ -105,6 +109,7 @@ export const GameBoard = ({
                       <SortItemWrapper
                         key={card.id}
                         amountOfCards={cards?.length}
+                        setHoverImage={setHoverCard}
                         {...{ gridItems, setGridItems }}
                         {...{ card, gridIndex, cardIndex }}
                       />
