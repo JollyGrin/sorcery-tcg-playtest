@@ -48,16 +48,6 @@ const Body = () => {
   const socketPlayers =
     gameState?.content?.players ?? ({} as Record<string, DraftPlayerData>);
 
-  // const [firstJoiner] =
-  //   Object.entries(socketPlayers ?? {})?.sort((a, b) => {
-  //     const [, valueA] = a;
-  //     const [, valueB] = b;
-  //     const timeA = valueA.joinedSessionTimestamp ?? 0;
-  //     const timeB = valueB.joinedSessionTimestamp ?? 0;
-  //     return timeA - timeB;
-  //   }) ?? [];
-  // const [firstName] = firstJoiner ?? "";
-
   function setState(data: DraftPlayerData) {
     setPlayerState()(data ?? initPlayer);
   }
