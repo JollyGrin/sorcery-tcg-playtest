@@ -10,7 +10,7 @@ function shuffleAndSelect(arr: CardDTO[], count = 15) {
   return shuffled.slice(-count); // Return the last `count` items
 }
 
-type Expansion = "alp" | "bet";
+export type Expansion = "Alpha" | "Beta" | "Arthurian Legends";
 export function generateBoosterPack(props: {
   cardData: CardDTO[];
   expansionSlug: Expansion | "all";
@@ -18,7 +18,7 @@ export function generateBoosterPack(props: {
   const cards = props.cardData.slice(); // shallow copy
   const cardsInSet = cards.filter((card) => {
     if (props.expansionSlug === "all") return true;
-    const setsFoundIn = card.sets.map((set) => set.slug);
+    const setsFoundIn = card.sets.map((set) => set.name);
     return setsFoundIn.includes(props.expansionSlug);
   });
 
