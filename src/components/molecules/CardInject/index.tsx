@@ -111,9 +111,9 @@ export const CardInject = (props: {
           <CommandList style={{ maxHeight: "480px" }}>
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup>
-              {statuses.map((status) => (
+              {statuses.map((status, i) => (
                 <CommandItem
-                  key={status.value}
+                  key={status.value + i}
                   onSelect={(value) => {
                     const newStatus =
                       statuses.find((priority) => priority.label === value) ||
