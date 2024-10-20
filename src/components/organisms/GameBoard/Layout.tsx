@@ -16,6 +16,7 @@ export const GameLayout = (
     PlayerDataProps & {
       isReversed?: boolean;
       activeCardSlug?: string;
+      setHoverCard(slug: string): void;
       children: ReactNode;
     },
 ) => {

@@ -50,6 +50,7 @@ export const GameBoard = ({
           setGridItems={setGridItems}
           isReversed={isReversed}
           activeCardSlug={hoverCard}
+          setHoverCard={setHoverCard}
           {...playerDataProps}
         >
           {(isReversed
