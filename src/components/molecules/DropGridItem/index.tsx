@@ -32,10 +32,12 @@ export const DroppableGridItem = (props: {
       })}
       onContextMenu={(e) => {
         e.preventDefault();
-        const Div = e.target as Element;
-        const testId = Div.getAttribute("data-testid");
-        const [isDroppable] = testId?.split("-") ?? [];
-        isDroppable && setIsOpen(true);
+        // NOTE: This no longer is needed, but not sure why
+        // const Div = e.target as Element;
+        // const testId = Div.getAttribute("data-testid");
+        // const [isDroppable] = testId?.split("-") ?? [];
+        // isDroppable && setIsOpen(true);
+        setIsOpen(true);
       }}
     >
       {props.children}
