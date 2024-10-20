@@ -13,7 +13,7 @@ import {
 } from "@/lib/contexts/DraftGameProvider";
 import { DraftBoard } from "@/components/organisms/Draft";
 import { Button } from "@/components/ui/button";
-import { Grid, HStack, VStack } from "styled-system/jsx";
+import { Grid, VStack } from "styled-system/jsx";
 
 export default function WebsocketDebug() {
   const { query } = useRouter();
