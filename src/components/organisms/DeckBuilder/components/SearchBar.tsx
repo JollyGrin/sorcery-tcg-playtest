@@ -13,6 +13,7 @@ interface SearchBarProps {
   setShowDeckCards: (show: boolean) => void;
   savedDecksCount: number;
   onCreateNewDeck: () => void;
+  onImport: () => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
@@ -25,7 +26,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
   showDeckCards,
   setShowDeckCards,
   savedDecksCount,
-  onCreateNewDeck
+  onCreateNewDeck,
+  onImport
 }) => {
   return (
     <Box
@@ -62,6 +64,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
               onClick={onCreateNewDeck}
             >
               New Deck
+            </button>
+            <button
+              className={button()}
+              onClick={onImport}
+            >
+              Import
             </button>
           </Flex>
           

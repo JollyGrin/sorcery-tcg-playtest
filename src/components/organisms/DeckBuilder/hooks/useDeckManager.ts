@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { LocalDeck, Card } from '../types';
+import { parseURLForDeck, isValidDeck } from '../utils/deckEncoding';
 
 export const useDeckManager = () => {
   const [savedDecks, setSavedDecks] = useState<LocalDeck[]>([]);
@@ -13,6 +14,11 @@ export const useDeckManager = () => {
 
   useEffect(() => {
     loadSavedDecks();
+    // Check for deck in URL parameters on initial load
+    const urlDeck = parseURLForDeck();
+    if (urlDeck && isValidDeck(urlDeck)) {
+      importDeckFromURL(urlDeck);
+    }
   }, []);
 
   const loadSavedDecks = () => {
@@ -135,6 +141,26 @@ export const useDeckManager = () => {
     return currentDeck.spellbook?.filter((s) => s === slug).length || 0;
   };
 
+  const importDeckFromURL = (urlDeck: Partial<LocalDeck>) => {
+    // Clear URL parameters after importing
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('deck');
+      window.history.replaceState({}, document.title, url.toString());
+    }
+
+    // Set the imported deck as current
+    setCurrentDeck({
+      name: urlDeck.name + ' (Imported)',
+      avatar: urlDeck.avatar || '',
+      spellbook: urlDeck.spellbook || [],
+      atlas: urlDeck.atlas || []
+    });
+    
+    // Clear editing state since this is a new import
+    setEditingDeckId(null);
+  };
+
   return {
     savedDecks,
     currentDeck,
@@ -146,6 +172,7 @@ export const useDeckManager = () => {
     deleteDeck,
     addCardToDeck,
     removeCardFromDeck,
-    getCardCount
+    getCardCount,
+    importDeckFromURL
   };
 };

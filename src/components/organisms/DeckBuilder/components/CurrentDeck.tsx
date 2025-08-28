@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Flex, VStack } from 'styled-system/jsx';
 import { css } from 'styled-system/css';
 import { button, input } from 'styled-system/recipes';
 import { LocalDeck, Card } from '../types';
+import ExportModal from './ExportModal';
 
 interface CurrentDeckProps {
   currentDeck: Partial<LocalDeck>;
@@ -23,6 +24,8 @@ const CurrentDeck: React.FC<CurrentDeckProps> = ({
   onSave,
   getCardCount
 }) => {
+  const [showExportModal, setShowExportModal] = useState(false);
+
   return (
     <Box
       position="sticky"
@@ -207,10 +210,21 @@ const CurrentDeck: React.FC<CurrentDeckProps> = ({
         >
           {editingDeckId ? 'Update Deck' : 'Save to My Decks'}
         </button>
-        <button className={button()} style={{ width: "100%" }}>
+        <button 
+          className={button()} 
+          style={{ width: "100%" }}
+          onClick={() => setShowExportModal(true)}
+        >
           Export Deck
         </button>
       </VStack>
+
+      <ExportModal
+        isOpen={showExportModal}
+        onClose={() => setShowExportModal(false)}
+        deck={currentDeck}
+        cards={cards}
+      />
     </Box>
   );
 };

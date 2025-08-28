@@ -11,6 +11,7 @@ import CardBrowser from "./components/CardBrowser";
 import MyDecks from "./components/MyDecks";
 import DeckCards from "./components/DeckCards";
 import CurrentDeck from "./components/CurrentDeck";
+import ImportModal from "./components/ImportModal";
 
 const DeckBuilder: React.FC = () => {
   // UI State
@@ -18,6 +19,7 @@ const DeckBuilder: React.FC = () => {
   const [selectedType, setSelectedType] = useState<string>("all");
   const [showMyDecks, setShowMyDecks] = useState(false);
   const [showDeckCards, setShowDeckCards] = useState(false);
+  const [showImportModal, setShowImportModal] = useState(false);
 
   // Custom hooks
   const { cards, loading, getCardImage } = useCards();
@@ -32,7 +34,8 @@ const DeckBuilder: React.FC = () => {
     deleteDeck,
     addCardToDeck,
     removeCardFromDeck,
-    getCardCount
+    getCardCount,
+    importDeckFromURL
   } = useDeckManager();
 
   // Enhanced handlers that manage view state
@@ -44,6 +47,12 @@ const DeckBuilder: React.FC = () => {
 
   const handleLoadDeck = (deck: any) => {
     loadDeck(deck);
+    setShowMyDecks(false);
+    setShowDeckCards(false);
+  };
+
+  const handleImport = (deck: any) => {
+    importDeckFromURL(deck);
     setShowMyDecks(false);
     setShowDeckCards(false);
   };
@@ -70,6 +79,7 @@ const DeckBuilder: React.FC = () => {
         setShowDeckCards={setShowDeckCards}
         savedDecksCount={savedDecks.length}
         onCreateNewDeck={handleCreateNewDeck}
+        onImport={() => setShowImportModal(true)}
       />
 
       {/* Main content */}
@@ -117,6 +127,12 @@ const DeckBuilder: React.FC = () => {
           onRemoveCard={removeCardFromDeck}
           onSave={saveCurrentDeck}
           getCardCount={getCardCount}
+        />
+
+        <ImportModal
+          isOpen={showImportModal}
+          onClose={() => setShowImportModal(false)}
+          onImport={handleImport}
         />
       </Grid>
     </Box>
