@@ -24,6 +24,8 @@ export default function Home() {
           gap="2rem"
           justifyContent="space-between"
           filter="drop-shadow(0 0.5rem 1rem rgba(0,0,0,0.25))"
+          position="relative"
+          overflow="hidden"
         >
           <Box color="brand.highlight">
             <HStack>
@@ -56,7 +58,57 @@ export default function Home() {
               <li>🔓 Open source project</li>
             </ul>
           </Box>
-          <Selector />
+          
+          {/* Decorative Cards */}
+          <Box
+            position="absolute"
+            top="-20px"
+            right="-30px"
+            opacity="0.15"
+            transform="rotate(15deg)"
+            pointerEvents="none"
+            zIndex="0"
+          >
+            <img
+              src="/mock-cards/sorcerer.webp"
+              alt="decorative card"
+              style={{ height: "200px", width: "auto" }}
+            />
+          </Box>
+          <Box
+            position="absolute"
+            bottom="-40px"
+            left="-20px"
+            opacity="0.1"
+            transform="rotate(-25deg)"
+            pointerEvents="none"
+            zIndex="0"
+          >
+            <img
+              src="/mock-cards/death_dealer.webp"
+              alt="decorative card"
+              style={{ height: "180px", width: "auto" }}
+            />
+          </Box>
+          <Box
+            position="absolute"
+            top="50%"
+            right="-50px"
+            opacity="0.08"
+            transform="translateY(-50%) rotate(45deg)"
+            pointerEvents="none"
+            zIndex="0"
+          >
+            <img
+              src="/mock-cards/infernal_legion.webp"
+              alt="decorative card"
+              style={{ height: "160px", width: "auto" }}
+            />
+          </Box>
+
+          <Box position="relative" zIndex="1">
+            <Selector />
+          </Box>
         </Grid>
         <Disclaimer />
         <Box
@@ -65,6 +117,8 @@ export default function Home() {
           bg="rgba(0,0,0,0.1)"
           borderRadius="0.5rem"
           className={css({ backdropFilter: "blur(5px)" })}
+          position="relative"
+          overflow="hidden"
         >
           <h2
             className={css({
@@ -123,6 +177,38 @@ export default function Home() {
               </button>
             </Link>
           </HStack>
+          
+          {/* Floating Cards Around CTA */}
+          <Box
+            position="absolute"
+            top="-30px"
+            left="10%"
+            opacity="0.12"
+            transform="rotate(-15deg)"
+            pointerEvents="none"
+            zIndex="0"
+          >
+            <img
+              src="/mock-cards/wayfaring_pilgrim.webp"
+              alt="decorative card"
+              style={{ height: "140px", width: "auto" }}
+            />
+          </Box>
+          <Box
+            position="absolute"
+            bottom="-20px"
+            right="15%"
+            opacity="0.1"
+            transform="rotate(20deg)"
+            pointerEvents="none"
+            zIndex="0"
+          >
+            <img
+              src="/mock-cards/headless_haunt.webp"
+              alt="decorative card"
+              style={{ height: "130px", width: "auto" }}
+            />
+          </Box>
         </Box>
       </Flex>
     </Grid>
