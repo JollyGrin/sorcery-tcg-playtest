@@ -81,10 +81,11 @@ const Selector = () => (
     // display={{ base: "none", sm: "block" }}
   >
     <Tabs
-      tabs={["Solo", "Online", "Crack Packs", "Online Draft"]}
+      tabs={["Solo", "Online", "Deck Builder", "Crack Packs", "Online Draft"]}
       content={[
         <Solo key="solo" />,
         <Multiplayer key="multiplayer" />,
+        <DeckBuilder key="deckbuilder" />,
         <Crack key="crack" />,
         <Draft key="draft" />,
       ]}
@@ -152,6 +153,33 @@ const Draft = () => {
       <Link href="/draft/online">
         <button className={button()} style={{ width: "100%" }}>
           Create a lobby
+        </button>
+      </Link>
+    </div>
+  );
+};
+
+const DeckBuilder = () => {
+  return (
+    <div>
+      <p>Build Custom Decks</p>
+      <p>Create and save your own Sorcery TCG decks locally</p>
+      <p style={{ color: "transparent" }}>Sorcery: contested realms</p>
+      <HStack fontFamily="monospace" my="0.5rem">
+        <p>Version:</p>
+        <Box p="0 0.5rem" borderRadius="0.5rem" bg="green.600">
+          NEW
+        </Box>
+        <p>Build decks without external sites!</p>
+      </HStack>
+      <ul style={{ listStyle: "inside", marginBottom: "0.5rem" }}>
+        <li>Browse all available cards</li>
+        <li>Save decks to your browser</li>
+        <li>Export and share deck lists</li>
+      </ul>
+      <Link href="/deckbuilder">
+        <button className={button()} style={{ width: "100%" }}>
+          Build a Deck
         </button>
       </Link>
     </div>
