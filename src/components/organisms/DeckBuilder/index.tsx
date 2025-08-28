@@ -28,9 +28,12 @@ const DeckBuilder: React.FC = () => {
     spellbook: [],
     atlas: [],
   });
+  const [savedDecks, setSavedDecks] = useState<LocalDeck[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedType, setSelectedType] = useState<string>("all");
+  const [showMyDecks, setShowMyDecks] = useState(false);
+  const [editingDeckId, setEditingDeckId] = useState<string | null>(null);
 
   useEffect(() => {
     const loadCards = async () => {
@@ -45,7 +48,96 @@ const DeckBuilder: React.FC = () => {
       }
     };
     loadCards();
+    loadSavedDecks();
   }, []);
+
+  const loadSavedDecks = () => {
+    const saved = localStorage.getItem('sorcery-decks');
+    if (saved) {
+      setSavedDecks(JSON.parse(saved));
+    }
+  };
+
+  const saveCurrentDeck = () => {
+    if (!currentDeck.name || currentDeck.name.trim() === '') {
+      alert('Please enter a deck name');
+      return;
+    }
+
+    const now = Date.now();
+    let deckToSave: LocalDeck;
+
+    if (editingDeckId) {
+      // Update existing deck
+      deckToSave = {
+        id: editingDeckId,
+        name: currentDeck.name,
+        avatar: currentDeck.avatar || '',
+        spellbook: currentDeck.spellbook || [],
+        atlas: currentDeck.atlas || [],
+        createdAt: savedDecks.find(d => d.id === editingDeckId)?.createdAt || now,
+        updatedAt: now
+      };
+    } else {
+      // Create new deck
+      deckToSave = {
+        id: `deck_${now}`,
+        name: currentDeck.name,
+        avatar: currentDeck.avatar || '',
+        spellbook: currentDeck.spellbook || [],
+        atlas: currentDeck.atlas || [],
+        createdAt: now,
+        updatedAt: now
+      };
+    }
+
+    const updatedDecks = editingDeckId 
+      ? savedDecks.map(d => d.id === editingDeckId ? deckToSave : d)
+      : [...savedDecks, deckToSave];
+
+    setSavedDecks(updatedDecks);
+    localStorage.setItem('sorcery-decks', JSON.stringify(updatedDecks));
+    
+    if (!editingDeckId) {
+      setEditingDeckId(deckToSave.id);
+    }
+    
+    alert(editingDeckId ? 'Deck updated!' : 'Deck saved!');
+  };
+
+  const loadDeck = (deck: LocalDeck) => {
+    setCurrentDeck({
+      name: deck.name,
+      avatar: deck.avatar,
+      spellbook: deck.spellbook,
+      atlas: deck.atlas
+    });
+    setEditingDeckId(deck.id);
+    setShowMyDecks(false);
+  };
+
+  const createNewDeck = () => {
+    setCurrentDeck({
+      name: "New Deck",
+      avatar: "",
+      spellbook: [],
+      atlas: [],
+    });
+    setEditingDeckId(null);
+    setShowMyDecks(false);
+  };
+
+  const deleteDeck = (deckId: string) => {
+    if (confirm('Are you sure you want to delete this deck?')) {
+      const updatedDecks = savedDecks.filter(d => d.id !== deckId);
+      setSavedDecks(updatedDecks);
+      localStorage.setItem('sorcery-decks', JSON.stringify(updatedDecks));
+      
+      if (editingDeckId === deckId) {
+        createNewDeck();
+      }
+    }
+  };
 
   const filteredCards = cards.filter((card) => {
     const matchesSearch = card.name
@@ -113,7 +205,22 @@ const DeckBuilder: React.FC = () => {
         backdropFilter="blur(10px)"
       >
         <Box maxW="1400px" mx="auto">
-          <Flex direction={{ base: "column", sm: "row" }} gap={4}>
+          <Flex direction={{ base: "column", sm: "row" }} gap={4} alignItems="center">
+            <Flex gap={2}>
+              <button
+                className={button({ visual: showMyDecks ? "solid" : "outline" })}
+                onClick={() => setShowMyDecks(!showMyDecks)}
+              >
+                My Decks ({savedDecks.length})
+              </button>
+              <button
+                className={button()}
+                onClick={createNewDeck}
+              >
+                New Deck
+              </button>
+            </Flex>
+            
             <input
               type="text"
               placeholder="Search cards..."
@@ -147,85 +254,146 @@ const DeckBuilder: React.FC = () => {
         maxW="1400px"
         mx="auto"
       >
-        {/* Card Browser (no container) */}
+        {/* Card Browser or My Decks */}
         <Box overflow="auto" p="1rem">
-          <Grid
-            gridTemplateColumns={{
-              base: "repeat(2, 1fr)",
-              sm: "repeat(3, 1fr)",
-              md: "repeat(4, 1fr)",
-              lg: "repeat(5, 1fr)",
-            }}
-            gap={4}
-          >
-            {filteredCards.slice(0, 100).map((card) => (
-              <Box
-                key={card.slug}
-                position="relative"
-                cursor="pointer"
-                onClick={() => addCardToDeck(card)}
-                className={css({
-                  _hover: {
-                    "& img": { boxShadow: "lg", transform: "scale(1.05)" },
-                    "& .overlay": { opacity: 1, bg: "rgba(0,0,0,0.5)" },
-                  },
-                })}
-              >
-                <img
-                  src={getCardImage(card.slug)}
-                  alt={card.name}
+          {showMyDecks ? (
+            <VStack gap={4} alignItems="stretch">
+              <h2 className={css({ fontSize: '2rem', fontWeight: 700, color: 'brand.highlight' })}>
+                My Decks
+              </h2>
+              {savedDecks.length === 0 ? (
+                <Box textAlign="center" py="4rem">
+                  <p className={css({ color: 'gray.400', fontSize: '1.25rem' })}>
+                    No saved decks yet. Build your first deck!
+                  </p>
+                </Box>
+              ) : (
+                <Grid gridTemplateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }} gap={4}>
+                  {savedDecks.map((deck) => (
+                    <Box
+                      key={deck.id}
+                      bg="rgba(255,255,255,0.1)"
+                      p="1rem"
+                      borderRadius="0.5rem"
+                      cursor="pointer"
+                      className={css({
+                        _hover: { bg: 'rgba(255,255,255,0.15)' },
+                        border: editingDeckId === deck.id ? '2px solid' : '1px solid',
+                        borderColor: editingDeckId === deck.id ? 'blue.400' : 'rgba(255,255,255,0.2)'
+                      })}
+                      onClick={() => loadDeck(deck)}
+                    >
+                      <h3 className={css({ fontWeight: 'bold', fontSize: '1.125rem', mb: '0.5rem' })}>
+                        {deck.name}
+                      </h3>
+                      <p className={css({ fontSize: '0.875rem', color: 'gray.400', mb: '0.5rem' })}>
+                        {deck.spellbook.length} cards, {deck.atlas.length} sites
+                      </p>
+                      <p className={css({ fontSize: '0.75rem', color: 'gray.500' })}>
+                        {deck.avatar && cards.find(c => c.slug === deck.avatar)?.name}
+                      </p>
+                      <Flex justifyContent="space-between" alignItems="center" mt="1rem">
+                        <span className={css({ fontSize: '0.75rem', color: 'gray.500' })}>
+                          {new Date(deck.updatedAt).toLocaleDateString()}
+                        </span>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            deleteDeck(deck.id);
+                          }}
+                          className={css({
+                            color: 'red.400',
+                            _hover: { color: 'red.300' },
+                            fontSize: '0.875rem'
+                          })}
+                        >
+                          Delete
+                        </button>
+                      </Flex>
+                    </Box>
+                  ))}
+                </Grid>
+              )}
+            </VStack>
+          ) : (
+            <Grid
+              gridTemplateColumns={{
+                base: "repeat(2, 1fr)",
+                sm: "repeat(3, 1fr)",
+                md: "repeat(4, 1fr)",
+                lg: "repeat(5, 1fr)",
+              }}
+              gap={4}
+            >
+              {filteredCards.slice(0, 100).map((card) => (
+                <Box
+                  key={card.slug}
+                  position="relative"
+                  cursor="pointer"
+                  onClick={() => addCardToDeck(card)}
                   className={css({
-                    w: "full",
-                    borderRadius: "0.5rem",
-                    transition: "all 0.2s",
+                    _hover: {
+                      "& img": { boxShadow: "lg", transform: "scale(1.05)" },
+                      "& .overlay": { opacity: 1, bg: "rgba(0,0,0,0.5)" },
+                    },
                   })}
-                  loading="lazy"
-                />
-                <Flex
-                  className="overlay"
-                  position="absolute"
-                  inset={0}
-                  bg="transparent"
-                  opacity={0}
-                  transition="all 0.2s"
-                  borderRadius="0.5rem"
-                  alignItems="center"
-                  justifyContent="center"
                 >
-                  <span
+                  <img
+                    src={getCardImage(card.slug)}
+                    alt={card.name}
                     className={css({
-                      color: "white",
-                      fontSize: "1.5rem",
-                      fontWeight: "bold",
+                      w: "full",
+                      borderRadius: "0.5rem",
+                      transition: "all 0.2s",
                     })}
-                  >
-                    +
-                  </span>
-                </Flex>
-                {getCardCount(card.slug) > 0 && (
-                  <Box
+                    loading="lazy"
+                  />
+                  <Flex
+                    className="overlay"
                     position="absolute"
-                    top="0.5rem"
-                    right="0.5rem"
-                    bg="blue.600"
-                    color="white"
-                    borderRadius="full"
-                    w="1.5rem"
-                    h="1.5rem"
-                    display="flex"
+                    inset={0}
+                    bg="transparent"
+                    opacity={0}
+                    transition="all 0.2s"
+                    borderRadius="0.5rem"
                     alignItems="center"
                     justifyContent="center"
-                    fontSize="0.875rem"
-                    fontWeight="bold"
                   >
-                    {getCardCount(card.slug)}
-                  </Box>
-                )}
-              </Box>
-            ))}
-          </Grid>
+                    <span
+                      className={css({
+                        color: "white",
+                        fontSize: "1.5rem",
+                        fontWeight: "bold",
+                      })}
+                    >
+                      +
+                    </span>
+                  </Flex>
+                  {getCardCount(card.slug) > 0 && (
+                    <Box
+                      position="absolute"
+                      top="0.5rem"
+                      right="0.5rem"
+                      bg="blue.600"
+                      color="white"
+                      borderRadius="full"
+                      w="1.5rem"
+                      h="1.5rem"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                      fontSize="0.875rem"
+                      fontWeight="bold"
+                    >
+                      {getCardCount(card.slug)}
+                    </Box>
+                  )}
+                </Box>
+              ))}
+            </Grid>
+          )}
 
-          {filteredCards.length > 100 && (
+          {!showMyDecks && filteredCards.length > 100 && (
             <p
               className={css({
                 color: "gray.400",
@@ -258,7 +426,7 @@ const DeckBuilder: React.FC = () => {
               color: "brand.highlight",
             })}
           >
-            Current Deck
+            {editingDeckId ? 'Editing Deck' : 'Current Deck'}
           </h2>
 
           <input
@@ -421,8 +589,9 @@ const DeckBuilder: React.FC = () => {
             <button
               className={button({ visual: "solid" })}
               style={{ width: "100%" }}
+              onClick={saveCurrentDeck}
             >
-              Save to My Decks
+              {editingDeckId ? 'Update Deck' : 'Save to My Decks'}
             </button>
             <button className={button()} style={{ width: "100%" }}>
               Export Deck
