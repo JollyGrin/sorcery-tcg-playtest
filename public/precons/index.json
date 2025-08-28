@@ -1,0 +1,28 @@
+[
+  {
+    "id": "earth-alpha",
+    "name": "Earth Alpha Precon",
+    "description": "A balanced Earth-based preconstructed deck featuring terrain control and powerful creatures.",
+    "element": "earth",
+    "difficulty": "beginner",
+    "cardCount": {
+      "total": 52,
+      "spellbook": 36,
+      "atlas": 16
+    },
+    "filePath": "/precons/earth-alpha.json"
+  },
+  {
+    "id": "fire-alpha",
+    "name": "Fire Alpha Precon",
+    "description": "An aggressive Fire-based preconstructed deck focused on direct damage and fast creatures.",
+    "element": "fire",
+    "difficulty": "beginner",
+    "cardCount": {
+      "total": 50,
+      "spellbook": 34,
+      "atlas": 16
+    },
+    "filePath": "/precons/fire-alpha.json"
+  }
+]
