@@ -10,8 +10,154 @@ import { button } from "styled-system/recipes";
 
 export default function Home() {
   return (
-    <Grid minH="100vh" bg="brand.shadow" p="2rem" className="wood">
-      <Flex direction="column" maxW="900px" w="100%" m="0 auto" gap={3}>
+    <Grid
+      minH="100vh"
+      bg="linear-gradient(135deg, #E6CFA9 0%, #C1856D 50%, #9A3F3F 100%)"
+      p="2rem"
+      position="relative"
+      overflow="hidden"
+    >
+      {/* Tilted Card Marquee Background */}
+      <Box
+        position="absolute"
+        top="0"
+        left="0"
+        right="0"
+        bottom="0"
+        zIndex="0"
+        overflow="hidden"
+        className={css({
+          transform: "rotate(-8deg) scale(1.2)",
+          transformOrigin: "center center",
+        })}
+      >
+        {/* Row 1 */}
+        <HStack
+          gap="2rem"
+          mb="3rem"
+          opacity="0.15"
+          className={css({
+            animation: "marquee1 25s linear infinite",
+            width: "max-content",
+          })}
+        >
+          {[...Array(12)].map((_, i) => (
+            <Box key={i} flexShrink="0">
+              <img
+                src={`/mock-cards/${
+                  [
+                    "sorcerer.webp",
+                    "death_dealer.webp",
+                    "infernal_legion.webp",
+                    "wayfaring_pilgrim.webp",
+                    "headless_haunt.webp",
+                    "arid_desert.webp",
+                  ][i % 6]
+                }`}
+                alt="card"
+                style={{ height: "160px", width: "auto" }}
+              />
+            </Box>
+          ))}
+        </HStack>
+
+        {/* Row 2 */}
+        <HStack
+          gap="2rem"
+          mb="3rem"
+          opacity="0.12"
+          className={css({
+            animation: "marquee2 30s linear infinite reverse",
+            width: "max-content",
+          })}
+        >
+          {[...Array(12)].map((_, i) => (
+            <Box key={i} flexShrink="0">
+              <img
+                src={`/mock-cards/${
+                  [
+                    "atlas_cloud_city.webp",
+                    "atlas_rift_valley.webp",
+                    "jihad.webp",
+                    "sorcerer.webp",
+                    "death_dealer.webp",
+                    "infernal_legion.webp",
+                  ][i % 6]
+                }`}
+                alt="card"
+                style={{ height: "160px", width: "auto" }}
+              />
+            </Box>
+          ))}
+        </HStack>
+
+        {/* Row 3 */}
+        <HStack
+          gap="2rem"
+          opacity="0.1"
+          className={css({
+            animation: "marquee3 20s linear infinite",
+            width: "max-content",
+          })}
+        >
+          {[...Array(12)].map((_, i) => (
+            <Box key={i} flexShrink="0">
+              <img
+                src={`/mock-cards/${
+                  [
+                    "wayfaring_pilgrim.webp",
+                    "headless_haunt.webp",
+                    "arid_desert.webp",
+                    "atlas_cloud_city.webp",
+                    "atlas_rift_valley.webp",
+                    "jihad.webp",
+                  ][i % 6]
+                }`}
+                alt="card"
+                style={{ height: "160px", width: "auto" }}
+              />
+            </Box>
+          ))}
+        </HStack>
+      </Box>
+
+      {/* Global Styles for Animations */}
+      <style jsx global>{`
+        @keyframes marquee1 {
+          0% {
+            transform: translateX(100vw);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+        @keyframes marquee2 {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100vw);
+          }
+        }
+        @keyframes marquee3 {
+          0% {
+            transform: translateX(100vw);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+      `}</style>
+
+      <Flex
+        direction="column"
+        maxW="900px"
+        w="100%"
+        m="0 auto"
+        gap={3}
+        position="relative"
+        zIndex="1"
+      >
         <Nav />
         <Grid
           minH="400px"
@@ -58,57 +204,8 @@ export default function Home() {
               <li>🔓 Open source project</li>
             </ul>
           </Box>
-          
-          {/* Decorative Cards */}
-          <Box
-            position="absolute"
-            top="-20px"
-            right="-30px"
-            opacity="0.15"
-            transform="rotate(15deg)"
-            pointerEvents="none"
-            zIndex="0"
-          >
-            <img
-              src="/mock-cards/sorcerer.webp"
-              alt="decorative card"
-              style={{ height: "200px", width: "auto" }}
-            />
-          </Box>
-          <Box
-            position="absolute"
-            bottom="-40px"
-            left="-20px"
-            opacity="0.1"
-            transform="rotate(-25deg)"
-            pointerEvents="none"
-            zIndex="0"
-          >
-            <img
-              src="/mock-cards/death_dealer.webp"
-              alt="decorative card"
-              style={{ height: "180px", width: "auto" }}
-            />
-          </Box>
-          <Box
-            position="absolute"
-            top="50%"
-            right="-50px"
-            opacity="0.08"
-            transform="translateY(-50%) rotate(45deg)"
-            pointerEvents="none"
-            zIndex="0"
-          >
-            <img
-              src="/mock-cards/infernal_legion.webp"
-              alt="decorative card"
-              style={{ height: "160px", width: "auto" }}
-            />
-          </Box>
 
-          <Box position="relative" zIndex="1">
-            <Selector />
-          </Box>
+          <Selector />
         </Grid>
         <Disclaimer />
         <Box
@@ -177,38 +274,6 @@ export default function Home() {
               </button>
             </Link>
           </HStack>
-          
-          {/* Floating Cards Around CTA */}
-          <Box
-            position="absolute"
-            top="-30px"
-            left="10%"
-            opacity="0.12"
-            transform="rotate(-15deg)"
-            pointerEvents="none"
-            zIndex="0"
-          >
-            <img
-              src="/mock-cards/wayfaring_pilgrim.webp"
-              alt="decorative card"
-              style={{ height: "140px", width: "auto" }}
-            />
-          </Box>
-          <Box
-            position="absolute"
-            bottom="-20px"
-            right="15%"
-            opacity="0.1"
-            transform="rotate(20deg)"
-            pointerEvents="none"
-            zIndex="0"
-          >
-            <img
-              src="/mock-cards/headless_haunt.webp"
-              alt="decorative card"
-              style={{ height: "130px", width: "auto" }}
-            />
-          </Box>
         </Box>
       </Flex>
     </Grid>
