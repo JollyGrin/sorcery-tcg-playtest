@@ -57,6 +57,12 @@ const DeckBuilder: React.FC = () => {
     setShowDeckCards(false);
   };
 
+  const handleLoadPrecon = (precon: any) => {
+    setCurrentDeck(precon);
+    setShowMyDecks(false);
+    setShowDeckCards(false);
+  };
+
   if (loading) {
     return (
       <Box textAlign="center" py="2rem">
@@ -98,6 +104,7 @@ const DeckBuilder: React.FC = () => {
               cards={cards}
               onLoadDeck={handleLoadDeck}
               onDeleteDeck={deleteDeck}
+              onLoadPrecon={handleLoadPrecon}
             />
           ) : showDeckCards ? (
             <DeckCards

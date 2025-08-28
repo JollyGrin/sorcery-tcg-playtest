@@ -18,6 +18,7 @@ import { getDeckQuery } from "@/components/organisms/GameBoard/useDeckQuery";
 import { DefaultDecks } from "./DefaultDecks";
 import LocalDeckLoader from "./LocalDeckLoader";
 import DirectImport from "./DirectImport";
+import PreconLoader from "./PreconLoader";
 
 export const LoadDeck = (
   props: GameStateActions & { children?: ReactNode; playerName: string },
@@ -55,8 +56,9 @@ export const LoadDeck = (
         >
           {props.children}
           <Tabs
-            tabs={["my decks", "import url", "curiosa", "realms", "four cores"]}
+            tabs={["precons", "my decks", "import url", "curiosa", "realms", "four cores"]}
             content={[
+              <PreconLoader key="precons" setDeck={setDeck} />,
               <LocalDeckLoader key="mydecks" setDeck={setDeck} />,
               <DirectImport key="import" setDeck={setDeck} />,
               <InputLoader

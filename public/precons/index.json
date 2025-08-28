@@ -1,0 +1,15 @@
+[
+  {
+    "id": "earth-alpha",
+    "name": "Earth Alpha Precon",
+    "description": "A balanced Earth-based preconstructed deck featuring terrain control and powerful creatures.",
+    "element": "earth",
+    "difficulty": "beginner",
+    "cardCount": {
+      "total": 61,
+      "spellbook": 45,
+      "atlas": 16
+    },
+    "filePath": "/precons/earth-alpha.json"
+  }
+]
