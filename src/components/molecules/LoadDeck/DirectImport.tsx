@@ -6,6 +6,7 @@ import {
   decodeDeck,
   isValidDeck,
 } from "../../organisms/DeckBuilder/utils/deckEncoding";
+import Link from "next/link";
 
 interface DirectImportProps {
   setDeck: (deck?: CuriosaResponse) => void;
@@ -74,25 +75,35 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
       rarity: "",
       elements: "",
       keywords: [],
-      quantity
+      quantity,
     });
 
     // Count occurrences of each card in spellbook
-    const spellbookCounts = (localDeck.spellbook || []).reduce((acc: Record<string, number>, slug: string) => {
-      acc[slug] = (acc[slug] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+    const spellbookCounts = (localDeck.spellbook || []).reduce(
+      (acc: Record<string, number>, slug: string) => {
+        acc[slug] = (acc[slug] || 0) + 1;
+        return acc;
+      },
+      {} as Record<string, number>,
+    );
 
     // Count occurrences of each card in atlas
-    const atlasCounts = (localDeck.atlas || []).reduce((acc: Record<string, number>, slug: string) => {
-      acc[slug] = (acc[slug] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+    const atlasCounts = (localDeck.atlas || []).reduce(
+      (acc: Record<string, number>, slug: string) => {
+        acc[slug] = (acc[slug] || 0) + 1;
+        return acc;
+      },
+      {} as Record<string, number>,
+    );
 
     return {
       avatar: localDeck.avatar ? [createCard(localDeck.avatar, 1)] : [],
-      spellbook: Object.entries(spellbookCounts).map(([slug, count]) => createCard(slug, count)),
-      atlas: Object.entries(atlasCounts).map(([slug, count]) => createCard(slug, count)),
+      spellbook: Object.entries(spellbookCounts).map(([slug, count]) =>
+        createCard(slug, count),
+      ),
+      atlas: Object.entries(atlasCounts).map(([slug, count]) =>
+        createCard(slug, count),
+      ),
     };
   };
 
@@ -106,7 +117,11 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
   return (
     <Box>
       <p style={{ marginBottom: "1rem" }}>
-        Import a deck directly from a shared URL:
+        Import a deck directly from a spells.bar{" "}
+        <Link href="/deckbuilder" style={{ color: "blue" }} target="_blank">
+          deck URL
+        </Link>
+        :
       </p>
 
       <textarea
