@@ -2,7 +2,7 @@ import { useCreateLobby } from "@/lib/hooks";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-import { Box, Divider, Flex, Grid, HStack } from "styled-system/jsx";
+import { Box, Flex, Grid, HStack } from "styled-system/jsx";
 import { button, input } from "styled-system/recipes";
 import { css } from "styled-system/css";
 
