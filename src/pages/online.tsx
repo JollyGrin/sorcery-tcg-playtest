@@ -12,6 +12,8 @@ import { useEffect, useMemo, useState } from "react";
 
 import ErrorBoundary from "@/utils/helpers/ErrorBoundary";
 import { CreateLobby } from "@/components/organisms/Online/CreateLobby";
+import { Grid } from "styled-system/jsx";
+import Link from "next/link";
 
 export default function WebsocketDebug() {
   const { query } = useRouter();
@@ -28,7 +30,12 @@ export default function WebsocketDebug() {
   }, [name, gid]);
 
   if (!name || !gid) return <CreateLobby />;
-  if (isDelayed) return "loading";
+  if (isDelayed)
+    return (
+      <Grid width="100vw" height="100vh" placeItems="center" bgColor="#bfdbfe">
+        loading
+      </Grid>
+    );
 
   return (
     <WebGameProvider>
@@ -102,7 +109,27 @@ const Body = () => {
           });
         }}
       >
-        pick one
+        <div
+          style={{
+            backgroundColor: "lightyellow",
+            padding: "0.25rem",
+            marginBottom: "0.5rem",
+            borderRadius: "0.25rem",
+            fontSize: "0.75rem",
+          }}
+        >
+          <span>
+            Curiosa has changed their API (breaking imports). <br /> Use the{" "}
+            <Link
+              href="/deckbuilder"
+              style={{ textDecoration: "underline" }}
+              prefetch={true}
+            >
+              Deckbuilder
+            </Link>{" "}
+            to always have a copy of your deck on spellsbar.
+          </span>
+        </div>
       </LoadDeck>
     );
   }
