@@ -19,9 +19,9 @@
     "element": "fire",
     "difficulty": "beginner",
     "cardCount": {
-      "total": 71,
-      "spellbook": 50,
-      "atlas": 21
+      "total": 50,
+      "spellbook": 34,
+      "atlas": 16
     },
     "filePath": "/precons/fire-alpha.json"
   }
