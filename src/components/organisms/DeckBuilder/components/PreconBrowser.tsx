@@ -5,7 +5,7 @@ import { button } from 'styled-system/recipes';
 import { PreconMeta, PreconDeck, getPreconList, getPreconDeck, preconToLocalDeck } from '@/utils/precons';
 
 interface PreconBrowserProps {
-  onLoadPrecon: (precon: Partial<any>) => void;
+  onLoadPrecon: (precon: { name: string; avatar?: string; spellbook: string[]; atlas: string[]; id?: string | undefined }) => void;
 }
 
 const PreconBrowser: React.FC<PreconBrowserProps> = ({ onLoadPrecon }) => {
@@ -153,7 +153,7 @@ const PreconBrowser: React.FC<PreconBrowserProps> = ({ onLoadPrecon }) => {
       {selectedPrecon && (
         <Box>
           <button
-            className={button({ visual: 'solid' })}
+            className={button()}
             onClick={handleLoadForEditing}
             disabled={loadingDeck}
             style={{ width: '100%', marginBottom: '1rem' }}

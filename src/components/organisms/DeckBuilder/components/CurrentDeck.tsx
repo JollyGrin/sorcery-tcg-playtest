@@ -204,7 +204,7 @@ const CurrentDeck: React.FC<CurrentDeckProps> = ({
 
       <VStack gap={2} mt="1.5rem">
         <button
-          className={button({ visual: "solid" })}
+          className={button()}
           style={{ width: "100%" }}
           onClick={onSave}
         >

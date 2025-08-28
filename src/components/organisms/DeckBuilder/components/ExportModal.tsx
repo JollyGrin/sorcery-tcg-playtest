@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Flex, VStack } from 'styled-system/jsx';
 import { css } from 'styled-system/css';
-import { button, input } from 'styled-system/recipes';
+import { button } from 'styled-system/recipes';
 import { LocalDeck, Card } from '../types';
 import { generateShareableURL } from '../utils/deckEncoding';
 
@@ -64,7 +64,7 @@ const ExportModal: React.FC<ExportModalProps> = ({
     return textList.trim();
   };
 
-  const copyToClipboard = async (text: string, type: 'url' | 'text') => {
+  const copyToClipboard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
@@ -127,13 +127,13 @@ const ExportModal: React.FC<ExportModalProps> = ({
         {/* Tab Navigation */}
         <Flex gap={2} mb="1rem">
           <button
-            className={button({ visual: activeTab === 'url' ? 'solid' : 'outline' })}
+            className={button()}
             onClick={() => setActiveTab('url')}
           >
             Shareable URL
           </button>
           <button
-            className={button({ visual: activeTab === 'text' ? 'solid' : 'outline' })}
+            className={button()}
             onClick={() => setActiveTab('text')}
           >
             Text List
@@ -161,8 +161,8 @@ const ExportModal: React.FC<ExportModalProps> = ({
             </Box>
             <Flex gap={2}>
               <button
-                className={button({ visual: 'solid' })}
-                onClick={() => copyToClipboard(shareableURL, 'url')}
+                className={button()}
+                onClick={() => copyToClipboard(shareableURL)}
                 style={{ flex: 1 }}
               >
                 {copied ? 'Copied!' : 'Copy URL'}
@@ -199,8 +199,8 @@ const ExportModal: React.FC<ExportModalProps> = ({
               </Box>
             </Box>
             <button
-              className={button({ visual: 'solid' })}
-              onClick={() => copyToClipboard(textList, 'text')}
+              className={button()}
+              onClick={() => copyToClipboard(textList)}
             >
               {copied ? 'Copied!' : 'Copy Text List'}
             </button>

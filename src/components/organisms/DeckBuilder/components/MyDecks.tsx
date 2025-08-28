@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Flex, Grid, VStack } from 'styled-system/jsx';
 import { css } from 'styled-system/css';
 import { LocalDeck, Card } from '../types';
-import { PreconMeta, PreconDeck, getPreconList, getPreconDeck, preconToLocalDeck } from '@/utils/precons';
+import { PreconMeta, getPreconList, getPreconDeck, preconToLocalDeck } from '@/utils/precons';
 
 interface MyDecksProps {
   savedDecks: LocalDeck[];
@@ -10,7 +10,7 @@ interface MyDecksProps {
   cards: Card[];
   onLoadDeck: (deck: LocalDeck) => void;
   onDeleteDeck: (deckId: string) => void;
-  onLoadPrecon: (precon: any) => void;
+  onLoadPrecon: (precon: { name: string; avatar?: string; spellbook: string[]; atlas: string[]; id?: string | undefined }) => void;
 }
 
 const MyDecks: React.FC<MyDecksProps> = ({
@@ -47,7 +47,7 @@ const MyDecks: React.FC<MyDecksProps> = ({
         onLoadPrecon({
           ...localDeck,
           name: preconData.name + ' (Copy)',
-          id: null // Make it a new deck
+          id: undefined // Make it a new deck
         });
       }
     } catch (error) {

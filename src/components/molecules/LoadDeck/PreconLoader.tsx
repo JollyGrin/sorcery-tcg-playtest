@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Grid, Flex } from 'styled-system/jsx';
 import { button } from 'styled-system/recipes';
-import { css } from 'styled-system/css';
 import { CuriosaResponse } from '@/utils/api/curiosa/api';
 import { PreconMeta, PreconDeck, getPreconList, getPreconDeck, preconToCuriosaFormat, preconToLocalDeck } from '@/utils/precons';
 import Link from 'next/link';
@@ -164,7 +163,7 @@ const PreconLoader: React.FC<PreconLoaderProps> = ({ setDeck }) => {
         <>
           <Flex gap="0.5rem" mb="1rem">
             <button
-              className={button({ visual: 'solid' })}
+              className={button()}
               onClick={handleUseDeck}
               disabled={loadingDeck}
               style={{ flex: 1 }}

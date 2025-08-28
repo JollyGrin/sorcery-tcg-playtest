@@ -15,7 +15,7 @@ interface DirectImportProps {
 const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
   const [importText, setImportText] = useState("");
   const [error, setError] = useState("");
-  const [importedDeck, setImportedDeck] = useState<any>(null);
+  const [importedDeck, setImportedDeck] = useState<{ name?: string; avatar?: string; spellbook?: string[]; atlas?: string[] } | null>(null);
 
   const handleImport = () => {
     if (!importText.trim()) {
@@ -26,7 +26,7 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
     setError("");
 
     try {
-      let deckData: any;
+      let deckData: Partial<{ name: string; avatar?: string; spellbook?: string[]; atlas?: string[] }>;
 
       // Check if it's a full URL
       if (importText.includes("deck=")) {
@@ -60,7 +60,7 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
   };
 
   // Convert imported deck to CuriosaResponse format
-  const convertToCuriosaFormat = (localDeck: any): CuriosaResponse => {
+  const convertToCuriosaFormat = (localDeck: { name?: string; avatar?: string; spellbook?: string[]; atlas?: string[] }): CuriosaResponse => {
     const createCard = (slug: string, quantity: number = 1) => ({
       identifier: slug,
       name: slug,
@@ -104,6 +104,7 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
       atlas: Object.entries(atlasCounts).map(([slug, count]) =>
         createCard(slug, count),
       ),
+      sideboard: []
     };
   };
 
@@ -176,7 +177,7 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
                 color: "#22c55e",
               }}
             >
-              Successfully imported: {importedDeck.name}
+              Successfully imported: {importedDeck.name || 'Imported Deck'}
             </h3>
             <p style={{ fontSize: "0.875rem" }}>
               {(importedDeck.spellbook || []).length} cards,{" "}
@@ -185,7 +186,7 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
           </Box>
 
           <button
-            className={button({ visual: "solid" })}
+            className={button()}
             onClick={handleUseDeck}
             style={{ width: "100%", marginBottom: "1rem" }}
           >
@@ -252,7 +253,7 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
         borderRadius="0.5rem"
       >
         <p style={{ fontSize: "0.75rem", color: "#3b82f6" }}>
-          <strong>Tip:</strong> Get shareable deck URLs from the Deck Builder's
+          <strong>Tip:</strong> Get shareable deck URLs from the Deck Builder&apos;s
           export feature.
         </p>
       </Box>

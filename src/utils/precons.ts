@@ -95,6 +95,7 @@ export const preconToCuriosaFormat = (precon: PreconDeck) => {
   return {
     avatar: precon.avatar ? [createCard(precon.avatar, 1)] : [],
     spellbook: Object.entries(spellbookCounts).map(([slug, count]) => createCard(slug, count)),
-    atlas: Object.entries(atlasCounts).map(([slug, count]) => createCard(slug, count))
+    atlas: Object.entries(atlasCounts).map(([slug, count]) => createCard(slug, count)),
+    sideboard: []
   };
 };

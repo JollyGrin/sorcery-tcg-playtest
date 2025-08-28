@@ -42,7 +42,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         <Flex direction={{ base: "column", sm: "row" }} gap={4} alignItems="center">
           <Flex gap={2}>
             <button
-              className={button({ visual: showMyDecks ? "solid" : "outline" })}
+              className={button()}
               onClick={() => {
                 setShowMyDecks(!showMyDecks);
                 setShowDeckCards(false);
@@ -51,7 +51,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
               My Decks ({savedDecksCount})
             </button>
             <button
-              className={button({ visual: showDeckCards ? "solid" : "outline" })}
+              className={button()}
               onClick={() => {
                 setShowDeckCards(!showDeckCards);
                 setShowMyDecks(false);

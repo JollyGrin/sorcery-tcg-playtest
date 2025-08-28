@@ -156,7 +156,7 @@ const ImportModal: React.FC<ImportModalProps> = ({
               Cancel
             </button>
             <button
-              className={button({ visual: 'solid' })}
+              className={button()}
               onClick={handleImport}
               disabled={importing || !importText.trim()}
               style={{ flex: 1 }}

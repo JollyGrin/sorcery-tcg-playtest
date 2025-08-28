@@ -77,13 +77,17 @@ export const parseURLForDeck = (): Partial<LocalDeck> | null => {
 };
 
 // Validate that a deck has the minimum required structure
-export const isValidDeck = (deck: any): deck is Partial<LocalDeck> => {
+export const isValidDeck = (deck: unknown): deck is Partial<LocalDeck> => {
+  if (!deck || typeof deck !== 'object' || deck === null) {
+    return false;
+  }
+
+  const d = deck as Record<string, unknown>;
+  
   return (
-    deck &&
-    typeof deck === 'object' &&
-    (typeof deck.name === 'string' || deck.name === undefined) &&
-    (typeof deck.avatar === 'string' || deck.avatar === undefined) &&
-    (Array.isArray(deck.spellbook) || deck.spellbook === undefined) &&
-    (Array.isArray(deck.atlas) || deck.atlas === undefined)
+    (typeof d.name === 'string' || d.name === undefined) &&
+    (typeof d.avatar === 'string' || d.avatar === undefined) &&
+    (Array.isArray(d.spellbook) || d.spellbook === undefined) &&
+    (Array.isArray(d.atlas) || d.atlas === undefined)
   );
 };

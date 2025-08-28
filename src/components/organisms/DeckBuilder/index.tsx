@@ -4,6 +4,7 @@ import { Box, Grid } from "styled-system/jsx";
 // Hooks
 import { useCards } from "./hooks/useCards";
 import { useDeckManager } from "./hooks/useDeckManager";
+import { LocalDeck } from "./types";
 
 // Components
 import SearchBar from "./components/SearchBar";
@@ -45,19 +46,19 @@ const DeckBuilder: React.FC = () => {
     setShowDeckCards(false);
   };
 
-  const handleLoadDeck = (deck: any) => {
+  const handleLoadDeck = (deck: LocalDeck) => {
     loadDeck(deck);
     setShowMyDecks(false);
     setShowDeckCards(false);
   };
 
-  const handleImport = (deck: any) => {
+  const handleImport = (deck: Partial<LocalDeck>) => {
     importDeckFromURL(deck);
     setShowMyDecks(false);
     setShowDeckCards(false);
   };
 
-  const handleLoadPrecon = (precon: any) => {
+  const handleLoadPrecon = (precon: { name: string; avatar?: string; spellbook: string[]; atlas: string[]; id?: string | undefined }) => {
     setCurrentDeck(precon);
     setShowMyDecks(false);
     setShowDeckCards(false);

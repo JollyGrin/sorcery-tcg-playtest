@@ -68,7 +68,8 @@ const LocalDeckLoader: React.FC<LocalDeckLoaderProps> = ({ setDeck }) => {
     return {
       avatar: localDeck.avatar ? [createCard(localDeck.avatar, 1)] : [],
       spellbook: Object.entries(spellbookCounts).map(([slug, count]) => createCard(slug, count)),
-      atlas: Object.entries(atlasCounts).map(([slug, count]) => createCard(slug, count))
+      atlas: Object.entries(atlasCounts).map(([slug, count]) => createCard(slug, count)),
+      sideboard: []
     };
   };
 
@@ -88,7 +89,7 @@ const LocalDeckLoader: React.FC<LocalDeckLoaderProps> = ({ setDeck }) => {
       <Box textAlign="center" py="2rem">
         <p style={{ marginBottom: '1rem' }}>No local decks found.</p>
         <Link href="/deckbuilder">
-          <button className={button({ visual: 'solid' })}>
+          <button className={button()}>
             Build Your First Deck
           </button>
         </Link>
@@ -132,7 +133,7 @@ const LocalDeckLoader: React.FC<LocalDeckLoaderProps> = ({ setDeck }) => {
             style={{ width: '100%', marginBottom: '1rem' }}
             onClick={handleUseDeck}
           >
-            Use "{selectedDeck.name}"
+            Use &quot;{selectedDeck.name}&quot;
           </button>
 
           {/* Show deck preview */}
