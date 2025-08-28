@@ -11,5 +11,18 @@
       "atlas": 16
     },
     "filePath": "/precons/earth-alpha.json"
+  },
+  {
+    "id": "fire-alpha",
+    "name": "Fire Alpha Precon",
+    "description": "An aggressive Fire-based preconstructed deck focused on direct damage and fast creatures.",
+    "element": "fire",
+    "difficulty": "beginner",
+    "cardCount": {
+      "total": 71,
+      "spellbook": 50,
+      "atlas": 21
+    },
+    "filePath": "/precons/fire-alpha.json"
   }
 ]
