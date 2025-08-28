@@ -6,8 +6,8 @@
     "element": "earth",
     "difficulty": "beginner",
     "cardCount": {
-      "total": 61,
-      "spellbook": 45,
+      "total": 52,
+      "spellbook": 36,
       "atlas": 16
     },
     "filePath": "/precons/earth-alpha.json"
