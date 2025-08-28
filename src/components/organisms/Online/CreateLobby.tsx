@@ -41,7 +41,7 @@ export const CreateLobby = () => {
   return (
     <Grid
       w="100vw"
-      h="100vh"
+      minH="100vh"
       placeItems="center"
       bg="gray.800"
       position="relative"
@@ -158,40 +158,39 @@ export const CreateLobby = () => {
           <p style={{ fontWeight: 500, fontSize: "1.5rem" }}>How to play</p>
           <p>
             Play Sorcery TCG online with a friend! SpellsBar has no rules
-            enforcement, no accounts, and loads decks from curiosa, realms, or
-            fourcores.
+            enforcement, no accounts{" "}
           </p>
           <ul style={{ listStyle: "inside" }}>
             <li>Enter a name for yourself and lobby</li>
-            <li>Load a deck via TTS export links</li>
+            <li>Load a deck </li>
             <li>Share the lobby name for your opponent to connect to</li>
           </ul>
-          <Divider opacity={0.1} />
-          <HStack>
-            <p style={{ opacity: 0.5 }}>Find a deck from:</p>
-            <Link href="https://curiosa.io/" target="_blank">
-              <p>Curiosa</p>
-            </Link>
-
-            <Link
-              href="https://www.realmsapp.com/sorcery_tcg/decklists"
-              target="_blank"
-            >
-              <p>Realms</p>
-            </Link>
-
-            <Link href="https://fourcores.xyz/" target="_blank">
-              <p>Four cores</p>
-            </Link>
-          </HStack>
-          <Divider opacity={0.1} />
-          <p>In game tips:</p>
-          <ul style={{ listStyle: "inside" }}>
-            <li>Click on decks to draw, right click to view</li>
-            <li>Drag cards between fields and within them</li>
-            <li>Right click on cards for more actions.</li>
-            <li>Spawn cards or tokens by right clicking empty grid</li>
-          </ul>
+          {/* <Divider opacity={0.1} /> */}
+          {/* <HStack> */}
+          {/*   <p style={{ opacity: 0.5 }}>Find a deck from:</p> */}
+          {/*   <Link href="https://curiosa.io/" target="_blank"> */}
+          {/*     <p>Curiosa</p> */}
+          {/*   </Link> */}
+          {/**/}
+          {/*   <Link */}
+          {/*     href="https://www.realmsapp.com/sorcery_tcg/decklists" */}
+          {/*     target="_blank" */}
+          {/*   > */}
+          {/*     <p>Realms</p> */}
+          {/*   </Link> */}
+          {/**/}
+          {/*   <Link href="https://fourcores.xyz/" target="_blank"> */}
+          {/*     <p>Four cores</p> */}
+          {/*   </Link> */}
+          {/* </HStack> */}
+          {/* <Divider opacity={0.1} /> */}
+          {/* <p>In game tips:</p> */}
+          {/* <ul style={{ listStyle: "inside" }}> */}
+          {/*   <li>Click on decks to draw, right click to view</li> */}
+          {/*   <li>Drag cards between fields and within them</li> */}
+          {/*   <li>Right click on cards for more actions.</li> */}
+          {/*   <li>Spawn cards or tokens by right clicking empty grid</li> */}
+          {/* </ul> */}
         </Flex>
       </Box>
 

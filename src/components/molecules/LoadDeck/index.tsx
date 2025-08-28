@@ -50,13 +50,20 @@ export const LoadDeck = (
         <Box
           bg="white"
           w="100%"
-          maxW={!!deckId ? "900px" : "500px"}
+          maxW={!!deckId ? "900px" : "600px"}
           m="0 auto"
           p="1rem"
         >
           {props.children}
           <Tabs
-            tabs={["precons", "my decks", "import url", "curiosa", "realms", "four cores"]}
+            tabs={[
+              "precons",
+              "my decks",
+              "import url",
+              "curiosa",
+              "realms",
+              "four cores",
+            ]}
             content={[
               <PreconLoader key="precons" setDeck={setDeck} />,
               <LocalDeckLoader key="mydecks" setDeck={setDeck} />,

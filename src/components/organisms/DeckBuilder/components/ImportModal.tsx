@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Box, Flex, VStack } from 'styled-system/jsx';
-import { css } from 'styled-system/css';
-import { button, input } from 'styled-system/recipes';
-import { LocalDeck } from '../types';
-import { decodeDeck, isValidDeck } from '../utils/deckEncoding';
+import React, { useState } from "react";
+import { Box, Flex, VStack } from "styled-system/jsx";
+import { css } from "styled-system/css";
+import { button, input } from "styled-system/recipes";
+import { LocalDeck } from "../types";
+import { decodeDeck, isValidDeck } from "../utils/deckEncoding";
 
 interface ImportModalProps {
   isOpen: boolean;
@@ -14,57 +14,58 @@ interface ImportModalProps {
 const ImportModal: React.FC<ImportModalProps> = ({
   isOpen,
   onClose,
-  onImport
+  onImport,
 }) => {
-  const [importText, setImportText] = useState('');
-  const [error, setError] = useState('');
+  const [importText, setImportText] = useState("");
+  const [error, setError] = useState("");
   const [importing, setImporting] = useState(false);
 
   if (!isOpen) return null;
 
   const handleImport = async () => {
     if (!importText.trim()) {
-      setError('Please enter a deck URL or code');
+      setError("Please enter a deck URL or code");
       return;
     }
 
     setImporting(true);
-    setError('');
+    setError("");
 
     try {
       let deckData: Partial<LocalDeck>;
 
       // Check if it's a full URL
-      if (importText.includes('deck=')) {
+      if (importText.includes("deck=")) {
         const url = new URL(importText);
-        const deckParam = url.searchParams.get('deck');
+        const deckParam = url.searchParams.get("deck");
         if (!deckParam) {
-          throw new Error('No deck data found in URL');
+          throw new Error("No deck data found in URL");
         }
         deckData = decodeDeck(deckParam);
       }
       // Check if it's just the encoded deck parameter
-      else if (importText.length > 20 && !importText.includes(' ')) {
+      else if (importText.length > 20 && !importText.includes(" ")) {
         deckData = decodeDeck(importText);
       }
       // Otherwise, it might be a text list (future enhancement)
       else {
-        throw new Error('Please provide a valid deck URL or share code');
+        throw new Error("Please provide a valid deck URL or share code");
       }
 
       if (!isValidDeck(deckData)) {
-        throw new Error('Invalid deck format');
+        throw new Error("Invalid deck format");
       }
 
       // Import the deck
       onImport(deckData);
       onClose();
-      setImportText('');
-      setError('');
-
+      setImportText("");
+      setError("");
     } catch (error) {
-      console.error('Import error:', error);
-      setError(error instanceof Error ? error.message : 'Failed to import deck');
+      console.error("Import error:", error);
+      setError(
+        error instanceof Error ? error.message : "Failed to import deck",
+      );
     } finally {
       setImporting(false);
     }
@@ -72,8 +73,8 @@ const ImportModal: React.FC<ImportModalProps> = ({
 
   const handleClose = () => {
     onClose();
-    setImportText('');
-    setError('');
+    setImportText("");
+    setError("");
   };
 
   return (
@@ -97,16 +98,22 @@ const ImportModal: React.FC<ImportModalProps> = ({
         borderColor="rgba(255,255,255,0.2)"
       >
         <Flex justifyContent="space-between" alignItems="center" mb="1.5rem">
-          <h2 className={css({ fontSize: '1.5rem', fontWeight: 700, color: 'brand.highlight' })}>
+          <h2
+            className={css({
+              fontSize: "1.5rem",
+              fontWeight: 700,
+              color: "brand.highlight",
+            })}
+          >
             Import Deck
           </h2>
           <button
             onClick={handleClose}
             className={css({
-              color: 'gray.400',
-              _hover: { color: 'white' },
-              fontSize: '1.5rem',
-              cursor: 'pointer'
+              color: "gray.400",
+              _hover: { color: "white" },
+              fontSize: "1.5rem",
+              cursor: "pointer",
             })}
           >
             ×
@@ -115,20 +122,20 @@ const ImportModal: React.FC<ImportModalProps> = ({
 
         <VStack gap={4} alignItems="stretch">
           <Box>
-            <p className={css({ mb: '0.5rem', color: 'gray.300' })}>
+            <p className={css({ mb: "0.5rem", color: "gray.300" })}>
               Paste a deck URL or share code:
             </p>
             <textarea
-              placeholder="https://yoursite.com/deckbuilder?deck=... or just the deck code"
+              placeholder="https://spells.bar/deckbuilder?deck=... or just the deck code"
               className={input()}
               value={importText}
               onChange={(e) => setImportText(e.target.value)}
               style={{
-                width: '100%',
-                height: '100px',
-                resize: 'vertical',
-                fontFamily: 'monospace',
-                fontSize: '0.875rem'
+                width: "100%",
+                height: "100px",
+                resize: "vertical",
+                fontFamily: "monospace",
+                fontSize: "0.875rem",
               }}
             />
           </Box>
@@ -141,7 +148,7 @@ const ImportModal: React.FC<ImportModalProps> = ({
               borderRadius="0.5rem"
               p="0.75rem"
             >
-              <p className={css({ color: 'red.400', fontSize: '0.875rem' })}>
+              <p className={css({ color: "red.400", fontSize: "0.875rem" })}>
                 {error}
               </p>
             </Box>
@@ -161,14 +168,20 @@ const ImportModal: React.FC<ImportModalProps> = ({
               disabled={importing || !importText.trim()}
               style={{ flex: 1 }}
             >
-              {importing ? 'Importing...' : 'Import Deck'}
+              {importing ? "Importing..." : "Import Deck"}
             </button>
           </Flex>
         </VStack>
 
-        <Box mt="1.5rem" p="0.75rem" bg="rgba(59,130,246,0.1)" borderRadius="0.5rem">
-          <p className={css({ fontSize: '0.75rem', color: 'blue.400' })}>
-            <strong>Tip:</strong> You can also visit a deck URL directly to import it automatically.
+        <Box
+          mt="1.5rem"
+          p="0.75rem"
+          bg="rgba(59,130,246,0.1)"
+          borderRadius="0.5rem"
+        >
+          <p className={css({ fontSize: "0.75rem", color: "blue.400" })}>
+            <strong>Tip:</strong> You can also visit a deck URL directly to
+            import it automatically.
           </p>
         </Box>
       </Box>
