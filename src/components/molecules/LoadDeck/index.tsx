@@ -16,6 +16,8 @@ import { UseQueryResult } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { getDeckQuery } from "@/components/organisms/GameBoard/useDeckQuery";
 import { DefaultDecks } from "./DefaultDecks";
+import LocalDeckLoader from "./LocalDeckLoader";
+import DirectImport from "./DirectImport";
 
 export const LoadDeck = (
   props: GameStateActions & { children?: ReactNode; playerName: string },
@@ -47,15 +49,18 @@ export const LoadDeck = (
         <Box
           bg="white"
           w="100%"
-          maxW={!!deckId ? "900px" : "400px"}
+          maxW={!!deckId ? "900px" : "500px"}
           m="0 auto"
           p="1rem"
         >
           {props.children}
           <Tabs
-            tabs={["curiosa", "realms", "four cores"]}
+            tabs={["my decks", "import url", "curiosa", "realms", "four cores"]}
             content={[
+              <LocalDeckLoader key="mydecks" setDeck={setDeck} />,
+              <DirectImport key="import" setDeck={setDeck} />,
               <InputLoader
+                disabledReason="Curiosa API has changed - import not currently working"
                 key="curiosa"
                 deckId={deckId}
                 setDeckId={setDeckId}
@@ -64,6 +69,7 @@ export const LoadDeck = (
                 provider="curiosa"
               />,
               <InputLoader
+                disabledReason="API has changed - import not currently working"
                 key="realms"
                 deckId={deckId}
                 setDeckId={setDeckId}
@@ -93,12 +99,14 @@ const InputLoader = ({
   setDeck,
   useDeck,
   provider,
+  disabledReason,
 }: {
   deckId: string;
   setDeckId(value: string): void;
   setDeck(deck?: CuriosaResponse): void;
   useDeck(deckId: string): UseQueryResult<CuriosaResponse, Error>;
   provider: "curiosa" | "realms" | "four cores";
+  disabledReason?: string;
 }) => {
   // if the deckId is a url, find the ID in the url
   const [, id] = getDeckQuery(deckId)?.split("-") ?? [];
@@ -109,6 +117,8 @@ const InputLoader = ({
     ...(deck?.spellbook ?? []),
     ...(deck?.atlas ?? []),
   ];
+
+  if (disabledReason) return <div>Not Available: {disabledReason}</div>;
 
   return (
     <>
