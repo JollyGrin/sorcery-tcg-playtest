@@ -3,6 +3,7 @@ import { Grid } from "styled-system/jsx";
 import { DraftPlayerData } from "./types";
 import { DraftRibbon } from "./Ribbon";
 import { DraftTray } from "./Tray";
+import { LoadingSpinner } from "@/components/atoms/LoadingSpinner";
 
 const hTop = "9vh";
 const hTabs = "6vh";
@@ -22,7 +23,7 @@ export const DraftBoard = (props: {
     });
   }
 
-  if (!props?.players) return "loading draft";
+  if (!props?.players) return <LoadingSpinner message="Loading draft..." />;
 
   return (
     <Grid

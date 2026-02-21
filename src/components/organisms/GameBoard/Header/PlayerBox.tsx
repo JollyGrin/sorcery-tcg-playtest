@@ -85,7 +85,7 @@ export const PlayerBox = ({
         </Flex>
 
         <Flex
-          bg="rgba(255,255,255,0.5)"
+          bg="rgba(255,255,255,0.15)"
           p="0.1rem 0.5rem"
           borderRadius="0.75rem"
           gap={2}
@@ -108,7 +108,7 @@ export const PlayerBox = ({
         </Flex>
 
         <Flex
-          bg="rgba(255,255,255,0.5)"
+          bg="rgba(255,255,255,0.15)"
           p="0.1rem 0.5rem"
           borderRadius="0.75rem"
           gap={2}
@@ -161,7 +161,7 @@ const textStyle = cva({
   },
   variants: {
     visual: {
-      bold: { fontWeight: 600, fontFamily: "serif" },
+      bold: { fontWeight: 600, fontFamily: "header" },
     },
   },
 });

@@ -55,6 +55,27 @@ export const badge = defineRecipe({
       outline: {
         color: "foreground",
       },
+      beta: {
+        borderColor: "transparent",
+        bg: "status.beta",
+        color: "white",
+        fontFamily: "monospace",
+        fontSize: "0.75rem",
+      },
+      alpha: {
+        borderColor: "transparent",
+        bg: "status.alpha",
+        color: "white",
+        fontFamily: "monospace",
+        fontSize: "0.75rem",
+      },
+      new: {
+        borderColor: "transparent",
+        bg: "status.new",
+        color: "white",
+        fontFamily: "monospace",
+        fontSize: "0.75rem",
+      },
     },
   },
   defaultVariants: {

@@ -85,10 +85,10 @@ export const GameFooter = ({
                   <span
                     style={{
                       borderRadius: "0.25rem",
-                      background: "rgba(0,0,0,0.2)",
+                      background: "rgba(255,255,255,0.1)",
+                      border: "1px solid rgba(255,255,255,0.2)",
                       padding: "2px 4px",
                       fontFamily: "monospace",
-                      borderBottom: "solid 1px black",
                     }}
                   >
                     ?

@@ -14,6 +14,7 @@ import {
 import { DraftBoard } from "@/components/organisms/Draft";
 import { Button } from "@/components/ui/button";
 import { Grid, VStack } from "styled-system/jsx";
+import { FullPageLoader } from "@/components/atoms/LoadingSpinner";
 
 export default function WebsocketDebug() {
   const { query } = useRouter();
@@ -30,12 +31,7 @@ export default function WebsocketDebug() {
   }, [name, gid]);
 
   if (!name || !gid) return <CreateLobby />;
-  if (isDelayed)
-    return (
-      <Grid minH="99vh" minW="99vw" placeItems="center" fontSize="3rem">
-        <p>loading...</p>
-      </Grid>
-    );
+  if (isDelayed) return <FullPageLoader />;
 
   return (
     <DraftGameProvider>
@@ -89,12 +85,7 @@ const Body = () => {
     return !value.joinedSessionTimestamp;
   });
 
-  if (initPlayers.length > 0)
-    return (
-      <Grid minH="99vh" minW="99vw" placeItems="center" fontSize="3rem">
-        <p>loading new player...</p>
-      </Grid>
-    );
+  if (initPlayers.length > 0) return <FullPageLoader message="Waiting for player..." />;
 
   return (
     <DraftBoard

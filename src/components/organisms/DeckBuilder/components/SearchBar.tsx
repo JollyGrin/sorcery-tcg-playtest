@@ -34,7 +34,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
       position="sticky"
       top="0"
       zIndex={10}
-      bg="rgba(0,0,0,0.8)"
+      bg="surface.page"
       p="1rem"
       backdropFilter="blur(10px)"
     >

@@ -25,6 +25,29 @@ const semanticTokens: SemanticTokens = {
         },
       },
     },
+    surface: {
+      page: { value: "#1C1917" },
+      raised: { value: "#292524" },
+      overlay: { value: "rgba(28,25,23,0.85)" },
+      muted: { value: "#44403C" },
+    },
+    text: {
+      primary: { value: "#FAF7F0" },
+      secondary: { value: "#A8A29E" },
+      muted: { value: "#78716C" },
+      inverse: { value: "#1C1917" },
+    },
+    accent: {
+      gold: { value: "#D4A853" },
+      goldHover: { value: "#E0BC6A" },
+      ember: { value: "#C2410C" },
+      teal: { value: "#2DD4BF" },
+    },
+    status: {
+      beta: { value: "#3B82F6" },
+      alpha: { value: "#EAB308" },
+      new: { value: "#22C55E" },
+    },
   },
 };
 
@@ -53,6 +76,10 @@ const keyframes = {
       opacity: 1,
     },
     "100%": { transform: "rotate(10deg)" },
+  },
+  spin: {
+    "0%": { transform: "rotate(0deg)" },
+    "100%": { transform: "rotate(360deg)" },
   },
 };
 

@@ -1,6 +1,8 @@
 import { CrackBoard } from "@/components/organisms/Crack";
 import { DraftPlayerData } from "@/components/organisms/Draft/types";
 import { useState } from "react";
+import { AppNav } from "@/components/molecules/AppNav";
+import { Box } from "styled-system/jsx";
 
 export default function CrackPacksPage() {
   const [players, setPlayers] = useState<Record<string, DraftPlayerData>>({
@@ -23,5 +25,10 @@ export default function CrackPacksPage() {
     }));
   }
 
-  return <CrackBoard player={players?.p1} setPlayerData={setPlayer} />;
+  return (
+    <Box>
+      <AppNav />
+      <CrackBoard player={players?.p1} setPlayerData={setPlayer} />
+    </Box>
+  );
 }

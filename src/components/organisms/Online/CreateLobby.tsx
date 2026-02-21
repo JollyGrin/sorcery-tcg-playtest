@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { Box, Flex, Grid, HStack } from "styled-system/jsx";
-import { button, input } from "styled-system/recipes";
+import { input } from "styled-system/recipes";
 import { css } from "styled-system/css";
 
 import { FaDice as IconDice } from "react-icons/fa6";
@@ -11,6 +11,7 @@ import { FaRegCopy as IconCopy } from "react-icons/fa";
 import { generateRandomName } from "./random-names";
 import { useCopyToClipboard } from "@/utils/hooks/useCopy";
 import toast from "react-hot-toast";
+import { AppNav } from "@/components/molecules/AppNav";
 
 export const CreateLobby = () => {
   const { push, query } = useRouter();
@@ -43,16 +44,27 @@ export const CreateLobby = () => {
       w="100vw"
       minH="100vh"
       placeItems="center"
-      bg="gray.800"
+      bg="surface.page"
       position="relative"
     >
-      <Box w="100%" maxW="500px" zIndex={1}>
+      <Box
+        position="absolute"
+        top="0"
+        left="0"
+        right="0"
+        bottom="0"
+        bg="radial-gradient(ellipse at 50% 30%, rgba(212,168,83,0.08) 0%, transparent 70%)"
+        pointerEvents="none"
+      />
+      <AppNav />
+      <Box w="100%" maxW="500px" zIndex={1} px="1rem">
         <Flex
           direction="column"
           m="0 auto"
-          mt="10rem"
+          mt="2rem"
           gap="1rem"
-          bg="gray.100"
+          bg="surface.raised"
+          border="1px solid rgba(212,168,83,0.2)"
           p="2rem"
           borderRadius="1rem"
         >
@@ -63,59 +75,105 @@ export const CreateLobby = () => {
               style={{ width: "100px", margin: "0 auto" }}
             />
           </Link>
-          <HStack>
-            <IconDice
-              className={DiceStyle}
-              onClick={() =>
-                setFields((prev) => ({
-                  ...prev,
-                  name: generateRandomName(),
-                }))
-              }
-            />
-            <input
-              ref={nameRef}
-              placeholder="Your name"
-              value={fields.name}
-              onChange={(e) =>
-                setFields((prev) => ({
-                  ...prev,
-                  name: e.target.value,
-                }))
-              }
-              className={input()}
-            />
-          </HStack>
+          <h2
+            className={css({
+              fontFamily: "header",
+              fontSize: "1.5rem",
+              fontWeight: 600,
+              color: "text.primary",
+              textAlign: "center",
+            })}
+          >
+            Create a Lobby
+          </h2>
+          <Box>
+            <label
+              className={css({
+                display: "block",
+                fontSize: "0.85rem",
+                color: "text.secondary",
+                mb: "0.25rem",
+              })}
+            >
+              Your Name
+            </label>
+            <HStack>
+              <IconDice
+                className={DiceStyle}
+                onClick={() =>
+                  setFields((prev) => ({
+                    ...prev,
+                    name: generateRandomName(),
+                  }))
+                }
+              />
+              <input
+                ref={nameRef}
+                placeholder="Your name"
+                value={fields.name}
+                onChange={(e) =>
+                  setFields((prev) => ({
+                    ...prev,
+                    name: e.target.value,
+                  }))
+                }
+                className={input()}
+              />
+            </HStack>
+          </Box>
 
-          <HStack>
-            <IconDice
-              className={DiceStyle}
-              onClick={() =>
-                setFields((prev) => ({
-                  ...prev,
-                  gid: generateRandomName(),
-                }))
-              }
-            />
-            <input
-              ref={gidRef}
-              placeholder="Lobby name"
-              value={fields.gid}
-              onChange={(e) =>
-                setFields((prev) => ({
-                  ...prev,
-                  gid: e.target.value,
-                }))
-              }
-              className={input()}
-            />
-          </HStack>
+          <Box>
+            <label
+              className={css({
+                display: "block",
+                fontSize: "0.85rem",
+                color: "text.secondary",
+                mb: "0.25rem",
+              })}
+            >
+              Lobby Name
+            </label>
+            <HStack>
+              <IconDice
+                className={DiceStyle}
+                onClick={() =>
+                  setFields((prev) => ({
+                    ...prev,
+                    gid: generateRandomName(),
+                  }))
+                }
+              />
+              <input
+                ref={gidRef}
+                placeholder="Lobby name"
+                value={fields.gid}
+                onChange={(e) =>
+                  setFields((prev) => ({
+                    ...prev,
+                    gid: e.target.value,
+                  }))
+                }
+                className={input()}
+              />
+            </HStack>
+          </Box>
 
           <Box w="100%">
             <button
-              className={button()}
+              className={css({
+                width: "100%",
+                bg: "accent.gold",
+                color: "surface.page",
+                padding: "0.6rem 1.5rem",
+                borderRadius: "0.5rem",
+                fontSize: "1rem",
+                fontWeight: "600",
+                border: "none",
+                cursor: "pointer",
+                transition: "all 0.2s",
+                _hover: { bg: "accent.goldHover" },
+              })}
               onClick={onSubmit}
-              style={{ width: "100%" }}
             >
               Create/Join lobby
             </button>
@@ -124,12 +182,14 @@ export const CreateLobby = () => {
                 justifyContent="center"
                 mt="1rem"
                 cursor="pointer"
+                color="text.secondary"
                 transition="all 0.25s ease"
                 _hover={{
-                  transform: "scale(1.1)",
+                  transform: "scale(1.05)",
+                  color: "accent.gold",
                 }}
                 _active={{
-                  transform: "scale(1.05)",
+                  transform: "scale(1.02)",
                 }}
                 onClick={() => {
                   const text = `https://spells.bar/online?gid=${fields.gid}`;
@@ -147,16 +207,26 @@ export const CreateLobby = () => {
         </Flex>
         <Flex
           mt="1rem"
-          bg="gray.100"
+          bg="surface.raised"
+          border="1px solid rgba(212,168,83,0.2)"
           maxW="500px"
           w="100%"
           p="2rem"
           borderRadius="1rem"
           direction="column"
           gap={4}
+          color="text.primary"
         >
-          <p style={{ fontWeight: 500, fontSize: "1.5rem" }}>How to play</p>
-          <p>
+          <p
+            className={css({
+              fontWeight: 500,
+              fontSize: "1.5rem",
+              fontFamily: "header",
+            })}
+          >
+            How to play
+          </p>
+          <p className={css({ color: "text.secondary" })}>
             Play Sorcery TCG online with a friend! SpellsBar has no rules
             enforcement, no accounts{" "}
           </p>
@@ -165,32 +235,6 @@ export const CreateLobby = () => {
             <li>Load a deck </li>
             <li>Share the lobby name for your opponent to connect to</li>
           </ul>
-          {/* <Divider opacity={0.1} /> */}
-          {/* <HStack> */}
-          {/*   <p style={{ opacity: 0.5 }}>Find a deck from:</p> */}
-          {/*   <Link href="https://curiosa.io/" target="_blank"> */}
-          {/*     <p>Curiosa</p> */}
-          {/*   </Link> */}
-          {/**/}
-          {/*   <Link */}
-          {/*     href="https://www.realmsapp.com/sorcery_tcg/decklists" */}
-          {/*     target="_blank" */}
-          {/*   > */}
-          {/*     <p>Realms</p> */}
-          {/*   </Link> */}
-          {/**/}
-          {/*   <Link href="https://fourcores.xyz/" target="_blank"> */}
-          {/*     <p>Four cores</p> */}
-          {/*   </Link> */}
-          {/* </HStack> */}
-          {/* <Divider opacity={0.1} /> */}
-          {/* <p>In game tips:</p> */}
-          {/* <ul style={{ listStyle: "inside" }}> */}
-          {/*   <li>Click on decks to draw, right click to view</li> */}
-          {/*   <li>Drag cards between fields and within them</li> */}
-          {/*   <li>Right click on cards for more actions.</li> */}
-          {/*   <li>Spawn cards or tokens by right clicking empty grid</li> */}
-          {/* </ul> */}
         </Flex>
       </Box>
 
@@ -255,7 +299,7 @@ const fallingCard = css({
   position: "absolute",
   width: "150px", // Adjust as needed
   animation: "fall 10s linear infinite, sway 5s ease-in-out infinite alternate",
-  opacity: 0.7,
+  opacity: 0.3,
 
   // Random animation delay for each card
   "&:nth-child(1)": { animationDelay: "2s" },
@@ -271,8 +315,10 @@ const DiceStyle = css({
   transform: "scale(1)",
   transition: "all 0.25s ease",
   cursor: "pointer",
+  color: "text.secondary",
   _hover: {
-    transform: "scale(1.25)",
+    transform: "scale(1.25) rotate(15deg)",
+    color: "accent.gold",
   },
   _active: {
     transform: "scale(1.1)",

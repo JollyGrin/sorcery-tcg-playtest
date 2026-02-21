@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Box, Grid } from "styled-system/jsx";
+import { LoadingSpinner } from "@/components/atoms/LoadingSpinner";
 
 // Hooks
 import { useCards } from "./hooks/useCards";
@@ -65,11 +66,7 @@ const DeckBuilder: React.FC = () => {
   };
 
   if (loading) {
-    return (
-      <Box textAlign="center" py="2rem">
-        Loading cards...
-      </Box>
-    );
+    return <LoadingSpinner message="Loading cards..." />;
   }
 
   return (

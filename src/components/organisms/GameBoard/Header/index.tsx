@@ -21,7 +21,8 @@ export const GameHeader = (props: { players?: PlayersState }) => {
   return (
     <div
       style={{
-        background: "rgba(0,200,200,0.2)",
+        background: "rgba(28, 25, 23, 0.8)",
+        backdropFilter: "blur(8px)",
         padding: "0.5rem 1rem",
         height: LAYOUT_HEIGHTS.nav,
         display: "flex",
@@ -54,7 +55,8 @@ export const GameHeader = (props: { players?: PlayersState }) => {
         right={0}
         top={"0.25rem"}
         p="0.25rem 1rem"
-        bg="teal.200"
+        bg="accent.gold"
+        color="surface.page"
         borderRadius="2rem"
         className={IconStyle}
         onClick={() => {

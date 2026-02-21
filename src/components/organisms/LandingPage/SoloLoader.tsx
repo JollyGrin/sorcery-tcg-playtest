@@ -55,15 +55,10 @@ export const Solo = () => {
           })}
         />
         <input
-          className={input()}
+          className={`${input()} ${css({ fontFamily: "monospace", letterSpacing: "-1px" })}`}
           placeholder="Player 1: Load TTS export via Curiosa/Realms/FourCores"
           value={deckIds.p1}
           onChange={(e) => setDeckId("p1")(e.target.value)}
-          style={{
-            color: "black",
-            fontFamily: "monospace",
-            letterSpacing: "-1px",
-          }}
         />
       </HStack>
 
@@ -87,15 +82,10 @@ export const Solo = () => {
           })}
         />
         <input
-          className={input()}
+          className={`${input()} ${css({ fontFamily: "monospace", letterSpacing: "-1px" })}`}
           placeholder="Player 2: Load TTS export via Curiosa/Realms/FourCores"
           value={deckIds.p2}
           onChange={(e) => setDeckId("p2")(e.target.value)}
-          style={{
-            color: "black",
-            fontFamily: "monospace",
-            letterSpacing: "-1px",
-          }}
         />
       </HStack>
       <Link
