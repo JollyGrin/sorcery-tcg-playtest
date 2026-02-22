@@ -6,7 +6,8 @@ import { useState } from "react";
 import { Modal } from "@/components/atoms/Modal";
 import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
 import { CardImage as FullCard } from "@/components/atoms/card-view/card";
-import { CARD_CDN, GRIDS } from "../constants";
+import { GRIDS } from "../constants";
+import { useBlurLoad } from "@/utils/hooks/useBlurLoad";
 import { useRouter } from "next/router";
 
 export const Auras = (props: GameStateActions & { isReversed?: boolean }) => {
@@ -75,6 +76,7 @@ const DragWrapper = ({
   card: GameCard;
 }) => {
   const [preview, setPreview] = useState(false);
+  const { url, loaded } = useBlurLoad(card.img);
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <DragItem
@@ -84,13 +86,15 @@ const DragWrapper = ({
       >
         <div
           style={{
-            backgroundImage: `url(${CARD_CDN}${card.img}.webp)`,
+            backgroundImage: `url(${url})`,
             transform: card?.type === "site" ? "rotate(90deg)" : "",
             width: "100%",
             height: "100%",
             backgroundSize: "200%",
             backgroundPosition: "10% 20%",
             borderRadius: "0.5rem",
+            filter: loaded ? "none" : "blur(4px)",
+            transition: "filter 0.3s ease",
           }}
           onContextMenu={(e) => {
             e.preventDefault();

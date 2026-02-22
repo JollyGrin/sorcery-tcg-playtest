@@ -1,8 +1,8 @@
-import { CARD_CDN } from "@/components/organisms/GameBoard/constants";
 import { cn } from "@/lib/utils";
+import { useBlurLoad } from "@/utils/hooks/useBlurLoad";
 
 export const CardImage = ({
-  img = "headless_haunt.webp",
+  img = "headless_haunt",
   position = "top",
   minH = "300px",
 }: {
@@ -10,6 +10,7 @@ export const CardImage = ({
   position?: "top" | "bottom";
   minH?: string;
 }) => {
+  const { url, loaded } = useBlurLoad(img);
   return (
     <div
       className={cn(
@@ -25,14 +26,15 @@ export const CardImage = ({
     >
       <div
         style={{
-          backgroundImage: `url(${CARD_CDN}/${img}.webp)`,
+          backgroundImage: `url(${url})`,
           minHeight: minH,
           width: "100%",
           height: "100%",
           backgroundPosition: "top",
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
-          transition: "all 0.25s ease",
+          filter: loaded ? "none" : "blur(10px)",
+          transition: "all 0.25s ease, filter 0.3s ease",
         }}
       />
     </div>

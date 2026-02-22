@@ -1,12 +1,10 @@
-import {
-  CARD_CDN,
-  LOCALSTORAGE_KEYS,
-} from "@/components/organisms/GameBoard/constants";
+import { LOCALSTORAGE_KEYS } from "@/components/organisms/GameBoard/constants";
 import { useLocalStorage } from "@/utils/hooks";
+import { useBlurLoad } from "@/utils/hooks/useBlurLoad";
 
 export const CardAtlas = ({
   height = "90px",
-  img = "atlas_rift_valley.webp",
+  img = "atlas_rift_valley",
   ...props
 }: {
   img?: string;
@@ -16,6 +14,7 @@ export const CardAtlas = ({
   const { key, ...options } = LOCALSTORAGE_KEYS.SETTINGS.rotateEnemy;
   const [rotateEnemy] = useLocalStorage(key, false, options);
 
+  const { url, loaded } = useBlurLoad(img);
   const isMe = props.isMine === undefined || !!props.isMine;
   function shouldRotate() {
     if (rotateEnemy === false) return "rotate(0deg)";
@@ -37,7 +36,7 @@ export const CardAtlas = ({
     >
       <div
         style={{
-          backgroundImage: `url(${CARD_CDN}/${img}.webp)`,
+          backgroundImage: `url(${url})`,
           height: "310px",
           width: "100%",
           position: "absolute",
@@ -49,7 +48,8 @@ export const CardAtlas = ({
           transform: "scale(0.85) rotate(90deg) translateX(-47.8%) translateY(0)",
           backgroundColor: "#9ca3af",
           borderRadius: "1rem",
-          transition: "all 0.25s ease",
+          filter: loaded ? "none" : "blur(10px)",
+          transition: "all 0.25s ease, filter 0.3s ease",
           isolation: "isolate",
         }}
       />{" "}
