@@ -1,6 +1,6 @@
 import { GameCard } from "@/types/card";
 import { CSSProperties } from "react";
-import { getCardImage } from "../../constants";
+import { useBlurLoad } from "@/utils/hooks/useBlurLoad";
 
 export const GridDisplayCard = (props: {
   card: GameCard;
@@ -11,6 +11,7 @@ export const GridDisplayCard = (props: {
   };
 }) => {
   const { img, type, isTapped: tapped } = props.card;
+  const { url, loaded } = useBlurLoad(img);
   const style = type === "site" ? siteProps : spellProps;
   const isTapped = tapped
     ? {
@@ -23,13 +24,15 @@ export const GridDisplayCard = (props: {
     <img
       key={img + props.index}
       alt={props.card.img + props.index}
-      src={getCardImage(img)}
+      src={url}
       style={{
         position: "absolute",
         right: props.index * -1 + 3 + "rem",
         zIndex: props.length.cards - props.index,
-        transition: "all 0.25s ease",
-        filter: "drop-shadow(0 0 2px rgba(0,0,0,0.25))",
+        transition: "all 0.25s ease, filter 0.3s ease",
+        filter: loaded
+          ? "drop-shadow(0 0 2px rgba(0,0,0,0.25))"
+          : "drop-shadow(0 0 2px rgba(0,0,0,0.25)) blur(10px)",
         ...isTapped,
         ...style,
         top:

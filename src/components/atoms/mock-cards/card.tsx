@@ -1,8 +1,6 @@
-import {
-  CARD_CDN,
-  LOCALSTORAGE_KEYS,
-} from "@/components/organisms/GameBoard/constants";
+import { LOCALSTORAGE_KEYS } from "@/components/organisms/GameBoard/constants";
 import { useLocalStorage } from "@/utils/hooks";
+import { useBlurLoad } from "@/utils/hooks/useBlurLoad";
 import { useHover } from "@/utils/hooks/useHover";
 import { useKeyPress } from "@/utils/hooks/useKeyPress";
 import { useEffect, useRef, useState } from "react";
@@ -10,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 export const CardImage = ({
   height = "90px",
-  img = "headless_haunt.webp",
+  img = "headless_haunt",
   position = "top",
   index = 1,
   isTapped,
@@ -38,6 +36,7 @@ export const CardImage = ({
     }
   }, [isPressed]);
 
+  const { url, loaded } = useBlurLoad(img);
   const show = props.show || (preview && isHovering);
   const isMe = props.isMine === undefined || !!props.isMine;
   function shouldRotate() {
@@ -72,13 +71,14 @@ export const CardImage = ({
           show ? "absolute scale-150" : "",
         )}
         style={{
-          backgroundImage: `url(${CARD_CDN}/${img}.webp)`,
+          backgroundImage: `url(${url})`,
           height: "310px",
           width: "100%",
           backgroundPosition: "top",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          transition: "all 0.25s ease",
+          filter: loaded ? "none" : "blur(10px)",
+          transition: "all 0.25s ease, filter 0.3s ease",
         }}
       />{" "}
     </div>
