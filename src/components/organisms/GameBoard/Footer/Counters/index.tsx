@@ -1,6 +1,5 @@
 import { PlayerData, PlayerDataProps } from "@/types/card";
 import { useRouter } from "next/router";
-import { Flex, HStack } from "styled-system/jsx";
 import { Resource } from "./Resource";
 import { ManaNumber } from "./Mana";
 import { GiBoltSpellCast as IconMana } from "react-icons/gi";
@@ -18,16 +17,8 @@ export const CountersTray = (props: PlayerDataProps) => {
   }
 
   return (
-    <Flex
-      direction="column"
-      h="100%"
-      overflowY="auto"
-      p="0 0.5rem"
-      justifyContent="space-between"
-      alignItems="center"
-      gap="0.5rem"
-    >
-      <HStack position="relative" w="100%">
+    <div className="flex flex-col h-full overflow-hidden p-[0_0.5rem] justify-between items-center gap-[0.5rem]">
+      <div className="flex items-center relative w-full">
         <IconMana
           size={12}
           style={{
@@ -55,7 +46,7 @@ export const CountersTray = (props: PlayerDataProps) => {
           setValue={setField("mana")}
           value={me?.mana ?? 0}
         />
-      </HStack>
+      </div>
       {(["life", "earth", "fire", "water", "wind"] as const).map((type) => (
         <Resource
           key={type}
@@ -64,106 +55,6 @@ export const CountersTray = (props: PlayerDataProps) => {
           value={me?.[type] ?? 0}
         />
       ))}
-    </Flex>
+    </div>
   );
 };
-
-// const Resource = (props: {
-//   type: Pretty<keyof PlayerData>;
-//   setValue(value: number): void;
-//   value: number;
-// }) => {
-//   const hoverRef = useRef(null);
-//   const isHovering = useHover(hoverRef);
-
-//   function increment() {
-//     props.setValue(props.value + 1);
-//   }
-
-//   function decrement() {
-//     if (props.value === 0) return;
-//     props.setValue(props.value - 1);
-//   }
-
-//   // sets fade of life
-//   const bg = useMemo(() => {
-//     if (props.type !== "life") return "";
-//     const percent = Math.min(props.value / 20, 1);
-//     if (props.value > 10) return mix(percent, "#00b8a9", "#f8f3d4");
-//     if (props.value === 10) return "#f8f3d4";
-//     if (props.value > 1) return mix(props.value / 20, "#f8f3d4", "#f6416c");
-
-//     return "purple";
-//   }, [props.value]);
-
-//   return (
-//     <VStack gap={0} p={0} ref={hoverRef} w="100%">
-//       <Grid gridTemplateColumns="2fr 1fr" alignItems="center" w="inherit">
-//         {isHovering && (
-//           <HStack
-//             gap={0}
-//             p={0}
-//             opacity="0.05"
-//             _hover={{ opacity: 1 }}
-//             transition="all 0.25s ease"
-//           >
-//             <button
-//               onClick={decrement}
-//               className={button({ variant: "destructive", size: "sm" })}
-//               style={decrementStyle}
-//             >
-//               -
-//             </button>
-
-//             <button
-//               onClick={increment}
-//               className={button({ size: "sm" })}
-//               style={incrementStyle}
-//             >
-//               +
-//             </button>
-//           </HStack>
-//         )}
-//         {!isHovering && props.type === "life" && (
-//           <IconHealth
-//             color={bg}
-//             fontSize="1rem"
-//             style={{
-//               filter: "drop-shadow(0 1px 1px rgba(0,0,0,0.45))",
-//             }}
-//           />
-//         )}
-
-//         {!isHovering &&
-//           !["mana", "manaRemaining", "life"].includes(props.type) && (
-//             <img
-//               src={`/icon/${props.type}.webp`}
-//               alt="fire"
-//               className={iconStyle()}
-//               style={{ height: "21px", width: "20px" }}
-//             />
-//           )}
-
-//         <p style={{ justifySelf: "end", fontSize: "0.8rem" }}>{props.value}</p>
-//       </Grid>
-//     </VStack>
-//   );
-// };
-
-// const iconStyle = cva({
-//   base: {
-//     width: "25px",
-//   },
-// });
-// const decrementStyle = {
-//   padding: "0.5rem",
-//   borderTopRightRadius: 0,
-//   borderBottomRightRadius: 0,
-//   height: "20px",
-// };
-// const incrementStyle = {
-//   padding: "0.5rem",
-//   borderTopLeftRadius: 0,
-//   borderBottomLeftRadius: 0,
-//   height: "20px",
-// };

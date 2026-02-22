@@ -1,11 +1,9 @@
-import { Grid, VStack } from "styled-system/jsx";
 import {
   GRIDS,
   LAYOUT_HEIGHTS,
 } from "@/components/organisms/GameBoard/constants";
 import { GameStateActions } from "@/components/organisms/GameBoard";
 import { actDrawAtlas, actDrawDeck, actShuffleDeck } from "@/utils/actions";
-import { cva } from "styled-system/css/cva.mjs";
 import { Modal } from "@/components/atoms/Modal";
 import { useState } from "react";
 import { DeckModalBody } from "./DeckPreviewModal";
@@ -52,61 +50,49 @@ export const DecksTray = (props: GameStateActions) => {
         }}
         content={<DeckModalBody deckType={preview} {...props} />}
       />
-      <VStack
-        w="100%"
-        py="0.25rem"
+      <div
+        className="flex flex-col items-center w-full py-[0.25rem]"
         style={{
           height: LAYOUT_HEIGHTS.footer,
           background:
             "linear-gradient(90deg, rgba(131,58,180,0.15) 0%, rgba(253,29,29,0.15) 50%, rgba(252,176,69,0.35) 100%)",
         }}
       >
-        <Grid
+        <div
           onContextMenu={(e) => {
             e.preventDefault();
             setPreview("atlas");
           }}
-          h="70px"
-          aspectRatio={3 / 2}
+          className="grid place-items-center cursor-pointer"
           onClick={drawAtlas}
-          placeItems="center"
-          borderRadius="0.25rem"
-          cursor="pointer"
-          backgroundSize="cover"
           style={{
             backgroundImage: "url(/card-backs/m_atlas.png)",
+            height: "70px",
+            aspectRatio: "3/2",
+            borderRadius: "0.25rem",
+            backgroundSize: "cover",
           }}
         >
-          <p className={remainingCards()}>{atlasRemainingCards}</p>
-        </Grid>
-        <Grid
+          <p className="font-bold bg-[rgba(255,255,255,0.7)] px-[0.25rem] rounded-[0.25rem]">{atlasRemainingCards}</p>
+        </div>
+        <div
           onContextMenu={(e) => {
             e.preventDefault();
             setPreview("deck");
           }}
-          w="60px"
-          aspectRatio={2 / 3}
+          className="grid place-items-center cursor-pointer"
           onClick={drawDeck}
-          placeItems="center"
-          borderRadius="0.25rem"
-          cursor="pointer"
-          backgroundSize="cover"
           style={{
             backgroundImage: "url(/card-backs/m_spells.png)",
+            width: "60px",
+            aspectRatio: "2/3",
+            borderRadius: "0.25rem",
+            backgroundSize: "cover",
           }}
         >
-          <p className={remainingCards()}>{deckRemainingCards}</p>
-        </Grid>
-      </VStack>
+          <p className="font-bold bg-[rgba(255,255,255,0.7)] px-[0.25rem] rounded-[0.25rem]">{deckRemainingCards}</p>
+        </div>
+      </div>
     </>
   );
 };
-
-const remainingCards = cva({
-  base: {
-    fontWeight: 700,
-    background: "rgba(255,255,255,0.7)",
-    padding: "0 0.25rem",
-    borderRadius: "0.25rem",
-  },
-});

@@ -3,7 +3,6 @@ import {
   LOCALSTORAGE_KEYS,
 } from "@/components/organisms/GameBoard/constants";
 import { useLocalStorage } from "@/utils/hooks";
-import { Box } from "styled-system/jsx";
 
 export const CardAtlas = ({
   height = "90px",
@@ -23,40 +22,37 @@ export const CardAtlas = ({
     return isMe ? "rotate(0deg)" : "rotate(180deg)";
   }
   return (
-    <Box
-      position="relative"
-      m="0 auto"
-      w="calc(100% - 1rem)"
-      maxW="221px"
-      bg="yellow"
-      borderRadius="1rem"
-      isolation="isolate"
-      overflow="clip"
-      transition="all 0.25s ease"
+    <div
+      className="relative isolate overflow-clip"
       style={{
+        width: "calc(100% - 1rem)",
+        maxWidth: "221px",
+        margin: "0 auto",
+        borderRadius: "1rem",
+        transition: "all 0.25s ease",
         height,
         border: isMe ? "" : "solid 2px tomato",
         transform: shouldRotate(),
       }}
     >
-      <Box
+      <div
         style={{
           backgroundImage: `url(${CARD_CDN}/${img}.webp)`,
-        }} // bgImage has caching issues
-        isolation="isolate"
-        h="310px"
-        w="100%"
-        position="absolute"
-        right={0 + "px"}
-        bottom={-160 + "px"}
-        backgroundPosition="right"
-        backgroundSize="cover"
-        backgroundRepeat="no-repeat"
-        transform="scale(0.85) rotate(90deg) translate(-47.8%, 0px)"
-        bg="gray.400"
-        borderRadius="1rem"
-        transition="all 0.25s ease"
+          height: "310px",
+          width: "100%",
+          position: "absolute",
+          right: 0,
+          bottom: "-160px",
+          backgroundPosition: "right",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          transform: "scale(0.85) rotate(90deg) translateX(-47.8%) translateY(0)",
+          backgroundColor: "#9ca3af",
+          borderRadius: "1rem",
+          transition: "all 0.25s ease",
+          isolation: "isolate",
+        }}
       />{" "}
-    </Box>
+    </div>
   );
 };

@@ -1,6 +1,4 @@
 import { DragEvent, ReactNode, useState } from "react";
-import { Box, Grid } from "styled-system/jsx";
-import { grid } from "styled-system/patterns";
 import { getCardImage, LAYOUT_HEIGHTS } from "./constants";
 import { GameFooter } from "./Footer";
 import { GameStateActions } from ".";
@@ -33,14 +31,12 @@ export const GameLayout = (
   };
 
   return (
-    <Grid
+    <div
+      className="grid relative gap-0"
       style={{ gridTemplateRows: `${nav} ${body} ${footer}` }}
-      gap={0}
-      position="relative"
     >
-      <Box
-        zIndex={5}
-        position="absolute"
+      <div
+        className="z-5 absolute cursor-grab"
         draggable
         onDragStart={(e) => {
           const img = new Image();
@@ -48,7 +44,6 @@ export const GameLayout = (
           e.dataTransfer.setDragImage(img, 0, 0);
         }}
         onDrag={handleDrag} // Directly update position for smoother dragging
-        cursor="grab"
         style={{
           transform: trans,
           display: matches ? "block" : "none",
@@ -62,33 +57,18 @@ export const GameLayout = (
           />
         )}
         {matches && props.activeCardSlug === undefined && (
-          <Box
-            w="20rem"
-            h="26rem"
-            bg="gray"
-            borderRadius="1rem"
-            opacity="0.35"
-          />
+          <div className="w-[20rem] h-[26rem] bg-gray rounded-[1rem] opacity-35" />
         )}
-      </Box>
+      </div>
       <GameHeader players={props.players} />
-      <Box position="relative" h="100%" w="100%" maxW="1200px" m="0 auto">
+      <div className="relative h-full w-full max-w-[1200px] mx-auto">
         <Auras {...props} />
-        <div
-          className={grid({
-            gap: 2,
-            gridTemplateColumns: "repeat(5, 1fr)",
-            gridTemplateRows: "repeat(4, 1fr)",
-            w: "100%",
-            h: "100%",
-            background: "rgba(240, 240, 240, 0.5)", // Ensure background visibility
-          })}
-        >
+        <div className="grid gap-2 grid-cols-[repeat(5,1fr)] grid-rows-[repeat(4,1fr)] w-full h-full bg-[rgba(240,240,240,0.5)]">
           {props.children}
         </div>
-      </Box>
+      </div>
 
       <GameFooter {...props} />
-    </Grid>
+    </div>
   );
 };

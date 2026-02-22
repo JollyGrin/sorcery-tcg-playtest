@@ -19,17 +19,13 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ],
-      "styled-system/*": [
-        "./styled-system/*"
       ]
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "styled-system"
+    "**/*.tsx"
   ],
   "exclude": [
     "node_modules"

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Flex, Grid, VStack } from 'styled-system/jsx';
-import { css } from 'styled-system/css';
+import { cn } from '@/lib/utils';
 import { LocalDeck, Card } from '../types';
 import { PreconMeta, getPreconList, getPreconDeck, preconToLocalDeck } from '@/utils/precons';
 
@@ -74,43 +73,40 @@ const MyDecks: React.FC<MyDecksProps> = ({
     }
   };
   return (
-    <VStack gap={4} alignItems="stretch">
-      <h2 className={css({ fontSize: '2rem', fontWeight: 700, color: 'brand.highlight' })}>
+    <div className="flex flex-col gap-4 items-stretch">
+      <h2 className="text-[2rem] font-bold text-brand-highlight">
         My Decks
       </h2>
       {savedDecks.length === 0 ? (
-        <Box textAlign="center" py="4rem">
-          <p className={css({ color: 'gray.400', fontSize: '1.25rem' })}>
+        <div className="text-center py-16">
+          <p className="text-gray-400 text-[1.25rem]">
             No saved decks yet. Build your first deck!
           </p>
-        </Box>
+        </div>
       ) : (
-        <Grid gridTemplateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }} gap={4}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {savedDecks.map((deck) => (
-            <Box
+            <div
               key={deck.id}
-              bg="rgba(255,255,255,0.1)"
-              p="1rem"
-              borderRadius="0.5rem"
-              cursor="pointer"
-              className={css({
-                _hover: { bg: 'rgba(255,255,255,0.15)' },
-                border: editingDeckId === deck.id ? '2px solid' : '1px solid',
-                borderColor: editingDeckId === deck.id ? 'blue.400' : 'rgba(255,255,255,0.2)'
-              })}
+              className={cn(
+                "bg-[rgba(255,255,255,0.1)] p-4 rounded-[0.5rem] cursor-pointer hover:bg-[rgba(255,255,255,0.15)]",
+                editingDeckId === deck.id
+                  ? "border-2 border-blue-400"
+                  : "border border-[rgba(255,255,255,0.2)]"
+              )}
               onClick={() => onLoadDeck(deck)}
             >
-              <h3 className={css({ fontWeight: 'bold', fontSize: '1.125rem', mb: '0.5rem' })}>
+              <h3 className="font-bold text-[1.125rem] mb-2">
                 {deck.name}
               </h3>
-              <p className={css({ fontSize: '0.875rem', color: 'gray.400', mb: '0.5rem' })}>
+              <p className="text-sm text-gray-400 mb-2">
                 {deck.spellbook.length} cards, {deck.atlas.length} sites
               </p>
-              <p className={css({ fontSize: '0.75rem', color: 'gray.500' })}>
+              <p className="text-xs text-gray-500">
                 {deck.avatar && cards.find(c => c.slug === deck.avatar)?.name}
               </p>
-              <Flex justifyContent="space-between" alignItems="center" mt="1rem">
-                <span className={css({ fontSize: '0.75rem', color: 'gray.500' })}>
+              <div className="flex justify-between items-center mt-4">
+                <span className="text-xs text-gray-500">
                   {new Date(deck.updatedAt).toLocaleDateString()}
                 </span>
                 <button
@@ -118,63 +114,52 @@ const MyDecks: React.FC<MyDecksProps> = ({
                     e.stopPropagation();
                     onDeleteDeck(deck.id);
                   }}
-                  className={css({
-                    color: 'red.400',
-                    _hover: { color: 'red.300' },
-                    fontSize: '0.875rem'
-                  })}
+                  className="text-red-400 hover:text-red-300 text-sm"
                 >
                   Delete
                 </button>
-              </Flex>
-            </Box>
+              </div>
+            </div>
           ))}
-        </Grid>
+        </div>
       )}
 
       {/* Divider */}
-      <Box w="100%" h="1px" bg="rgba(255,255,255,0.2)" my="2rem" />
+      <div className="w-full h-px bg-[rgba(255,255,255,0.2)] my-8" />
 
       {/* Precons Section */}
-      <h2 className={css({ fontSize: '2rem', fontWeight: 700, color: 'brand.highlight' })}>
+      <h2 className="text-[2rem] font-bold text-brand-highlight">
         Preconstructed Decks
       </h2>
-      
+
       {loading ? (
-        <Box textAlign="center" py="2rem">
-          <p className={css({ color: 'gray.400', fontSize: '1.25rem' })}>
+        <div className="text-center py-8">
+          <p className="text-gray-400 text-[1.25rem]">
             Loading preconstructed decks...
           </p>
-        </Box>
+        </div>
       ) : precons.length === 0 ? (
-        <Box textAlign="center" py="2rem">
-          <p className={css({ color: 'gray.400', fontSize: '1.25rem' })}>
+        <div className="text-center py-8">
+          <p className="text-gray-400 text-[1.25rem]">
             No preconstructed decks available.
           </p>
-        </Box>
+        </div>
       ) : (
-        <Grid gridTemplateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }} gap={4}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {precons.map((precon) => (
-            <Box
+            <div
               key={precon.id}
-              bg="rgba(255,255,255,0.05)"
-              p="1rem"
-              borderRadius="0.5rem"
-              cursor="pointer"
-              className={css({
-                _hover: { bg: 'rgba(255,255,255,0.1)' },
-                border: '1px solid rgba(255,255,255,0.1)'
-              })}
+              className="bg-[rgba(255,255,255,0.05)] p-4 rounded-[0.5rem] cursor-pointer hover:bg-[rgba(255,255,255,0.1)] border border-[rgba(255,255,255,0.1)]"
               onClick={() => handleLoadPrecon(precon.id)}
             >
-              <Flex justifyContent="space-between" alignItems="flex-start" mb="0.5rem">
-                <h3 className={css({ fontWeight: 'bold', fontSize: '1.125rem', mb: '0.5rem' })}>
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="font-bold text-[1.125rem] mb-2">
                   {precon.name}
                 </h3>
-                <Flex gap="0.5rem">
-                  <span 
-                    style={{ 
-                      fontSize: '0.75rem', 
+                <div className="flex gap-2">
+                  <span
+                    style={{
+                      fontSize: '0.75rem',
                       padding: '0.25rem 0.5rem',
                       borderRadius: '0.25rem',
                       backgroundColor: getElementColor(precon.element),
@@ -184,9 +169,9 @@ const MyDecks: React.FC<MyDecksProps> = ({
                   >
                     {precon.element}
                   </span>
-                  <span 
-                    style={{ 
-                      fontSize: '0.75rem', 
+                  <span
+                    style={{
+                      fontSize: '0.75rem',
                       padding: '0.25rem 0.5rem',
                       borderRadius: '0.25rem',
                       backgroundColor: getDifficultyColor(precon.difficulty),
@@ -196,25 +181,25 @@ const MyDecks: React.FC<MyDecksProps> = ({
                   >
                     {precon.difficulty}
                   </span>
-                </Flex>
-              </Flex>
-              <p className={css({ fontSize: '0.875rem', color: 'gray.400', mb: '0.5rem' })}>
+                </div>
+              </div>
+              <p className="text-sm text-gray-400 mb-2">
                 {precon.description}
               </p>
-              <p className={css({ fontSize: '0.75rem', color: 'gray.500' })}>
+              <p className="text-xs text-gray-500">
                 {precon.cardCount.total} cards ({precon.cardCount.spellbook} spellbook, {precon.cardCount.atlas} atlas)
               </p>
-            </Box>
+            </div>
           ))}
-        </Grid>
+        </div>
       )}
 
-      <Box p="0.75rem" bg="rgba(59,130,246,0.1)" borderRadius="0.5rem">
-        <p className={css({ fontSize: '0.75rem', color: 'blue.400' })}>
+      <div className="p-3 bg-[rgba(59,130,246,0.1)] rounded-[0.5rem]">
+        <p className="text-xs text-blue-400">
           <strong>Tip:</strong> Click any precon to load it as a new deck. You can then customize it and save your own version.
         </p>
-      </Box>
-    </VStack>
+      </div>
+    </div>
   );
 };
 

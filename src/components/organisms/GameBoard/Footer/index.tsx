@@ -1,4 +1,3 @@
-import { Box, Grid, HStack } from "styled-system/jsx";
 import { GRIDS, LAYOUT_HEIGHTS } from "../constants";
 import { DroppableGridItem } from "@/components/molecules/DropGridItem";
 import {
@@ -16,7 +15,7 @@ import { useState } from "react";
 import { Modal } from "@/components/atoms/Modal";
 import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
 import { CardImage as FullCard } from "@/components/atoms/card-view/card";
-import { button } from "styled-system/recipes";
+import { buttonVariants } from "@/components/ui/button/variants";
 import { actHandToBottomDeck, actHandToTopDeck } from "@/utils/actions/hand";
 
 import {
@@ -47,13 +46,7 @@ export const GameFooter = ({
         overflowX: "auto",
       }}
     >
-      <Grid
-        h="100%"
-        gridTemplateColumns="130px 115px 85px 1fr"
-        gap={0}
-        overflowY="clip"
-        // w="100vw"
-      >
+      <div className="grid h-full grid-cols-[130px_115px_110px_1fr] gap-0 overflow-y-clip">
         <GraveTray {...props} />
         <DecksTray {...props} />
         <CountersTray {...props} />
@@ -65,37 +58,24 @@ export const GameFooter = ({
             )}
             strategy={horizontalListSortingStrategy}
           >
-            <HStack
-              p={0}
-              m={0}
-              w="calc(100vw - 330px)"
-              h="100%"
-              justifyContent="start"
-              overflowX="auto"
-              position="relative"
-            >
-              <Box
-                position="absolute"
-                bottom="0.25rem"
-                left="0.5rem"
-                opacity={0.25}
-              >
+            <div className="flex items-center p-0 m-0 w-[calc(100vw-355px)] h-full justify-start overflow-x-auto relative">
+              <div className="absolute bottom-[0.25rem] left-[0.5rem] opacity-25">
                 <p>
                   Right click cards for options. Press{" "}
                   <span
                     style={{
                       borderRadius: "0.25rem",
-                      background: "rgba(0,0,0,0.2)",
+                      background: "rgba(255,255,255,0.1)",
+                      border: "1px solid rgba(255,255,255,0.2)",
                       padding: "2px 4px",
                       fontFamily: "monospace",
-                      borderBottom: "solid 1px black",
                     }}
                   >
                     ?
                   </span>{" "}
                   for more commands
                 </p>
-              </Box>
+              </div>
               {props.gridItems?.[gridIndex]?.map((card, index) => (
                 <HandCard
                   key={card.id + index}
@@ -106,10 +86,10 @@ export const GameFooter = ({
                   setHoverCard={setHoverCard}
                 />
               ))}
-            </HStack>
+            </div>
           </SortableContext>
         </DroppableGridItem>
-      </Grid>
+      </div>
     </div>
   );
 };
@@ -172,32 +152,25 @@ const HandCard = ({
       <Modal
         wrapperProps={{ open: preview, onOpenChange: setPreview }}
         content={
-          <Box h="700px" w="460px">
+          <div className="h-[700px] w-[460px]">
             {card.type === "site" && <FullCardAtlas img={card.img} />}
             {card.type !== "site" && <FullCard img={card.img} />}
-            <HStack
-              position="absolute"
-              bottom="1rem"
-              w="calc(100% - 3rem)"
-              justifyContent="center"
-              borderRadius="1rem"
-              filter="drop-shadow(0 4px 2px rgba(0,0,0,0.25))"
-            >
-              <button className={button()} onClick={topDeck}>
-                <HStack>
+            <div className="flex items-center absolute bottom-[1rem] w-[calc(100%-3rem)] justify-center rounded-[1rem] drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)]">
+              <button className={buttonVariants()} onClick={topDeck}>
+                <div className="flex items-center">
                   <IconTop />
                   <p>Top of deck</p>
-                </HStack>
+                </div>
               </button>
 
-              <button className={button()} onClick={bottomDeck}>
-                <HStack>
+              <button className={buttonVariants()} onClick={bottomDeck}>
+                <div className="flex items-center">
                   <IconBottom />
                   <p>Bottom of deck</p>
-                </HStack>
+                </div>
               </button>
-            </HStack>
-          </Box>
+            </div>
+          </div>
         }
       />
     </div>

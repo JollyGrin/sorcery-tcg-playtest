@@ -1,7 +1,4 @@
-import { Box, Grid, HStack } from "styled-system/jsx";
 import { Button } from "@/components/ui/button";
-import { Tabs } from "@/components/atoms/Tabs";
-
 import { useCardFullData } from "@/utils/api/cardData/useCardData";
 import { DraftProps } from "@/components/organisms/Draft/types";
 import {
@@ -9,6 +6,7 @@ import {
   generateBoosterPack,
 } from "@/components/organisms/Draft/helpers";
 import { useState } from "react";
+import { GiCardPick } from "react-icons/gi";
 
 export const Ribbon = (
   props: DraftProps & {
@@ -33,34 +31,64 @@ export const Ribbon = (
     props.setActiveView(props.player.finishedPacks.length);
   }
 
-  const packTabs =
-    props.player?.finishedPacks?.length > 0
-      ? props.player?.finishedPacks?.map((_, index) => `Pack ${index + 1}`)
-      : [];
+  const packCount = props.player?.finishedPacks?.length ?? 0;
 
   return (
-    <Box p="1rem" bg="brown">
-      <Grid gridTemplateColumns="1fr 7fr">
-        <HStack>
-          <select onChange={(e) => setSet(e.target.value as Expansion)}>
-            <option>Alpha</option>
-            <option>Beta</option>
-            <option>Arthurian Legends</option>
-          </select>
-          <Button minW="9rem" onClick={crackBooster}>
-            Crack a Pack
-          </Button>
-        </HStack>
-        <HStack maxW="70vw" overflowX="auto" overflowY="clip">
-          {props.player.finishedPacks.length > 0 && (
-            <Tabs
-              tabs={packTabs}
-              onSelect={props.setActiveView}
-              selectedIndex={props.activeViewIndex}
-            />
-          )}
-        </HStack>
-      </Grid>
-    </Box>
+    <div
+      className="flex items-center gap-4 px-4 py-2"
+      style={{
+        background: "linear-gradient(180deg, #292524 0%, #1C1917 100%)",
+        borderBottom: "1px solid rgba(212,168,83,0.15)",
+      }}
+    >
+      {/* Crack controls */}
+      <div className="flex items-center gap-2 shrink-0">
+        <select
+          value={set}
+          onChange={(e) => setSet(e.target.value as Expansion)}
+          className="bg-[#44403C] text-[#FAF7F0] border border-stone-600 rounded-md px-3 py-1.5 text-sm outline-none focus:border-[#D4A853] transition-colors cursor-pointer"
+        >
+          <option>Alpha</option>
+          <option>Beta</option>
+          <option>Arthurian Legends</option>
+          <option>Dragonlord</option>
+          <option>Gothic</option>
+        </select>
+        <Button
+          onClick={crackBooster}
+          className="bg-[#D4A853] text-[#1C1917] hover:bg-[#E0BC6A] font-semibold gap-1.5"
+        >
+          <GiCardPick className="text-base" />
+          Crack Pack
+        </Button>
+      </div>
+
+      {/* Pack pills */}
+      {packCount > 0 && (
+        <div className="flex items-center gap-1 overflow-x-auto min-w-0 py-1">
+          {props.player.finishedPacks.map((_, index) => {
+            const isActive = index === props.activeViewIndex;
+            return (
+              <button
+                key={`pack-${index}`}
+                onClick={() => props.setActiveView(index)}
+                className="shrink-0 px-2.5 py-1 rounded-md text-xs font-medium transition-all duration-150 cursor-pointer"
+                style={{
+                  background: isActive
+                    ? "rgba(212,168,83,0.2)"
+                    : "rgba(255,255,255,0.04)",
+                  border: isActive
+                    ? "1px solid rgba(212,168,83,0.5)"
+                    : "1px solid rgba(255,255,255,0.06)",
+                  color: isActive ? "#D4A853" : "#A8A29E",
+                }}
+              >
+                Pack {index + 1}
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
   );
 };

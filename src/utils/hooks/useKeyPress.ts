@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { LiteralUnion } from "styled-system/types";
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+type LiteralUnion<T extends string> = T | (string & {});
 
 type KeyboardEventKey = LiteralUnion<
   | PunctuationKeys
@@ -7,8 +9,7 @@ type KeyboardEventKey = LiteralUnion<
   | WhitespaceKeys
   | NavigationKeys
   | FunctionKeys
-  | NumericKeypadKeys,
-  string
+  | NumericKeypadKeys
 >;
 
 export function useKeyPress(targetKey: KeyboardEventKey) {

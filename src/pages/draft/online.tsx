@@ -13,7 +13,7 @@ import {
 } from "@/lib/contexts/DraftGameProvider";
 import { DraftBoard } from "@/components/organisms/Draft";
 import { Button } from "@/components/ui/button";
-import { Grid, VStack } from "styled-system/jsx";
+import { FullPageLoader } from "@/components/atoms/LoadingSpinner";
 
 export default function WebsocketDebug() {
   const { query } = useRouter();
@@ -30,12 +30,7 @@ export default function WebsocketDebug() {
   }, [name, gid]);
 
   if (!name || !gid) return <CreateLobby />;
-  if (isDelayed)
-    return (
-      <Grid minH="99vh" minW="99vw" placeItems="center" fontSize="3rem">
-        <p>loading...</p>
-      </Grid>
-    );
+  if (isDelayed) return <FullPageLoader />;
 
   return (
     <DraftGameProvider>
@@ -66,10 +61,10 @@ const Body = () => {
   if (state === undefined) return null;
   if (state.joinedSessionTimestamp === undefined)
     return (
-      <Grid minW="99vw" minH="99vh" placeItems="center" fontSize="2rem">
-        <VStack>
+      <div className="grid min-w-[99vw] min-h-[99vh] place-items-center text-[2rem]">
+        <div className="flex flex-col">
           <Button
-            p="2rem"
+            className="p-8"
             onClick={() => {
               setPlayerState()({
                 ...initPlayer,
@@ -80,8 +75,8 @@ const Body = () => {
             Initiate
           </Button>
           <p>The board is ready! Click the button to get started!</p>
-        </VStack>
-      </Grid>
+        </div>
+      </div>
     );
 
   const initPlayers = Object.entries(socketPlayers).filter((entry) => {
@@ -89,12 +84,7 @@ const Body = () => {
     return !value.joinedSessionTimestamp;
   });
 
-  if (initPlayers.length > 0)
-    return (
-      <Grid minH="99vh" minW="99vw" placeItems="center" fontSize="3rem">
-        <p>loading new player...</p>
-      </Grid>
-    );
+  if (initPlayers.length > 0) return <FullPageLoader message="Waiting for player..." />;
 
   return (
     <DraftBoard

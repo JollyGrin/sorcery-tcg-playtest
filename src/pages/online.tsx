@@ -12,8 +12,8 @@ import { useEffect, useMemo, useState } from "react";
 
 import ErrorBoundary from "@/utils/helpers/ErrorBoundary";
 import { CreateLobby } from "@/components/organisms/Online/CreateLobby";
-import { Grid } from "styled-system/jsx";
 import Link from "next/link";
+import { FullPageLoader } from "@/components/atoms/LoadingSpinner";
 
 export default function WebsocketDebug() {
   const { query } = useRouter();
@@ -30,12 +30,7 @@ export default function WebsocketDebug() {
   }, [name, gid]);
 
   if (!name || !gid) return <CreateLobby />;
-  if (isDelayed)
-    return (
-      <Grid width="100vw" height="100vh" placeItems="center" bgColor="#bfdbfe">
-        loading
-      </Grid>
-    );
+  if (isDelayed) return <FullPageLoader />;
 
   return (
     <WebGameProvider>

@@ -1,5 +1,4 @@
 import { CARD_CDN } from "@/components/organisms/GameBoard/constants";
-import { Box } from "styled-system/jsx";
 
 export const FullCardAtlas = ({
   img = "atlas_rift_valley.webp",
@@ -7,30 +6,22 @@ export const FullCardAtlas = ({
   img?: string;
 }) => {
   return (
-    <Box
-      position="relative"
-      m="0.5rem auto"
-      w="inherit"
-      h="inherit"
-      borderRadius="1rem"
-      isolation="isolate"
-    >
-      <Box
+    <div className="relative rounded-[1rem] isolate" style={{ width: "inherit", height: "inherit", margin: "0.5rem auto" }}>
+      <div
         style={{
           backgroundImage: `url(${CARD_CDN}/${img}.webp)`,
-        }} // bgImage has caching issues
-        isolation="isolate"
-        w="100%"
-        h="100%"
-        // position="absolute"
-        backgroundPosition="right"
-        backgroundSize="cover"
-        backgroundRepeat="no-repeat"
-        transform="rotate(90deg)"
-        bg="gray.400"
-        borderRadius="1rem"
-        transition="all 0.25s ease"
+          width: "100%",
+          height: "100%",
+          backgroundPosition: "right",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          transform: "rotate(90deg)",
+          backgroundColor: "#9ca3af",
+          borderRadius: "1rem",
+          transition: "all 0.25s ease",
+          isolation: "isolate",
+        }}
       />
-    </Box>
+    </div>
   );
 };

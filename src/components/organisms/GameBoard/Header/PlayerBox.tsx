@@ -1,10 +1,8 @@
 import { PlayerData, PlayersState } from "@/types/card";
 import { GRIDS } from "../constants";
-import { Flex, HStack } from "styled-system/jsx";
 import { useMemo, useState } from "react";
 import { IconType } from "react-icons";
-import { JsxStyleProps } from "styled-system/types";
-import { cva } from "styled-system/css/cva.mjs";
+import { cva } from "class-variance-authority";
 import { mix } from "polished";
 import { PiCardsThreeFill as IconDeck } from "react-icons/pi";
 import { TbCardsFilled as IconHand, TbMap2 as IconMap } from "react-icons/tb";
@@ -66,31 +64,20 @@ export const PlayerBox = ({
           }
         />
       )}
-      <HStack fontSize="1rem" gap={1}>
+      <div className="flex items-center text-[1rem] gap-1">
         <p className={textStyle({ visual: "bold" })}>{name}</p>
 
-        <Flex
-          minW="3rem"
-          p="0.1rem 0.5rem"
-          borderRadius="0.75rem"
-          alignItems="center"
-          justifyContent="center"
-          gap={1}
+        <div
+          className="flex min-w-[3rem] p-[0.1rem_0.5rem] rounded-[0.75rem] items-center justify-center gap-1"
           style={{
             background: bg,
           }}
         >
           <IconHealth fontSize="0.75rem" />
           <p>{life}</p>
-        </Flex>
+        </div>
 
-        <Flex
-          bg="rgba(255,255,255,0.5)"
-          p="0.1rem 0.5rem"
-          borderRadius="0.75rem"
-          gap={2}
-          alignItems="center"
-        >
+        <div className="flex bg-[rgba(255,255,255,0.15)] p-[0.1rem_0.5rem] rounded-[0.75rem] gap-2 items-center">
           <Resource icon="earth" value={player.data.earth} />
           <Resource icon="fire" value={player.data.fire} />
           <Resource icon="water" value={player.data.water} />
@@ -105,14 +92,9 @@ export const PlayerBox = ({
             {"/"}
             {player.data.mana}
           </p>
-        </Flex>
+        </div>
 
-        <Flex
-          bg="rgba(255,255,255,0.5)"
-          p="0.1rem 0.5rem"
-          borderRadius="0.75rem"
-          gap={2}
-        >
+        <div className="flex bg-[rgba(255,255,255,0.15)] p-[0.1rem_0.5rem] rounded-[0.75rem] gap-2">
           <span onClick={disclosure.onOpen}>
             <Stat Icon={IconGrave} value={length(GRIDS.GRAVE)} />
           </span>
@@ -125,43 +107,40 @@ export const PlayerBox = ({
           {player?.data?.dice?.d20 !== undefined && (
             <Stat Icon={IconD20} value={player?.data?.dice?.d20} />
           )}
-        </Flex>
-      </HStack>
+        </div>
+      </div>
     </>
   );
 };
 
 const Resource = (props: { value: number; icon: keyof PlayerData }) => (
-  <HStack gap={1}>
+  <div className="flex items-center gap-1">
     <img
       src={`/icon/${props.icon}.webp`}
       alt="resource icon"
       style={{ height: "1rem", width: "1rem" }}
     />
     <p style={{ fontFamily: "monospace" }}>{props.value}</p>
-  </HStack>
+  </div>
 );
 
 const Stat = ({
   Icon,
   value,
   ...props
-}: { Icon: IconType; value: number } & JsxStyleProps) => {
+}: { Icon: IconType; value: number } & { className?: string }) => {
   return (
-    <HStack gap={1} alignItems="center" {...props}>
+    <div className="flex items-center gap-1" {...props}>
       <Icon fontSize="0.875rem" opacity={0.5} />
       <p style={{ fontFamily: "monospace" }}>{value}</p>
-    </HStack>
+    </div>
   );
 };
 
-const textStyle = cva({
-  base: {
-    fontFamily: "monospace",
-  },
+const textStyle = cva("font-mono", {
   variants: {
     visual: {
-      bold: { fontWeight: 600, fontFamily: "serif" },
+      bold: "font-semibold font-[header]",
     },
   },
 });

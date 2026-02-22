@@ -1,3182 +1,5522 @@
 [
   {
     "name": "13 Treasures of Britain",
-    "slug": "13_treasures_of_britain_b_s",
+    "slug": "13_treasures_of_britain",
     "type": "artifact"
   },
   {
     "name": "A Midsummer Night's Dream",
-    "slug": "a_midsummer_nights_dream_b_s",
+    "slug": "a_midsummer_nights_dream",
     "type": "aura"
+  },
+  {
+    "name": "Aaj-kegon Ghost Crabs",
+    "slug": "aaj_kegon_ghost_crabs",
+    "type": "minion"
+  },
+  {
+    "name": "Abaddon Succubus",
+    "slug": "abaddon_succubus",
+    "type": "minion"
   },
   {
     "name": "Abundance",
-    "slug": "abundance_b_s",
+    "slug": "abundance",
     "type": "aura"
   },
   {
+    "name": "Abyssal Assault",
+    "slug": "abyssal_assault",
+    "type": "magic"
+  },
+  {
     "name": "Accursed Albatross",
-    "slug": "accursed_albatross_b_s",
+    "slug": "accursed_albatross",
     "type": "minion"
+  },
+  {
+    "name": "Accursed Desert",
+    "slug": "accursed_desert",
+    "type": "site"
+  },
+  {
+    "name": "Accursed Tower",
+    "slug": "accursed_tower",
+    "type": "site"
+  },
+  {
+    "name": "Accusation",
+    "slug": "accusation",
+    "type": "magic"
+  },
+  {
+    "name": "Acid Rain",
+    "slug": "acid_rain",
+    "type": "aura"
+  },
+  {
+    "name": "Active Volcano",
+    "slug": "active_volcano",
+    "type": "site"
   },
   {
     "name": "Adept Illusionist",
-    "slug": "adept_illusionist_b_s",
+    "slug": "adept_illusionist",
     "type": "minion"
   },
   {
-    "name": "Albespine Pikemen",
-    "slug": "albespine_pikemen_b_s",
+    "name": "Adtonitum",
+    "slug": "adtonitum",
     "type": "minion"
   },
   {
-    "name": "All-terrain Vestments",
-    "slug": "all_terrain_vestments_b_s",
+    "name": "Aethermoeba",
+    "slug": "aethermoeba",
+    "type": "minion"
+  },
+  {
+    "name": "Aino",
+    "slug": "aino",
+    "type": "minion"
+  },
+  {
+    "name": "Alabaster Box",
+    "slug": "alabaster_box",
     "type": "artifact"
   },
   {
+    "name": "Albespine Pikemen",
+    "slug": "albespine_pikemen",
+    "type": "minion"
+  },
+  {
+    "name": "Algae Bloom",
+    "slug": "algae_bloom",
+    "type": "site"
+  },
+  {
+    "name": "Algor Omphalos",
+    "slug": "algor_omphalos",
+    "type": "artifact"
+  },
+  {
+    "name": "All Mortals Gone",
+    "slug": "all_mortals_gone",
+    "type": "magic"
+  },
+  {
+    "name": "All-terrain Vestments",
+    "slug": "all_terrain_vestments",
+    "type": "artifact"
+  },
+  {
+    "name": "Altar of Malachai",
+    "slug": "altar_of_malachai",
+    "type": "site"
+  },
+  {
+    "name": "Älvalinne Dryads",
+    "slug": "alvalinne_dryads",
+    "type": "minion"
+  },
+  {
     "name": "Amazon Warriors",
-    "slug": "amazon_warriors_b_s",
+    "slug": "amazon_warriors",
     "type": "minion"
   },
   {
     "name": "Amethyst Core",
-    "slug": "amethyst_core_b_s",
+    "slug": "amethyst_core",
     "type": "artifact"
   },
   {
     "name": "Amulet of Niniane",
-    "slug": "amulet_of_niniane_b_s",
+    "slug": "amulet_of_niniane",
     "type": "artifact"
   },
   {
     "name": "Ancient Dragon",
-    "slug": "ancient_dragon_b_s",
+    "slug": "ancient_dragon",
+    "type": "minion"
+  },
+  {
+    "name": "Angel Ascendant",
+    "slug": "angel_ascendant",
     "type": "minion"
   },
   {
     "name": "Angel's Egg",
-    "slug": "angels_egg_b_s",
+    "slug": "angels_egg",
     "type": "artifact"
   },
   {
+    "name": "Angry Mob",
+    "slug": "angry_mob",
+    "type": "minion"
+  },
+  {
+    "name": "Animist",
+    "slug": "animist",
+    "type": "avatar"
+  },
+  {
     "name": "Annual Fair",
-    "slug": "annual_fair_b_s",
+    "slug": "annual_fair",
     "type": "site"
   },
   {
     "name": "Anui Undine",
-    "slug": "anui_undine_b_s",
+    "slug": "anui_undine",
     "type": "minion"
   },
   {
+    "name": "Apostles of Thamariel",
+    "slug": "apostles_of_thamariel",
+    "type": "minion"
+  },
+  {
+    "name": "Apply Alkahest",
+    "slug": "apply_alkahest",
+    "type": "magic"
+  },
+  {
     "name": "Apprentice Wizard",
-    "slug": "apprentice_wizard_b_s",
+    "slug": "apprentice_wizard",
     "type": "minion"
   },
   {
     "name": "Aquamarine Core",
-    "slug": "aquamarine_core_b_s",
+    "slug": "aquamarine_core",
     "type": "artifact"
   },
   {
     "name": "Aqueduct",
-    "slug": "aqueduct_b_s",
+    "slug": "aqueduct",
     "type": "site"
   },
   {
     "name": "Aramos Mercenaries",
-    "slug": "aramos_mercenaries_b_s",
+    "slug": "aramos_mercenaries",
     "type": "minion"
   },
   {
     "name": "Arc Lightning",
-    "slug": "arc_lightning_b_s",
+    "slug": "arc_lightning",
     "type": "magic"
+  },
+  {
+    "name": "Arcade of Bones",
+    "slug": "arcade_of_bones",
+    "type": "artifact"
   },
   {
     "name": "Arcane Barrage",
-    "slug": "arcane_barrage_b_s",
+    "slug": "arcane_barrage",
     "type": "magic"
   },
   {
+    "name": "Archangel Gabriel",
+    "slug": "archangel_gabriel",
+    "type": "minion"
+  },
+  {
+    "name": "Archangel Michael",
+    "slug": "archangel_michael",
+    "type": "minion"
+  },
+  {
+    "name": "Archangel Raphael",
+    "slug": "archangel_raphael",
+    "type": "minion"
+  },
+  {
+    "name": "Archangel Samael",
+    "slug": "archangel_samael",
+    "type": "minion"
+  },
+  {
     "name": "Archimago",
-    "slug": "archimago_b_s",
+    "slug": "archimago",
     "type": "avatar"
   },
   {
     "name": "Arid Desert",
-    "slug": "arid_desert_b_s",
+    "slug": "arid_desert",
     "type": "site"
   },
   {
+    "name": "Arjaro Exorcist",
+    "slug": "arjaro_exorcist",
+    "type": "minion"
+  },
+  {
+    "name": "Armageddon",
+    "slug": "armageddon",
+    "type": "magic"
+  },
+  {
+    "name": "Army of the Dead",
+    "slug": "army_of_the_dead",
+    "type": "minion"
+  },
+  {
     "name": "Askelon Phoenix",
-    "slug": "askelon_phoenix_b_s",
+    "slug": "askelon_phoenix",
+    "type": "minion"
+  },
+  {
+    "name": "Asmodeus",
+    "slug": "asmodeus",
+    "type": "minion"
+  },
+  {
+    "name": "Assimilator Snail",
+    "slug": "assimilator_snail",
     "type": "minion"
   },
   {
     "name": "Assorted Animals",
-    "slug": "assorted_animals_b_s",
+    "slug": "assorted_animals",
     "type": "magic"
   },
   {
     "name": "Astral Alcazar",
-    "slug": "astral_alcazar_b_s",
+    "slug": "astral_alcazar",
     "type": "site"
   },
   {
     "name": "Atlantean Fate",
-    "slug": "atlantean_fate_b_s",
+    "slug": "atlantean_fate",
     "type": "aura"
   },
   {
     "name": "Atlas Wanderers",
-    "slug": "atlas_wanderers_b_s",
+    "slug": "atlas_wanderers",
     "type": "minion"
   },
   {
     "name": "Attack by Night",
-    "slug": "attack_by_night_b_s",
+    "slug": "attack_by_night",
     "type": "magic"
   },
   {
+    "name": "Autumn Bloom",
+    "slug": "autumn_bloom",
+    "type": "site"
+  },
+  {
     "name": "Autumn River",
-    "slug": "autumn_river_b_s",
+    "slug": "autumn_river",
     "type": "site"
   },
   {
     "name": "Autumn Unicorn",
-    "slug": "autumn_unicorn_b_s",
+    "slug": "autumn_unicorn",
     "type": "minion"
   },
   {
     "name": "Avalon",
-    "slug": "avalon_b_s",
+    "slug": "avalon",
     "type": "site"
   },
   {
     "name": "Avatar of Air",
-    "slug": "avatar_of_air_d_s",
+    "slug": "avatar_of_air",
     "type": "avatar"
   },
   {
     "name": "Avatar of Earth",
-    "slug": "avatar_of_earth_d_s",
+    "slug": "avatar_of_earth",
     "type": "avatar"
   },
   {
     "name": "Avatar of Fire",
-    "slug": "avatar_of_fire_d_s",
+    "slug": "avatar_of_fire",
     "type": "avatar"
   },
   {
     "name": "Avatar of Water",
-    "slug": "avatar_of_water_d_s",
+    "slug": "avatar_of_water",
     "type": "avatar"
   },
   {
+    "name": "Avenging Angel",
+    "slug": "avenging_angel",
+    "type": "minion"
+  },
+  {
     "name": "Awakened Mummies",
-    "slug": "awakened_mummies_b_s",
+    "slug": "awakened_mummies",
     "type": "minion"
   },
   {
     "name": "Azuridge Caravan",
-    "slug": "azuridge_caravan_b_s",
+    "slug": "azuridge_caravan",
     "type": "minion"
   },
   {
+    "name": "Baba Yaga's Hut",
+    "slug": "baba_yagas_hut",
+    "type": "site"
+  },
+  {
     "name": "Babbling Brook",
-    "slug": "babbling_brook_b_s",
+    "slug": "babbling_brook",
     "type": "site"
   },
   {
     "name": "Backstab",
-    "slug": "backstab_b_s",
+    "slug": "backstab",
     "type": "magic"
   },
   {
     "name": "Bailey",
-    "slug": "bailey_b_s",
+    "slug": "bailey",
     "type": "artifact"
   },
   {
     "name": "Ball Lightning",
-    "slug": "ball_lightning_b_s",
+    "slug": "ball_lightning",
     "type": "magic"
   },
   {
+    "name": "Balor of the Evil Eye",
+    "slug": "balor_of_the_evil_eye",
+    "type": "minion"
+  },
+  {
     "name": "Band of Thieves",
-    "slug": "band_of_thieves_b_s",
+    "slug": "band_of_thieves",
+    "type": "minion"
+  },
+  {
+    "name": "Bane of Aventis",
+    "slug": "bane_of_aventis",
     "type": "minion"
   },
   {
     "name": "Bane Widow",
-    "slug": "bane_widow_b_s",
+    "slug": "bane_widow",
+    "type": "minion"
+  },
+  {
+    "name": "Baptize",
+    "slug": "baptize",
+    "type": "magic"
+  },
+  {
+    "name": "Barging Barghest",
+    "slug": "barging_barghest",
+    "type": "minion"
+  },
+  {
+    "name": "Barrow Wight",
+    "slug": "barrow_wight",
     "type": "minion"
   },
   {
     "name": "Battering Ram",
-    "slug": "battering_ram_b_s",
+    "slug": "battering_ram",
     "type": "artifact"
   },
   {
     "name": "Battlefield",
-    "slug": "battlefield_b_s",
+    "slug": "battlefield",
     "type": "site"
   },
   {
     "name": "Battlemage",
-    "slug": "battlemage_b_s",
+    "slug": "battlemage",
     "type": "avatar"
   },
   {
     "name": "Beacon",
-    "slug": "beacon_b_s",
+    "slug": "beacon",
     "type": "site"
   },
   {
     "name": "Beast of Burden",
-    "slug": "beast_of_burden_b_s",
+    "slug": "beast_of_burden",
     "type": "minion"
   },
   {
     "name": "Bedrock",
-    "slug": "bedrock_b_s",
+    "slug": "bedrock",
     "type": "site"
   },
   {
+    "name": "Begone!",
+    "slug": "begone",
+    "type": "magic"
+  },
+  {
     "name": "Belfry",
-    "slug": "belfry_b_s",
+    "slug": "belfry",
     "type": "artifact"
   },
   {
     "name": "Belmotte Longbowmen",
-    "slug": "belmotte_longbowmen_b_s",
+    "slug": "belmotte_longbowmen",
+    "type": "minion"
+  },
+  {
+    "name": "Betrayal",
+    "slug": "betrayal",
+    "type": "magic"
+  },
+  {
+    "name": "Bind Evil",
+    "slug": "bind_evil",
+    "type": "magic"
+  },
+  {
+    "name": "Bitten",
+    "slug": "bitten",
+    "type": "minion"
+  },
+  {
+    "name": "Bitter Departed",
+    "slug": "bitter_departed",
+    "type": "minion"
+  },
+  {
+    "name": "Black Cat",
+    "slug": "black_cat",
     "type": "minion"
   },
   {
     "name": "Black Knight",
-    "slug": "black_knight_b_s",
+    "slug": "black_knight",
     "type": "minion"
   },
   {
+    "name": "Black Mass",
+    "slug": "black_mass",
+    "type": "magic"
+  },
+  {
     "name": "Black Obelisk",
-    "slug": "black_obelisk_b_s",
+    "slug": "black_obelisk",
     "type": "artifact"
   },
   {
     "name": "Blacksmith Family",
-    "slug": "blacksmith_family_b_s",
+    "slug": "blacksmith_family",
     "type": "minion"
   },
   {
+    "name": "Bladderblimp",
+    "slug": "bladderblimp",
+    "type": "minion"
+  },
+  {
+    "name": "Blade of Thorns",
+    "slug": "blade_of_thorns",
+    "type": "artifact"
+  },
+  {
+    "name": "Bladedancer",
+    "slug": "bladedancer",
+    "type": "avatar"
+  },
+  {
+    "name": "Blasphemy",
+    "slug": "blasphemy",
+    "type": "magic"
+  },
+  {
     "name": "Blasted Oak",
-    "slug": "blasted_oak_b_s",
+    "slug": "blasted_oak",
     "type": "artifact"
   },
   {
     "name": "Blaze",
-    "slug": "blaze_b_s",
+    "slug": "blaze",
     "type": "magic"
   },
   {
+    "name": "Blaze of Glory",
+    "slug": "blaze_of_glory",
+    "type": "magic"
+  },
+  {
+    "name": "Bleeding Skull",
+    "slug": "bleeding_skull",
+    "type": "artifact"
+  },
+  {
+    "name": "Bless",
+    "slug": "bless",
+    "type": "magic"
+  },
+  {
+    "name": "Blessed Village",
+    "slug": "blessed_village",
+    "type": "site"
+  },
+  {
+    "name": "Blessed Well",
+    "slug": "blessed_well",
+    "type": "site"
+  },
+  {
+    "name": "Blightstone",
+    "slug": "blightstone",
+    "type": "artifact"
+  },
+  {
     "name": "Blink",
-    "slug": "blink_b_s",
+    "slug": "blink",
     "type": "magic"
   },
   {
     "name": "Blizzard",
-    "slug": "blizzard_b_s",
+    "slug": "blizzard",
     "type": "aura"
   },
   {
+    "name": "Blood Mana",
+    "slug": "blood_mana",
+    "type": "magic"
+  },
+  {
     "name": "Blood Ravens",
-    "slug": "blood_ravens_b_s",
+    "slug": "blood_ravens",
     "type": "minion"
   },
   {
     "name": "Blue Knight",
-    "slug": "blue_knight_b_s",
+    "slug": "blue_knight",
     "type": "minion"
   },
   {
     "name": "Bluecap Knockers",
-    "slug": "bluecap_knockers_b_s",
+    "slug": "bluecap_knockers",
     "type": "minion"
   },
   {
     "name": "Blunderbore",
-    "slug": "blunderbore_b_s",
+    "slug": "blunderbore",
+    "type": "minion"
+  },
+  {
+    "name": "Bodach Bogeyman",
+    "slug": "bodach_bogeyman",
     "type": "minion"
   },
   {
     "name": "Bog",
-    "slug": "bog_b_s",
+    "slug": "bog",
     "type": "site"
   },
   {
     "name": "Boil",
-    "slug": "boil_b_s",
+    "slug": "boil",
     "type": "magic"
   },
   {
-    "name": "Bone Rabble",
-    "slug": "bone_rabble_b_s",
+    "name": "Bone Jumble",
+    "slug": "bone_jumble",
     "type": "minion"
   },
   {
+    "name": "Bone Rabble",
+    "slug": "bone_rabble",
+    "type": "minion"
+  },
+  {
+    "name": "Bone Spear",
+    "slug": "bone_spear",
+    "type": "magic"
+  },
+  {
     "name": "Boneyard",
-    "slug": "boneyard_b_s",
+    "slug": "boneyard",
     "type": "site"
   },
   {
     "name": "Bonfire",
-    "slug": "bonfire_b_s",
+    "slug": "bonfire",
     "type": "site"
   },
   {
+    "name": "Book Burners",
+    "slug": "book_burners",
+    "type": "minion"
+  },
+  {
+    "name": "Book of Blessings",
+    "slug": "book_of_blessings",
+    "type": "artifact"
+  },
+  {
+    "name": "Book of the Dead",
+    "slug": "book_of_the_dead",
+    "type": "artifact"
+  },
+  {
     "name": "Border Militia",
-    "slug": "border_militia_b_s",
+    "slug": "border_militia",
     "type": "magic"
   },
   {
     "name": "Bosk Troll",
-    "slug": "bosk_troll_b_s",
+    "slug": "bosk_troll",
     "type": "minion"
   },
   {
     "name": "Bottomless Pit",
-    "slug": "bottomless_pit_b_s",
+    "slug": "bottomless_pit",
     "type": "site"
   },
   {
     "name": "Boudicca",
-    "slug": "boudicca_b_s",
+    "slug": "boudicca",
+    "type": "minion"
+  },
+  {
+    "name": "Boulevard of Bones",
+    "slug": "boulevard_of_bones",
+    "type": "site"
+  },
+  {
+    "name": "Bound Spirit",
+    "slug": "bound_spirit",
     "type": "minion"
   },
   {
     "name": "Bower of Bliss",
-    "slug": "bower_of_bliss_b_s",
+    "slug": "bower_of_bliss",
     "type": "site"
   },
   {
     "name": "Briar Patch",
-    "slug": "briar_patch_b_s",
+    "slug": "briar_patch",
     "type": "site"
   },
   {
     "name": "Bridge Troll",
-    "slug": "bridge_troll_b_s",
+    "slug": "bridge_troll",
     "type": "minion"
   },
   {
     "name": "Brobdingnag Bullfrog",
-    "slug": "brobdingnag_bullfrog_b_s",
+    "slug": "brobdingnag_bullfrog",
     "type": "minion"
   },
   {
     "name": "Brocéliande",
-    "slug": "broceliande_b_s",
+    "slug": "broceliande",
     "type": "site"
   },
   {
+    "name": "Broomstick Witch",
+    "slug": "broomstick_witch",
+    "type": "minion"
+  },
+  {
     "name": "Brother Knight",
-    "slug": "brother_knight_b_s",
+    "slug": "brother_knight",
     "type": "minion"
   },
   {
     "name": "Brown Bears",
-    "slug": "brown_bears_b_s",
+    "slug": "brown_bears",
     "type": "minion"
   },
   {
     "name": "Browse",
-    "slug": "browse_b_s",
+    "slug": "browse",
     "type": "magic"
   },
   {
-    "name": "Bull Demons of Adum",
-    "slug": "bull_demons_of_adum_b_s",
+    "name": "Bruin",
+    "slug": "bruin",
     "type": "minion"
   },
   {
+    "name": "Bull Demons of Adum",
+    "slug": "bull_demons_of_adum",
+    "type": "minion"
+  },
+  {
+    "name": "Bull Whip",
+    "slug": "bull_whip",
+    "type": "artifact"
+  },
+  {
+    "name": "Bureau of Occult Control",
+    "slug": "bureau_of_occult_control",
+    "type": "site"
+  },
+  {
+    "name": "Buried Alive",
+    "slug": "buried_alive",
+    "type": "magic"
+  },
+  {
     "name": "Buried Treasure",
-    "slug": "buried_treasure_b_s",
+    "slug": "buried_treasure",
     "type": "artifact"
   },
   {
     "name": "Burning Hands",
-    "slug": "burning_hands_b_s",
+    "slug": "burning_hands",
     "type": "magic"
   },
   {
     "name": "Bury",
-    "slug": "bury_b_s",
+    "slug": "bury",
     "type": "magic"
   },
   {
+    "name": "Caelestis",
+    "slug": "caelestis",
+    "type": "minion"
+  },
+  {
     "name": "Caerleon-Upon-Usk",
-    "slug": "caerleon_upon_usk_b_s",
+    "slug": "caerleon_upon_usk",
     "type": "site"
   },
   {
+    "name": "Cage of Sidrak",
+    "slug": "cage_of_sidrak",
+    "type": "artifact"
+  },
+  {
+    "name": "Call of the Sea",
+    "slug": "call_of_the_sea",
+    "type": "magic"
+  },
+  {
     "name": "Call to War",
-    "slug": "call_to_war_b_s",
+    "slug": "call_to_war",
     "type": "magic"
   },
   {
     "name": "Camelot",
-    "slug": "camelot_b_s",
+    "slug": "camelot",
     "type": "site"
   },
   {
     "name": "Candlemas Monks",
-    "slug": "candlemas_monks_b_s",
+    "slug": "candlemas_monks",
     "type": "minion"
   },
   {
     "name": "Captain Baldassare",
-    "slug": "captain_baldassare_b_s",
+    "slug": "captain_baldassare",
     "type": "minion"
   },
   {
+    "name": "Carrion Beetles",
+    "slug": "carrion_beetles",
+    "type": "minion"
+  },
+  {
+    "name": "Carrionette",
+    "slug": "carrionette",
+    "type": "magic"
+  },
+  {
     "name": "Cast into Exile",
-    "slug": "cast_into_exile_b_s",
+    "slug": "cast_into_exile",
     "type": "magic"
   },
   {
     "name": "Castle Haunt",
-    "slug": "castle_haunt_b_s",
+    "slug": "castle_haunt",
     "type": "minion"
   },
   {
     "name": "Castle Servants",
-    "slug": "castle_servants_b_s",
+    "slug": "castle_servants",
     "type": "minion"
   },
   {
     "name": "Castle's Ablaze!",
-    "slug": "castles_ablaze_b_s",
+    "slug": "castles_ablaze",
     "type": "aura"
   },
   {
     "name": "Cauldron Crones",
-    "slug": "cauldron_crones_b_s",
+    "slug": "cauldron_crones",
     "type": "minion"
   },
   {
     "name": "Cave Trolls",
-    "slug": "cave_trolls_b_s",
+    "slug": "cave_trolls",
     "type": "minion"
   },
   {
     "name": "Cave-In",
-    "slug": "cave_in_b_s",
+    "slug": "cave_in",
     "type": "magic"
   },
   {
+    "name": "Cemetery Rats",
+    "slug": "cemetery_rats",
+    "type": "minion"
+  },
+  {
     "name": "Cerberus in Chains",
-    "slug": "cerberus_in_chains_b_s",
+    "slug": "cerberus_in_chains",
     "type": "minion"
   },
   {
     "name": "Chain Lightning",
-    "slug": "chain_lightning_b_s",
+    "slug": "chain_lightning",
     "type": "magic"
   },
   {
     "name": "Chains of Prometheus",
-    "slug": "chains_of_prometheus_b_s",
+    "slug": "chains_of_prometheus",
     "type": "artifact"
   },
   {
     "name": "Chaos Twister",
-    "slug": "chaos_twister_b_s",
+    "slug": "chaos_twister",
     "type": "magic"
+  },
+  {
+    "name": "Chaoswish",
+    "slug": "chaoswish",
+    "type": "magic"
+  },
+  {
+    "name": "Char Omphalos",
+    "slug": "char_omphalos",
+    "type": "artifact"
   },
   {
     "name": "Charge",
-    "slug": "charge_b_s",
+    "slug": "charge",
     "type": "magic"
   },
   {
-    "name": "Clamor of Harpies",
-    "slug": "clamor_of_harpies_b_s",
+    "name": "Cherubim",
+    "slug": "cherubim",
     "type": "minion"
   },
   {
+    "name": "Chorus of Condemnation",
+    "slug": "chorus_of_condemnation",
+    "type": "magic"
+  },
+  {
+    "name": "City of Glass",
+    "slug": "city_of_glass",
+    "type": "site"
+  },
+  {
+    "name": "City of Plenty",
+    "slug": "city_of_plenty",
+    "type": "site"
+  },
+  {
+    "name": "City of Souls",
+    "slug": "city_of_souls",
+    "type": "site"
+  },
+  {
+    "name": "City of Traitors",
+    "slug": "city_of_traitors",
+    "type": "site"
+  },
+  {
+    "name": "Clairvoyant",
+    "slug": "clairvoyant",
+    "type": "minion"
+  },
+  {
+    "name": "Clamor of Harpies",
+    "slug": "clamor_of_harpies",
+    "type": "minion"
+  },
+  {
+    "name": "Clay Golem",
+    "slug": "clay_golem",
+    "type": "artifact"
+  },
+  {
     "name": "Cloud City",
-    "slug": "cloud_city_b_s",
+    "slug": "cloud_city",
     "type": "site"
   },
   {
     "name": "Cloud Spirit",
-    "slug": "cloud_spirit_b_s",
+    "slug": "cloud_spirit",
     "type": "minion"
   },
   {
     "name": "Cold Iron Rod",
-    "slug": "cold_iron_rod_b_s",
+    "slug": "cold_iron_rod",
     "type": "artifact"
   },
   {
     "name": "Colicky Dragonettes",
-    "slug": "colicky_dragonettes_b_s",
+    "slug": "colicky_dragonettes",
     "type": "minion"
   },
   {
     "name": "Common Cottagers",
-    "slug": "common_cottagers_b_s",
+    "slug": "common_cottagers",
     "type": "minion"
   },
   {
     "name": "Common Sense",
-    "slug": "common_sense_b_s",
+    "slug": "common_sense",
     "type": "magic"
   },
   {
     "name": "Common Village",
-    "slug": "common_village_b_s",
+    "slug": "common_village",
     "type": "site"
   },
   {
     "name": "Cone of Flame",
-    "slug": "cone_of_flame_b_s",
+    "slug": "cone_of_flame",
     "type": "magic"
   },
   {
     "name": "Conqueror Worm",
-    "slug": "conqueror_worm_b_s",
+    "slug": "conqueror_worm",
     "type": "minion"
   },
   {
+    "name": "Consecrate",
+    "slug": "consecrate",
+    "type": "magic"
+  },
+  {
+    "name": "Consecrated Ground",
+    "slug": "consecrated_ground",
+    "type": "site"
+  },
+  {
     "name": "Coral-Reef Kelpie",
-    "slug": "coral_reef_kelpie_b_s",
+    "slug": "coral_reef_kelpie",
     "type": "minion"
   },
   {
     "name": "Cornerstone",
-    "slug": "cornerstone_b_s",
+    "slug": "cornerstone",
     "type": "site"
   },
   {
+    "name": "Corpse Catapult",
+    "slug": "corpse_catapult",
+    "type": "artifact"
+  },
+  {
+    "name": "Corpse Explosion",
+    "slug": "corpse_explosion",
+    "type": "magic"
+  },
+  {
+    "name": "Corruptor",
+    "slug": "corruptor",
+    "type": "avatar"
+  },
+  {
+    "name": "Corruptor Freak",
+    "slug": "corruptor_freak",
+    "type": "minion"
+  },
+  {
     "name": "Court Jester",
-    "slug": "court_jester_b_s",
+    "slug": "court_jester",
     "type": "minion"
   },
   {
     "name": "Courtesan Thaïs",
-    "slug": "courtesan_thais_b_s",
+    "slug": "courtesan_thais",
     "type": "minion"
   },
   {
     "name": "Coy Nixie",
-    "slug": "coy_nixie_b_s",
+    "slug": "coy_nixie",
+    "type": "minion"
+  },
+  {
+    "name": "Cradle of Etherrum",
+    "slug": "cradle_of_etherrum",
+    "type": "artifact"
+  },
+  {
+    "name": "Cranky Overseer",
+    "slug": "cranky_overseer",
     "type": "minion"
   },
   {
     "name": "Craterize",
-    "slug": "craterize_b_s",
+    "slug": "craterize",
     "type": "magic"
   },
   {
     "name": "Crave Golem",
-    "slug": "crave_golem_b_s",
+    "slug": "crave_golem",
     "type": "artifact"
   },
   {
-    "name": "Critical Strike",
-    "slug": "critical_strike_b_s",
-    "type": "magic"
-  },
-  {
-    "name": "Crossroads",
-    "slug": "crossroads_b_s",
-    "type": "site"
-  },
-  {
-    "name": "Crown Prince",
-    "slug": "crown_prince_b_s",
+    "name": "Crawler",
+    "slug": "crawler",
     "type": "minion"
   },
   {
+    "name": "Crawling Congregation",
+    "slug": "crawling_congregation",
+    "type": "minion"
+  },
+  {
+    "name": "Critical Strike",
+    "slug": "critical_strike",
+    "type": "magic"
+  },
+  {
+    "name": "Croaking Swamp",
+    "slug": "croaking_swamp",
+    "type": "site"
+  },
+  {
+    "name": "Croll Morlocks",
+    "slug": "croll_morlocks",
+    "type": "minion"
+  },
+  {
+    "name": "Crossroads",
+    "slug": "crossroads",
+    "type": "site"
+  },
+  {
     "name": "Crown of the Victor",
-    "slug": "crown_of_the_victor_b_s",
+    "slug": "crown_of_the_victor",
+    "type": "artifact"
+  },
+  {
+    "name": "Crown Prince",
+    "slug": "crown_prince",
+    "type": "minion"
+  },
+  {
+    "name": "Crucifix",
+    "slug": "crucifix",
     "type": "artifact"
   },
   {
     "name": "Crusade",
-    "slug": "crusade_b_s",
+    "slug": "crusade",
+    "type": "aura"
+  },
+  {
+    "name": "Cursed Iron",
+    "slug": "cursed_iron",
     "type": "aura"
   },
   {
     "name": "Cursed Land",
-    "slug": "cursed_land_b_s",
+    "slug": "cursed_land",
     "type": "site"
   },
   {
     "name": "Dalcean Phalanx",
-    "slug": "dalcean_phalanx_b_s",
+    "slug": "dalcean_phalanx",
     "type": "minion"
   },
   {
     "name": "Dame Britomart",
-    "slug": "dame_britomart_b_s",
+    "slug": "dame_britomart",
     "type": "minion"
+  },
+  {
+    "name": "Dank Omphalos",
+    "slug": "dank_omphalos",
+    "type": "artifact"
   },
   {
     "name": "Daperyll Vampire",
-    "slug": "daperyll_vampire_b_s",
+    "slug": "daperyll_vampire",
     "type": "minion"
   },
   {
-    "name": "Dark Tower",
-    "slug": "dark_tower_b_s",
+    "name": "Dark Alley",
+    "slug": "dark_alley",
     "type": "site"
   },
   {
+    "name": "Dark Tower",
+    "slug": "dark_tower",
+    "type": "site"
+  },
+  {
+    "name": "Darkest Dungeon",
+    "slug": "darkest_dungeon",
+    "type": "site"
+  },
+  {
+    "name": "Day of Judgment",
+    "slug": "day_of_judgment",
+    "type": "magic"
+  },
+  {
+    "name": "De Vermis Mysteriis",
+    "slug": "de_vermis_mysteriis",
+    "type": "artifact"
+  },
+  {
     "name": "Dead of Night Demon",
-    "slug": "dead_of_night_demon_b_s",
+    "slug": "dead_of_night_demon",
     "type": "minion"
   },
   {
     "name": "Death Dealer",
-    "slug": "death_dealer_b_s",
+    "slug": "death_dealer",
+    "type": "minion"
+  },
+  {
+    "name": "Death Knight",
+    "slug": "death_knight",
     "type": "minion"
   },
   {
     "name": "Deathspeaker",
-    "slug": "deathspeaker_b_s",
+    "slug": "deathspeaker",
     "type": "avatar"
   },
   {
+    "name": "Deathwish",
+    "slug": "deathwish",
+    "type": "magic"
+  },
+  {
+    "name": "Deep Sea",
+    "slug": "deep_sea",
+    "type": "site"
+  },
+  {
     "name": "Deep-Sea Mermaids",
-    "slug": "deep_sea_mermaids_b_s",
+    "slug": "deep_sea_mermaids",
     "type": "minion"
   },
   {
+    "name": "Defiler Spire",
+    "slug": "defiler_spire",
+    "type": "site"
+  },
+  {
     "name": "Degradation",
-    "slug": "degradation_b_s",
+    "slug": "degradation",
+    "type": "magic"
+  },
+  {
+    "name": "Deliverance",
+    "slug": "deliverance",
+    "type": "magic"
+  },
+  {
+    "name": "Demon Hunter",
+    "slug": "demon_hunter",
+    "type": "minion"
+  },
+  {
+    "name": "Demonic Contract",
+    "slug": "demonic_contract",
+    "type": "magic"
+  },
+  {
+    "name": "Den of Evil",
+    "slug": "den_of_evil",
+    "type": "site"
+  },
+  {
+    "name": "Desecrate",
+    "slug": "desecrate",
+    "type": "magic"
+  },
+  {
+    "name": "Desecrated Ground",
+    "slug": "desecrated_ground",
+    "type": "site"
+  },
+  {
+    "name": "Desecrator Kite",
+    "slug": "desecrator_kite",
+    "type": "minion"
+  },
+  {
+    "name": "Desert Bloom",
+    "slug": "desert_bloom",
+    "type": "site"
+  },
+  {
+    "name": "Detonate",
+    "slug": "detonate",
     "type": "magic"
   },
   {
     "name": "Devil's Egg",
-    "slug": "devils_egg_b_s",
+    "slug": "devils_egg",
     "type": "artifact"
   },
   {
+    "name": "Dhol Chants",
+    "slug": "dhol_chants",
+    "type": "magic"
+  },
+  {
     "name": "Diluvian Kraken",
-    "slug": "diluvian_kraken_b_s",
+    "slug": "diluvian_kraken",
     "type": "minion"
   },
   {
     "name": "Dirium Fomorians",
-    "slug": "dirium_fomorians_b_s",
+    "slug": "dirium_fomorians",
     "type": "minion"
   },
   {
     "name": "Disenchant",
-    "slug": "disenchant_b_s",
+    "slug": "disenchant",
     "type": "magic"
   },
   {
     "name": "Disintegrate",
-    "slug": "disintegrate_b_s",
+    "slug": "disintegrate",
     "type": "magic"
   },
   {
     "name": "Dispel",
-    "slug": "dispel_b_s",
+    "slug": "dispel",
+    "type": "magic"
+  },
+  {
+    "name": "Displace",
+    "slug": "displace",
     "type": "magic"
   },
   {
     "name": "Divine Healing",
-    "slug": "divine_healing_b_s",
+    "slug": "divine_healing",
     "type": "magic"
   },
   {
+    "name": "Divine Intervention",
+    "slug": "divine_intervention",
+    "type": "magic"
+  },
+  {
+    "name": "Divine Lance",
+    "slug": "divine_lance",
+    "type": "magic"
+  },
+  {
+    "name": "Doctor Demetrius",
+    "slug": "doctor_demetrius",
+    "type": "minion"
+  },
+  {
     "name": "Dodge Roll",
-    "slug": "dodge_roll_b_s",
+    "slug": "dodge_roll",
     "type": "magic"
   },
   {
     "name": "Dome of Osiros",
-    "slug": "dome_of_osiros_b_s",
+    "slug": "dome_of_osiros",
     "type": "site"
   },
   {
     "name": "Donnybrook Inn",
-    "slug": "donnybrook_inn_b_s",
+    "slug": "donnybrook_inn",
     "type": "site"
   },
   {
+    "name": "Doomsday Cult",
+    "slug": "doomsday_cult",
+    "type": "minion"
+  },
+  {
     "name": "Doomsday Device",
-    "slug": "doomsday_device_b_s",
+    "slug": "doomsday_device",
     "type": "artifact"
   },
   {
     "name": "Doomsday Prophet",
-    "slug": "doomsday_prophet_b_s",
+    "slug": "doomsday_prophet",
+    "type": "minion"
+  },
+  {
+    "name": "Dormant Monstrosity",
+    "slug": "dormant_monstrosity",
     "type": "minion"
   },
   {
     "name": "Dozmary Pool",
-    "slug": "dozmary_pool_b_s",
+    "slug": "dozmary_pool",
     "type": "site"
   },
   {
+    "name": "Draco Corvus",
+    "slug": "draco_corvus",
+    "type": "minion"
+  },
+  {
+    "name": "Draconian Bonekite",
+    "slug": "draconian_bonekite",
+    "type": "minion"
+  },
+  {
+    "name": "Dragonlord",
+    "slug": "dragonlord",
+    "type": "avatar"
+  },
+  {
+    "name": "Dragonlord's Lair",
+    "slug": "dragonlords_lair",
+    "type": "site"
+  },
+  {
+    "name": "Dread Thicket",
+    "slug": "dread_thicket",
+    "type": "site"
+  },
+  {
+    "name": "Dreadwing",
+    "slug": "dreadwing",
+    "type": "minion"
+  },
+  {
     "name": "Dream-Quest",
-    "slug": "dream_quest_b_s",
+    "slug": "dream_quest",
     "type": "magic"
   },
   {
+    "name": "Dredge",
+    "slug": "dredge",
+    "type": "magic"
+  },
+  {
+    "name": "Driftwood Marrows",
+    "slug": "driftwood_marrows",
+    "type": "artifact"
+  },
+  {
     "name": "Drought",
-    "slug": "drought_b_s",
+    "slug": "drought",
     "type": "aura"
   },
   {
     "name": "Drown",
-    "slug": "drown_b_s",
+    "slug": "drown",
     "type": "magic"
   },
   {
+    "name": "Drowned",
+    "slug": "drowned",
+    "type": "minion"
+  },
+  {
     "name": "Druid",
-    "slug": "druid_bt_s",
+    "slug": "druid",
     "type": "avatar"
   },
   {
     "name": "Drums of Doom",
-    "slug": "drums_of_doom_b_s",
+    "slug": "drums_of_doom",
     "type": "artifact"
   },
   {
     "name": "Duel",
-    "slug": "duel_b_s",
+    "slug": "duel",
     "type": "magic"
   },
   {
+    "name": "Duplicator",
+    "slug": "duplicator",
+    "type": "avatar"
+  },
+  {
     "name": "Dwarven Digging Team",
-    "slug": "dwarven_digging_team_b_s",
+    "slug": "dwarven_digging_team",
     "type": "minion"
   },
   {
     "name": "Dwarven Forge",
-    "slug": "dwarven_forge_b_s",
+    "slug": "dwarven_forge",
     "type": "site"
   },
   {
+    "name": "Earl of the Ivory Towers",
+    "slug": "earl_of_the_ivory_towers",
+    "type": "minion"
+  },
+  {
     "name": "Earthquake",
-    "slug": "earthquake_b_s",
+    "slug": "earthquake",
     "type": "magic"
   },
   {
     "name": "East-West Dragon",
-    "slug": "east_west_dragon_b_s",
+    "slug": "east_west_dragon",
     "type": "minion"
   },
   {
+    "name": "Eclipse",
+    "slug": "eclipse",
+    "type": "aura"
+  },
+  {
     "name": "Edge of the World",
-    "slug": "edge_of_the_world_b_s",
+    "slug": "edge_of_the_world",
+    "type": "site"
+  },
+  {
+    "name": "Eerie Coral",
+    "slug": "eerie_coral",
+    "type": "artifact"
+  },
+  {
+    "name": "Elder Ruins",
+    "slug": "elder_ruins",
     "type": "site"
   },
   {
     "name": "Elementalist",
-    "slug": "elementalist_b_s",
+    "slug": "elementalist",
     "type": "avatar"
   },
   {
-    "name": "Enchantress",
-    "slug": "enchantress_b_s",
-    "type": "avatar"
-  },
-  {
-    "name": "Entangle Terrain",
-    "slug": "entangle_terrain_b_s",
-    "type": "aura"
-  },
-  {
-    "name": "Erik's Curiosa",
-    "slug": "eriks_curiosa_b_s",
-    "type": "artifact"
-  },
-  {
-    "name": "Escyllion Cyclops",
-    "slug": "escyllion_cyclops_b_s",
+    "name": "Eltham Townsfolk",
+    "slug": "eltham_townsfolk",
     "type": "minion"
   },
   {
-    "name": "Evil Presence",
-    "slug": "evil_presence_b_s",
+    "name": "Enchantress",
+    "slug": "enchantress",
+    "type": "avatar"
+  },
+  {
+    "name": "Endless Fence",
+    "slug": "endless_fence",
+    "type": "site"
+  },
+  {
+    "name": "Enduring Faith",
+    "slug": "enduring_faith",
+    "type": "magic"
+  },
+  {
+    "name": "Enraged Familiar",
+    "slug": "enraged_familiar",
+    "type": "minion"
+  },
+  {
+    "name": "Entangle Terrain",
+    "slug": "entangle_terrain",
     "type": "aura"
   },
   {
-    "name": "Excalibur",
-    "slug": "excalibur_b_s",
+    "name": "Entombed",
+    "slug": "entombed",
+    "type": "minion"
+  },
+  {
+    "name": "Erik's Curiosa",
+    "slug": "eriks_curiosa",
     "type": "artifact"
   },
   {
+    "name": "Ersatz Platz",
+    "slug": "ersatz_platz",
+    "type": "site"
+  },
+  {
+    "name": "Escyllion Cyclops",
+    "slug": "escyllion_cyclops",
+    "type": "minion"
+  },
+  {
+    "name": "Estranged Loner",
+    "slug": "estranged_loner",
+    "type": "minion"
+  },
+  {
+    "name": "Ether Core",
+    "slug": "ether_core",
+    "type": "artifact"
+  },
+  {
+    "name": "Evil Presence",
+    "slug": "evil_presence",
+    "type": "aura"
+  },
+  {
+    "name": "Evil Twin",
+    "slug": "evil_twin",
+    "type": "minion"
+  },
+  {
+    "name": "Excalibur",
+    "slug": "excalibur",
+    "type": "artifact"
+  },
+  {
+    "name": "Exhume",
+    "slug": "exhume",
+    "type": "magic"
+  },
+  {
     "name": "Exorcism",
-    "slug": "exorcism_b_s",
+    "slug": "exorcism",
     "type": "magic"
   },
   {
     "name": "Extinguish",
-    "slug": "extinguish_b_s",
+    "slug": "extinguish",
     "type": "magic"
   },
   {
     "name": "Fade",
-    "slug": "fade_b_s",
+    "slug": "fade",
     "type": "magic"
   },
   {
     "name": "Fae City",
-    "slug": "fae_city_b_s",
+    "slug": "fae_city",
     "type": "site"
   },
   {
     "name": "Fail-not Bow",
-    "slug": "fail_not_bow_b_s",
+    "slug": "fail_not_bow",
+    "type": "artifact"
+  },
+  {
+    "name": "Failed Mutation",
+    "slug": "failed_mutation",
+    "type": "minion"
+  },
+  {
+    "name": "Faith Incarnate",
+    "slug": "faith_incarnate",
+    "type": "minion"
+  },
+  {
+    "name": "Fallen Angel",
+    "slug": "fallen_angel",
+    "type": "minion"
+  },
+  {
+    "name": "Falling Star",
+    "slug": "falling_star",
+    "type": "aura"
+  },
+  {
+    "name": "False Idol",
+    "slug": "false_idol",
     "type": "artifact"
   },
   {
     "name": "Far East Assassin",
-    "slug": "far_east_assassin_b_s",
+    "slug": "far_east_assassin",
     "type": "minion"
   },
   {
+    "name": "Fatality",
+    "slug": "fatality",
+    "type": "magic"
+  },
+  {
     "name": "Feast for Crows",
-    "slug": "feast_for_crows_b_s",
+    "slug": "feast_for_crows",
+    "type": "magic"
+  },
+  {
+    "name": "Feign Death",
+    "slug": "feign_death",
     "type": "magic"
   },
   {
     "name": "Felbog Frog Men",
-    "slug": "felbog_frog_men_b_s",
+    "slug": "felbog_frog_men",
     "type": "minion"
   },
   {
     "name": "Fenvale Muse",
-    "slug": "fenvale_muse_b_s",
+    "slug": "fenvale_muse",
     "type": "minion"
   },
   {
+    "name": "Ferryman's Coin",
+    "slug": "ferrymans_coin",
+    "type": "artifact"
+  },
+  {
+    "name": "Fertile Earth",
+    "slug": "fertile_earth",
+    "type": "site"
+  },
+  {
     "name": "Fey Changeling",
-    "slug": "fey_changeling_b_s",
+    "slug": "fey_changeling",
     "type": "minion"
   },
   {
     "name": "Field Laborers",
-    "slug": "field_laborers_b_s",
+    "slug": "field_laborers",
     "type": "minion"
   },
   {
     "name": "Fields of Camlann",
-    "slug": "fields_of_camlann_b_s",
+    "slug": "fields_of_camlann",
+    "type": "site"
+  },
+  {
+    "name": "Fields of Phyxis",
+    "slug": "fields_of_phyxis",
     "type": "site"
   },
   {
     "name": "Fine Courser",
-    "slug": "fine_courser_b_s",
+    "slug": "fine_courser",
     "type": "minion"
   },
   {
     "name": "Finwife",
-    "slug": "finwife_b_s",
+    "slug": "finwife",
     "type": "minion"
   },
   {
     "name": "Fire Harpoons!",
-    "slug": "fire_harpoons_b_s",
+    "slug": "fire_harpoons",
     "type": "magic"
   },
   {
     "name": "Fireball",
-    "slug": "fireball_b_s",
+    "slug": "fireball",
     "type": "magic"
   },
   {
     "name": "Firebolts",
-    "slug": "firebolts_b_s",
+    "slug": "firebolts",
     "type": "magic"
   },
   {
     "name": "Firebreathing",
-    "slug": "firebreathing_b_s",
+    "slug": "firebreathing",
     "type": "magic"
   },
   {
     "name": "Fisherman's Family",
-    "slug": "fishermans_family_b_s",
+    "slug": "fishermans_family",
     "type": "minion"
   },
   {
+    "name": "Flagellant",
+    "slug": "flagellant",
+    "type": "minion"
+  },
+  {
+    "name": "Flame of the First Ones",
+    "slug": "flame_of_the_first_ones",
+    "type": "artifact"
+  },
+  {
+    "name": "Flame Strike",
+    "slug": "flame_strike",
+    "type": "magic"
+  },
+  {
     "name": "Flame Wave",
-    "slug": "flame_wave_b_s",
+    "slug": "flame_wave",
     "type": "magic"
   },
   {
     "name": "Flamecaller",
-    "slug": "flamecaller_b_s",
+    "slug": "flamecaller",
     "type": "avatar"
   },
   {
+    "name": "Flaming Skull",
+    "slug": "flaming_skull",
+    "type": "minion"
+  },
+  {
     "name": "Flaming Sword",
-    "slug": "flaming_sword_b_s",
+    "slug": "flaming_sword",
     "type": "artifact"
   },
   {
     "name": "Flanking Maneuver",
-    "slug": "flanking_maneuver_b_s",
+    "slug": "flanking_maneuver",
     "type": "magic"
   },
   {
+    "name": "Flayer",
+    "slug": "flayer",
+    "type": "minion"
+  },
+  {
     "name": "Flood",
-    "slug": "flood_b_s",
+    "slug": "flood",
     "type": "aura"
   },
   {
     "name": "Floodplain",
-    "slug": "floodplain_b_s",
+    "slug": "floodplain",
     "type": "site"
   },
   {
     "name": "Font of Life",
-    "slug": "font_of_life_b_s",
+    "slug": "font_of_life",
     "type": "magic"
   },
   {
+    "name": "Foot Soldier (English)",
+    "slug": "foot_soldier_english",
+    "type": "minion"
+  },
+  {
+    "name": "Foot Soldier (Saracen)",
+    "slug": "foot_soldier_saracen",
+    "type": "minion"
+  },
+  {
+    "name": "Foot Soldier 1",
+    "slug": "foot_soldier_1",
+    "type": "minion"
+  },
+  {
+    "name": "Foot Soldier 2",
+    "slug": "foot_soldier_2",
+    "type": "minion"
+  },
+  {
+    "name": "Foot Soldier 3",
+    "slug": "foot_soldier_3",
+    "type": "minion"
+  },
+  {
+    "name": "Foot Soldiers",
+    "slug": "foot_soldiers",
+    "type": "minion"
+  },
+  {
     "name": "Forge",
-    "slug": "forge_b_s",
+    "slug": "forge",
     "type": "site"
   },
   {
+    "name": "Forgotten Tomb",
+    "slug": "forgotten_tomb",
+    "type": "site"
+  },
+  {
+    "name": "Forlorn Keep",
+    "slug": "forlorn_keep",
+    "type": "site"
+  },
+  {
+    "name": "Forsaken",
+    "slug": "forsaken",
+    "type": "minion"
+  },
+  {
+    "name": "Forsaken Crypt",
+    "slug": "forsaken_crypt",
+    "type": "site"
+  },
+  {
+    "name": "Four Fat Frogs",
+    "slug": "four_fat_frogs",
+    "type": "magic"
+  },
+  {
     "name": "Four Waters of Paradise",
-    "slug": "four_waters_of_paradise_b_s",
+    "slug": "four_waters_of_paradise",
     "type": "artifact"
   },
   {
     "name": "Fourberie Knot",
-    "slug": "fourberie_knot_b_s",
+    "slug": "fourberie_knot",
     "type": "artifact"
   },
   {
+    "name": "Fowl Bones",
+    "slug": "fowl_bones",
+    "type": "minion"
+  },
+  {
     "name": "Free City",
-    "slug": "free_city_b_s",
+    "slug": "free_city",
     "type": "site"
   },
   {
+    "name": "Freeze",
+    "slug": "freeze",
+    "type": "magic"
+  },
+  {
     "name": "Frisky Red Squirrel",
-    "slug": "frisky_red_squirrel_b_s",
+    "slug": "frisky_red_squirrel",
+    "type": "minion"
+  },
+  {
+    "name": "Frog",
+    "slug": "frog",
+    "type": "minion"
+  },
+  {
+    "name": "Frog (Blue)",
+    "slug": "frog_blue",
+    "type": "minion"
+  },
+  {
+    "name": "Frog (Green)",
+    "slug": "frog_green",
+    "type": "minion"
+  },
+  {
+    "name": "Frog (Red)",
+    "slug": "frog_red",
     "type": "minion"
   },
   {
     "name": "Frontier Settlers",
-    "slug": "frontier_settlers_b_s",
+    "slug": "frontier_settlers",
     "type": "minion"
   },
   {
     "name": "Frost Nova",
-    "slug": "frost_nova_b_s",
+    "slug": "frost_nova",
     "type": "magic"
   },
   {
+    "name": "Frozen Horror",
+    "slug": "frozen_horror",
+    "type": "minion"
+  },
+  {
     "name": "Funeral Pyre",
-    "slug": "funeral_pyre_b_s",
+    "slug": "funeral_pyre",
     "type": "site"
   },
   {
+    "name": "Garden of Eden",
+    "slug": "garden_of_eden",
+    "type": "site"
+  },
+  {
+    "name": "Gargantula",
+    "slug": "gargantula",
+    "type": "minion"
+  },
+  {
     "name": "Geomancer",
-    "slug": "geomancer_b_s",
+    "slug": "geomancer",
     "type": "avatar"
   },
   {
     "name": "Geyser",
-    "slug": "geyser_b_s",
+    "slug": "geyser",
     "type": "magic"
   },
   {
     "name": "Ghost Ship",
-    "slug": "ghost_ship_b_s",
+    "slug": "ghost_ship",
+    "type": "minion"
+  },
+  {
+    "name": "Ghost Town",
+    "slug": "ghost_town",
+    "type": "site"
+  },
+  {
+    "name": "Ghostfire",
+    "slug": "ghostfire",
+    "type": "magic"
+  },
+  {
+    "name": "Ghoul",
+    "slug": "ghoul",
     "type": "minion"
   },
   {
     "name": "Giant Killer",
-    "slug": "giant_killer_b_s",
+    "slug": "giant_killer",
     "type": "minion"
   },
   {
     "name": "Giant Shark",
-    "slug": "giant_shark_b_s",
+    "slug": "giant_shark",
     "type": "minion"
   },
   {
+    "name": "Gibbous Nightgaunts",
+    "slug": "gibbous_nightgaunts",
+    "type": "minion"
+  },
+  {
+    "name": "Gift of the Frog",
+    "slug": "gift_of_the_frog",
+    "type": "magic"
+  },
+  {
+    "name": "Gift of the Raven",
+    "slug": "gift_of_the_raven",
+    "type": "magic"
+  },
+  {
+    "name": "Gift of the Serpent",
+    "slug": "gift_of_the_serpent",
+    "type": "magic"
+  },
+  {
+    "name": "Gift of the Wolf",
+    "slug": "gift_of_the_wolf",
+    "type": "magic"
+  },
+  {
     "name": "Gigantism",
-    "slug": "gigantism_b_s",
+    "slug": "gigantism",
     "type": "magic"
   },
   {
     "name": "Gilded Aegis",
-    "slug": "gilded_aegis_b_s",
+    "slug": "gilded_aegis",
     "type": "artifact"
   },
   {
-    "name": "Glastonbury Tor",
-    "slug": "glastonbury_tor_b_s",
+    "name": "Gilman House",
+    "slug": "gilman_house",
     "type": "site"
   },
   {
+    "name": "Glastonbury Tor",
+    "slug": "glastonbury_tor",
+    "type": "site"
+  },
+  {
+    "name": "Gloam Toads",
+    "slug": "gloam_toads",
+    "type": "minion"
+  },
+  {
+    "name": "Gnarled Wendigo",
+    "slug": "gnarled_wendigo",
+    "type": "minion"
+  },
+  {
     "name": "Gneissgnath Gnomes",
-    "slug": "gneissgnath_gnomes_b_s",
+    "slug": "gneissgnath_gnomes",
     "type": "minion"
   },
   {
     "name": "Gnome Hollows",
-    "slug": "gnome_hollows_b_s",
+    "slug": "gnome_hollows",
     "type": "site"
   },
   {
+    "name": "Goat for Azazel",
+    "slug": "goat_for_azazel",
+    "type": "minion"
+  },
+  {
+    "name": "Golden Dawn",
+    "slug": "golden_dawn",
+    "type": "magic"
+  },
+  {
     "name": "Golden Harp",
-    "slug": "golden_harp_b_s",
+    "slug": "golden_harp",
     "type": "artifact"
   },
   {
+    "name": "Golgor",
+    "slug": "golgor",
+    "type": "minion"
+  },
+  {
+    "name": "Gossamer Ghost",
+    "slug": "gossamer_ghost",
+    "type": "minion"
+  },
+  {
     "name": "Goswhit Helmet",
-    "slug": "goswhit_helmet_b_s",
+    "slug": "goswhit_helmet",
     "type": "artifact"
   },
   {
     "name": "Gothic Tower",
-    "slug": "gothic_tower_b_s",
+    "slug": "gothic_tower",
     "type": "site"
   },
   {
     "name": "Grain Sparrow",
-    "slug": "grain_sparrow_b_s",
+    "slug": "grain_sparrow",
+    "type": "minion"
+  },
+  {
+    "name": "Granary Rats",
+    "slug": "granary_rats",
     "type": "minion"
   },
   {
     "name": "Grand Old Boar",
-    "slug": "grand_old_boar_b_s",
+    "slug": "grand_old_boar",
     "type": "minion"
   },
   {
     "name": "Grandmaster Wizard",
-    "slug": "grandmaster_wizard_b_s",
+    "slug": "grandmaster_wizard",
     "type": "minion"
   },
   {
     "name": "Grapple Shot",
-    "slug": "grapple_shot_b_s",
+    "slug": "grapple_shot",
     "type": "magic"
   },
   {
+    "name": "Grasping Ground",
+    "slug": "grasping_ground",
+    "type": "magic"
+  },
+  {
+    "name": "Gravedigger",
+    "slug": "gravedigger",
+    "type": "minion"
+  },
+  {
     "name": "Great Old One",
-    "slug": "great_old_one_b_s",
+    "slug": "great_old_one",
     "type": "minion"
   },
   {
     "name": "Great Wall",
-    "slug": "great_wall_b_s",
+    "slug": "great_wall",
     "type": "site"
   },
   {
+    "name": "Greater Blood Demon",
+    "slug": "greater_blood_demon",
+    "type": "minion"
+  },
+  {
     "name": "Grey Wolves",
-    "slug": "grey_wolves_b_s",
+    "slug": "grey_wolves",
+    "type": "minion"
+  },
+  {
+    "name": "Grief Larvae",
+    "slug": "grief_larvae",
     "type": "minion"
   },
   {
     "name": "Grievous Insult",
-    "slug": "grievous_insult_b_s",
+    "slug": "grievous_insult",
     "type": "magic"
   },
   {
+    "name": "Grigori Rasputin",
+    "slug": "grigori_rasputin",
+    "type": "minion"
+  },
+  {
     "name": "Grim Guisarme",
-    "slug": "grim_guisarme_b_s",
+    "slug": "grim_guisarme",
     "type": "artifact"
   },
   {
     "name": "Grim Reaper",
-    "slug": "grim_reaper_b_s",
+    "slug": "grim_reaper",
     "type": "minion"
   },
   {
     "name": "Grösse Poltergeist",
-    "slug": "grosse_poltergeist_b_s",
+    "slug": "grosse_poltergeist",
+    "type": "minion"
+  },
+  {
+    "name": "Guardian Angel",
+    "slug": "guardian_angel",
     "type": "minion"
   },
   {
     "name": "Guards!",
-    "slug": "guards_b_s",
+    "slug": "guards",
     "type": "magic"
   },
   {
     "name": "Guile Sirens",
-    "slug": "guile_sirens_b_s",
+    "slug": "guile_sirens",
     "type": "minion"
   },
   {
     "name": "Gyre Hippogriffs",
-    "slug": "gyre_hippogriffs_b_s",
+    "slug": "gyre_hippogriffs",
     "type": "minion"
   },
   {
     "name": "Haast Eagle",
-    "slug": "haast_eagle_b_s",
+    "slug": "haast_eagle",
     "type": "minion"
   },
   {
     "name": "Hamlet",
-    "slug": "hamlet_b_s",
+    "slug": "hamlet",
     "type": "site"
   },
   {
     "name": "Hamlet's Ablaze!",
-    "slug": "hamlets_ablaze_b_s",
+    "slug": "hamlets_ablaze",
     "type": "aura"
   },
   {
+    "name": "Hand of Glory",
+    "slug": "hand_of_glory",
+    "type": "artifact"
+  },
+  {
     "name": "Harassing Ruffians",
-    "slug": "harassing_ruffians_b_s",
+    "slug": "harassing_ruffians",
     "type": "minion"
   },
   {
+    "name": "Harbinger",
+    "slug": "harbinger",
+    "type": "avatar"
+  },
+  {
+    "name": "Harpyon Urge",
+    "slug": "harpyon_urge",
+    "type": "magic"
+  },
+  {
+    "name": "Harvest Festival",
+    "slug": "harvest_festival",
+    "type": "magic"
+  },
+  {
+    "name": "Hauntless Head",
+    "slug": "hauntless_head",
+    "type": "minion"
+  },
+  {
+    "name": "Haystack",
+    "slug": "haystack",
+    "type": "site"
+  },
+  {
     "name": "Headless Haunt",
-    "slug": "headless_haunt_b_s",
+    "slug": "headless_haunt",
+    "type": "minion"
+  },
+  {
+    "name": "Hearkening Kraken",
+    "slug": "hearkening_kraken",
     "type": "minion"
   },
   {
     "name": "Heat Ray",
-    "slug": "heat_ray_b_s",
+    "slug": "heat_ray",
     "type": "magic"
   },
   {
+    "name": "Heirloom Lost",
+    "slug": "heirloom_lost",
+    "type": "site"
+  },
+  {
+    "name": "Hellfire",
+    "slug": "hellfire",
+    "type": "magic"
+  },
+  {
+    "name": "Hellhounds",
+    "slug": "hellhounds",
+    "type": "minion"
+  },
+  {
+    "name": "Hellmouth",
+    "slug": "hellmouth",
+    "type": "site"
+  },
+  {
+    "name": "Hellstar",
+    "slug": "hellstar",
+    "type": "minion"
+  },
+  {
     "name": "Helpful Hob",
-    "slug": "helpful_hob_b_s",
+    "slug": "helpful_hob",
+    "type": "minion"
+  },
+  {
+    "name": "Hemogoblet",
+    "slug": "hemogoblet",
+    "type": "artifact"
+  },
+  {
+    "name": "Hemogoblin",
+    "slug": "hemogoblin",
+    "type": "minion"
+  },
+  {
+    "name": "Hemogolem",
+    "slug": "hemogolem",
+    "type": "artifact"
+  },
+  {
+    "name": "Heretics of Seth",
+    "slug": "heretics_of_seth",
     "type": "minion"
   },
   {
     "name": "Highland Clansmen",
-    "slug": "highland_clansmen_b_s",
+    "slug": "highland_clansmen",
     "type": "minion"
   },
   {
     "name": "Highland Falconer",
-    "slug": "highland_falconer_b_s",
+    "slug": "highland_falconer",
     "type": "minion"
   },
   {
     "name": "Highland Princess",
-    "slug": "highland_princess_b_s",
+    "slug": "highland_princess",
     "type": "minion"
   },
   {
     "name": "Hillock Basilisk",
-    "slug": "hillock_basilisk_b_s",
+    "slug": "hillock_basilisk",
+    "type": "minion"
+  },
+  {
+    "name": "Hillside Chapel",
+    "slug": "hillside_chapel",
+    "type": "site"
+  },
+  {
+    "name": "Hollow One",
+    "slug": "hollow_one",
     "type": "minion"
   },
   {
     "name": "Holy Ground",
-    "slug": "holy_ground_b_s",
+    "slug": "holy_ground",
     "type": "site"
   },
   {
-    "name": "Horn of Caerleon",
-    "slug": "horn_of_caerleon_b_s",
+    "name": "Holy Nova",
+    "slug": "holy_nova",
+    "type": "magic"
+  },
+  {
+    "name": "Holy Warrior",
+    "slug": "holy_warrior",
+    "type": "minion"
+  },
+  {
+    "name": "Holy Water",
+    "slug": "holy_water",
     "type": "artifact"
   },
   {
+    "name": "Homecoming",
+    "slug": "homecoming",
+    "type": "aura"
+  },
+  {
+    "name": "Horn of Caerleon",
+    "slug": "horn_of_caerleon",
+    "type": "artifact"
+  },
+  {
+    "name": "Horns of Behemoth",
+    "slug": "horns_of_behemoth",
+    "type": "site"
+  },
+  {
+    "name": "Horrible Hybrids",
+    "slug": "horrible_hybrids",
+    "type": "minion"
+  },
+  {
+    "name": "Hotwheel",
+    "slug": "hotwheel",
+    "type": "minion"
+  },
+  {
     "name": "Hounds of Ondaros",
-    "slug": "hounds_of_ondaros_b_s",
+    "slug": "hounds_of_ondaros",
     "type": "minion"
   },
   {
     "name": "House Arn Bannerman",
-    "slug": "house_arn_bannerman_b_s",
+    "slug": "house_arn_bannerman",
     "type": "minion"
   },
   {
+    "name": "Howl from Beyond",
+    "slug": "howl_from_beyond",
+    "type": "magic"
+  },
+  {
     "name": "Humble Village",
-    "slug": "humble_village_b_s",
+    "slug": "humble_village",
     "type": "site"
   },
   {
     "name": "Hunter's Lodge",
-    "slug": "hunters_lodge_b_s",
+    "slug": "hunters_lodge",
     "type": "site"
   },
   {
     "name": "Hunting Party",
-    "slug": "hunting_party_b_s",
+    "slug": "hunting_party",
+    "type": "minion"
+  },
+  {
+    "name": "Hyperparasite",
+    "slug": "hyperparasite",
     "type": "minion"
   },
   {
     "name": "Hyter Sprites",
-    "slug": "hyter_sprites_b_s",
+    "slug": "hyter_sprites",
     "type": "minion"
   },
   {
+    "name": "I Am Colossus!",
+    "slug": "i_am_colossus",
+    "type": "artifact"
+  },
+  {
     "name": "Ice Lance",
-    "slug": "ice_lance_b_s",
+    "slug": "ice_lance",
+    "type": "magic"
+  },
+  {
+    "name": "Ice Shards",
+    "slug": "ice_shards",
     "type": "magic"
   },
   {
     "name": "Iceberg",
-    "slug": "iceberg_b_s",
+    "slug": "iceberg",
     "type": "site"
   },
   {
+    "name": "Ignis Rex",
+    "slug": "ignis_rex",
+    "type": "minion"
+  },
+  {
+    "name": "Ignited",
+    "slug": "ignited",
+    "type": "minion"
+  },
+  {
     "name": "Immolation",
-    "slug": "immolation_b_s",
+    "slug": "immolation",
     "type": "magic"
   },
   {
     "name": "Impenetrable Copse",
-    "slug": "impenetrable_copse_b_s",
+    "slug": "impenetrable_copse",
     "type": "site"
   },
   {
     "name": "Imperial Road",
-    "slug": "imperial_road_b_s",
+    "slug": "imperial_road",
     "type": "site"
   },
   {
+    "name": "Imposter",
+    "slug": "imposter",
+    "type": "avatar"
+  },
+  {
     "name": "Incinerate",
-    "slug": "incinerate_b_s",
+    "slug": "incinerate",
     "type": "magic"
   },
   {
     "name": "Infernal Legion",
-    "slug": "infernal_legion_b_s",
+    "slug": "infernal_legion",
     "type": "minion"
   },
   {
     "name": "Infiltrate",
-    "slug": "infiltrate_b_s",
+    "slug": "infiltrate",
     "type": "magic"
   },
   {
+    "name": "Infusion Factory",
+    "slug": "infusion_factory",
+    "type": "site"
+  },
+  {
+    "name": "Innsmouth Dock",
+    "slug": "innsmouth_dock",
+    "type": "site"
+  },
+  {
+    "name": "Instigator Imp",
+    "slug": "instigator_imp",
+    "type": "minion"
+  },
+  {
+    "name": "Interrogator",
+    "slug": "interrogator",
+    "type": "avatar"
+  },
+  {
+    "name": "Into the Abyss",
+    "slug": "into_the_abyss",
+    "type": "magic"
+  },
+  {
+    "name": "Intrepid Hero",
+    "slug": "intrepid_hero",
+    "type": "minion"
+  },
+  {
     "name": "Invasion",
-    "slug": "invasion_b_s",
+    "slug": "invasion",
     "type": "aura"
   },
   {
+    "name": "Invigorate",
+    "slug": "invigorate",
+    "type": "magic"
+  },
+  {
+    "name": "Iron Maiden",
+    "slug": "iron_maiden",
+    "type": "artifact"
+  },
+  {
     "name": "Iron Man Talus",
-    "slug": "iron_man_talus_b_s",
+    "slug": "iron_man_talus",
     "type": "artifact"
   },
   {
     "name": "Iron Shackles",
-    "slug": "iron_shackles_b_s",
+    "slug": "iron_shackles",
     "type": "artifact"
   },
   {
+    "name": "Ironclad",
+    "slug": "ironclad",
+    "type": "avatar"
+  },
+  {
     "name": "Island Leviathan",
-    "slug": "island_leviathan_b_s",
+    "slug": "island_leviathan",
     "type": "site"
   },
   {
+    "name": "Jack the Ripper",
+    "slug": "jack_the_ripper",
+    "type": "minion"
+  },
+  {
     "name": "Jihad",
-    "slug": "jihad_b_s",
+    "slug": "jihad",
     "type": "aura"
   },
   {
     "name": "Joust!",
-    "slug": "joust_b_s",
+    "slug": "joust",
     "type": "magic"
   },
   {
     "name": "Joyous Garde",
-    "slug": "joyous_garde_b_s",
+    "slug": "joyous_garde",
     "type": "site"
   },
   {
     "name": "Just a Rock",
-    "slug": "just_a_rock_b_s",
+    "slug": "just_a_rock",
+    "type": "artifact"
+  },
+  {
+    "name": "Kairos the Archivist",
+    "slug": "kairos_the_archivist",
     "type": "artifact"
   },
   {
     "name": "Karkemish Chimera",
-    "slug": "karkemish_chimera_b_s",
+    "slug": "karkemish_chimera",
     "type": "minion"
   },
   {
     "name": "Keening Banshee",
-    "slug": "keening_banshee_b_s",
+    "slug": "keening_banshee",
     "type": "minion"
   },
   {
     "name": "Kelp Cavern",
-    "slug": "kelp_cavern_b_s",
+    "slug": "kelp_cavern",
     "type": "site"
   },
   {
     "name": "Kettletop Leprechaun",
-    "slug": "kettletop_leprechaun_b_s",
+    "slug": "kettletop_leprechaun",
+    "type": "minion"
+  },
+  {
+    "name": "Key to the City",
+    "slug": "key_to_the_city",
+    "type": "artifact"
+  },
+  {
+    "name": "Khamaseen Mummy",
+    "slug": "khamaseen_mummy",
     "type": "minion"
   },
   {
     "name": "King Arthur",
-    "slug": "king_arthur_b_s",
+    "slug": "king_arthur",
     "type": "minion"
   },
   {
     "name": "King of the Realm",
-    "slug": "king_of_the_realm_b_s",
+    "slug": "king_of_the_realm",
     "type": "minion"
   },
   {
     "name": "King's Council",
-    "slug": "kings_council_b_s",
+    "slug": "kings_council",
     "type": "magic"
   },
   {
     "name": "Kingdom of Agartha",
-    "slug": "kingdom_of_agartha_b_s",
+    "slug": "kingdom_of_agartha",
     "type": "site"
   },
   {
     "name": "Kingswood Poachers",
-    "slug": "kingswood_poachers_b_s",
+    "slug": "kingswood_poachers",
+    "type": "minion"
+  },
+  {
+    "name": "Kiss of Death",
+    "slug": "kiss_of_death",
+    "type": "magic"
+  },
+  {
+    "name": "Kiss of Judas",
+    "slug": "kiss_of_judas",
+    "type": "magic"
+  },
+  {
+    "name": "Kissers of Wounds",
+    "slug": "kissers_of_wounds",
     "type": "minion"
   },
   {
     "name": "Kite Archer",
-    "slug": "kite_archer_b_s",
+    "slug": "kite_archer",
     "type": "minion"
   },
   {
     "name": "Knighthood",
-    "slug": "knighthood_b_s",
+    "slug": "knighthood",
     "type": "magic"
   },
   {
-    "name": "Kythera Mechanism",
-    "slug": "kythera_mechanism_b_s",
+    "name": "Kor Crematory",
+    "slug": "kor_crematory",
+    "type": "site"
+  },
+  {
+    "name": "Koschei's Egg",
+    "slug": "koscheis_egg",
     "type": "artifact"
   },
   {
+    "name": "Kythera Mechanism",
+    "slug": "kythera_mechanism",
+    "type": "artifact"
+  },
+  {
+    "name": "Lacuna Entity",
+    "slug": "lacuna_entity",
+    "type": "minion"
+  },
+  {
     "name": "Lady Iseult",
-    "slug": "lady_iseult_b_s",
+    "slug": "lady_iseult",
     "type": "minion"
   },
   {
     "name": "Lake Afanc",
-    "slug": "lake_afanc_b_s",
+    "slug": "lake_afanc",
     "type": "minion"
   },
   {
+    "name": "Lance",
+    "slug": "lance",
+    "type": "artifact"
+  },
+  {
     "name": "Land Deed",
-    "slug": "land_deed_b_s",
+    "slug": "land_deed",
     "type": "artifact"
   },
   {
     "name": "Land Surveyor",
-    "slug": "land_surveyor_b_s",
+    "slug": "land_surveyor",
     "type": "minion"
   },
   {
+    "name": "Landmass",
+    "slug": "landmass",
+    "type": "magic"
+  },
+  {
+    "name": "Lash",
+    "slug": "lash",
+    "type": "magic"
+  },
+  {
     "name": "Lava Flow",
-    "slug": "lava_flow_b_s",
+    "slug": "lava_flow",
     "type": "magic"
   },
   {
     "name": "Lava Salamander",
-    "slug": "lava_salamander_b_s",
+    "slug": "lava_salamander",
     "type": "minion"
   },
   {
+    "name": "Leadworks",
+    "slug": "leadworks",
+    "type": "site"
+  },
+  {
     "name": "Leap Attack",
-    "slug": "leap_attack_b_s",
+    "slug": "leap_attack",
     "type": "magic"
   },
   {
     "name": "Led Astray",
-    "slug": "led_astray_b_s",
+    "slug": "led_astray",
     "type": "magic"
   },
   {
+    "name": "Legion of Gall",
+    "slug": "legion_of_gall",
+    "type": "minion"
+  },
+  {
+    "name": "Lesser Blood Demon",
+    "slug": "lesser_blood_demon",
+    "type": "minion"
+  },
+  {
     "name": "Leyline Henge",
-    "slug": "leyline_henge_b_s",
+    "slug": "leyline_henge",
     "type": "site"
   },
   {
+    "name": "Lifewish",
+    "slug": "lifewish",
+    "type": "magic"
+  },
+  {
     "name": "Lighthouse",
-    "slug": "lighthouse_b_s",
+    "slug": "lighthouse",
     "type": "site"
   },
   {
     "name": "Lightning Bolt",
-    "slug": "lightning_bolt_b_s",
+    "slug": "lightning_bolt",
     "type": "magic"
   },
   {
+    "name": "Lilith",
+    "slug": "lilith",
+    "type": "minion"
+  },
+  {
+    "name": "Locusts of Illyria",
+    "slug": "locusts_of_illyria",
+    "type": "minion"
+  },
+  {
     "name": "Lone Tower",
-    "slug": "lone_tower_b_s",
+    "slug": "lone_tower",
     "type": "site"
   },
   {
     "name": "Lookout",
-    "slug": "lookout_b_s",
+    "slug": "lookout",
     "type": "site"
   },
   {
-    "name": "Lord of Unland",
-    "slug": "lord_of_unland_b_s",
+    "name": "Lord of Destruction",
+    "slug": "lord_of_destruction",
+    "type": "minion"
+  },
+  {
+    "name": "Lord of Fear",
+    "slug": "lord_of_fear",
+    "type": "minion"
+  },
+  {
+    "name": "Lord of Greed",
+    "slug": "lord_of_greed",
+    "type": "minion"
+  },
+  {
+    "name": "Lord of Lies",
+    "slug": "lord_of_lies",
     "type": "minion"
   },
   {
     "name": "Lord of the Void",
-    "slug": "lord_of_the_void_b_s",
+    "slug": "lord_of_the_void",
+    "type": "minion"
+  },
+  {
+    "name": "Lord of Unland",
+    "slug": "lord_of_unland",
     "type": "minion"
   },
   {
     "name": "Love Potion",
-    "slug": "love_potion_b_s",
+    "slug": "love_potion",
     "type": "artifact"
   },
   {
+    "name": "Lucid Dreamers",
+    "slug": "lucid_dreamers",
+    "type": "minion"
+  },
+  {
     "name": "Lucky Charm",
-    "slug": "lucky_charm_b_s",
+    "slug": "lucky_charm",
     "type": "artifact"
   },
   {
     "name": "Lugbog Cat",
-    "slug": "lugbog_cat_b_s",
+    "slug": "lugbog_cat",
     "type": "minion"
   },
   {
     "name": "Lumbering Giant",
-    "slug": "lumbering_giant_b_s",
+    "slug": "lumbering_giant",
     "type": "minion"
   },
   {
+    "name": "Lure",
+    "slug": "lure",
+    "type": "magic"
+  },
+  {
     "name": "Mad Dash",
-    "slug": "mad_dash_b_s",
+    "slug": "mad_dash",
     "type": "magic"
   },
   {
     "name": "Maddening Bells",
-    "slug": "maddening_bells_b_s",
+    "slug": "maddening_bells",
     "type": "artifact"
   },
   {
     "name": "Maelström",
-    "slug": "maelstrom_b_s",
+    "slug": "maelstrom",
     "type": "site"
   },
   {
     "name": "Mage Slayer",
-    "slug": "mage_slayer_b_s",
+    "slug": "mage_slayer",
     "type": "minion"
   },
   {
     "name": "Magellan Globe",
-    "slug": "magellan_globe_b_s",
+    "slug": "magellan_globe",
     "type": "artifact"
   },
   {
     "name": "Magic Missiles",
-    "slug": "magic_missiles_b_s",
+    "slug": "magic_missiles",
     "type": "magic"
   },
   {
+    "name": "Magician",
+    "slug": "magician",
+    "type": "avatar"
+  },
+  {
     "name": "Magnetic Muzzle",
-    "slug": "magnetic_muzzle_b_s",
+    "slug": "magnetic_muzzle",
     "type": "artifact"
   },
   {
+    "name": "Maiden, Mother, Crone",
+    "slug": "maiden_mother_crone",
+    "type": "minion"
+  },
+  {
     "name": "Major City",
-    "slug": "major_city_b_s",
+    "slug": "major_city",
     "type": "site"
   },
   {
     "name": "Major Explosion",
-    "slug": "major_explosion_b_s",
+    "slug": "major_explosion",
     "type": "magic"
   },
   {
+    "name": "Makeshift Barricade",
+    "slug": "makeshift_barricade",
+    "type": "artifact"
+  },
+  {
+    "name": "Malakhim",
+    "slug": "malakhim",
+    "type": "minion"
+  },
+  {
+    "name": "Mandrake Jars",
+    "slug": "mandrake_jars",
+    "type": "artifact"
+  },
+  {
     "name": "Marine Voyage",
-    "slug": "marine_voyage_b_s",
+    "slug": "marine_voyage",
     "type": "magic"
   },
   {
     "name": "Mariner's Curse",
-    "slug": "mariners_curse_b_s",
+    "slug": "mariners_curse",
     "type": "aura"
   },
   {
+    "name": "Martyrs of Tomorrow",
+    "slug": "martyrs_of_tomorrow",
+    "type": "minion"
+  },
+  {
     "name": "Mask of Mayhem",
-    "slug": "mask_of_mayhem_b_s",
+    "slug": "mask_of_mayhem",
     "type": "artifact"
   },
   {
+    "name": "Master Necromancer",
+    "slug": "master_necromancer",
+    "type": "minion"
+  },
+  {
     "name": "Master Tracker",
-    "slug": "master_tracker_b_s",
+    "slug": "master_tracker",
+    "type": "minion"
+  },
+  {
+    "name": "Mayor of Milborne",
+    "slug": "mayor_of_milborne",
     "type": "minion"
   },
   {
     "name": "Maze Minotaur",
-    "slug": "maze_minotaur_b_s",
+    "slug": "maze_minotaur",
+    "type": "minion"
+  },
+  {
+    "name": "Màzuj Ifrit",
+    "slug": "mazuj_ifrit",
+    "type": "minion"
+  },
+  {
+    "name": "Meat Hook",
+    "slug": "meat_hook",
+    "type": "artifact"
+  },
+  {
+    "name": "Megalurker",
+    "slug": "megalurker",
     "type": "minion"
   },
   {
     "name": "Megamoeba",
-    "slug": "megamoeba_b_s",
+    "slug": "megamoeba",
     "type": "minion"
   },
   {
     "name": "Men of Leng",
-    "slug": "men_of_leng_b_s",
+    "slug": "men_of_leng",
+    "type": "minion"
+  },
+  {
+    "name": "Mephistopheles",
+    "slug": "mephistopheles",
     "type": "minion"
   },
   {
     "name": "Merlin",
-    "slug": "merlin_b_s",
+    "slug": "merlin",
     "type": "minion"
   },
   {
     "name": "Merlin's Staff",
-    "slug": "merlins_staff_b_s",
+    "slug": "merlins_staff",
     "type": "artifact"
   },
   {
     "name": "Merlin's Tower",
-    "slug": "merlins_tower_b_s",
+    "slug": "merlins_tower",
     "type": "site"
   },
   {
+    "name": "Mesmer Demon",
+    "slug": "mesmer_demon",
+    "type": "minion"
+  },
+  {
     "name": "Mesmerism",
-    "slug": "mesmerism_b_s",
+    "slug": "mesmerism",
     "type": "magic"
   },
   {
     "name": "Mester Stoor Worm",
-    "slug": "mester_stoor_worm_b_s",
+    "slug": "mester_stoor_worm",
     "type": "minion"
   },
   {
     "name": "Meteor Shower",
-    "slug": "meteor_shower_b_s",
+    "slug": "meteor_shower",
     "type": "magic"
   },
   {
     "name": "Midland Army",
-    "slug": "midland_army_b_s",
+    "slug": "midland_army",
     "type": "minion"
   },
   {
     "name": "Midnight Rogue",
-    "slug": "midnight_rogue_b_s",
+    "slug": "midnight_rogue",
+    "type": "minion"
+  },
+  {
+    "name": "Mimic",
+    "slug": "mimic",
     "type": "minion"
   },
   {
     "name": "Minecart Madness",
-    "slug": "minecart_madness_b_s",
+    "slug": "minecart_madness",
     "type": "magic"
   },
   {
     "name": "Minor Explosion",
-    "slug": "minor_explosion_b_s",
+    "slug": "minor_explosion",
     "type": "magic"
   },
   {
     "name": "Miracle Workers",
-    "slug": "miracle_workers_b_s",
+    "slug": "miracle_workers",
     "type": "minion"
   },
   {
     "name": "Mirage",
-    "slug": "mirage_b_s",
+    "slug": "mirage",
     "type": "site"
   },
   {
     "name": "Mirror Realm",
-    "slug": "mirror_realm_b_s",
+    "slug": "mirror_realm",
+    "type": "site"
+  },
+  {
+    "name": "Mismanaged Mortuary",
+    "slug": "mismanaged_mortuary",
     "type": "site"
   },
   {
     "name": "Mix Aer",
-    "slug": "mix_aer_b_s",
+    "slug": "mix_aer",
     "type": "artifact"
   },
   {
     "name": "Mix Aqua",
-    "slug": "mix_aqua_b_s",
+    "slug": "mix_aqua",
     "type": "artifact"
   },
   {
     "name": "Mix Ignis",
-    "slug": "mix_ignis_b_s",
+    "slug": "mix_ignis",
     "type": "artifact"
   },
   {
     "name": "Mix Terra",
-    "slug": "mix_terra_b_s",
+    "slug": "mix_terra",
     "type": "artifact"
   },
   {
+    "name": "Molten Maar",
+    "slug": "molten_maar",
+    "type": "site"
+  },
+  {
     "name": "Monastery Gargoyle",
-    "slug": "monastery_gargoyle_b_s",
+    "slug": "monastery_gargoyle",
+    "type": "minion"
+  },
+  {
+    "name": "Monks of Kobalsa",
+    "slug": "monks_of_kobalsa",
     "type": "minion"
   },
   {
     "name": "Monster Hunter",
-    "slug": "monster_hunter_b_s",
+    "slug": "monster_hunter",
     "type": "minion"
   },
   {
+    "name": "Monstermorphosis",
+    "slug": "monstermorphosis",
+    "type": "magic"
+  },
+  {
     "name": "Monstrous Lion",
-    "slug": "monstrous_lion_b_s",
+    "slug": "monstrous_lion",
     "type": "minion"
   },
   {
     "name": "Moon Clan Werewolf",
-    "slug": "moon_clan_werewolf_b_s",
+    "slug": "moon_clan_werewolf",
+    "type": "minion"
+  },
+  {
+    "name": "Moonsong Talagelum",
+    "slug": "moonsong_talagelum",
     "type": "minion"
   },
   {
     "name": "Mordric Druids",
-    "slug": "mordric_druids_b_s",
+    "slug": "mordric_druids",
     "type": "minion"
   },
   {
     "name": "Morgana le Fay",
-    "slug": "morgana_le_fay_b_s",
+    "slug": "morgana_le_fay",
     "type": "minion"
+  },
+  {
+    "name": "Mortal Soil",
+    "slug": "mortal_soil",
+    "type": "aura"
   },
   {
     "name": "Mortality",
-    "slug": "mortality_b_s",
+    "slug": "mortality",
     "type": "magic"
   },
   {
-    "name": "Mother Nature",
-    "slug": "mother_nature_b_s",
+    "name": "Moss Troll",
+    "slug": "moss_troll",
     "type": "minion"
   },
   {
+    "name": "Mother Nature",
+    "slug": "mother_nature",
+    "type": "minion"
+  },
+  {
+    "name": "Mount Ussar Sanctuary",
+    "slug": "mount_ussar_sanctuary",
+    "type": "site"
+  },
+  {
     "name": "Mountain Giant",
-    "slug": "mountain_giant_b_s",
+    "slug": "mountain_giant",
     "type": "minion"
   },
   {
     "name": "Mountain Pass",
-    "slug": "mountain_pass_b_s",
+    "slug": "mountain_pass",
     "type": "site"
   },
   {
+    "name": "Mountain Peaks",
+    "slug": "mountain_peaks",
+    "type": "site"
+  },
+  {
+    "name": "Mover of Mountains",
+    "slug": "mover_of_mountains",
+    "type": "minion"
+  },
+  {
     "name": "Muck Lampreys",
-    "slug": "muck_lampreys_b_s",
+    "slug": "muck_lampreys",
+    "type": "minion"
+  },
+  {
+    "name": "Muddy Pigs",
+    "slug": "muddy_pigs",
     "type": "minion"
   },
   {
     "name": "Mudflow",
-    "slug": "mudflow_b_s",
+    "slug": "mudflow",
+    "type": "site"
+  },
+  {
+    "name": "Mudslide",
+    "slug": "mudslide",
     "type": "site"
   },
   {
     "name": "Muirid Fomorians",
-    "slug": "muirid_fomorians_b_s",
+    "slug": "muirid_fomorians",
     "type": "minion"
   },
   {
+    "name": "Murder of Crows",
+    "slug": "murder_of_crows",
+    "type": "magic"
+  },
+  {
+    "name": "Myrrh's Trophy Room",
+    "slug": "myrrhs_trophy_room",
+    "type": "site"
+  },
+  {
+    "name": "Nadir Seed",
+    "slug": "nadir_seed",
+    "type": "artifact"
+  },
+  {
+    "name": "Necromancer",
+    "slug": "necromancer",
+    "type": "avatar"
+  },
+  {
+    "name": "Necronomiconcert",
+    "slug": "necronomiconcert",
+    "type": "magic"
+  },
+  {
+    "name": "Necropotence",
+    "slug": "necropotence",
+    "type": "magic"
+  },
+  {
     "name": "Nelly Longarms",
-    "slug": "nelly_longarms_b_s",
+    "slug": "nelly_longarms",
     "type": "minion"
   },
   {
     "name": "Nightmare",
-    "slug": "nightmare_b_s",
+    "slug": "nightmare",
+    "type": "minion"
+  },
+  {
+    "name": "Nightwatchmen",
+    "slug": "nightwatchmen",
     "type": "minion"
   },
   {
     "name": "Nimbus Jinn",
-    "slug": "nimbus_jinn_b_s",
+    "slug": "nimbus_jinn",
+    "type": "minion"
+  },
+  {
+    "name": "No Man's Land",
+    "slug": "no_mans_land",
+    "type": "site"
+  },
+  {
+    "name": "Noisome Twosome",
+    "slug": "noisome_twosome",
+    "type": "minion"
+  },
+  {
+    "name": "Nommo Monitor",
+    "slug": "nommo_monitor",
+    "type": "minion"
+  },
+  {
+    "name": "Nosferatu",
+    "slug": "nosferatu",
+    "type": "minion"
+  },
+  {
+    "name": "Novice Necromancer",
+    "slug": "novice_necromancer",
+    "type": "minion"
+  },
+  {
+    "name": "Noxious Corpse",
+    "slug": "noxious_corpse",
     "type": "minion"
   },
   {
     "name": "Oasis",
-    "slug": "oasis_b_s",
+    "slug": "oasis",
     "type": "site"
   },
   {
     "name": "Observatory",
-    "slug": "observatory_b_s",
+    "slug": "observatory",
     "type": "site"
   },
   {
     "name": "Occult Ritual",
-    "slug": "occult_ritual_b_s",
+    "slug": "occult_ritual",
     "type": "magic"
   },
   {
     "name": "Ogre Goons",
-    "slug": "ogre_goons_b_s",
+    "slug": "ogre_goons",
     "type": "minion"
   },
   {
+    "name": "Old Mortimer's Den",
+    "slug": "old_mortimers_den",
+    "type": "site"
+  },
+  {
     "name": "Old Salt Anchorman",
-    "slug": "old_salt_anchorman_b_s",
+    "slug": "old_salt_anchorman",
     "type": "minion"
   },
   {
     "name": "Ominous Owl",
-    "slug": "ominous_owl_b_s",
+    "slug": "ominous_owl",
     "type": "minion"
+  },
+  {
+    "name": "One-shot Wizard",
+    "slug": "one_shot_wizard",
+    "type": "minion"
+  },
+  {
+    "name": "Onslaught",
+    "slug": "onslaught",
+    "type": "magic"
   },
   {
     "name": "Onyx Core",
-    "slug": "onyx_core_b_s",
+    "slug": "onyx_core",
     "type": "artifact"
   },
   {
-    "name": "Orb of Ba'al Berith",
-    "slug": "orb_of_baal_berith_b_s",
-    "type": "artifact"
+    "name": "Open Grave",
+    "slug": "open_grave",
+    "type": "site"
   },
   {
-    "name": "Ormund Harpooneers",
-    "slug": "ormund_harpooneers_b_s",
+    "name": "Open Mausoleum",
+    "slug": "open_mausoleum",
+    "type": "site"
+  },
+  {
+    "name": "Ophanim",
+    "slug": "ophanim",
     "type": "minion"
   },
   {
+    "name": "Orb of Ba'al Berith",
+    "slug": "orb_of_baal_berith",
+    "type": "artifact"
+  },
+  {
+    "name": "Order of the Pale Worm",
+    "slug": "order_of_the_pale_worm",
+    "type": "minion"
+  },
+  {
+    "name": "Order of the Sacred Oak",
+    "slug": "order_of_the_sacred_oak",
+    "type": "minion"
+  },
+  {
+    "name": "Order of the White Wing",
+    "slug": "order_of_the_white_wing",
+    "type": "minion"
+  },
+  {
+    "name": "Orm Infestor",
+    "slug": "orm_infestor",
+    "type": "minion"
+  },
+  {
+    "name": "Ormund Harpooneers",
+    "slug": "ormund_harpooneers",
+    "type": "minion"
+  },
+  {
+    "name": "Orpheus' Crossing",
+    "slug": "orpheus_crossing",
+    "type": "site"
+  },
+  {
     "name": "Outback Strider",
-    "slug": "outback_strider_b_s",
+    "slug": "outback_strider",
     "type": "minion"
   },
   {
     "name": "Overbearing Bailiff",
-    "slug": "overbearing_bailiff_b_s",
+    "slug": "overbearing_bailiff",
     "type": "minion"
   },
   {
+    "name": "Overflow",
+    "slug": "overflow",
+    "type": "magic"
+  },
+  {
     "name": "Overpower",
-    "slug": "overpower_b_s",
+    "slug": "overpower",
     "type": "magic"
   },
   {
     "name": "Pact with the Devil",
-    "slug": "pact_with_the_devil_b_s",
+    "slug": "pact_with_the_devil",
     "type": "magic"
   },
   {
+    "name": "Paladins of Bazia",
+    "slug": "paladins_of_bazia",
+    "type": "minion"
+  },
+  {
     "name": "Palliburrie Bats",
-    "slug": "palliburrie_bats_b_s",
+    "slug": "palliburrie_bats",
     "type": "minion"
   },
   {
     "name": "Panorama Manticore",
-    "slug": "panorama_manticore_b_s",
+    "slug": "panorama_manticore",
     "type": "minion"
   },
   {
+    "name": "Panpipes of Pnom",
+    "slug": "panpipes_of_pnom",
+    "type": "artifact"
+  },
+  {
     "name": "Pathfinder",
-    "slug": "pathfinder_b_s",
+    "slug": "pathfinder",
     "type": "avatar"
   },
   {
     "name": "Payload Trebuchet",
-    "slug": "payload_trebuchet_b_s",
+    "slug": "payload_trebuchet",
+    "type": "artifact"
+  },
+  {
+    "name": "Peace Offering",
+    "slug": "peace_offering",
+    "type": "minion"
+  },
+  {
+    "name": "Peacemaker Arbalest",
+    "slug": "peacemaker_arbalest",
     "type": "artifact"
   },
   {
     "name": "Peasant Revolt",
-    "slug": "peasant_revolt_b_s",
+    "slug": "peasant_revolt",
     "type": "magic"
   },
   {
     "name": "Pebbled Paths",
-    "slug": "pebbled_paths_b_s",
+    "slug": "pebbled_paths",
+    "type": "site"
+  },
+  {
+    "name": "Peculiar Port",
+    "slug": "peculiar_port",
     "type": "site"
   },
   {
     "name": "Pendragon Banner",
-    "slug": "pendragon_banner_b_s",
+    "slug": "pendragon_banner",
     "type": "artifact"
   },
   {
     "name": "Pendragon Legacy",
-    "slug": "pendragon_legacy_b_s",
+    "slug": "pendragon_legacy",
     "type": "magic"
   },
   {
     "name": "Pendulum of Peril",
-    "slug": "pendulum_of_peril_b_s",
+    "slug": "pendulum_of_peril",
     "type": "artifact"
   },
   {
+    "name": "Penitent Knight",
+    "slug": "penitent_knight",
+    "type": "minion"
+  },
+  {
     "name": "Peregrine Apparition",
-    "slug": "peregrine_apparition_b_s",
+    "slug": "peregrine_apparition",
     "type": "minion"
   },
   {
     "name": "Perilous Bridge",
-    "slug": "perilous_bridge_b_s",
+    "slug": "perilous_bridge",
     "type": "site"
   },
   {
+    "name": "Persecutor",
+    "slug": "persecutor",
+    "type": "avatar"
+  },
+  {
     "name": "Petrosian Cavalry",
-    "slug": "petrosian_cavalry_b_s",
+    "slug": "petrosian_cavalry",
     "type": "minion"
   },
   {
     "name": "Phantasmal Shade",
-    "slug": "phantasmal_shade_b_s",
+    "slug": "phantasmal_shade",
     "type": "minion"
   },
   {
     "name": "Phantom Steed",
-    "slug": "phantom_steed_b_s",
+    "slug": "phantom_steed",
     "type": "minion"
   },
   {
     "name": "Phase Assassin",
-    "slug": "phase_assassin_b_s",
+    "slug": "phase_assassin",
     "type": "minion"
   },
   {
     "name": "Philosopher's Stone",
-    "slug": "philosophers_stone_b_s",
+    "slug": "philosophers_stone",
     "type": "artifact"
   },
   {
-    "name": "Pigs of the Sounder",
-    "slug": "pigs_of_the_sounder_b_s",
+    "name": "Pied Piper of Hameln",
+    "slug": "pied_piper_of_hameln",
     "type": "minion"
   },
   {
+    "name": "Pigs of the Sounder",
+    "slug": "pigs_of_the_sounder",
+    "type": "minion"
+  },
+  {
+    "name": "Pile of Skulls",
+    "slug": "pile_of_skulls",
+    "type": "artifact"
+  },
+  {
+    "name": "Pilgrim's Shrine",
+    "slug": "pilgrims_shrine",
+    "type": "site"
+  },
+  {
     "name": "Pillar of Zeiros",
-    "slug": "pillar_of_zeiros_b_s",
+    "slug": "pillar_of_zeiros",
     "type": "site"
   },
   {
     "name": "Pirate Ship",
-    "slug": "pirate_ship_b_s",
+    "slug": "pirate_ship",
     "type": "minion"
   },
   {
     "name": "Pit Vipers",
-    "slug": "pit_vipers_b_s",
+    "slug": "pit_vipers",
+    "type": "minion"
+  },
+  {
+    "name": "Pith Imp",
+    "slug": "pith_imp",
     "type": "minion"
   },
   {
     "name": "Plague of Frogs",
-    "slug": "plague_of_frogs_b_s",
+    "slug": "plague_of_frogs",
     "type": "magic"
   },
   {
-    "name": "Planar Gate",
-    "slug": "planar_gate_b_s",
+    "name": "Plague Pits",
+    "slug": "plague_pits",
     "type": "site"
   },
   {
+    "name": "Plague Rat",
+    "slug": "plague_rat",
+    "type": "minion"
+  },
+  {
+    "name": "Planar Gate",
+    "slug": "planar_gate",
+    "type": "site"
+  },
+  {
+    "name": "Plate of the Whale",
+    "slug": "plate_of_the_whale",
+    "type": "artifact"
+  },
+  {
     "name": "Plumed Pegasus",
-    "slug": "plumed_pegasus_b_s",
+    "slug": "plumed_pegasus",
     "type": "minion"
   },
   {
     "name": "Pnakotic Manuscript",
-    "slug": "pnakotic_manuscript_b_s",
+    "slug": "pnakotic_manuscript",
     "type": "artifact"
   },
   {
     "name": "Poison Nova",
-    "slug": "poison_nova_b_s",
+    "slug": "poison_nova",
     "type": "magic"
   },
   {
     "name": "Poisoned Well",
-    "slug": "poisoned_well_b_s",
+    "slug": "poisoned_well",
     "type": "site"
   },
   {
     "name": "Poisonous Dagger",
-    "slug": "poisonous_dagger_b_s",
+    "slug": "poisonous_dagger",
     "type": "artifact"
   },
   {
     "name": "Polar Bears",
-    "slug": "polar_bears_b_s",
+    "slug": "polar_bears",
     "type": "minion"
   },
   {
     "name": "Polar Explorers",
-    "slug": "polar_explorers_b_s",
+    "slug": "polar_explorers",
     "type": "minion"
   },
   {
     "name": "Pollimorph",
-    "slug": "pollimorph_b_s",
+    "slug": "pollimorph",
     "type": "magic"
   },
   {
     "name": "Pond",
-    "slug": "pond_b_s",
+    "slug": "pond",
     "type": "site"
   },
   {
     "name": "Pookas",
-    "slug": "pookas_b_s",
+    "slug": "pookas",
     "type": "minion"
   },
   {
     "name": "Porcupine Pufferfish",
-    "slug": "porcupine_pufferfish_b_s",
+    "slug": "porcupine_pufferfish",
     "type": "minion"
   },
   {
     "name": "Postern Gate",
-    "slug": "postern_gate_b_s",
+    "slug": "postern_gate",
     "type": "site"
   },
   {
     "name": "Power of Flight",
-    "slug": "power_of_flight_b_s",
+    "slug": "power_of_flight",
+    "type": "magic"
+  },
+  {
+    "name": "Powerwish",
+    "slug": "powerwish",
     "type": "magic"
   },
   {
     "name": "Primordial Spring",
-    "slug": "primordial_spring_b_s",
+    "slug": "primordial_spring",
     "type": "site"
   },
   {
     "name": "Pristine Paradise",
-    "slug": "pristine_paradise_b_s",
+    "slug": "pristine_paradise",
     "type": "site"
   },
   {
+    "name": "Profane Revenant",
+    "slug": "profane_revenant",
+    "type": "minion"
+  },
+  {
     "name": "Psionic Blast",
-    "slug": "psionic_blast_b_s",
+    "slug": "psionic_blast",
     "type": "magic"
   },
   {
     "name": "Pudge Butcher",
-    "slug": "pudge_butcher_b_s",
+    "slug": "pudge_butcher",
     "type": "minion"
   },
   {
     "name": "Puppet Master",
-    "slug": "puppet_master_b_s",
+    "slug": "puppet_master",
     "type": "minion"
   },
   {
+    "name": "Purgatory",
+    "slug": "purgatory",
+    "type": "site"
+  },
+  {
     "name": "Purge Juggernaut",
-    "slug": "purge_juggernaut_b_s",
+    "slug": "purge_juggernaut",
     "type": "artifact"
   },
   {
     "name": "Purple Knight",
-    "slug": "purple_knight_b_s",
+    "slug": "purple_knight",
+    "type": "minion"
+  },
+  {
+    "name": "Putrid Presence",
+    "slug": "putrid_presence",
     "type": "minion"
   },
   {
     "name": "Quagmire",
-    "slug": "quagmire_b_s",
+    "slug": "quagmire",
     "type": "site"
   },
   {
     "name": "Quarrelsome Kobolds",
-    "slug": "quarrelsome_kobolds_b_s",
+    "slug": "quarrelsome_kobolds",
     "type": "minion"
   },
   {
     "name": "Queen Guinevere",
-    "slug": "queen_guinevere_b_s",
+    "slug": "queen_guinevere",
     "type": "minion"
   },
   {
     "name": "Queen of Midland",
-    "slug": "queen_of_midland_b_s",
+    "slug": "queen_of_midland",
     "type": "minion"
   },
   {
     "name": "Questing Beast",
-    "slug": "questing_beast_b_s",
+    "slug": "questing_beast",
     "type": "minion"
   },
   {
     "name": "Raal Dromedary",
-    "slug": "raal_dromedary_b_s",
+    "slug": "raal_dromedary",
     "type": "minion"
   },
   {
     "name": "Rain of Arrows",
-    "slug": "rain_of_arrows_b_s",
+    "slug": "rain_of_arrows",
     "type": "magic"
   },
   {
     "name": "Raise Dead",
-    "slug": "raise_dead_b_s",
+    "slug": "raise_dead",
     "type": "magic"
   },
   {
+    "name": "Raise Militia",
+    "slug": "raise_militia",
+    "type": "magic"
+  },
+  {
+    "name": "Rat King",
+    "slug": "rat_king",
+    "type": "minion"
+  },
+  {
+    "name": "Ravenous Werewolf",
+    "slug": "ravenous_werewolf",
+    "type": "minion"
+  },
+  {
+    "name": "Raze",
+    "slug": "raze",
+    "type": "magic"
+  },
+  {
+    "name": "Realm-Eater",
+    "slug": "realm_eater",
+    "type": "avatar"
+  },
+  {
     "name": "Rebecks",
-    "slug": "rebecks_b_s",
+    "slug": "rebecks",
     "type": "minion"
   },
   {
     "name": "Recall",
-    "slug": "recall_b_s",
+    "slug": "recall",
     "type": "magic"
   },
   {
     "name": "Reckless Squire",
-    "slug": "reckless_squire_b_s",
+    "slug": "reckless_squire",
     "type": "minion"
   },
   {
     "name": "Recurring Specter",
-    "slug": "recurring_specter_b_s",
+    "slug": "recurring_specter",
     "type": "minion"
   },
   {
     "name": "Red Desert",
-    "slug": "red_desert_b_s",
+    "slug": "red_desert",
     "type": "site"
   },
   {
+    "name": "Red Rock of Ravannis",
+    "slug": "red_rock_of_ravannis",
+    "type": "artifact"
+  },
+  {
     "name": "Redbreast Robin",
-    "slug": "redbreast_robin_b_s",
+    "slug": "redbreast_robin",
     "type": "minion"
   },
   {
     "name": "Redcap Powries",
-    "slug": "redcap_powries_b_s",
+    "slug": "redcap_powries",
     "type": "minion"
   },
   {
+    "name": "Redmane Hyena",
+    "slug": "redmane_hyena",
+    "type": "minion"
+  },
+  {
+    "name": "Regurgitator",
+    "slug": "regurgitator",
+    "type": "minion"
+  },
+  {
+    "name": "Release the Hounds",
+    "slug": "release_the_hounds",
+    "type": "magic"
+  },
+  {
     "name": "Relentless Crowd",
-    "slug": "relentless_crowd_p_s",
+    "slug": "relentless_crowd",
     "type": "minion"
   },
   {
     "name": "Remote Desert",
-    "slug": "remote_desert_b_s",
+    "slug": "remote_desert",
     "type": "site"
   },
   {
+    "name": "Renatus Trueblood",
+    "slug": "renatus_trueblood",
+    "type": "minion"
+  },
+  {
     "name": "Replication",
-    "slug": "replication_b_s",
+    "slug": "replication",
     "type": "magic"
   },
   {
     "name": "Rescue",
-    "slug": "rescue_b_s",
+    "slug": "rescue",
     "type": "magic"
   },
   {
     "name": "Rest in Peace",
-    "slug": "rest_in_peace_b_s",
+    "slug": "rest_in_peace",
     "type": "aura"
   },
   {
+    "name": "Return to Nature",
+    "slug": "return_to_nature",
+    "type": "magic"
+  },
+  {
+    "name": "Returned King",
+    "slug": "returned_king",
+    "type": "minion"
+  },
+  {
+    "name": "Revered Revenant",
+    "slug": "revered_revenant",
+    "type": "minion"
+  },
+  {
     "name": "Rhitta Gawr of Snowdonia",
-    "slug": "rhitta_gawr_of_snowdonia_b_s",
+    "slug": "rhitta_gawr_of_snowdonia",
     "type": "minion"
   },
   {
     "name": "Rhongomyniad",
-    "slug": "rhongomyniad_b_s",
+    "slug": "rhongomyniad",
     "type": "artifact"
   },
   {
     "name": "Ribble Boggart",
-    "slug": "ribble_boggart_b_s",
+    "slug": "ribble_boggart",
     "type": "minion"
   },
   {
     "name": "Riddle Sphinx",
-    "slug": "riddle_sphinx_b_s",
+    "slug": "riddle_sphinx",
     "type": "minion"
   },
   {
     "name": "Rift Valley",
-    "slug": "rift_valley_b_s",
+    "slug": "rift_valley",
     "type": "site"
   },
   {
     "name": "Rimland Nomads",
-    "slug": "rimland_nomads_b_s",
+    "slug": "rimland_nomads",
     "type": "minion"
   },
   {
     "name": "Ring of Morrigan",
-    "slug": "ring_of_morrigan_b_s",
+    "slug": "ring_of_morrigan",
     "type": "artifact"
   },
   {
     "name": "Riptide",
-    "slug": "riptide_b_s",
+    "slug": "riptide",
     "type": "magic"
   },
   {
+    "name": "River of Blood",
+    "slug": "river_of_blood",
+    "type": "site"
+  },
+  {
     "name": "River of Flame",
-    "slug": "river_of_flame_b_s",
+    "slug": "river_of_flame",
+    "type": "site"
+  },
+  {
+    "name": "River Rapids",
+    "slug": "river_rapids",
+    "type": "site"
+  },
+  {
+    "name": "Road to Perdition",
+    "slug": "road_to_perdition",
     "type": "site"
   },
   {
     "name": "Roaming Monster",
-    "slug": "roaming_monster_b_s",
+    "slug": "roaming_monster",
     "type": "minion"
   },
   {
     "name": "Rolling Boulder",
-    "slug": "rolling_boulder_b_s",
+    "slug": "rolling_boulder",
     "type": "artifact"
   },
   {
     "name": "Root Spider",
-    "slug": "root_spider_b_s",
+    "slug": "root_spider",
     "type": "minion"
   },
   {
     "name": "Roots of Yggdrasil",
-    "slug": "roots_of_yggdrasil_b_s",
+    "slug": "roots_of_yggdrasil",
     "type": "site"
   },
   {
-    "name": "Royal Bodyguard",
-    "slug": "royal_bodyguard_b_s",
+    "name": "Rowdy Boys",
+    "slug": "rowdy_boys",
     "type": "minion"
   },
   {
+    "name": "Royal Bodyguard",
+    "slug": "royal_bodyguard",
+    "type": "minion"
+  },
+  {
+    "name": "Rubble",
+    "slug": "rubble",
+    "type": "site"
+  },
+  {
     "name": "Ruby Core",
-    "slug": "ruby_core_b_s",
+    "slug": "ruby_core",
     "type": "artifact"
   },
   {
     "name": "Ruins",
-    "slug": "ruins_b_s",
+    "slug": "ruins",
     "type": "site"
   },
   {
     "name": "Ruler of Thul",
-    "slug": "ruler_of_thul_b_s",
+    "slug": "ruler_of_thul",
     "type": "minion"
   },
   {
     "name": "Rustic Village",
-    "slug": "rustic_village_b_s",
+    "slug": "rustic_village",
     "type": "site"
   },
   {
     "name": "Sacred Scarabs",
-    "slug": "sacred_scarabs_b_s",
+    "slug": "sacred_scarabs",
     "type": "minion"
+  },
+  {
+    "name": "Sacred Stag",
+    "slug": "sacred_stag",
+    "type": "minion"
+  },
+  {
+    "name": "Saint of Redemption",
+    "slug": "saint_of_redemption",
+    "type": "minion"
+  },
+  {
+    "name": "Saintweald",
+    "slug": "saintweald",
+    "type": "site"
   },
   {
     "name": "Salmon of Knowledge",
-    "slug": "salmon_of_knowledge_b_s",
+    "slug": "salmon_of_knowledge",
     "type": "minion"
   },
   {
+    "name": "Salt the Earth",
+    "slug": "salt_the_earth",
+    "type": "aura"
+  },
+  {
     "name": "Sand Worm",
-    "slug": "sand_worm_b_s",
+    "slug": "sand_worm",
     "type": "minion"
   },
   {
     "name": "Sandstorm",
-    "slug": "sandstorm_b_s",
+    "slug": "sandstorm",
     "type": "aura"
   },
   {
     "name": "Saracen Raiders",
-    "slug": "saracen_raiders_b_s",
+    "slug": "saracen_raiders",
     "type": "minion"
   },
   {
     "name": "Saracen Scout",
-    "slug": "saracen_scout_b_s",
+    "slug": "saracen_scout",
+    "type": "minion"
+  },
+  {
+    "name": "Satanic Panic",
+    "slug": "satanic_panic",
+    "type": "magic"
+  },
+  {
+    "name": "Savior",
+    "slug": "savior",
+    "type": "avatar"
+  },
+  {
+    "name": "Sawbones",
+    "slug": "sawbones",
     "type": "minion"
   },
   {
     "name": "Scarecrow",
-    "slug": "scarecrow_b_s",
+    "slug": "scarecrow",
     "type": "artifact"
   },
   {
+    "name": "Scatter",
+    "slug": "scatter",
+    "type": "magic"
+  },
+  {
     "name": "Scavenging Fiend",
-    "slug": "scavenging_fiend_b_s",
+    "slug": "scavenging_fiend",
     "type": "minion"
   },
   {
     "name": "Scent Hounds",
-    "slug": "scent_hounds_b_s",
+    "slug": "scent_hounds",
     "type": "minion"
   },
   {
     "name": "Scorched Earth",
-    "slug": "scorched_earth_b_s",
+    "slug": "scorched_earth",
     "type": "magic"
   },
   {
     "name": "Scourge Zombies",
-    "slug": "scourge_zombies_b_s",
+    "slug": "scourge_zombies",
+    "type": "minion"
+  },
+  {
+    "name": "Screamer",
+    "slug": "screamer",
     "type": "minion"
   },
   {
     "name": "Screaming Skull",
-    "slug": "screaming_skull_b_s",
+    "slug": "screaming_skull",
     "type": "artifact"
   },
   {
+    "name": "Sea of Ash",
+    "slug": "sea_of_ash",
+    "type": "site"
+  },
+  {
     "name": "Sea Raider",
-    "slug": "sea_raider_b_s",
+    "slug": "sea_raider",
     "type": "minion"
   },
   {
     "name": "Sea Serpent",
-    "slug": "sea_serpent_b_s",
+    "slug": "sea_serpent",
     "type": "minion"
+  },
+  {
+    "name": "Sea Witch",
+    "slug": "sea_witch",
+    "type": "minion"
+  },
+  {
+    "name": "Search Party",
+    "slug": "search_party",
+    "type": "minion"
+  },
+  {
+    "name": "Searing Truth",
+    "slug": "searing_truth",
+    "type": "magic"
   },
   {
     "name": "Seasoned Sellsword",
-    "slug": "seasoned_sellsword_b_s",
+    "slug": "seasoned_sellsword",
     "type": "minion"
   },
   {
+    "name": "Second Wind",
+    "slug": "second_wind",
+    "type": "magic"
+  },
+  {
     "name": "Secret Tunnel",
-    "slug": "secret_tunnel_b_s",
+    "slug": "secret_tunnel",
     "type": "site"
   },
   {
     "name": "Sedge Crabs",
-    "slug": "sedge_crabs_b_s",
+    "slug": "sedge_crabs",
     "type": "minion"
   },
   {
     "name": "Seelie Court",
-    "slug": "seelie_court_b_s",
+    "slug": "seelie_court",
     "type": "minion"
   },
   {
     "name": "Seer",
-    "slug": "seer_b_s",
+    "slug": "seer",
     "type": "avatar"
   },
   {
     "name": "Seirawan Hydra",
-    "slug": "seirawan_hydra_b_s",
+    "slug": "seirawan_hydra",
     "type": "minion"
   },
   {
     "name": "Selfsame Simulacrum",
-    "slug": "selfsame_simulacrum_b_s",
+    "slug": "selfsame_simulacrum",
+    "type": "minion"
+  },
+  {
+    "name": "Sensu of the Fang",
+    "slug": "sensu_of_the_fang",
+    "type": "artifact"
+  },
+  {
+    "name": "Sentinel Trap",
+    "slug": "sentinel_trap",
+    "type": "artifact"
+  },
+  {
+    "name": "Seraphim",
+    "slug": "seraphim",
+    "type": "minion"
+  },
+  {
+    "name": "Serava Townsfolk",
+    "slug": "serava_townsfolk",
     "type": "minion"
   },
   {
     "name": "Seven-League Boots",
-    "slug": "seven_league_boots_b_s",
+    "slug": "seven_league_boots",
     "type": "artifact"
   },
   {
+    "name": "Sewer Rats",
+    "slug": "sewer_rats",
+    "type": "minion"
+  },
+  {
+    "name": "Shackled Demon",
+    "slug": "shackled_demon",
+    "type": "minion"
+  },
+  {
+    "name": "Shallow Grave",
+    "slug": "shallow_grave",
+    "type": "site"
+  },
+  {
     "name": "Shameless Squire",
-    "slug": "shameless_squire_b_s",
+    "slug": "shameless_squire",
     "type": "minion"
   },
   {
     "name": "Shapeshift",
-    "slug": "shapeshift_b_s",
+    "slug": "shapeshift",
     "type": "magic"
   },
   {
     "name": "Shatter Strike",
-    "slug": "shatter_strike_b_s",
+    "slug": "shatter_strike",
     "type": "magic"
   },
   {
     "name": "Shellycoat",
-    "slug": "shellycoat_b_s",
+    "slug": "shellycoat",
     "type": "minion"
   },
   {
     "name": "Sherwood Huntress",
-    "slug": "sherwood_huntress_b_s",
+    "slug": "sherwood_huntress",
     "type": "minion"
   },
   {
     "name": "Shield Maidens",
-    "slug": "shield_maidens_b_s",
+    "slug": "shield_maidens",
     "type": "minion"
   },
   {
     "name": "Shield Wall",
-    "slug": "shield_wall_b_s",
+    "slug": "shield_wall",
     "type": "magic"
   },
   {
     "name": "Shifting Sands",
-    "slug": "shifting_sands_b_s",
+    "slug": "shifting_sands",
     "type": "site"
   },
   {
+    "name": "Shoggoth",
+    "slug": "shoggoth",
+    "type": "minion"
+  },
+  {
+    "name": "Shrike Orchard",
+    "slug": "shrike_orchard",
+    "type": "site"
+  },
+  {
+    "name": "Shrine of the Dragonlord",
+    "slug": "shrine_of_the_dragonlord",
+    "type": "artifact"
+  },
+  {
     "name": "Shrink",
-    "slug": "shrink_b_s",
+    "slug": "shrink",
     "type": "magic"
   },
   {
     "name": "Siege Ballista",
-    "slug": "siege_ballista_b_s",
+    "slug": "siege_ballista",
     "type": "artifact"
   },
   {
     "name": "Siege Giant",
-    "slug": "siege_giant_b_s",
+    "slug": "siege_giant",
     "type": "minion"
   },
   {
     "name": "Silence",
-    "slug": "silence_b_s",
+    "slug": "silence",
     "type": "aura"
   },
   {
+    "name": "Silent Hills",
+    "slug": "silent_hills",
+    "type": "site"
+  },
+  {
+    "name": "Silver Bullet",
+    "slug": "silver_bullet",
+    "type": "artifact"
+  },
+  {
     "name": "Silver Valkyries",
-    "slug": "silver_valkyries_b_s",
+    "slug": "silver_valkyries",
     "type": "minion"
   },
   {
     "name": "Simple Village",
-    "slug": "simple_village_b_s",
+    "slug": "simple_village",
+    "type": "site"
+  },
+  {
+    "name": "Sinister Pond",
+    "slug": "sinister_pond",
     "type": "site"
   },
   {
     "name": "Sinkhole",
-    "slug": "sinkhole_b_s",
+    "slug": "sinkhole",
     "type": "site"
   },
   {
+    "name": "Sinterfee",
+    "slug": "sinterfee",
+    "type": "minion"
+  },
+  {
     "name": "Sir Agravaine",
-    "slug": "sir_agravaine_b_s",
+    "slug": "sir_agravaine",
     "type": "minion"
   },
   {
     "name": "Sir Balin",
-    "slug": "sir_balin_b_s",
+    "slug": "sir_balin",
     "type": "minion"
   },
   {
     "name": "Sir Bedivere",
-    "slug": "sir_bedivere_b_s",
+    "slug": "sir_bedivere",
     "type": "minion"
   },
   {
     "name": "Sir Bors the Younger",
-    "slug": "sir_bors_the_younger_b_s",
+    "slug": "sir_bors_the_younger",
     "type": "minion"
   },
   {
     "name": "Sir Gaheris",
-    "slug": "sir_gaheris_b_s",
+    "slug": "sir_gaheris",
     "type": "minion"
   },
   {
     "name": "Sir Galahad",
-    "slug": "sir_galahad_b_s",
+    "slug": "sir_galahad",
     "type": "minion"
   },
   {
     "name": "Sir Gareth",
-    "slug": "sir_gareth_b_s",
+    "slug": "sir_gareth",
     "type": "minion"
   },
   {
     "name": "Sir Gawain",
-    "slug": "sir_gawain_b_s",
+    "slug": "sir_gawain",
     "type": "minion"
   },
   {
     "name": "Sir Ironside",
-    "slug": "sir_ironside_b_s",
+    "slug": "sir_ironside",
     "type": "minion"
   },
   {
     "name": "Sir Kay",
-    "slug": "sir_kay_b_s",
+    "slug": "sir_kay",
     "type": "minion"
   },
   {
     "name": "Sir Lamorak",
-    "slug": "sir_lamorak_b_s",
+    "slug": "sir_lamorak",
     "type": "minion"
   },
   {
     "name": "Sir Lancelot",
-    "slug": "sir_lancelot_b_s",
+    "slug": "sir_lancelot",
     "type": "minion"
   },
   {
     "name": "Sir Mordred",
-    "slug": "sir_mordred_b_s",
+    "slug": "sir_mordred",
     "type": "minion"
   },
   {
     "name": "Sir Morien",
-    "slug": "sir_morien_b_s",
+    "slug": "sir_morien",
     "type": "minion"
   },
   {
     "name": "Sir Pelleas",
-    "slug": "sir_pelleas_b_s",
+    "slug": "sir_pelleas",
     "type": "minion"
   },
   {
     "name": "Sir Pellinore",
-    "slug": "sir_pellinore_b_s",
+    "slug": "sir_pellinore",
     "type": "minion"
   },
   {
     "name": "Sir Perceval",
-    "slug": "sir_perceval_b_s",
+    "slug": "sir_perceval",
     "type": "minion"
   },
   {
     "name": "Sir Priamus",
-    "slug": "sir_priamus_b_s",
+    "slug": "sir_priamus",
     "type": "minion"
   },
   {
     "name": "Sir Tom Thumb",
-    "slug": "sir_tom_thumb_b_s",
+    "slug": "sir_tom_thumb",
     "type": "minion"
   },
   {
     "name": "Sir Tristan",
-    "slug": "sir_tristan_b_s",
+    "slug": "sir_tristan",
     "type": "minion"
   },
   {
     "name": "Sir Yvain",
-    "slug": "sir_yvain_b_s",
+    "slug": "sir_yvain",
     "type": "minion"
   },
   {
     "name": "Sirian Templar",
-    "slug": "sirian_templar_b_s",
+    "slug": "sirian_templar",
     "type": "minion"
   },
   {
     "name": "Sirocco Scorpions",
-    "slug": "sirocco_scorpions_b_s",
+    "slug": "sirocco_scorpions",
+    "type": "minion"
+  },
+  {
+    "name": "Sister Stefánia",
+    "slug": "sister_stefania",
     "type": "minion"
   },
   {
     "name": "Sisters of Avalon",
-    "slug": "sisters_of_avalon_b_s",
+    "slug": "sisters_of_avalon",
     "type": "minion"
   },
   {
     "name": "Sisters of Silence",
-    "slug": "sisters_of_silence_b_s",
+    "slug": "sisters_of_silence",
+    "type": "minion"
+  },
+  {
+    "name": "Sjaelström",
+    "slug": "sjaelstrom",
+    "type": "magic"
+  },
+  {
+    "name": "Skeleton",
+    "slug": "skeleton",
+    "type": "minion"
+  },
+  {
+    "name": "Skeleton Mage",
+    "slug": "skeleton_mage",
     "type": "minion"
   },
   {
     "name": "Skirmishers of Mu",
-    "slug": "skirmishers_of_mu_b_s",
+    "slug": "skirmishers_of_mu",
     "type": "minion"
   },
   {
     "name": "Sky Baron",
-    "slug": "sky_baron_b_s",
+    "slug": "sky_baron",
     "type": "minion"
   },
   {
     "name": "Sleep",
-    "slug": "sleep_b_s",
+    "slug": "sleep",
     "type": "magic"
   },
   {
+    "name": "Slimy Mutants",
+    "slug": "slimy_mutants",
+    "type": "minion"
+  },
+  {
     "name": "Sling Pixies",
-    "slug": "sling_pixies_b_s",
+    "slug": "sling_pixies",
+    "type": "minion"
+  },
+  {
+    "name": "Slobbermaw",
+    "slug": "slobbermaw",
     "type": "minion"
   },
   {
     "name": "Slumbering Giantess",
-    "slug": "slumbering_giantess_b_s",
+    "slug": "slumbering_giantess",
     "type": "minion"
   },
   {
     "name": "Sly Fox",
-    "slug": "sly_fox_b_s",
+    "slug": "sly_fox",
     "type": "minion"
   },
   {
+    "name": "Smite",
+    "slug": "smite",
+    "type": "magic"
+  },
+  {
     "name": "Smokestacks of Gnaak",
-    "slug": "smokestacks_of_gnaak_b_s",
+    "slug": "smokestacks_of_gnaak",
     "type": "site"
   },
   {
+    "name": "Snallygaster",
+    "slug": "snallygaster",
+    "type": "minion"
+  },
+  {
     "name": "Sneak Thief",
-    "slug": "sneak_thief_b_s",
+    "slug": "sneak_thief",
     "type": "minion"
   },
   {
     "name": "Snow Leopard",
-    "slug": "snow_leopard_b_s",
+    "slug": "snow_leopard",
     "type": "minion"
   },
   {
     "name": "Snowball",
-    "slug": "snowball_b_s",
+    "slug": "snowball",
     "type": "magic"
   },
   {
+    "name": "Sold-out Cemetery",
+    "slug": "sold_out_cemetery",
+    "type": "site"
+  },
+  {
     "name": "Sorcerer",
-    "slug": "sorcerer_b_s",
+    "slug": "sorcerer",
     "type": "avatar"
   },
   {
+    "name": "Sow the Earth",
+    "slug": "sow_the_earth",
+    "type": "aura"
+  },
+  {
     "name": "Sparkmage",
-    "slug": "sparkmage_b_s",
+    "slug": "sparkmage",
     "type": "avatar"
   },
   {
     "name": "Spear of Destiny",
-    "slug": "spear_of_destiny_b_s",
+    "slug": "spear_of_destiny",
     "type": "artifact"
   },
   {
     "name": "Spearmarshal",
-    "slug": "spearmarshal_b_s",
+    "slug": "spearmarshal",
     "type": "minion"
   },
   {
     "name": "Spectral Stalker",
-    "slug": "spectral_stalker_b_s",
+    "slug": "spectral_stalker",
     "type": "minion"
   },
   {
     "name": "Spellslinger",
-    "slug": "spellslinger_dk_s",
+    "slug": "spellslinger",
     "type": "avatar"
   },
   {
+    "name": "Sphere of Animosity",
+    "slug": "sphere_of_animosity",
+    "type": "aura"
+  },
+  {
+    "name": "Sphinx Sarcophagus",
+    "slug": "sphinx_sarcophagus",
+    "type": "site"
+  },
+  {
     "name": "Spin Attack",
-    "slug": "spin_attack_b_s",
+    "slug": "spin_attack",
     "type": "magic"
   },
   {
     "name": "Spire",
-    "slug": "spire_dk_s",
+    "slug": "spire",
     "type": "site"
   },
   {
     "name": "Spire Lich",
-    "slug": "spire_lich_b_s",
+    "slug": "spire_lich",
     "type": "minion"
   },
   {
+    "name": "Spore Spouts",
+    "slug": "spore_spouts",
+    "type": "site"
+  },
+  {
     "name": "Spring River",
-    "slug": "spring_river_b_s",
+    "slug": "spring_river",
     "type": "site"
   },
   {
     "name": "Squeakers",
-    "slug": "squeakers_b_s",
+    "slug": "squeakers",
     "type": "minion"
   },
   {
     "name": "Squirming Mass",
-    "slug": "squirming_mass_b_s",
+    "slug": "squirming_mass",
+    "type": "minion"
+  },
+  {
+    "name": "Stagecoach",
+    "slug": "stagecoach",
     "type": "minion"
   },
   {
     "name": "Standing Stones",
-    "slug": "standing_stones_b_s",
+    "slug": "standing_stones",
     "type": "site"
   },
   {
     "name": "Star-seeds of Uhr",
-    "slug": "star_seeds_of_uhr_b_s",
+    "slug": "star_seeds_of_uhr",
     "type": "magic"
   },
   {
+    "name": "Stargazer",
+    "slug": "stargazer",
+    "type": "minion"
+  },
+  {
+    "name": "Static Servant",
+    "slug": "static_servant",
+    "type": "minion"
+  },
+  {
     "name": "Steppe",
-    "slug": "steppe_b_s",
+    "slug": "steppe",
     "type": "site"
   },
   {
+    "name": "Stinging Kelp",
+    "slug": "stinging_kelp",
+    "type": "site"
+  },
+  {
+    "name": "Stitched Abomination",
+    "slug": "stitched_abomination",
+    "type": "minion"
+  },
+  {
     "name": "Stone Rain",
-    "slug": "stone_rain_b_s",
+    "slug": "stone_rain",
     "type": "magic"
   },
   {
     "name": "Stone-gaze Gorgons",
-    "slug": "stone_gaze_gorgons_b_s",
+    "slug": "stone_gaze_gorgons",
     "type": "minion"
   },
   {
     "name": "Stormy Seas",
-    "slug": "stormy_seas_b_s",
+    "slug": "stormy_seas",
     "type": "magic"
   },
   {
     "name": "Stream",
-    "slug": "stream_dk_s",
+    "slug": "stream",
     "type": "site"
   },
   {
+    "name": "Sturmgeist",
+    "slug": "sturmgeist",
+    "type": "minion"
+  },
+  {
+    "name": "Stygian Archers",
+    "slug": "stygian_archers",
+    "type": "minion"
+  },
+  {
     "name": "Sugarplum Pixies",
-    "slug": "sugarplum_pixies_b_s",
+    "slug": "sugarplum_pixies",
     "type": "minion"
   },
   {
     "name": "Summer River",
-    "slug": "summer_river_b_s",
+    "slug": "summer_river",
     "type": "site"
   },
   {
     "name": "Summoning Sphere",
-    "slug": "summoning_sphere_b_s",
+    "slug": "summoning_sphere",
     "type": "aura"
   },
   {
     "name": "Sunken Treasure",
-    "slug": "sunken_treasure_b_s",
+    "slug": "sunken_treasure",
     "type": "artifact"
   },
   {
+    "name": "Survivors of Serava",
+    "slug": "survivors_of_serava",
+    "type": "minion"
+  },
+  {
     "name": "Swamp Buffalo",
-    "slug": "swamp_buffalo_b_s",
+    "slug": "swamp_buffalo",
     "type": "minion"
   },
   {
     "name": "Swan Maidens",
-    "slug": "swan_maidens_b_s",
+    "slug": "swan_maidens",
     "type": "minion"
   },
   {
+    "name": "Swap",
+    "slug": "swap",
+    "type": "magic"
+  },
+  {
     "name": "Swindler Troupe",
-    "slug": "swindler_troupe_b_s",
+    "slug": "swindler_troupe",
     "type": "minion"
   },
   {
     "name": "Swiven Scout",
-    "slug": "swiven_scout_b_s",
+    "slug": "swiven_scout",
     "type": "minion"
   },
   {
     "name": "Sword and Shield",
-    "slug": "sword_and_shield_b_s",
+    "slug": "sword_and_shield",
     "type": "artifact"
   },
   {
     "name": "Sylvan Splendor",
-    "slug": "sylvan_splendor_b_s",
+    "slug": "sylvan_splendor",
     "type": "aura"
   },
   {
+    "name": "Symmetric Suffering",
+    "slug": "symmetric_suffering",
+    "type": "magic"
+  },
+  {
+    "name": "Tabula Rasa",
+    "slug": "tabula_rasa",
+    "type": "artifact"
+  },
+  {
     "name": "Tactical Move",
-    "slug": "tactical_move_b_s",
+    "slug": "tactical_move",
     "type": "magic"
   },
   {
     "name": "Tadpole Pool",
-    "slug": "tadpole_pool_b_s",
+    "slug": "tadpole_pool",
     "type": "site"
   },
   {
+    "name": "Talamh Dreig",
+    "slug": "talamh_dreig",
+    "type": "minion"
+  },
+  {
+    "name": "Tawny",
+    "slug": "tawny",
+    "type": "minion"
+  },
+  {
     "name": "Tax Collector",
-    "slug": "tax_collector_b_s",
+    "slug": "tax_collector",
     "type": "minion"
   },
   {
     "name": "Telekinesis",
-    "slug": "telekinesis_b_s",
+    "slug": "telekinesis",
     "type": "magic"
   },
   {
     "name": "Teleport",
-    "slug": "teleport_b_s",
+    "slug": "teleport",
     "type": "magic"
   },
   {
     "name": "Templar",
-    "slug": "templar_bt_s",
+    "slug": "templar",
     "type": "avatar"
   },
   {
-    "name": "Thankless Squire",
-    "slug": "thankless_squire_b_s",
+    "name": "Temple of Moloch",
+    "slug": "temple_of_moloch",
+    "type": "site"
+  },
+  {
+    "name": "Ten-tonne Slug",
+    "slug": "ten_tonne_slug",
     "type": "minion"
   },
   {
+    "name": "Thankless Squire",
+    "slug": "thankless_squire",
+    "type": "minion"
+  },
+  {
+    "name": "The Apex of Babel",
+    "slug": "the_apex_of_babel",
+    "type": "site"
+  },
+  {
+    "name": "The Base of Babel",
+    "slug": "the_base_of_babel",
+    "type": "site"
+  },
+  {
     "name": "The Black Plague",
-    "slug": "the_black_plague_b_s",
+    "slug": "the_black_plague",
     "type": "aura"
   },
   {
     "name": "The Colour Out of Space",
-    "slug": "the_colour_out_of_space_b_s",
+    "slug": "the_colour_out_of_space",
+    "type": "site"
+  },
+  {
+    "name": "The Doom of Dilmun",
+    "slug": "the_doom_of_dilmun",
+    "type": "minion"
+  },
+  {
+    "name": "The Empyrean",
+    "slug": "the_empyrean",
     "type": "site"
   },
   {
     "name": "The Faerie Queene",
-    "slug": "the_faerie_queene_b_s",
+    "slug": "the_faerie_queene",
     "type": "minion"
   },
   {
+    "name": "The Flood",
+    "slug": "the_flood",
+    "type": "magic"
+  },
+  {
     "name": "The Geistwood",
-    "slug": "the_geistwood_b_s",
+    "slug": "the_geistwood",
     "type": "site"
   },
   {
     "name": "The Great Drowning of Men",
-    "slug": "the_great_drowning_of_men_b_s",
+    "slug": "the_great_drowning_of_men",
     "type": "aura"
   },
   {
     "name": "The Great Famine",
-    "slug": "the_great_famine_b_s",
+    "slug": "the_great_famine",
     "type": "aura"
   },
   {
     "name": "The Green Knight",
-    "slug": "the_green_knight_b_s",
+    "slug": "the_green_knight",
+    "type": "minion"
+  },
+  {
+    "name": "The Hexham Haunts",
+    "slug": "the_hexham_haunts",
     "type": "minion"
   },
   {
     "name": "The Immortal Throne",
-    "slug": "the_immortal_throne_b_s",
+    "slug": "the_immortal_throne",
     "type": "artifact"
+  },
+  {
+    "name": "The Inquisition",
+    "slug": "the_inquisition",
+    "type": "minion"
   },
   {
     "name": "The Lady of the Lake",
-    "slug": "the_lady_of_the_lake_b_s",
+    "slug": "the_lady_of_the_lake",
     "type": "minion"
   },
   {
-    "name": "The Ninth Legion",
-    "slug": "the_ninth_legion_b_s",
-    "type": "minion"
-  },
-  {
-    "name": "The Round Table",
-    "slug": "the_round_table_b_s",
+    "name": "The Malleus Maleficarum",
+    "slug": "the_malleus_maleficarum",
     "type": "artifact"
   },
   {
+    "name": "The Manor at Daperyll Hill",
+    "slug": "the_manor_at_daperyll_hill",
+    "type": "site"
+  },
+  {
+    "name": "The Ninth Legion",
+    "slug": "the_ninth_legion",
+    "type": "minion"
+  },
+  {
+    "name": "The Pallid Bust",
+    "slug": "the_pallid_bust",
+    "type": "artifact"
+  },
+  {
+    "name": "The Rack",
+    "slug": "the_rack",
+    "type": "artifact"
+  },
+  {
+    "name": "The Round Table",
+    "slug": "the_round_table",
+    "type": "artifact"
+  },
+  {
+    "name": "The Void",
+    "slug": "the_void",
+    "type": "site"
+  },
+  {
     "name": "The Wild Hunt",
-    "slug": "the_wild_hunt_b_s",
+    "slug": "the_wild_hunt",
     "type": "minion"
   },
   {
     "name": "Thieving Magpie",
-    "slug": "thieving_magpie_b_s",
+    "slug": "thieving_magpie",
     "type": "minion"
   },
   {
+    "name": "Thin Ice",
+    "slug": "thin_ice",
+    "type": "site"
+  },
+  {
+    "name": "Thing in the Ice",
+    "slug": "thing_in_the_ice",
+    "type": "minion"
+  },
+  {
+    "name": "Those Who Linger",
+    "slug": "those_who_linger",
+    "type": "minion"
+  },
+  {
+    "name": "Thumb Screws",
+    "slug": "thumb_screws",
+    "type": "artifact"
+  },
+  {
     "name": "Thundering Giant",
-    "slug": "thundering_giant_b_s",
+    "slug": "thundering_giant",
     "type": "minion"
   },
   {
     "name": "Thunderstorm",
-    "slug": "thunderstorm_b_s",
+    "slug": "thunderstorm",
     "type": "aura"
   },
   {
     "name": "Tide Naiads",
-    "slug": "tide_naiads_b_s",
+    "slug": "tide_naiads",
     "type": "minion"
   },
   {
     "name": "Tintagel",
-    "slug": "tintagel_b_s",
+    "slug": "tintagel",
     "type": "site"
   },
   {
     "name": "Tithe",
-    "slug": "tithe_b_s",
+    "slug": "tithe",
     "type": "magic"
   },
   {
+    "name": "Tombstone Wardens",
+    "slug": "tombstone_wardens",
+    "type": "artifact"
+  },
+  {
+    "name": "Toolbox",
+    "slug": "toolbox",
+    "type": "artifact"
+  },
+  {
     "name": "Tooth Faeries",
-    "slug": "tooth_faeries_b_s",
+    "slug": "tooth_faeries",
     "type": "minion"
   },
   {
+    "name": "Torch and Pitchfork",
+    "slug": "torch_and_pitchfork",
+    "type": "artifact"
+  },
+  {
+    "name": "Torrid Omphalos",
+    "slug": "torrid_omphalos",
+    "type": "artifact"
+  },
+  {
     "name": "Torshammar Trinket",
-    "slug": "torshammar_trinket_b_s",
+    "slug": "torshammar_trinket",
     "type": "artifact"
   },
   {
     "name": "Tournament Grounds",
-    "slug": "tournament_grounds_b_s",
+    "slug": "tournament_grounds",
     "type": "site"
   },
   {
     "name": "Town",
-    "slug": "town_b_s",
+    "slug": "town",
+    "type": "site"
+  },
+  {
+    "name": "Town Priest",
+    "slug": "town_priest",
+    "type": "minion"
+  },
+  {
+    "name": "Trade Encampment",
+    "slug": "trade_encampment",
     "type": "site"
   },
   {
     "name": "Tragedy Worrywart",
-    "slug": "tragedy_worrywart_b_s",
+    "slug": "tragedy_worrywart",
     "type": "minion"
   },
   {
     "name": "Treetop Hideout",
-    "slug": "treetop_hideout_b_s",
+    "slug": "treetop_hideout",
     "type": "site"
   },
   {
+    "name": "Trial by Fire",
+    "slug": "trial_by_fire",
+    "type": "magic"
+  },
+  {
+    "name": "Trial by Water",
+    "slug": "trial_by_water",
+    "type": "magic"
+  },
+  {
     "name": "Tringh Constrictor",
-    "slug": "tringh_constrictor_b_s",
+    "slug": "tringh_constrictor",
     "type": "minion"
   },
   {
     "name": "Troll Bridge",
-    "slug": "troll_bridge_b_s",
+    "slug": "troll_bridge",
+    "type": "site"
+  },
+  {
+    "name": "Troubled Town",
+    "slug": "troubled_town",
     "type": "site"
   },
   {
     "name": "Truesight Crossbow",
-    "slug": "truesight_crossbow_b_s",
+    "slug": "truesight_crossbow",
     "type": "artifact"
   },
   {
     "name": "Tufted Turtles",
-    "slug": "tufted_turtles_b_s",
+    "slug": "tufted_turtles",
     "type": "minion"
   },
   {
     "name": "Tvinnax Berserker",
-    "slug": "tvinnax_berserker_b_s",
+    "slug": "tvinnax_berserker",
     "type": "minion"
   },
   {
+    "name": "Twilight Bloom",
+    "slug": "twilight_bloom",
+    "type": "site"
+  },
+  {
     "name": "Twist of Fate",
-    "slug": "twist_of_fate_b_s",
+    "slug": "twist_of_fate",
     "type": "magic"
   },
   {
     "name": "Ultimate Horror",
-    "slug": "ultimate_horror_b_s",
+    "slug": "ultimate_horror",
     "type": "minion"
   },
   {
+    "name": "Undead Ambush",
+    "slug": "undead_ambush",
+    "type": "magic"
+  },
+  {
     "name": "Undertaker Engine",
-    "slug": "undertaker_engine_b_s",
+    "slug": "undertaker_engine",
     "type": "artifact"
   },
   {
     "name": "Undertow",
-    "slug": "undertow_b_s",
+    "slug": "undertow",
     "type": "site"
   },
   {
+    "name": "Undesirables",
+    "slug": "undesirables",
+    "type": "minion"
+  },
+  {
     "name": "Unland Angler",
-    "slug": "unland_angler_b_s",
+    "slug": "unland_angler",
     "type": "minion"
   },
   {
     "name": "Unland Eel",
-    "slug": "unland_eel_b_s",
+    "slug": "unland_eel",
     "type": "minion"
   },
   {
     "name": "Unlikely Alliance",
-    "slug": "unlikely_alliance_b_s",
+    "slug": "unlikely_alliance",
     "type": "magic"
   },
   {
     "name": "Unravel",
-    "slug": "unravel_b_s",
+    "slug": "unravel",
     "type": "magic"
   },
   {
     "name": "Unseelie Court",
-    "slug": "unseelie_court_b_s",
+    "slug": "unseelie_court",
     "type": "minion"
   },
   {
     "name": "Updraft Ridge",
-    "slug": "updraft_ridge_b_s",
+    "slug": "updraft_ridge",
     "type": "site"
   },
   {
     "name": "Upwelling",
-    "slug": "upwelling_b_s",
+    "slug": "upwelling",
     "type": "magic"
   },
   {
     "name": "Valley",
-    "slug": "valley_dk_s",
+    "slug": "valley",
     "type": "site"
   },
   {
     "name": "Valley of Delight",
-    "slug": "valley_of_delight_b_s",
+    "slug": "valley_of_delight",
     "type": "site"
   },
   {
     "name": "Valor",
-    "slug": "valor_b_s",
+    "slug": "valor",
     "type": "magic"
   },
   {
+    "name": "Vampire Bats",
+    "slug": "vampire_bats",
+    "type": "minion"
+  },
+  {
+    "name": "Vandal Imp",
+    "slug": "vandal_imp",
+    "type": "minion"
+  },
+  {
     "name": "Vanguard Knights",
-    "slug": "vanguard_knights_b_s",
+    "slug": "vanguard_knights",
     "type": "minion"
   },
   {
     "name": "Vanishment",
-    "slug": "vanishment_b_s",
+    "slug": "vanishment",
     "type": "magic"
   },
   {
     "name": "Vantage Hills",
-    "slug": "vantage_hills_b_s",
+    "slug": "vantage_hills",
     "type": "site"
+  },
+  {
+    "name": "Varistus the Evictor",
+    "slug": "varistus_the_evictor",
+    "type": "minion"
   },
   {
     "name": "Varmint Warrens",
-    "slug": "varmint_warrens_b_s",
+    "slug": "varmint_warrens",
     "type": "site"
   },
   {
+    "name": "Vast Desert",
+    "slug": "vast_desert",
+    "type": "site"
+  },
+  {
+    "name": "Vatn Draconis",
+    "slug": "vatn_draconis",
+    "type": "minion"
+  },
+  {
     "name": "Vaults of Zul",
-    "slug": "vaults_of_zul_b_s",
+    "slug": "vaults_of_zul",
     "type": "site"
   },
   {
     "name": "Vengeful Heir",
-    "slug": "vengeful_heir_b_s",
+    "slug": "vengeful_heir",
     "type": "minion"
   },
   {
     "name": "Verdant Knight",
-    "slug": "verdant_knight_b_s",
+    "slug": "verdant_knight",
+    "type": "minion"
+  },
+  {
+    "name": "Vesper Swarm",
+    "slug": "vesper_swarm",
     "type": "minion"
   },
   {
     "name": "Vesuvius",
-    "slug": "vesuvius_b_s",
+    "slug": "vesuvius",
     "type": "site"
   },
   {
     "name": "Vikings",
-    "slug": "vikings_b_s",
+    "slug": "vikings",
     "type": "minion"
   },
   {
     "name": "Vile Imp",
-    "slug": "vile_imp_b_s",
+    "slug": "vile_imp",
+    "type": "minion"
+  },
+  {
+    "name": "Vindictive Nation",
+    "slug": "vindictive_nation",
+    "type": "site"
+  },
+  {
+    "name": "Virgin in Prayer",
+    "slug": "virgin_in_prayer",
     "type": "minion"
   },
   {
     "name": "Vivien the Enchantress",
-    "slug": "vivien_the_enchantress_b_s",
+    "slug": "vivien_the_enchantress",
     "type": "minion"
   },
   {
     "name": "Vril Revenant",
-    "slug": "vril_revenant_b_s",
+    "slug": "vril_revenant",
     "type": "minion"
   },
   {
     "name": "Wall of Air",
-    "slug": "wall_of_air_b_s",
+    "slug": "wall_of_air",
     "type": "aura"
   },
   {
     "name": "Wall of Brambles",
-    "slug": "wall_of_brambles_b_s",
+    "slug": "wall_of_brambles",
     "type": "aura"
   },
   {
     "name": "Wall of Fire",
-    "slug": "wall_of_fire_b_s",
+    "slug": "wall_of_fire",
     "type": "aura"
   },
   {
     "name": "Wall of Ice",
-    "slug": "wall_of_ice_b_s",
+    "slug": "wall_of_ice",
     "type": "aura"
   },
   {
     "name": "War Horse",
-    "slug": "war_horse_b_s",
+    "slug": "war_horse",
     "type": "minion"
   },
   {
     "name": "Warp Spasm",
-    "slug": "warp_spasm_b_s",
+    "slug": "warp_spasm",
     "type": "magic"
   },
   {
     "name": "Wasteland",
-    "slug": "wasteland_dk_s",
+    "slug": "wasteland",
     "type": "site"
   },
   {
     "name": "Watchtower",
-    "slug": "watchtower_b_s",
+    "slug": "watchtower",
     "type": "site"
   },
   {
+    "name": "Watery Grave",
+    "slug": "watery_grave",
+    "type": "site"
+  },
+  {
+    "name": "Wave of Eviction",
+    "slug": "wave_of_eviction",
+    "type": "magic"
+  },
+  {
     "name": "Waveshaper",
-    "slug": "waveshaper_b_s",
+    "slug": "waveshaper",
     "type": "avatar"
   },
   {
     "name": "Wayfaring Pilgrim",
-    "slug": "wayfaring_pilgrim_b_s",
+    "slug": "wayfaring_pilgrim",
     "type": "minion"
   },
   {
     "name": "Waypoint Portal",
-    "slug": "waypoint_portal_b_s",
+    "slug": "waypoint_portal",
     "type": "magic"
   },
   {
+    "name": "Weathered Trunks",
+    "slug": "weathered_trunks",
+    "type": "minion"
+  },
+  {
     "name": "Wedding Hall",
-    "slug": "wedding_hall_b_s",
+    "slug": "wedding_hall",
     "type": "site"
   },
   {
     "name": "Weightless Squire",
-    "slug": "weightless_squire_b_s",
+    "slug": "weightless_squire",
     "type": "minion"
   },
   {
     "name": "Whirling Blades",
-    "slug": "whirling_blades_b_s",
+    "slug": "whirling_blades",
     "type": "magic"
   },
   {
     "name": "Whirlwind",
-    "slug": "whirlwind_b_s",
+    "slug": "whirlwind",
     "type": "magic"
   },
   {
     "name": "White Hart",
-    "slug": "white_hart_b_s",
+    "slug": "white_hart",
     "type": "minion"
   },
   {
     "name": "White Knight",
-    "slug": "white_knight_b_s",
+    "slug": "white_knight",
     "type": "minion"
   },
   {
+    "name": "Wiccan Tools",
+    "slug": "wiccan_tools",
+    "type": "artifact"
+  },
+  {
     "name": "Wicked Witch",
-    "slug": "wicked_witch_b_s",
+    "slug": "wicked_witch",
     "type": "minion"
   },
   {
     "name": "Wicker Manikin",
-    "slug": "wicker_manikin_b_s",
+    "slug": "wicker_manikin",
     "type": "artifact"
   },
   {
     "name": "Wild Boars",
-    "slug": "wild_boars_b_s",
+    "slug": "wild_boars",
+    "type": "minion"
+  },
+  {
+    "name": "Wild Fanatic",
+    "slug": "wild_fanatic",
     "type": "minion"
   },
   {
     "name": "Wildfire",
-    "slug": "wildfire_b_s",
+    "slug": "wildfire",
     "type": "aura"
   },
   {
+    "name": "Willing Tribute",
+    "slug": "willing_tribute",
+    "type": "minion"
+  },
+  {
     "name": "Wills-o'-the-Wisp",
-    "slug": "wills_o_the_wisp_b_s",
+    "slug": "wills_o_the_wisp",
     "type": "minion"
   },
   {
     "name": "Wind Sylph",
-    "slug": "wind_sylph_b_s",
+    "slug": "wind_sylph",
     "type": "minion"
   },
   {
     "name": "Windblast",
-    "slug": "windblast_b_s",
+    "slug": "windblast",
     "type": "magic"
   },
   {
     "name": "Windmill",
-    "slug": "windmill_b_s",
+    "slug": "windmill",
     "type": "site"
   },
   {
     "name": "Wings of Invention",
-    "slug": "wings_of_invention_b_s",
+    "slug": "wings_of_invention",
     "type": "artifact"
   },
   {
+    "name": "Winter Nymph",
+    "slug": "winter_nymph",
+    "type": "minion"
+  },
+  {
     "name": "Winter River",
-    "slug": "winter_river_bt_f",
+    "slug": "winter_river",
     "type": "site"
   },
   {
     "name": "Witch",
-    "slug": "witch_b_s",
+    "slug": "witch",
     "type": "avatar"
   },
   {
+    "name": "Witching Hour",
+    "slug": "witching_hour",
+    "type": "magic"
+  },
+  {
     "name": "Witherwing Hero",
-    "slug": "witherwing_hero_b_s",
+    "slug": "witherwing_hero",
     "type": "minion"
   },
   {
     "name": "Wizard's Den",
-    "slug": "wizards_den_b_s",
+    "slug": "wizards_den",
     "type": "site"
   },
   {
     "name": "Wolpertinger",
-    "slug": "wolpertinger_b_s",
+    "slug": "wolpertinger",
     "type": "minion"
   },
   {
     "name": "Wormelow Tump",
-    "slug": "wormelow_tump_b_s",
+    "slug": "wormelow_tump",
     "type": "site"
   },
   {
     "name": "Wraetannis Titan",
-    "slug": "wraetannis_titan_b_s",
+    "slug": "wraetannis_titan",
     "type": "minion"
   },
   {
     "name": "Wrath of the Sea",
-    "slug": "wrath_of_the_sea_b_s",
+    "slug": "wrath_of_the_sea",
     "type": "magic"
   },
   {
+    "name": "Wreathed in Righteousness",
+    "slug": "wreathed_in_righteousness",
+    "type": "magic"
+  },
+  {
+    "name": "Wuthering Heights",
+    "slug": "wuthering_heights",
+    "type": "site"
+  },
+  {
     "name": "Wyvern",
-    "slug": "wyvern_b_s",
+    "slug": "wyvern",
+    "type": "minion"
+  },
+  {
+    "name": "Xeraphine Konrul",
+    "slug": "xeraphine_konrul",
     "type": "minion"
   },
   {
     "name": "Year of the Blaze",
-    "slug": "year_of_the_blaze_b_s",
+    "slug": "year_of_the_blaze",
     "type": "aura"
   },
   {
     "name": "Yellow Knight",
-    "slug": "yellow_knight_b_s",
+    "slug": "yellow_knight",
+    "type": "minion"
+  },
+  {
+    "name": "Yog-Sothoth",
+    "slug": "yog_sothoth",
     "type": "minion"
   },
   {
     "name": "Yokai Kappas",
-    "slug": "yokai_kappas_b_s",
+    "slug": "yokai_kappas",
+    "type": "minion"
+  },
+  {
+    "name": "Young Master Damion",
+    "slug": "young_master_damion",
     "type": "minion"
   },
   {
     "name": "Yourke Crossbowmen",
-    "slug": "yourke_crossbowmen_b_s",
+    "slug": "yourke_crossbowmen",
     "type": "minion"
+  },
+  {
+    "name": "Zap!",
+    "slug": "zap",
+    "type": "magic"
   },
   {
     "name": "Zephyranne Airship",
-    "slug": "zephyranne_airship_b_s",
+    "slug": "zephyranne_airship",
     "type": "minion"
   },
   {
-    "name": "Älvalinne Dryads",
-    "slug": "alvalinne_dryads_b_s",
+    "name": "Zeppelin of Zealots",
+    "slug": "zeppelin_of_zealots",
+    "type": "minion"
+  },
+  {
+    "name": "Zombie Bruiser",
+    "slug": "zombie_bruiser",
+    "type": "minion"
+  },
+  {
+    "name": "Zombie Horde",
+    "slug": "zombie_horde",
     "type": "minion"
   }
 ]

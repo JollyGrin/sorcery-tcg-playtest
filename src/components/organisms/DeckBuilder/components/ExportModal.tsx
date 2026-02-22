@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Flex, VStack } from 'styled-system/jsx';
-import { css } from 'styled-system/css';
-import { button } from 'styled-system/recipes';
+import { buttonVariants } from '@/components/ui/button/variants';
 import { LocalDeck, Card } from '../types';
 import { generateShareableURL } from '../utils/deckEncoding';
 
@@ -86,134 +84,104 @@ const ExportModal: React.FC<ExportModalProps> = ({
   const textList = generateTextList();
 
   return (
-    <Box
-      position="fixed"
-      inset={0}
-      bg="rgba(0,0,0,0.8)"
-      zIndex={50}
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      p="1rem"
+    <div
+      className="fixed inset-0 bg-[rgba(0,0,0,0.8)] z-50 flex items-center justify-center p-4"
     >
-      <Box
-        bg="rgba(40,40,40,0.95)"
-        borderRadius="1rem"
-        p="2rem"
-        maxW="600px"
-        w="100%"
-        maxH="80vh"
-        overflowY="auto"
-        border="1px solid"
-        borderColor="rgba(255,255,255,0.2)"
+      <div
+        className="bg-[rgba(40,40,40,0.95)] rounded-[1rem] p-8 max-w-[600px] w-full max-h-[80vh] overflow-y-auto border border-[rgba(255,255,255,0.2)]"
       >
-        <Flex justifyContent="space-between" alignItems="center" mb="1.5rem">
-          <h2 className={css({ fontSize: '1.5rem', fontWeight: 700, color: 'brand.highlight' })}>
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-[1.5rem] font-bold text-brand-highlight">
             Export Deck: {deck.name}
           </h2>
           <button
             onClick={onClose}
-            className={css({
-              color: 'gray.400',
-              _hover: { color: 'white' },
-              fontSize: '1.5rem',
-              cursor: 'pointer'
-            })}
+            className="text-gray-400 hover:text-white text-[1.5rem] cursor-pointer"
           >
             ×
           </button>
-        </Flex>
+        </div>
 
         {/* Tab Navigation */}
-        <Flex gap={2} mb="1rem">
+        <div className="flex gap-2 mb-4">
           <button
-            className={button()}
+            className={buttonVariants()}
             onClick={() => setActiveTab('url')}
           >
             Shareable URL
           </button>
           <button
-            className={button()}
+            className={buttonVariants()}
             onClick={() => setActiveTab('text')}
           >
             Text List
           </button>
-        </Flex>
+        </div>
 
         {/* URL Tab */}
         {activeTab === 'url' && (
-          <VStack gap={4} alignItems="stretch">
-            <Box>
-              <p className={css({ mb: '0.5rem', color: 'gray.300' })}>
+          <div className="flex flex-col gap-4 items-stretch">
+            <div>
+              <p className="mb-2 text-gray-300">
                 Share this URL to let others import your deck:
               </p>
-              <Box
-                bg="rgba(0,0,0,0.3)"
-                p="1rem"
-                borderRadius="0.5rem"
-                border="1px solid"
-                borderColor="rgba(255,255,255,0.2)"
+              <div
+                className="bg-[rgba(0,0,0,0.3)] p-4 rounded-[0.5rem] border border-[rgba(255,255,255,0.2)]"
               >
-                <code className={css({ fontSize: '0.875rem', wordBreak: 'break-all', color: 'green.400' })}>
+                <code className="text-sm break-all text-green-400">
                   {shareableURL}
                 </code>
-              </Box>
-            </Box>
-            <Flex gap={2}>
+              </div>
+            </div>
+            <div className="flex gap-2">
               <button
-                className={button()}
+                className={buttonVariants()}
                 onClick={() => copyToClipboard(shareableURL)}
                 style={{ flex: 1 }}
               >
                 {copied ? 'Copied!' : 'Copy URL'}
               </button>
               <button
-                className={button()}
+                className={buttonVariants()}
                 onClick={() => window.open(`mailto:?subject=Sorcery TCG Deck - ${deck.name}&body=Check out my deck: ${shareableURL}`, '_blank')}
               >
                 Email
               </button>
-            </Flex>
-          </VStack>
+            </div>
+          </div>
         )}
 
         {/* Text Tab */}
         {activeTab === 'text' && (
-          <VStack gap={4} alignItems="stretch">
-            <Box>
-              <p className={css({ mb: '0.5rem', color: 'gray.300' })}>
+          <div className="flex flex-col gap-4 items-stretch">
+            <div>
+              <p className="mb-2 text-gray-300">
                 Copy this text list to share your deck:
               </p>
-              <Box
-                bg="rgba(0,0,0,0.3)"
-                p="1rem"
-                borderRadius="0.5rem"
-                border="1px solid"
-                borderColor="rgba(255,255,255,0.2)"
-                maxH="300px"
-                overflowY="auto"
+              <div
+                className="bg-[rgba(0,0,0,0.3)] p-4 rounded-[0.5rem] border border-[rgba(255,255,255,0.2)] max-h-[300px] overflow-y-auto"
               >
-                <pre className={css({ fontSize: '0.875rem', whiteSpace: 'pre-wrap', color: 'gray.100' })}>
+                <pre className="text-sm whitespace-pre-wrap text-gray-100">
                   {textList}
                 </pre>
-              </Box>
-            </Box>
+              </div>
+            </div>
             <button
-              className={button()}
+              className={buttonVariants()}
               onClick={() => copyToClipboard(textList)}
             >
               {copied ? 'Copied!' : 'Copy Text List'}
             </button>
-          </VStack>
+          </div>
         )}
 
-        <Box mt="1.5rem" textAlign="center">
-          <p className={css({ fontSize: '0.875rem', color: 'gray.400' })}>
+        <div className="mt-6 text-center">
+          <p className="text-sm text-gray-400">
             Anyone with the URL can import this deck and save it to their collection.
           </p>
-        </Box>
-      </Box>
-    </Box>
+        </div>
+      </div>
+    </div>
   );
 };
 

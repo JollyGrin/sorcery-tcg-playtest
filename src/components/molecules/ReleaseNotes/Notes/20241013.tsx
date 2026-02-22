@@ -6,7 +6,6 @@ import { AltGridDisplay } from "@/components/organisms/GameBoard/Grid/AltGridDis
 import { Button } from "@/components/ui/button";
 import { useLocalStorage } from "@/utils/hooks";
 import { mock_griditem_red } from "@/utils/mocks/mock_gamecards";
-import { Box, Divider, Grid, HStack, VStack } from "styled-system/jsx";
 
 export const Note20241013 = () => {
   const { key, ...options } = LOCALSTORAGE_KEYS.SETTINGS.DISPLAY.toggle;
@@ -14,15 +13,15 @@ export const Note20241013 = () => {
 
   return (
     <>
-      <Grid gridTemplateColumns="repeat(2, 1fr)">
-        <Box minW="300px">
+      <div className="grid grid-cols-[repeat(2,1fr)]">
+        <div className="min-w-[300px]">
           <p style={{ fontSize: "1.5rem", opacity: 0.5, marginBottom: "1rem" }}>
             October 13, 2024
           </p>
           <p style={{ fontWeight: 600 }}>
             View the grid with full card previews!
           </p>
-          <VStack alignItems="start" fontSize="0.825rem" gap={2}>
+          <div className="flex flex-col items-start text-[0.825rem] gap-2">
             <p>
               Have a more realistic view of the table to match your expectations
               from playing Sorcery in real life.
@@ -32,15 +31,15 @@ export const Note20241013 = () => {
               item, to allow you to position the ordering of cards.
             </p>
 
-            <HStack>
+            <div className="flex items-center">
               <p>Try it out! Click the button</p>
 
               <Button onClick={() => setIsDisplay(!isDisplay)}>
                 {isDisplay ? "Show min card view" : "Show full card"}
               </Button>
-            </HStack>
+            </div>
 
-            <Divider />
+            <hr className="border-border" />
 
             <p style={{ fontWeight: 600, fontSize: "1rem", marginTop: "1rem" }}>
               Wish to change this setting in the future?
@@ -60,13 +59,10 @@ export const Note20241013 = () => {
                 Display full/minimized cards view
               </span>
             </p>
-          </VStack>
-        </Box>
-        <Grid
-          justifySelf="end"
-          gridTemplateRows="repeat(2, 210px)"
-          w="200px"
-          minH="200px"
+          </div>
+        </div>
+        <div
+          className="grid justify-self-end grid-rows-[repeat(2,210px)] w-[200px] min-h-[200px]"
         >
           {isDisplay ? (
             <>
@@ -87,7 +83,7 @@ export const Note20241013 = () => {
             </>
           ) : (
             <>
-              <VStack>
+              <div className="flex flex-col">
                 {mock_griditem_red?.map((card, index) => {
                   const CardType = card.type === "site" ? CardAtlas : CardImage;
                   return (
@@ -98,8 +94,8 @@ export const Note20241013 = () => {
                     />
                   );
                 })}
-              </VStack>
-              <VStack>
+              </div>
+              <div className="flex flex-col">
                 {mock_griditem_red?.map((card, index) => {
                   const CardType = card.type === "site" ? CardAtlas : CardImage;
                   return (
@@ -110,11 +106,11 @@ export const Note20241013 = () => {
                     />
                   );
                 })}
-              </VStack>
+              </div>
             </>
           )}
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </>
   );
 };

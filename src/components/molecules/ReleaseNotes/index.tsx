@@ -1,4 +1,3 @@
-import { Box, Divider } from "styled-system/jsx";
 import { Note20241013 } from "./Notes/20241013";
 import { LOCALSTORAGE_KEYS } from "@/components/organisms/GameBoard/constants";
 import { useLocalStorage } from "@/utils/hooks";
@@ -14,28 +13,13 @@ export const ReleaseNoteBody = () => {
   }
 
   return (
-    <Box
-      maxW="700px"
-      w={{ base: "65vw", md: "80vw" }}
-      maxH="600px"
-      overflowY="auto"
-      position="relative"
-    >
-      <Box
-        position="absolute"
-        right={0}
-        bg="gray.300"
-        padding="0.25rem 0.5rem"
-        borderRadius="4px"
-        cursor="pointer"
-        transition="all 0.25s ease"
-        _hover={{
-          bg: "gray.200",
-        }}
+    <div className="max-w-[700px] w-[65vw] md:w-[80vw] max-h-[600px] overflow-y-auto relative">
+      <div
+        className="absolute right-0 bg-gray-300 px-[0.5rem] py-[0.25rem] rounded-[4px] cursor-pointer transition-all duration-[0.25s] ease-[ease] hover:bg-gray-200"
         onClick={confirmRead}
       >
         X
-      </Box>
+      </div>
       <p
         style={{
           fontWeight: 700,
@@ -45,8 +29,8 @@ export const ReleaseNoteBody = () => {
         Release Notes
       </p>
       <p>(new updates!)</p>
-      <Divider my="1rem" />
+      <hr className="border-border my-[1rem]" />
       <Note20241013 />
-    </Box>
+    </div>
   );
 };

@@ -4,14 +4,18 @@ import type { AppProps } from "next/app";
 import Script from "next/script";
 import { Toaster } from "react-hot-toast";
 
-import { Caudex, Cinzel_Decorative, Della_Respira } from "next/font/google";
+import {
+  Spectral,
+  Cormorant_Garamond,
+  Cinzel_Decorative,
+} from "next/font/google";
 
-const fontBody = Della_Respira({
-  weight: ["400"],
+const fontBody = Spectral({
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
 });
-const fontHeader = Caudex({
-  weight: ["400", "700"],
+const fontHeader = Cormorant_Garamond({
+  weight: ["400", "600", "700"],
   subsets: ["latin"],
 });
 const fontTitle = Cinzel_Decorative({

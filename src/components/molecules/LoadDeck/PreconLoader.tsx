@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Grid, Flex } from 'styled-system/jsx';
-import { button } from 'styled-system/recipes';
+import { CARD_CDN } from '@/constants';
 import { CuriosaResponse } from '@/utils/api/curiosa/api';
 import { PreconMeta, PreconDeck, getPreconList, getPreconDeck, preconToCuriosaFormat, preconToLocalDeck } from '@/utils/precons';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 interface PreconLoaderProps {
   setDeck: (deck?: CuriosaResponse) => void;
@@ -63,7 +63,7 @@ const PreconLoader: React.FC<PreconLoaderProps> = ({ setDeck }) => {
     // Load existing decks
     const existing = localStorage.getItem('sorcery-decks');
     const savedDecks = existing ? JSON.parse(existing) : [];
-    
+
     // Add new deck
     savedDecks.push(localDeck);
     localStorage.setItem('sorcery-decks', JSON.stringify(savedDecks));
@@ -91,41 +91,38 @@ const PreconLoader: React.FC<PreconLoaderProps> = ({ setDeck }) => {
   };
 
   if (loading) {
-    return <Box textAlign="center" py="2rem">Loading preconstructed decks...</Box>;
+    return <div className="text-center py-8">Loading preconstructed decks...</div>;
   }
 
   if (precons.length === 0) {
     return (
-      <Box textAlign="center" py="2rem">
+      <div className="text-center py-8">
         <p style={{ marginBottom: '1rem' }}>No preconstructed decks available.</p>
-      </Box>
+      </div>
     );
   }
 
   return (
-    <Box>
+    <div>
       <p style={{ marginBottom: '1rem' }}>Choose a preconstructed deck to play with:</p>
-      
-      <Grid gap="0.5rem" mb="1rem" maxH="300px" overflowY="auto">
+
+      <div className="grid gap-2 mb-4 max-h-[300px] overflow-y-auto">
         {precons.map((precon) => (
-          <Box
+          <div
             key={precon.id}
-            p="1rem"
-            border="2px solid"
-            borderColor={selectedPrecon?.name === precon.name ? "blue.500" : "gray.300"}
-            borderRadius="0.5rem"
-            cursor="pointer"
+            className={`p-4 border-2 rounded-lg cursor-pointer ${
+              selectedPrecon?.name === precon.name
+                ? 'border-blue-500 bg-blue-500/10'
+                : 'border-gray-300 bg-white'
+            }`}
             onClick={() => handleSelectPrecon(precon.id)}
-            style={{
-              backgroundColor: selectedPrecon?.name === precon.name ? 'rgba(59, 130, 246, 0.1)' : 'white'
-            }}
           >
-            <Flex justifyContent="space-between" alignItems="flex-start" mb="0.5rem">
+            <div className="flex justify-between items-start mb-2">
               <h3 style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>{precon.name}</h3>
-              <Flex gap="0.5rem">
-                <span 
-                  style={{ 
-                    fontSize: '0.75rem', 
+              <div className="flex gap-2">
+                <span
+                  style={{
+                    fontSize: '0.75rem',
                     padding: '0.25rem 0.5rem',
                     borderRadius: '0.25rem',
                     backgroundColor: getElementColor(precon.element),
@@ -135,9 +132,9 @@ const PreconLoader: React.FC<PreconLoaderProps> = ({ setDeck }) => {
                 >
                   {precon.element}
                 </span>
-                <span 
-                  style={{ 
-                    fontSize: '0.75rem', 
+                <span
+                  style={{
+                    fontSize: '0.75rem',
                     padding: '0.25rem 0.5rem',
                     borderRadius: '0.25rem',
                     backgroundColor: getDifficultyColor(precon.difficulty),
@@ -147,45 +144,43 @@ const PreconLoader: React.FC<PreconLoaderProps> = ({ setDeck }) => {
                 >
                   {precon.difficulty}
                 </span>
-              </Flex>
-            </Flex>
+              </div>
+            </div>
             <p style={{ fontSize: '0.875rem', color: '#6b7280', marginBottom: '0.5rem' }}>
               {precon.description}
             </p>
             <p style={{ fontSize: '0.75rem', color: '#9ca3af' }}>
               {precon.cardCount.total} cards ({precon.cardCount.spellbook} spellbook, {precon.cardCount.atlas} atlas)
             </p>
-          </Box>
+          </div>
         ))}
-      </Grid>
+      </div>
 
       {selectedPrecon && (
         <>
-          <Flex gap="0.5rem" mb="1rem">
-            <button
-              className={button()}
+          <div className="flex gap-2 mb-4">
+            <Button
               onClick={handleUseDeck}
               disabled={loadingDeck}
-              style={{ flex: 1 }}
+              className="flex-1"
             >
               {loadingDeck ? 'Loading...' : `Use "${selectedPrecon.name}"`}
-            </button>
-            <button
-              className={button()}
+            </Button>
+            <Button
               onClick={savePreconToLocalDecks}
               disabled={loadingDeck}
             >
               Save Copy
-            </button>
-          </Flex>
+            </Button>
+          </div>
 
           {/* Show deck preview */}
-          <Box>
+          <div>
             <h4 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>Deck Preview:</h4>
-            <Grid gap="0.25rem" gridTemplateColumns="repeat(auto-fill, minmax(120px, 1fr))" maxH="200px" overflowY="auto">
+            <div className="grid gap-1 max-h-[200px] overflow-y-auto" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))' }}>
               {selectedPrecon.avatar && (
                 <img
-                  src={`https://card.cards.army/cards/${selectedPrecon.avatar}.webp`}
+                  src={`${CARD_CDN}${selectedPrecon.avatar}.webp`}
                   alt="Avatar"
                   style={{ width: '100%', borderRadius: '0.25rem' }}
                 />
@@ -193,22 +188,22 @@ const PreconLoader: React.FC<PreconLoaderProps> = ({ setDeck }) => {
               {Array.from(new Set([...selectedPrecon.spellbook, ...selectedPrecon.atlas])).slice(0, 20).map((slug, index) => (
                 <img
                   key={slug + index}
-                  src={`https://card.cards.army/cards/${slug}.webp`}
+                  src={`${CARD_CDN}${slug}.webp`}
                   alt={slug}
                   style={{ width: '100%', borderRadius: '0.25rem' }}
                 />
               ))}
-            </Grid>
+            </div>
             {(selectedPrecon.spellbook.length + selectedPrecon.atlas.length) > 20 && (
               <p style={{ fontSize: '0.75rem', color: '#9ca3af', textAlign: 'center', marginTop: '0.5rem' }}>
                 ... and {selectedPrecon.spellbook.length + selectedPrecon.atlas.length - 20} more cards
               </p>
             )}
-          </Box>
+          </div>
         </>
       )}
 
-      <Box mt="1rem" p="0.75rem" bg="rgba(59,130,246,0.1)" borderRadius="0.5rem">
+      <div className="mt-4 p-3 bg-blue-500/10 rounded-lg">
         <p style={{ fontSize: '0.75rem', color: '#3b82f6' }}>
           <strong>Tip:</strong> Save a copy of any precon to your collection to customize it in the{' '}
           <Link href="/deckbuilder" style={{ textDecoration: 'underline' }}>
@@ -216,8 +211,8 @@ const PreconLoader: React.FC<PreconLoaderProps> = ({ setDeck }) => {
           </Link>
           .
         </p>
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 

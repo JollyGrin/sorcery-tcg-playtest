@@ -1,6 +1,14 @@
-import { styled, type HTMLStyledProps } from "styled-system/jsx";
-import { badge } from "styled-system/recipes";
+import * as React from "react";
+import { type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+import { badgeVariants } from "./variants";
 
-export const Badge = styled("div", badge);
+export interface BadgeProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof badgeVariants> {}
 
-export type BadgeProps = HTMLStyledProps<typeof Badge>;
+function Badge({ className, variant, ...props }: BadgeProps) {
+  return <div className={cn(badgeVariants({ variant }), className)} {...props} />;
+}
+
+export { Badge, badgeVariants };

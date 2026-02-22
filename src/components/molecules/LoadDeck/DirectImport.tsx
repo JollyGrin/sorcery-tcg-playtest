@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Box, Flex } from "styled-system/jsx";
-import { button, input } from "styled-system/recipes";
+import { CARD_CDN } from "@/constants";
+import { buttonVariants } from "@/components/ui/button/variants";
+import { inputVariants } from "@/components/ui/input/variants";
 import { CuriosaResponse } from "@/utils/api/curiosa/api";
 import {
   decodeDeck,
@@ -116,7 +117,7 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
   };
 
   return (
-    <Box>
+    <div>
       <p style={{ marginBottom: "1rem" }}>
         Import a deck directly from a spells.bar{" "}
         <Link href="/deckbuilder" style={{ color: "blue" }} target="_blank">
@@ -127,7 +128,7 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
 
       <textarea
         placeholder="Paste deck URL or share code here..."
-        className={input()}
+        className={inputVariants()}
         value={importText}
         onChange={(e) => setImportText(e.target.value)}
         style={{
@@ -141,7 +142,7 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
       />
 
       <button
-        className={button()}
+        className={buttonVariants()}
         onClick={handleImport}
         disabled={!importText.trim()}
         style={{ width: "100%", marginBottom: "1rem" }}
@@ -150,26 +151,14 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
       </button>
 
       {error && (
-        <Box
-          p="0.75rem"
-          mb="1rem"
-          bg="rgba(239,68,68,0.1)"
-          border="1px solid #ef4444"
-          borderRadius="0.5rem"
-        >
+        <div className="p-[0.75rem] mb-[1rem] bg-[rgba(239,68,68,0.1)] border border-[#ef4444] rounded-[0.5rem]">
           <p style={{ color: "#ef4444", fontSize: "0.875rem" }}>{error}</p>
-        </Box>
+        </div>
       )}
 
       {importedDeck && (
-        <Box>
-          <Box
-            p="1rem"
-            mb="1rem"
-            bg="rgba(34,197,94,0.1)"
-            border="1px solid #22c55e"
-            borderRadius="0.5rem"
-          >
+        <div>
+          <div className="p-[1rem] mb-[1rem] bg-[rgba(34,197,94,0.1)] border border-[#22c55e] rounded-[0.5rem]">
             <h3
               style={{
                 fontWeight: "bold",
@@ -183,10 +172,10 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
               {(importedDeck.spellbook || []).length} cards,{" "}
               {(importedDeck.atlas || []).length} sites
             </p>
-          </Box>
+          </div>
 
           <button
-            className={button()}
+            className={buttonVariants()}
             onClick={handleUseDeck}
             style={{ width: "100%", marginBottom: "1rem" }}
           >
@@ -194,14 +183,14 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
           </button>
 
           {/* Show deck preview */}
-          <Box>
+          <div>
             <h4 style={{ fontWeight: "bold", marginBottom: "0.5rem" }}>
               Deck Preview:
             </h4>
-            <Flex wrap="wrap" gap="0.25rem" maxH="200px" overflowY="auto">
+            <div className="flex flex-wrap gap-[0.25rem] max-h-[200px] overflow-y-auto">
               {importedDeck.avatar && (
                 <img
-                  src={`https://card.cards.army/cards/${importedDeck.avatar}.webp`}
+                  src={`${CARD_CDN}${importedDeck.avatar}.webp`}
                   alt="Avatar"
                   width="120px"
                   style={{ borderRadius: "0.25rem" }}
@@ -217,13 +206,13 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
                 .map((slug: string, index: number) => (
                   <img
                     key={slug + index}
-                    src={`https://card.cards.army/cards/${slug}.webp`}
+                    src={`${CARD_CDN}${slug}.webp`}
                     alt={slug}
                     width="120px"
                     style={{ borderRadius: "0.25rem" }}
                   />
                 ))}
-            </Flex>
+            </div>
             {(importedDeck.spellbook || []).length +
               (importedDeck.atlas || []).length >
               20 && (
@@ -242,22 +231,17 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
                 more cards
               </p>
             )}
-          </Box>
-        </Box>
+          </div>
+        </div>
       )}
 
-      <Box
-        mt="1rem"
-        p="0.75rem"
-        bg="rgba(59,130,246,0.1)"
-        borderRadius="0.5rem"
-      >
+      <div className="mt-[1rem] p-[0.75rem] bg-[rgba(59,130,246,0.1)] rounded-[0.5rem]">
         <p style={{ fontSize: "0.75rem", color: "#3b82f6" }}>
           <strong>Tip:</strong> Get shareable deck URLs from the Deck Builder&apos;s
           export feature.
         </p>
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 

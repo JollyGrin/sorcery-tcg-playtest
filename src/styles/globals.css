@@ -1,4 +1,64 @@
-@layer reset, base, tokens, recipes, utilities;
+@import "tailwindcss";
+
+@theme {
+  /* Fonts */
+  --font-body: var(--body);
+  --font-header: var(--header);
+  --font-title: var(--title);
+
+  /* Brand */
+  --color-brand-primary: #FAF7F0;
+  --color-brand-secondary: #4A4947;
+  --color-brand-highlight: #D8D2C2;
+  --color-brand-shadow: #B17457;
+
+  /* Surfaces */
+  --color-surface-page: #1C1917;
+  --color-surface-raised: #292524;
+  --color-surface-overlay: rgba(28,25,23,0.85);
+  --color-surface-muted: #44403C;
+
+  /* Text */
+  --color-text-primary: #FAF7F0;
+  --color-text-secondary: #A8A29E;
+  --color-text-muted: #78716C;
+  --color-text-inverse: #1C1917;
+
+  /* Accent */
+  --color-accent-gold: #D4A853;
+  --color-accent-gold-hover: #E0BC6A;
+  --color-accent-ember: #C2410C;
+  --color-accent-teal: #2DD4BF;
+
+  /* Status */
+  --color-status-beta: #3B82F6;
+  --color-status-alpha: #EAB308;
+  --color-status-new: #22C55E;
+
+  /* shadcn semantic tokens */
+  --color-background: #1C1917;
+  --color-foreground: #FAF7F0;
+  --color-primary: #FAF7F0;
+  --color-primary-foreground: #1C1917;
+  --color-secondary: #4A4947;
+  --color-secondary-foreground: #FAF7F0;
+  --color-destructive: #C2410C;
+  --color-destructive-foreground: #FAF7F0;
+  --color-muted: #44403C;
+  --color-muted-foreground: #A8A29E;
+  --color-border: rgba(255,255,255,0.1);
+  --color-input: #44403C;
+  --color-ring: #D4A853;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  /* Animations */
+  --animate-spin: spin 0.8s linear infinite;
+}
+
+@keyframes bg-zoom-out { 0% { background-size: 135%; } 100% { background-size: 120%; } }
+@keyframes bg-zoom-in { 0% { background-size: 125%; } 100% { background-size: 135%; } }
 
 body {
   font-family: var(--body);
@@ -38,14 +98,13 @@ body {
 
 .card {
   position: absolute;
-  width: 150px; /* Adjust card size as needed */
+  width: 150px;
   animation:
     fall 10s linear infinite,
     sway 5s ease-in-out infinite alternate;
-  opacity: 0.7; /* Make cards semi-transparent */
+  opacity: 0.7;
 }
 
-/* Falling animation */
 @keyframes fall {
   0% {
     top: -150px;
@@ -57,7 +116,6 @@ body {
   }
 }
 
-/* Sway animation */
 @keyframes sway {
   0% {
     transform: rotate(0deg);
@@ -67,7 +125,6 @@ body {
   }
 }
 
-/* Random delays for each card */
 .card:nth-child(1) {
   animation-delay: 0s;
 }
@@ -79,5 +136,3 @@ body {
 .card:nth-child(3) {
   animation-delay: 4s;
 }
-
-/* Add more delays for additional cards */

@@ -1,4 +1,3 @@
-import { Box } from "styled-system/jsx";
 import { AuraDrop } from "./AuraDrop";
 import { GameStateActions } from "..";
 import { DragItem } from "@/components/molecules/DragItem";
@@ -12,7 +11,7 @@ import { useRouter } from "next/router";
 
 export const Auras = (props: GameStateActions & { isReversed?: boolean }) => {
   return (
-    <Box position="absolute" w="100%" h="100%">
+    <div className="absolute w-full h-full">
       {Array.from({ length: 12 })
         .map((_, index) => index)
         .map((index) => (
@@ -24,7 +23,7 @@ export const Auras = (props: GameStateActions & { isReversed?: boolean }) => {
             isReversed={props.isReversed}
           />
         ))}
-    </Box>
+    </div>
   );
 };
 
@@ -48,35 +47,22 @@ const Aura = (props: {
   const top = isReversed ? `${(4 - topIndex) * 25}%` : `${topIndex * 25}%`; // Reverse top
   const left = isReversed ? `${(5 - leftIndex) * 20}%` : `${leftIndex * 20}%`; // Reverse left
   return (
-    <Box
+    <div
       style={{
         top,
         left,
       }}
-      position="absolute"
-      w="75px"
-      h="75px"
-      transform="translate(-50%, -50%)" /* Center the box */
-      _hover={{
-        border: "solid 5px rgba(0,100,200,0.5)",
-        borderRadius: "1rem",
-      }}
+      className="absolute w-[75px] h-[75px] -translate-x-1/2 -translate-y-1/2 hover:border-[5px] hover:border-solid hover:border-[rgba(0,100,200,0.5)] hover:rounded-[1rem]"
     >
       {!auraCard?.id && (
         <AuraDrop gridIndex={props.gridIndex}>
-          <Box
-            w="100%"
-            h="100%"
-            backgroundSize="cover"
-            transform="rotate(90deg)"
-            borderRadius="0.5rem"
-          />
+          <div style={{ width: "100%", height: "100%", backgroundSize: "cover", transform: "rotate(90deg)", borderRadius: "0.5rem" }} />
         </AuraDrop>
       )}
       {auraCard?.id && (
         <DragWrapper gridIndex={props.gridIndex} index={0} card={auraCard} />
       )}
-    </Box>
+    </div>
   );
 };
 
@@ -96,15 +82,15 @@ const DragWrapper = ({
         index={props.index}
         style={{ width: "100%", height: "100%", zIndex: 1000 }}
       >
-        <Box
-          w="100%"
-          h="100%"
-          backgroundSize="200%"
-          backgroundPosition="10% 20%"
-          transform={card?.type === "site" ? "rotate(90deg)" : ""}
-          borderRadius="0.5rem"
+        <div
           style={{
             backgroundImage: `url(${CARD_CDN}${card.img}.webp)`,
+            transform: card?.type === "site" ? "rotate(90deg)" : "",
+            width: "100%",
+            height: "100%",
+            backgroundSize: "200%",
+            backgroundPosition: "10% 20%",
+            borderRadius: "0.5rem",
           }}
           onContextMenu={(e) => {
             e.preventDefault();
@@ -115,10 +101,10 @@ const DragWrapper = ({
       <Modal
         wrapperProps={{ open: preview, onOpenChange: setPreview }}
         content={
-          <Box h="600px" minW="400px">
+          <div className="h-[600px] min-w-[400px]">
             {card?.type === "site" && <FullCardAtlas img={card?.img} />}
             {card?.type !== "site" && <FullCard img={card?.img} />}
-          </Box>
+          </div>
         }
       />
     </div>
