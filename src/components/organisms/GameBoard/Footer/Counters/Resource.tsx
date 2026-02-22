@@ -53,13 +53,13 @@ export const Resource = (props: {
 
       <button
         onClick={decrement}
-        className="min-h-[28px] min-w-[24px] px-1 rounded-sm border border-border text-text-secondary hover:text-text-primary hover:border-text-muted hover:bg-surface-muted transition-colors text-xs leading-none cursor-pointer bg-transparent"
+        className="min-h-[28px] min-w-[24px] px-1 rounded-sm border border-stone-300 text-stone-500 hover:text-stone-800 hover:border-stone-400 hover:bg-stone-100 transition-colors text-xs leading-none cursor-pointer bg-transparent"
       >
         -
       </button>
 
       <span
-        className="text-xs tabular-nums text-center min-w-[1.25rem] text-text-primary"
+        className="text-xs tabular-nums text-center min-w-[1.25rem] text-stone-800 font-medium"
         style={props.type === "life" ? { color: bg } : undefined}
       >
         {props.value}
@@ -67,7 +67,7 @@ export const Resource = (props: {
 
       <button
         onClick={increment}
-        className="min-h-[28px] min-w-[24px] px-1 rounded-sm border border-border text-text-secondary hover:text-text-primary hover:border-text-muted hover:bg-surface-muted transition-colors text-xs leading-none cursor-pointer bg-transparent"
+        className="min-h-[28px] min-w-[24px] px-1 rounded-sm border border-stone-300 text-stone-500 hover:text-stone-800 hover:border-stone-400 hover:bg-stone-100 transition-colors text-xs leading-none cursor-pointer bg-transparent"
       >
         +
       </button>

@@ -17,7 +17,7 @@ export const CountersTray = (props: PlayerDataProps) => {
   }
 
   return (
-    <div className="flex flex-col h-full overflow-y-auto p-[0_0.5rem] justify-between items-center gap-[0.5rem]">
+    <div className="flex flex-col h-full overflow-hidden p-[0_0.5rem] justify-between items-center gap-[0.5rem]">
       <div className="flex items-center relative w-full">
         <IconMana
           size={12}
