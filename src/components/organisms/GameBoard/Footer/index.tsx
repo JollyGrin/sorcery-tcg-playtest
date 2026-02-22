@@ -46,7 +46,7 @@ export const GameFooter = ({
         overflowX: "auto",
       }}
     >
-      <div className="grid h-full grid-cols-[130px_115px_85px_1fr] gap-0 overflow-y-clip">
+      <div className="grid h-full grid-cols-[130px_115px_110px_1fr] gap-0 overflow-y-clip">
         <GraveTray {...props} />
         <DecksTray {...props} />
         <CountersTray {...props} />
@@ -58,7 +58,7 @@ export const GameFooter = ({
             )}
             strategy={horizontalListSortingStrategy}
           >
-            <div className="flex items-center p-0 m-0 w-[calc(100vw-330px)] h-full justify-start overflow-x-auto relative">
+            <div className="flex items-center p-0 m-0 w-[calc(100vw-355px)] h-full justify-start overflow-x-auto relative">
               <div className="absolute bottom-[0.25rem] left-[0.5rem] opacity-25">
                 <p>
                   Right click cards for options. Press{" "}

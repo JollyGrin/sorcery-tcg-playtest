@@ -1,7 +1,4 @@
 import { PlayerData } from "@/types/card";
-import { useHover } from "@/utils/hooks/useHover";
-import { useRef } from "react";
-import { buttonVariants } from "@/components/ui/button/variants";
 
 // bit lengthy but maintains type safety
 type ManaKey = keyof Pick<PlayerData, "manaRemaining" | "mana">;
@@ -11,9 +8,6 @@ export const ManaNumber = (props: {
   setValue(value: number): void;
   value: number;
 }) => {
-  const hoverRef = useRef(null);
-  const isHovering = useHover(hoverRef);
-
   function increment() {
     props.setValue(props.value + 1);
   }
@@ -24,47 +18,24 @@ export const ManaNumber = (props: {
   }
 
   return (
-    <div className="flex flex-col gap-0 p-0 w-full" ref={hoverRef}>
-      <div className="grid grid-cols-[1fr] items-center w-inherit">
-        {isHovering && (
-          <div className="flex items-center gap-0 p-0 opacity-5 hover:opacity-100 transition-all duration-[0.25s] ease-[ease]">
-            <button
-              onClick={decrement}
-              className={buttonVariants({ variant: "destructive", size: "sm" })}
-              style={decrementStyle}
-            >
-              -
-            </button>
+    <div className="flex items-center gap-0.5">
+      <button
+        onClick={decrement}
+        className="min-h-[28px] min-w-[20px] px-0.5 rounded-sm border border-border text-text-secondary hover:text-text-primary hover:border-text-muted hover:bg-surface-muted transition-colors text-xs leading-none cursor-pointer bg-transparent"
+      >
+        -
+      </button>
 
-            <button
-              onClick={increment}
-              className={buttonVariants({ size: "sm" })}
-              style={incrementStyle}
-            >
-              +
-            </button>
-          </div>
-        )}
+      <span className="text-xs tabular-nums text-center min-w-[1rem] text-text-primary">
+        {props.value}
+      </span>
 
-        {!isHovering && (
-          <p style={{ justifySelf: "end", fontSize: "0.8rem" }}>
-            {props.value}
-          </p>
-        )}
-      </div>
+      <button
+        onClick={increment}
+        className="min-h-[28px] min-w-[20px] px-0.5 rounded-sm border border-border text-text-secondary hover:text-text-primary hover:border-text-muted hover:bg-surface-muted transition-colors text-xs leading-none cursor-pointer bg-transparent"
+      >
+        +
+      </button>
     </div>
   );
-};
-
-const decrementStyle = {
-  padding: "0.1rem 0.25rem",
-  borderTopRightRadius: 0,
-  borderBottomRightRadius: 0,
-  height: "20px",
-};
-const incrementStyle = {
-  padding: "0.1rem 0.25rem",
-  borderTopLeftRadius: 0,
-  borderBottomLeftRadius: 0,
-  height: "20px",
 };

@@ -1,7 +1,5 @@
 import { PlayerData } from "@/types/card";
-import { useHover } from "@/utils/hooks/useHover";
-import { useMemo, useRef } from "react";
-import { buttonVariants } from "@/components/ui/button/variants";
+import { useMemo } from "react";
 
 import { GiHealthNormal as IconHealth } from "react-icons/gi";
 
@@ -12,9 +10,6 @@ export const Resource = (props: {
   setValue(value: number): void;
   value: number;
 }) => {
-  const hoverRef = useRef(null);
-  const isHovering = useHover(hoverRef);
-
   function increment() {
     props.setValue(props.value + 1);
   }
@@ -36,61 +31,46 @@ export const Resource = (props: {
   }, [props.value]);
 
   return (
-    <div className="flex flex-col gap-0 p-0 w-full" ref={hoverRef}>
-      <div className="grid grid-cols-[2fr_1fr] items-center w-inherit">
-        {isHovering && (
-          <div className="flex items-center gap-0 p-0 opacity-5 hover:opacity-100 transition-all duration-[0.25s] ease-[ease]">
-            <button
-              onClick={decrement}
-              className={buttonVariants({ variant: "destructive", size: "sm" })}
-              style={decrementStyle}
-            >
-              -
-            </button>
+    <div className="flex items-center gap-1 w-full">
+      {props.type === "life" && (
+        <IconHealth
+          color={bg}
+          fontSize="0.85rem"
+          style={{
+            filter: "drop-shadow(0 1px 1px rgba(0,0,0,0.45))",
+            flexShrink: 0,
+          }}
+        />
+      )}
 
-            <button
-              onClick={increment}
-              className={buttonVariants({ size: "sm" })}
-              style={incrementStyle}
-            >
-              +
-            </button>
-          </div>
-        )}
-        {!isHovering && props.type === "life" && (
-          <IconHealth
-            color={bg}
-            fontSize="1rem"
-            style={{
-              filter: "drop-shadow(0 1px 1px rgba(0,0,0,0.45))",
-            }}
-          />
-        )}
+      {!["mana", "manaRemaining", "life"].includes(props.type) && (
+        <img
+          src={`/icon/${props.type}.webp`}
+          alt={props.type}
+          style={{ height: "18px", width: "18px", flexShrink: 0 }}
+        />
+      )}
 
-        {!isHovering &&
-          !["mana", "manaRemaining", "life"].includes(props.type) && (
-            <img
-              src={`/icon/${props.type}.webp`}
-              alt="fire"
-              style={{ height: "21px", width: "20px" }}
-            />
-          )}
+      <button
+        onClick={decrement}
+        className="min-h-[28px] min-w-[24px] px-1 rounded-sm border border-border text-text-secondary hover:text-text-primary hover:border-text-muted hover:bg-surface-muted transition-colors text-xs leading-none cursor-pointer bg-transparent"
+      >
+        -
+      </button>
 
-        <p style={{ justifySelf: "end", fontSize: "0.8rem" }}>{props.value}</p>
-      </div>
+      <span
+        className="text-xs tabular-nums text-center min-w-[1.25rem] text-text-primary"
+        style={props.type === "life" ? { color: bg } : undefined}
+      >
+        {props.value}
+      </span>
+
+      <button
+        onClick={increment}
+        className="min-h-[28px] min-w-[24px] px-1 rounded-sm border border-border text-text-secondary hover:text-text-primary hover:border-text-muted hover:bg-surface-muted transition-colors text-xs leading-none cursor-pointer bg-transparent"
+      >
+        +
+      </button>
     </div>
   );
-};
-
-const decrementStyle = {
-  padding: "0.5rem",
-  borderTopRightRadius: 0,
-  borderBottomRightRadius: 0,
-  height: "20px",
-};
-const incrementStyle = {
-  padding: "0.5rem",
-  borderTopLeftRadius: 0,
-  borderBottomLeftRadius: 0,
-  height: "20px",
 };
