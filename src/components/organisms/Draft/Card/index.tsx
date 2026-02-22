@@ -30,7 +30,7 @@ export const DraftCard = ({
   return (
     <div
       data-testid={"draftcard-" + cardDTO.slug}
-      className="transition-all duration-200 ease-out"
+      className="transition-all duration-200 ease-out relative"
       style={{
         zIndex: isOver ? 10000 : isSelected ? 100 : 1,
         transform:

@@ -64,6 +64,7 @@ export const CrackBoard = (props: {
             {cardView.map((card, index) => (
               <div
                 key={`crack-${animKey}-${card.slug}-${index}`}
+                className="relative hover:z-[10000]"
                 style={{
                   animation: `draft-enter 0.38s cubic-bezier(0.22, 1, 0.36, 1) ${index * 0.03}s both`,
                 }}

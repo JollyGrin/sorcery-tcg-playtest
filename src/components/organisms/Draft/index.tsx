@@ -114,7 +114,7 @@ export const DraftBoard = (props: {
               return (
                 <div
                   key={`card-${animKey}-${card.slug}-${index}`}
-                  className="relative"
+                  className="relative hover:z-[10000]"
                   style={{
                     zIndex: isPicked ? 10000 : undefined,
                     animation: isExiting
