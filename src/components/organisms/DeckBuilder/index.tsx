@@ -13,6 +13,7 @@ import MyDecks from "./components/MyDecks";
 import DeckCards from "./components/DeckCards";
 import CurrentDeck from "./components/CurrentDeck";
 import ImportModal from "./components/ImportModal";
+import ExportModal from "./components/ExportModal";
 
 const DeckBuilder: React.FC = () => {
   // UI State
@@ -25,6 +26,7 @@ const DeckBuilder: React.FC = () => {
   const [showMyDecks, setShowMyDecks] = useState(false);
   const [showDeckCards, setShowDeckCards] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
+  const [showExportModal, setShowExportModal] = useState(false);
 
   // Custom hooks
   const { cards, loading, getCardImage } = useCards();
@@ -147,12 +149,20 @@ const DeckBuilder: React.FC = () => {
           onRemoveCard={removeCardFromDeck}
           onSave={saveCurrentDeck}
           getCardCount={getCardCount}
+          onExport={() => setShowExportModal(true)}
         />
 
         <ImportModal
           isOpen={showImportModal}
           onClose={() => setShowImportModal(false)}
           onImport={handleImport}
+        />
+
+        <ExportModal
+          isOpen={showExportModal}
+          onClose={() => setShowExportModal(false)}
+          deck={currentDeck}
+          cards={cards}
         />
       </div>
     </div>

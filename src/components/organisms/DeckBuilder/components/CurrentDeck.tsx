@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { buttonVariants } from "@/components/ui/button/variants";
 import { LocalDeck, Card } from "../types";
-import ExportModal from "./ExportModal";
 import { FiSave, FiShare2, FiX, FiMinus } from "react-icons/fi";
 
 interface CurrentDeckProps {
@@ -12,6 +11,7 @@ interface CurrentDeckProps {
   onRemoveCard: (slug: string, type: string) => void;
   onSave: () => void;
   getCardCount: (slug: string) => number;
+  onExport: () => void;
 }
 
 const CurrentDeck: React.FC<CurrentDeckProps> = ({
@@ -22,8 +22,8 @@ const CurrentDeck: React.FC<CurrentDeckProps> = ({
   onRemoveCard,
   onSave,
   getCardCount,
+  onExport,
 }) => {
-  const [showExportModal, setShowExportModal] = useState(false);
 
   const totalCards =
     (currentDeck.spellbook?.length || 0) +
@@ -52,7 +52,7 @@ const CurrentDeck: React.FC<CurrentDeckProps> = ({
           </button>
           <button
             className="filter-chip p-2 rounded-md cursor-pointer text-text-secondary hover:text-accent-gold"
-            onClick={() => setShowExportModal(true)}
+            onClick={onExport}
             title="Export Deck"
           >
             <FiShare2 className="w-4 h-4" />
@@ -173,18 +173,11 @@ const CurrentDeck: React.FC<CurrentDeckProps> = ({
         </button>
         <button
           className={buttonVariants({ variant: "outline" }) + " w-full"}
-          onClick={() => setShowExportModal(true)}
+          onClick={onExport}
         >
           Export Deck
         </button>
       </div>
-
-      <ExportModal
-        isOpen={showExportModal}
-        onClose={() => setShowExportModal(false)}
-        deck={currentDeck}
-        cards={cards}
-      />
     </div>
   );
 };
