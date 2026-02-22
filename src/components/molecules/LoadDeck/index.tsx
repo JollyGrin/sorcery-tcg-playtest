@@ -1,3 +1,4 @@
+import { CARD_CDN } from "@/constants";
 import { GameStateActions } from "@/components/organisms/GameBoard";
 import {
   useCuriosaDeck,
@@ -147,7 +148,7 @@ const InputLoader = ({
               alt="card"
               width="165px"
               key={card.identifier + index}
-              src={`https://card.cards.army/cards/${card.identifier}.webp`}
+              src={`${CARD_CDN}${card.identifier}.webp`}
             />
           </div>
         ))}

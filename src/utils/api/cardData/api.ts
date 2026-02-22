@@ -1,4 +1,5 @@
 import axios from "axios";
+import { CARDS_BASE_URL } from "@/constants";
 import { CardDTO } from "./CardDataType";
 
 type CardDataMinimized = {
@@ -14,7 +15,7 @@ export async function getCardsData() {
 }
 
 export async function getTokensData() {
-  const res = await axios.get<string[]>(`https://card.cards.army/tokens.json`);
+  const res = await axios.get<string[]>(`${CARDS_BASE_URL}/tokens.json`);
   return res.data;
 }
 

@@ -10,7 +10,7 @@ function shuffleAndSelect(arr: CardDTO[], count = 15) {
   return shuffled.slice(-count); // Return the last `count` items
 }
 
-export type Expansion = "Alpha" | "Beta" | "Arthurian Legends";
+export type Expansion = "Alpha" | "Beta" | "Arthurian Legends" | "Dragonlord" | "Gothic";
 export function generateBoosterPack(props: {
   cardData: CardDTO[];
   expansionSlug: Expansion | "all";

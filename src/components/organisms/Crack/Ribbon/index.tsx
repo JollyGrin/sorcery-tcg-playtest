@@ -45,6 +45,8 @@ export const Ribbon = (
             <option>Alpha</option>
             <option>Beta</option>
             <option>Arthurian Legends</option>
+            <option>Dragonlord</option>
+            <option>Gothic</option>
           </select>
           <Button className="min-w-[9rem]" onClick={crackBooster}>
             Crack a Pack

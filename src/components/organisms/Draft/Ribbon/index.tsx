@@ -216,6 +216,8 @@ export const DraftRibbon = (
                 <option>Alpha</option>
                 <option>Beta</option>
                 <option>Arthurian Legends</option>
+                <option>Dragonlord</option>
+                <option>Gothic</option>
               </select>
               <Button
                 disabled={

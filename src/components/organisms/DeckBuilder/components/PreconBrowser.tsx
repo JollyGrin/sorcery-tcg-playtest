@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { CARD_CDN } from '@/constants';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button/variants';
 import { PreconMeta, PreconDeck, getPreconList, getPreconDeck, preconToLocalDeck } from '@/utils/precons';
@@ -162,7 +163,7 @@ const PreconBrowser: React.FC<PreconBrowserProps> = ({ onLoadPrecon }) => {
             <div className="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-2 max-h-[200px] overflow-y-auto">
               {selectedPrecon.avatar && (
                 <img
-                  src={`https://card.cards.army/cards/${selectedPrecon.avatar}.webp`}
+                  src={`${CARD_CDN}${selectedPrecon.avatar}.webp`}
                   alt="Avatar"
                   style={{ width: "100%", borderRadius: "0.25rem" }}
                 />
@@ -170,7 +171,7 @@ const PreconBrowser: React.FC<PreconBrowserProps> = ({ onLoadPrecon }) => {
               {Array.from(new Set([...selectedPrecon.spellbook, ...selectedPrecon.atlas])).slice(0, 15).map((slug, index) => (
                 <img
                   key={slug + index}
-                  src={`https://card.cards.army/cards/${slug}.webp`}
+                  src={`${CARD_CDN}${slug}.webp`}
                   alt={slug}
                   style={{ width: "100%", borderRadius: "0.25rem" }}
                 />

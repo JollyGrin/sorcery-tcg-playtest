@@ -1,9 +1,6 @@
 import { GameCard, PlayerData } from "@/types/card";
-
-/**
- * CDN Images
- * */
-export const CARD_CDN = `https://card.cards.army/cards/`;
+import { CARD_CDN } from "@/constants";
+export { CARD_CDN, CARDS_BASE_URL } from "@/constants";
 
 /**
  * LAYOUT
@@ -115,5 +112,5 @@ export const initGameData: PlayerData = {
  * Returns the webp
  * */
 export function getCardImage(identifier: string) {
-  return `https://card.cards.army/cards/${identifier}.webp`;
+  return `${CARD_CDN}${identifier}.webp`;
 }

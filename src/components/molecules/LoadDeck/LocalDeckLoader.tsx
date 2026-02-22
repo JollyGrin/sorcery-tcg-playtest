@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { CARD_CDN } from '@/constants';
 import { CuriosaResponse } from '@/utils/api/curiosa/api';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -137,7 +138,7 @@ const LocalDeckLoader: React.FC<LocalDeckLoaderProps> = ({ setDeck }) => {
             <div className="grid gap-1 max-h-[200px] overflow-y-auto" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))' }}>
               {selectedDeck.avatar && (
                 <img
-                  src={`https://card.cards.army/cards/${selectedDeck.avatar}.webp`}
+                  src={`${CARD_CDN}${selectedDeck.avatar}.webp`}
                   alt="Avatar"
                   style={{ width: '100%', borderRadius: '0.25rem' }}
                 />
@@ -145,7 +146,7 @@ const LocalDeckLoader: React.FC<LocalDeckLoaderProps> = ({ setDeck }) => {
               {Array.from(new Set([...selectedDeck.spellbook, ...selectedDeck.atlas])).slice(0, 20).map((slug, index) => (
                 <img
                   key={slug + index}
-                  src={`https://card.cards.army/cards/${slug}.webp`}
+                  src={`${CARD_CDN}${slug}.webp`}
                   alt={slug}
                   style={{ width: '100%', borderRadius: '0.25rem' }}
                 />

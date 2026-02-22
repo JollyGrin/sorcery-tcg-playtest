@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { CARD_CDN } from '@/constants';
 import { Card } from '../types';
 
 export const useCards = () => {
@@ -21,7 +22,7 @@ export const useCards = () => {
   }, []);
 
   const getCardImage = (slug: string) => {
-    return `https://card.cards.army/cards/${slug}.webp`;
+    return `${CARD_CDN}${slug}.webp`;
   };
 
   return {
