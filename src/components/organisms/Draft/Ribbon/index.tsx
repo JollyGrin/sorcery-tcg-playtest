@@ -19,6 +19,7 @@ import {
 export const DraftRibbon = (
   props: DraftProps & {
     players: Record<string, DraftPlayerData>;
+    isAnimating?: boolean;
   },
 ) => {
   const { query } = useRouter();
@@ -244,7 +245,7 @@ export const DraftRibbon = (
                 {packSize} card{packSize !== 1 ? "s" : ""} in pack
               </span>
               <Button
-                disabled={!hasSelection}
+                disabled={!hasSelection || props.isAnimating}
                 onClick={takeAndPass}
                 className="bg-[#D4A853] text-[#1C1917] hover:bg-[#E0BC6A] font-semibold gap-1.5 disabled:opacity-30 disabled:cursor-not-allowed"
               >
