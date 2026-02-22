@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { CARD_CDN } from '@/constants';
 import { CuriosaResponse } from '@/utils/api/curiosa/api';
 import { PreconMeta, PreconDeck, getPreconList, getPreconDeck, preconToCuriosaFormat, preconToLocalDeck } from '@/utils/precons';
 import Link from 'next/link';
@@ -179,7 +180,7 @@ const PreconLoader: React.FC<PreconLoaderProps> = ({ setDeck }) => {
             <div className="grid gap-1 max-h-[200px] overflow-y-auto" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))' }}>
               {selectedPrecon.avatar && (
                 <img
-                  src={`https://card.cards.army/cards/${selectedPrecon.avatar}.webp`}
+                  src={`${CARD_CDN}${selectedPrecon.avatar}.webp`}
                   alt="Avatar"
                   style={{ width: '100%', borderRadius: '0.25rem' }}
                 />
@@ -187,7 +188,7 @@ const PreconLoader: React.FC<PreconLoaderProps> = ({ setDeck }) => {
               {Array.from(new Set([...selectedPrecon.spellbook, ...selectedPrecon.atlas])).slice(0, 20).map((slug, index) => (
                 <img
                   key={slug + index}
-                  src={`https://card.cards.army/cards/${slug}.webp`}
+                  src={`${CARD_CDN}${slug}.webp`}
                   alt={slug}
                   style={{ width: '100%', borderRadius: '0.25rem' }}
                 />

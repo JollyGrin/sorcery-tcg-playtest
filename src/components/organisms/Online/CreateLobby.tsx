@@ -1,4 +1,5 @@
 import { useCreateLobby } from "@/lib/hooks";
+import { CARD_CDN } from "@/constants";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
@@ -155,7 +156,7 @@ export const CreateLobby = () => {
         {cards.slice(0, 6).map((img, index, original) => (
           <img
             key={"image" + index}
-            src={`https://card.cards.army/cards/${img}.webp`}
+            src={`${CARD_CDN}${img}.webp`}
             alt={"card" + index}
             className="absolute w-[150px] animate-[fall_10s_linear_infinite,sway_5s_ease-in-out_infinite_alternate] opacity-30 [&:nth-child(1)]:delay-[2s] [&:nth-child(2)]:delay-[0s] [&:nth-child(3)]:delay-[4s] [&:nth-child(4)]:delay-[6s] [&:nth-child(5)]:delay-[8s]"
             style={{ left: (index + 1) * (90 / original.length) + "%" }}

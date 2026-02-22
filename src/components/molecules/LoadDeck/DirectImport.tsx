@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { CARD_CDN } from "@/constants";
 import { buttonVariants } from "@/components/ui/button/variants";
 import { inputVariants } from "@/components/ui/input/variants";
 import { CuriosaResponse } from "@/utils/api/curiosa/api";
@@ -189,7 +190,7 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
             <div className="flex flex-wrap gap-[0.25rem] max-h-[200px] overflow-y-auto">
               {importedDeck.avatar && (
                 <img
-                  src={`https://card.cards.army/cards/${importedDeck.avatar}.webp`}
+                  src={`${CARD_CDN}${importedDeck.avatar}.webp`}
                   alt="Avatar"
                   width="120px"
                   style={{ borderRadius: "0.25rem" }}
@@ -205,7 +206,7 @@ const DirectImport: React.FC<DirectImportProps> = ({ setDeck }) => {
                 .map((slug: string, index: number) => (
                   <img
                     key={slug + index}
-                    src={`https://card.cards.army/cards/${slug}.webp`}
+                    src={`${CARD_CDN}${slug}.webp`}
                     alt={slug}
                     width="120px"
                     style={{ borderRadius: "0.25rem" }}
