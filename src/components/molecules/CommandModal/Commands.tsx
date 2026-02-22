@@ -15,9 +15,7 @@ import {
 } from "@/utils/actions";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { css } from "styled-system/css";
-import { Box, Flex, Grid, HStack, VStack } from "styled-system/jsx";
-import { input } from "styled-system/recipes";
+import { inputVariants } from "@/components/ui/input/variants";
 import { GiPirateGrave as IconGrave } from "react-icons/gi";
 import { useLocalStorage } from "@/utils/hooks";
 import { CardImage } from "@/components/atoms/mock-cards/card";
@@ -76,7 +74,7 @@ export type ActionIds = (typeof actions)[number]["value"];
 
 export const ActUntapAll = () => {
   return (
-    <Box>
+    <div>
       <p>
         You can untap all your tapped cards by pressing{" "}
         <span
@@ -92,7 +90,7 @@ export const ActUntapAll = () => {
         </span>{" "}
         on your keyboard
       </p>
-    </Box>
+    </div>
   );
 };
 
@@ -133,35 +131,35 @@ export const ActionRollDice = (props: GameStateActions & PlayerDataProps) => {
   }
 
   return (
-    <VStack alignItems="start">
+    <div className="flex flex-col items-start">
       <p>Roll a dice</p>
       <p>d6: {myData?.dice?.d6}</p>
       <p>d20: {myData?.dice?.d20}</p>
       <Button onClick={rollD6}>Roll d6</Button>
       <Button onClick={rollD20}>Roll d20</Button>
       <Button onClick={clearDice}>Clear Rolls</Button>
-    </VStack>
+    </div>
   );
 };
 
 export const ActDrawDeckTop = (props: GameStateActions) => (
-  <VStack alignItems="start">
+  <div className="flex flex-col items-start">
     <p>Draw a card from the top of your deck</p>
     <Button onClick={() => props.setGridItems(actDrawDeck(props.gridItems))}>
       Draw card
     </Button>
-  </VStack>
+  </div>
 );
 
 export const ActDrawDeckBottom = (props: GameStateActions) => (
-  <VStack alignItems="start">
+  <div className="flex flex-col items-start">
     <p>Draw a card from the bottom of your deck</p>
     <Button
       onClick={() => props.setGridItems(actDrawDeckBottom(props.gridItems))}
     >
       Draw card
     </Button>
-  </VStack>
+  </div>
 );
 
 export const ActScryX = ({
@@ -185,13 +183,13 @@ export const ActScryX = ({
   }
 
   return (
-    <VStack alignItems="start">
+    <div className="flex flex-col items-start">
       <p>Look at the top X cards of your spellbook</p>
       <p style={{ fontSize: "0.85rem", opacity: 0.5 }}>
         Select input and use arrow keys on keyboard to go up and down
       </p>
       <input
-        className={input()}
+        className={inputVariants()}
         type="number"
         onChange={(e) => setScry(+e.target.value)}
         value={scry.toString()}
@@ -202,19 +200,16 @@ export const ActScryX = ({
           You can move individual cards to the top or bottom of your deck
         </p>
       )}
-      <Flex flexWrap="wrap" maxW="500px" maxH="600px" overflowY="auto" gap={2}>
+      <div className="flex flex-wrap max-w-[500px] max-h-[600px] overflow-y-auto gap-2">
         {scry > 0 &&
           deck
             ?.reverse() // top of deck is last item in array
             ?.slice(0, scry)
             .map((card, cardIndex) => (
-              <Box key={card.id + cardIndex}>
-                <HStack py="2px">
+              <div key={card.id + cardIndex}>
+                <div className="flex items-center py-[2px]">
                   <Button
-                    w="fit-content"
-                    fontSize="0.65rem"
-                    paddingBlock={0}
-                    h="1rem"
+                    className="w-fit text-[0.65rem] py-0 h-[1rem]"
                     onClick={() =>
                       moveCardToTopOfDeck(deck.length - cardIndex - 1)
                     }
@@ -223,41 +218,37 @@ export const ActScryX = ({
                   </Button>
 
                   <Button
-                    fontSize="0.65rem"
-                    paddingBlock={0}
-                    h="1rem"
+                    className="text-[0.65rem] py-0 h-[1rem]"
                     onClick={() =>
                       moveCardToBottomOfDeck(deck.length - cardIndex - 1)
                     }
                   >
                     Bottom {"->"}
                   </Button>
-                </HStack>
+                </div>
                 <img
                   key={card.id + card.img}
                   src={getCardImage(card.img)}
                   alt="card-img"
-                  className={css({
-                    width: "150px",
-                  })}
+                  className="w-[150px]"
                 />
-              </Box>
+              </div>
             ))}
-      </Flex>
-    </VStack>
+      </div>
+    </div>
   );
 };
 
 export const ActViewCemetary = () => {
   return (
-    <Box>
+    <div>
       <p>To view an enemy cemetary:</p>
-      <HStack flexWrap="wrap">
+      <div className="flex items-center flex-wrap">
         <p>click on the</p>
         <IconGrave />
         <p>icon next to the player&apos;s name</p>
-      </HStack>
-    </Box>
+      </div>
+    </div>
   );
 };
 
@@ -266,35 +257,27 @@ export const ActRotateEnemyCards = () => {
   const [rotateEnemy, setRotateEnemy] = useLocalStorage(key, false, options);
 
   return (
-    <Box>
+    <div>
       <p>Rotate the enemy cards on the board.</p>
-      <Box
-        className={css({
-          bg: "rgba(0,100,200,0.1)",
-          padding: "1rem",
-          border: "solid 2px",
-          borderColor: "rgba(0,100,200,0.3)",
-          borderRadius: "0.25rem",
-        })}
-      >
+      <div className="bg-[rgba(0,100,200,0.1)] p-[1rem] border-[2px] border-solid border-[rgba(0,100,200,0.3)] rounded-[0.25rem]">
         <p>The ordering (top to bottom) remains the same.</p>
         <p>Visually each enemy card will be flipped.</p>
         <p>Keep this in mind when ordering.</p>
-      </Box>
-      <Grid gridTemplateColumns="1fr 1fr" mt="2rem">
-        <Box>
+      </div>
+      <div className="grid grid-cols-[1fr_1fr] mt-[2rem]">
+        <div>
           <p>Rotate enemy: {`${rotateEnemy}`}</p>
           <Button onClick={() => setRotateEnemy(!rotateEnemy)}>
             Rotate enemy card
           </Button>
-        </Box>
+        </div>
 
-        <VStack>
+        <div className="flex flex-col">
           <CardImage img={"autumn_unicorn"} isMine={false} />
           <CardAtlas img={"windmill"} isMine={false} />
-        </VStack>
-      </Grid>
-    </Box>
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -310,31 +293,22 @@ export const ActToggleDisplayCards = () => {
   const [isDisplay, setIsDisplay] = useLocalStorage(key, false, options);
 
   return (
-    <Box>
+    <div>
       <p>Toggle between full view of cards on the grid or minimized view.</p>
-      <Box
-        className={css({
-          bg: "rgba(0,100,200,0.1)",
-          my: "1rem",
-          padding: "1rem",
-          border: "solid 2px",
-          borderColor: "rgba(0,100,200,0.3)",
-          borderRadius: "0.25rem",
-        })}
-      >
+      <div className="bg-[rgba(0,100,200,0.1)] my-[1rem] p-[1rem] border-[2px] border-solid border-[rgba(0,100,200,0.3)] rounded-[0.25rem]">
         <p>
           View will always switch to minimized view on drag/hover for
           positioning
         </p>
-      </Box>
-      <Box>
+      </div>
+      <div>
         <p>Toggle card view</p>
         <Button onClick={() => setIsDisplay(!isDisplay)}>
           {isDisplay ? "Show min card view" : "Show full card"}
         </Button>
-      </Box>
+      </div>
 
-      <Grid gridTemplateColumns="1fr 1fr" w="100%" minH="200px">
+      <div className="grid grid-cols-[1fr_1fr] w-full min-h-[200px]">
         <div />
         {isDisplay ? (
           <AltGridDisplay
@@ -343,17 +317,17 @@ export const ActToggleDisplayCards = () => {
             myName={name as string}
           />
         ) : (
-          <VStack>
+          <div className="flex flex-col">
             {mockCards?.map((card, index) => {
               const CardType = card.type === "site" ? CardAtlas : CardImage;
               return (
                 <CardType key={card.img + index} img={card.img} isMine={true} />
               );
             })}
-          </VStack>
+          </div>
         )}
-      </Grid>
-    </Box>
+      </div>
+    </div>
   );
 };
 

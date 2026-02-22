@@ -1,17 +1,8 @@
 import Link from "next/link";
-import { HStack } from "styled-system/jsx";
 
 export const Disclaimer = () => {
   return (
-    <HStack
-      bg="rgba(255,255,255,0.5)"
-      backdropFilter="blur(3px) brightness(90%)"
-      justifyContent="center"
-      textAlign="center"
-      borderRadius="0.5rem"
-      fontSize="0.75rem"
-      p="0.5rem"
-    >
+    <div className="flex items-center bg-[rgba(255,255,255,0.5)] backdrop-blur-[3px] backdrop-brightness-[90%] justify-center text-center rounded-[0.5rem] text-[0.75rem] p-[0.5rem]">
       <p>
         <strong>spells.bar</strong> an open-source project and is not affiliated
         with{" "}
@@ -26,6 +17,6 @@ export const Disclaimer = () => {
         <br /> All rights to Sorcery and its content are owned by{" "}
         <strong>Erik&apos;s Curiosa Limited</strong>.
       </p>
-    </HStack>
+    </div>
   );
 };

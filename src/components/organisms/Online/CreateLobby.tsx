@@ -2,9 +2,7 @@ import { useCreateLobby } from "@/lib/hooks";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-import { Box, Flex, Grid, HStack } from "styled-system/jsx";
-import { input } from "styled-system/recipes";
-import { css } from "styled-system/css";
+import { inputVariants } from "@/components/ui/input/variants";
 
 import { FaDice as IconDice } from "react-icons/fa6";
 import { FaRegCopy as IconCopy } from "react-icons/fa";
@@ -40,34 +38,11 @@ export const CreateLobby = () => {
   }, [gid, query]);
 
   return (
-    <Grid
-      w="100vw"
-      minH="100vh"
-      placeItems="center"
-      bg="surface.page"
-      position="relative"
-    >
-      <Box
-        position="absolute"
-        top="0"
-        left="0"
-        right="0"
-        bottom="0"
-        bg="radial-gradient(ellipse at 50% 30%, rgba(212,168,83,0.08) 0%, transparent 70%)"
-        pointerEvents="none"
-      />
+    <div className="grid w-screen min-h-screen place-items-center bg-surface-page relative">
+      <div className="absolute top-0 left-0 right-0 bottom-0 bg-[radial-gradient(ellipse_at_50%_30%,rgba(212,168,83,0.08)_0%,transparent_70%)] pointer-events-none" />
       <AppNav />
-      <Box w="100%" maxW="500px" zIndex={1} px="1rem">
-        <Flex
-          direction="column"
-          m="0 auto"
-          mt="2rem"
-          gap="1rem"
-          bg="surface.raised"
-          border="1px solid rgba(212,168,83,0.2)"
-          p="2rem"
-          borderRadius="1rem"
-        >
+      <div className="w-full max-w-[500px] z-[1] px-4">
+        <div className="flex flex-col mx-auto mt-8 gap-4 bg-surface-raised border border-[rgba(212,168,83,0.2)] p-8 rounded-[1rem]">
           <Link href="/">
             <img
               src="/logo.svg"
@@ -75,29 +50,14 @@ export const CreateLobby = () => {
               style={{ width: "100px", margin: "0 auto" }}
             />
           </Link>
-          <h2
-            className={css({
-              fontFamily: "header",
-              fontSize: "1.5rem",
-              fontWeight: 600,
-              color: "text.primary",
-              textAlign: "center",
-            })}
-          >
+          <h2 className="font-header text-[1.5rem] font-semibold text-text-primary text-center">
             Create a Lobby
           </h2>
-          <Box>
-            <label
-              className={css({
-                display: "block",
-                fontSize: "0.85rem",
-                color: "text.secondary",
-                mb: "0.25rem",
-              })}
-            >
+          <div>
+            <label className="block text-[0.85rem] text-text-secondary mb-[0.25rem]">
               Your Name
             </label>
-            <HStack>
+            <div className="flex items-center">
               <IconDice
                 className={DiceStyle}
                 onClick={() =>
@@ -117,23 +77,16 @@ export const CreateLobby = () => {
                     name: e.target.value,
                   }))
                 }
-                className={input()}
+                className={inputVariants()}
               />
-            </HStack>
-          </Box>
+            </div>
+          </div>
 
-          <Box>
-            <label
-              className={css({
-                display: "block",
-                fontSize: "0.85rem",
-                color: "text.secondary",
-                mb: "0.25rem",
-              })}
-            >
+          <div>
+            <label className="block text-[0.85rem] text-text-secondary mb-[0.25rem]">
               Lobby Name
             </label>
-            <HStack>
+            <div className="flex items-center">
               <IconDice
                 className={DiceStyle}
                 onClick={() =>
@@ -153,44 +106,21 @@ export const CreateLobby = () => {
                     gid: e.target.value,
                   }))
                 }
-                className={input()}
+                className={inputVariants()}
               />
-            </HStack>
-          </Box>
+            </div>
+          </div>
 
-          <Box w="100%">
+          <div className="w-full">
             <button
-              className={css({
-                width: "100%",
-                bg: "accent.gold",
-                color: "surface.page",
-                padding: "0.6rem 1.5rem",
-                borderRadius: "0.5rem",
-                fontSize: "1rem",
-                fontWeight: "600",
-                border: "none",
-                cursor: "pointer",
-                transition: "all 0.2s",
-                _hover: { bg: "accent.goldHover" },
-              })}
+              className="w-full bg-accent-gold text-surface-page py-[0.6rem] px-6 rounded-[0.5rem] text-base font-semibold border-none cursor-pointer transition-all duration-200 hover:bg-accent-goldHover"
               onClick={onSubmit}
             >
               Create/Join lobby
             </button>
             {fields.gid && (
-              <HStack
-                justifyContent="center"
-                mt="1rem"
-                cursor="pointer"
-                color="text.secondary"
-                transition="all 0.25s ease"
-                _hover={{
-                  transform: "scale(1.05)",
-                  color: "accent.gold",
-                }}
-                _active={{
-                  transform: "scale(1.02)",
-                }}
+              <div
+                className="flex items-center justify-center mt-4 cursor-pointer text-text-secondary transition-all duration-[0.25s] ease-[ease] hover:scale-105 hover:text-accent-gold active:scale-[1.02]"
                 onClick={() => {
                   const text = `https://spells.bar/online?gid=${fields.gid}`;
                   copy(text);
@@ -201,32 +131,15 @@ export const CreateLobby = () => {
                 <p style={{ width: "fit-content" }}>
                   share this lobby with a friend
                 </p>
-              </HStack>
+              </div>
             )}
-          </Box>
-        </Flex>
-        <Flex
-          mt="1rem"
-          bg="surface.raised"
-          border="1px solid rgba(212,168,83,0.2)"
-          maxW="500px"
-          w="100%"
-          p="2rem"
-          borderRadius="1rem"
-          direction="column"
-          gap={4}
-          color="text.primary"
-        >
-          <p
-            className={css({
-              fontWeight: 500,
-              fontSize: "1.5rem",
-              fontFamily: "header",
-            })}
-          >
+          </div>
+        </div>
+        <div className="flex flex-col mt-4 bg-surface-raised border border-[rgba(212,168,83,0.2)] max-w-[500px] w-full p-8 rounded-[1rem] gap-4 text-text-primary">
+          <p className="font-medium text-[1.5rem] font-header">
             How to play
           </p>
-          <p className={css({ color: "text.secondary" })}>
+          <p className="text-text-secondary">
             Play Sorcery TCG online with a friend! SpellsBar has no rules
             enforcement, no accounts{" "}
           </p>
@@ -235,21 +148,21 @@ export const CreateLobby = () => {
             <li>Load a deck </li>
             <li>Share the lobby name for your opponent to connect to</li>
           </ul>
-        </Flex>
-      </Box>
+        </div>
+      </div>
 
-      <Box className={fallingCardsContainer}>
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
         {cards.slice(0, 6).map((img, index, original) => (
           <img
             key={"image" + index}
             src={`https://card.cards.army/cards/${img}.webp`}
             alt={"card" + index}
-            className={fallingCard}
+            className="absolute w-[150px] animate-[fall_10s_linear_infinite,sway_5s_ease-in-out_infinite_alternate] opacity-30 [&:nth-child(1)]:delay-[2s] [&:nth-child(2)]:delay-[0s] [&:nth-child(3)]:delay-[4s] [&:nth-child(4)]:delay-[6s] [&:nth-child(5)]:delay-[8s]"
             style={{ left: (index + 1) * (90 / original.length) + "%" }}
           />
         ))}
-      </Box>
-    </Grid>
+      </div>
+    </div>
   );
 };
 
@@ -283,44 +196,5 @@ const cards = [
   "twist_of_fate",
 ];
 
-// Falling cards container
-const fallingCardsContainer = css({
-  position: "absolute",
-  top: 0,
-  left: 0,
-  width: "100%",
-  height: "100%",
-  overflow: "hidden",
-  zIndex: 0, // Behind the main content
-});
-
-// Falling card styles
-const fallingCard = css({
-  position: "absolute",
-  width: "150px", // Adjust as needed
-  animation: "fall 10s linear infinite, sway 5s ease-in-out infinite alternate",
-  opacity: 0.3,
-
-  // Random animation delay for each card
-  "&:nth-child(1)": { animationDelay: "2s" },
-  "&:nth-child(2)": { animationDelay: "0s" },
-  "&:nth-child(3)": { animationDelay: "4s" },
-  "&:nth-child(4)": { animationDelay: "6s" },
-  "&:nth-child(5)": { animationDelay: "8s" },
-  // Add more nth-child styles for additional cards
-});
-
-const DiceStyle = css({
-  userSelect: "none",
-  transform: "scale(1)",
-  transition: "all 0.25s ease",
-  cursor: "pointer",
-  color: "text.secondary",
-  _hover: {
-    transform: "scale(1.25) rotate(15deg)",
-    color: "accent.gold",
-  },
-  _active: {
-    transform: "scale(1.1)",
-  },
-});
+const DiceStyle =
+  "select-none scale-100 transition-all duration-[0.25s] ease-[ease] cursor-pointer text-text-secondary hover:scale-125 hover:rotate-[15deg] hover:text-accent-gold active:scale-110";

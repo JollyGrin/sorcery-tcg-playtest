@@ -1,12 +1,11 @@
-import { Box, Flex, Grid, HStack } from "styled-system/jsx";
-import { css } from "styled-system/css";
 import { IconLogo } from "@/components/atoms/Icons";
 import { Disclaimer } from "@/components/organisms/LandingPage/Disclaimer";
 import { Nav } from "@/components/organisms/LandingPage/Nav";
 import { Tabs } from "@/components/atoms/Tabs";
 import { Solo } from "@/components/organisms/LandingPage/SoloLoader";
 import Link from "next/link";
-import { badge, button } from "styled-system/recipes";
+import { buttonVariants } from "@/components/ui/button/variants";
+import { badgeVariants } from "@/components/ui/badge/variants";
 import {
   GiSwordClash,
   GiEarthAmerica,
@@ -18,39 +17,20 @@ import {
 
 export default function Home() {
   return (
-    <Grid
-      minH="100vh"
-      bg="linear-gradient(135deg, #292524 0%, #3D2B1F 50%, #1C1917 100%)"
-      p="2rem"
-      position="relative"
-      overflow="hidden"
+    <div
+      className="grid min-h-screen bg-[linear-gradient(135deg,#292524_0%,#3D2B1F_50%,#1C1917_100%)] p-8 relative overflow-hidden"
     >
       {/* Tilted Card Marquee Background */}
-      <Box
-        position="absolute"
-        top="0"
-        left="0"
-        right="0"
-        bottom="0"
-        zIndex="0"
-        overflow="hidden"
-        className={css({
-          transform: "rotate(-8deg) scale(1.2)",
-          transformOrigin: "center center",
-        })}
+      <div
+        className="absolute top-0 left-0 right-0 bottom-0 z-0 overflow-hidden origin-center"
+        style={{ transform: "rotate(-8deg) scale(1.2)" }}
       >
         {/* Row 1 */}
-        <HStack
-          gap="2rem"
-          mb="3rem"
-          opacity="0.1"
-          className={css({
-            animation: "marquee1 25s linear infinite",
-            width: "max-content",
-          })}
+        <div
+          className="flex items-center gap-8 mb-12 opacity-10 w-max animate-[marquee1_25s_linear_infinite]"
         >
           {[...Array(12)].map((_, i) => (
-            <Box key={i} flexShrink="0">
+            <div key={i} className="shrink-0">
               <img
                 src={`/mock-cards/${
                   [
@@ -65,22 +45,16 @@ export default function Home() {
                 alt="card"
                 style={{ height: "160px", width: "auto" }}
               />
-            </Box>
+            </div>
           ))}
-        </HStack>
+        </div>
 
         {/* Row 2 */}
-        <HStack
-          gap="2rem"
-          mb="3rem"
-          opacity="0.08"
-          className={css({
-            animation: "marquee2 30s linear infinite reverse",
-            width: "max-content",
-          })}
+        <div
+          className="flex items-center gap-8 mb-12 opacity-[0.08] w-max animate-[marquee2_30s_linear_infinite_reverse]"
         >
           {[...Array(12)].map((_, i) => (
-            <Box key={i} flexShrink="0">
+            <div key={i} className="shrink-0">
               <img
                 src={`/mock-cards/${
                   [
@@ -95,21 +69,16 @@ export default function Home() {
                 alt="card"
                 style={{ height: "160px", width: "auto" }}
               />
-            </Box>
+            </div>
           ))}
-        </HStack>
+        </div>
 
         {/* Row 3 */}
-        <HStack
-          gap="2rem"
-          opacity="0.06"
-          className={css({
-            animation: "marquee3 20s linear infinite",
-            width: "max-content",
-          })}
+        <div
+          className="flex items-center gap-8 opacity-[0.06] w-max animate-[marquee3_20s_linear_infinite]"
         >
           {[...Array(12)].map((_, i) => (
-            <Box key={i} flexShrink="0">
+            <div key={i} className="shrink-0">
               <img
                 src={`/mock-cards/${
                   [
@@ -124,10 +93,10 @@ export default function Home() {
                 alt="card"
                 style={{ height: "160px", width: "auto" }}
               />
-            </Box>
+            </div>
           ))}
-        </HStack>
-      </Box>
+        </div>
+      </div>
 
       {/* Global Styles for Animations */}
       <style jsx global>{`
@@ -157,60 +126,29 @@ export default function Home() {
         }
       `}</style>
 
-      <Flex
-        direction="column"
-        maxW="900px"
-        w="100%"
-        m="0 auto"
-        gap={3}
-        position="relative"
-        zIndex="1"
+      <div
+        className="flex flex-col max-w-[900px] w-full mx-auto gap-3 relative z-[1]"
       >
         <Nav />
-        <Grid
-          minH="400px"
-          gridTemplateColumns={{ base: "1fr", md: "1fr 1fr" }}
-          bg="linear-gradient(135deg, #292524 0%, #44403C 100%)"
-          borderBottom="solid 5px"
-          borderBottomColor="accent.gold"
-          padding="2rem"
-          borderRadius="0.75rem"
-          gap="2rem"
-          justifyContent="space-between"
-          filter="drop-shadow(0 0.5rem 1rem rgba(0,0,0,0.4))"
-          position="relative"
-          overflow="hidden"
+        <div
+          className="grid min-h-[400px] grid-cols-1 md:grid-cols-2 bg-[linear-gradient(135deg,#292524_0%,#44403C_100%)] border-b-[5px] border-b-accent-gold p-8 rounded-xl gap-8 justify-between drop-shadow-[0_0.5rem_1rem_rgba(0,0,0,0.4)] relative overflow-hidden"
         >
-          <Box color="text.primary">
-            <HStack>
+          <div className="text-text-primary">
+            <div className="flex items-center">
               <IconLogo size="2.5rem" color="#D4A853" />
               <p
-                className={css({
-                  fontWeight: 700,
-                  fontSize: "3rem",
-                  fontFamily: "title",
-                  color: "accent.gold",
-                })}
+                className="font-bold text-[3rem] font-title text-accent-gold"
               >
                 Spells.Bar
               </p>
-            </HStack>
+            </div>
             <p
-              className={css({
-                fontSize: "1.5rem",
-                marginBottom: "1rem",
-                color: "text.primary",
-              })}
+              className="text-[1.5rem] mb-4 text-text-primary"
             >
               Play Sorcery TCG online in your browser
             </p>
             <ul
-              className={css({
-                fontSize: "1.1rem",
-                lineHeight: "2",
-                marginTop: "1.5rem",
-                listStyle: "none",
-              })}
+              className="text-[1.1rem] leading-8 mt-6 list-none"
             >
               <FeatureItem icon={<GiSwordClash />} text="Play online multiplayer matches" />
               <FeatureItem icon={<GiEarthAmerica />} text="No downloads or accounts required" />
@@ -219,111 +157,64 @@ export default function Home() {
               <FeatureItem icon={<GiCardPick />} text="Draft and crack packs" />
               <FeatureItem icon={<GiOpenBook />} text="Open source project" />
             </ul>
-          </Box>
+          </div>
 
           <Selector />
-        </Grid>
+        </div>
         <Disclaimer />
-        <Box
-          py="2rem"
-          textAlign="center"
-          bg="rgba(0,0,0,0.3)"
-          borderRadius="0.5rem"
-          className={css({ backdropFilter: "blur(5px)" })}
-          position="relative"
-          overflow="hidden"
+        <div
+          className="py-8 text-center bg-[rgba(0,0,0,0.3)] rounded-lg backdrop-blur-[5px] relative overflow-hidden"
         >
           <h2
-            className={css({
-              fontSize: "2rem",
-              fontWeight: "700",
-              marginBottom: "1rem",
-              color: "accent.gold",
-              fontFamily: "header",
-            })}
+            className="text-[2rem] font-bold mb-4 text-accent-gold font-header"
           >
             Ready to Play?
           </h2>
           <p
-            className={css({
-              fontSize: "1.2rem",
-              marginBottom: "1.5rem",
-              color: "text.secondary",
-            })}
+            className="text-[1.2rem] mb-6 text-text-secondary"
           >
             Jump into a game right now - no setup required!
           </p>
-          <HStack justify="center" gap="1rem" flexWrap="wrap">
+          <div className="flex items-center justify-center gap-4 flex-wrap">
             <Link href="/online">
               <button
-                className={css({
-                  bg: "accent.gold",
-                  color: "surface.page",
-                  padding: "0.75rem 1.5rem",
-                  borderRadius: "0.5rem",
-                  fontSize: "1.1rem",
-                  fontWeight: "600",
-                  border: "none",
-                  cursor: "pointer",
-                  transition: "all 0.2s",
-                  _hover: {
-                    bg: "accent.goldHover",
-                    transform: "translateY(-2px)",
-                  },
-                })}
+                className="bg-accent-gold text-surface-page py-3 px-6 rounded-lg text-[1.1rem] font-semibold border-none cursor-pointer transition-all duration-200 hover:bg-accent-goldHover hover:-translate-y-0.5"
               >
-                <HStack gap="0.5rem">
+                <div className="flex items-center gap-2">
                   <GiSwordClash />
                   <span>Play Online</span>
-                </HStack>
+                </div>
               </button>
             </Link>
             <Link href="/deckbuilder">
               <button
-                className={css({
-                  bg: "accent.gold",
-                  color: "surface.page",
-                  padding: "0.75rem 1.5rem",
-                  borderRadius: "0.5rem",
-                  fontSize: "1.1rem",
-                  fontWeight: "600",
-                  border: "none",
-                  cursor: "pointer",
-                  transition: "all 0.2s",
-                  _hover: {
-                    bg: "accent.goldHover",
-                    transform: "translateY(-2px)",
-                  },
-                })}
+                className="bg-accent-gold text-surface-page py-3 px-6 rounded-lg text-[1.1rem] font-semibold border-none cursor-pointer transition-all duration-200 hover:bg-accent-goldHover hover:-translate-y-0.5"
               >
-                <HStack gap="0.5rem">
+                <div className="flex items-center gap-2">
                   <GiAnvil />
                   <span>Build Deck</span>
-                </HStack>
+                </div>
               </button>
             </Link>
-          </HStack>
-        </Box>
-      </Flex>
-    </Grid>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
 const FeatureItem = ({ icon, text }: { icon: React.ReactNode; text: string }) => (
   <li>
-    <HStack gap="0.75rem">
-      <span className={css({ color: "accent.gold", fontSize: "1.2rem" })}>{icon}</span>
-      <span className={css({ color: "text.primary" })}>{text}</span>
-    </HStack>
+    <div className="flex items-center gap-3">
+      <span className="text-accent-gold text-[1.2rem]">{icon}</span>
+      <span className="text-text-primary">{text}</span>
+    </div>
   </li>
 );
 
 const Selector = () => (
-  <Box
-    h="100%"
-    bg="rgba(0,0,0,0.35)"
-    borderRadius="0.5rem"
-    p="0.5rem"
+  <div
+    className="h-full bg-[rgba(0,0,0,0.35)] rounded-lg p-2"
   >
     <Tabs
       tabs={["Solo", "Online", "Deck Builder", "Crack Packs", "Online Draft"]}
@@ -335,26 +226,26 @@ const Selector = () => (
         <Draft key="draft" />,
       ]}
     />
-  </Box>
+  </div>
 );
 
 const Multiplayer = () => {
   return (
-    <div className={css({ color: "text.primary" })}>
+    <div className="text-text-primary">
       <p>Play Sorcery online in the browser.</p>
       <p>Two players join a lobby, choose their decks, and duel</p>
-      <HStack my="0.5rem" gap="0.5rem" alignItems="center">
+      <div className="flex items-center my-2 gap-2">
         <p>Version:</p>
-        <span className={badge({ variant: "beta" })}>BETA</span>
-        <p className={css({ color: "text.secondary" })}>Share feedback/bugs!</p>
-      </HStack>
-      <ol className={css({ listStyle: "inside", mb: "0.5rem", pl: "0.5rem" })}>
+        <span className={badgeVariants({ variant: "beta" })}>BETA</span>
+        <p className="text-text-secondary">Share feedback/bugs!</p>
+      </div>
+      <ol className="list-inside mb-2 pl-2">
         <li>start a lobby</li>
         <li>choose a name</li>
         <li>share lobbyname with friend</li>
       </ol>
       <Link href="/online">
-        <button className={button()} style={{ width: "100%" }}>
+        <button className={buttonVariants()} style={{ width: "100%" }}>
           Create a lobby
         </button>
       </Link>
@@ -364,29 +255,29 @@ const Multiplayer = () => {
 
 const Draft = () => {
   return (
-    <div className={css({ color: "text.primary" })}>
+    <div className="text-text-primary">
       <p>Run a (mock) Sorcery Draft online in the browser.</p>
       <p>Players join a lobby, select & pass, and can export decklist</p>
-      <HStack>
-        <p className={css({ color: "text.secondary" })}>Draft rates are NOT accurate.</p>
+      <div className="flex items-center">
+        <p className="text-text-secondary">Draft rates are NOT accurate.</p>
         <Link href="https://github.com/JollyGrin/sorcery-tcg-playtest/blob/fa6510ea46ee0c5845aba1654944799a2eff2d1b/src/components/organisms/Draft/helpers.ts#L14">
-          <p className={css({ color: "accent.teal", textDecoration: "underline" })}>
+          <p className="text-accent-teal underline">
             Link to Code
           </p>
         </Link>
-      </HStack>
-      <HStack my="0.5rem" gap="0.5rem" alignItems="center">
+      </div>
+      <div className="flex items-center my-2 gap-2">
         <p>Version:</p>
-        <span className={badge({ variant: "alpha" })}>ALPHA</span>
-        <p className={css({ color: "text.secondary" })}>Expect bugs!</p>
-      </HStack>
-      <ol className={css({ listStyle: "inside", mb: "0.5rem", pl: "0.5rem" })}>
+        <span className={badgeVariants({ variant: "alpha" })}>ALPHA</span>
+        <p className="text-text-secondary">Expect bugs!</p>
+      </div>
+      <ol className="list-inside mb-2 pl-2">
         <li>start a lobby</li>
         <li>choose a name</li>
         <li>share lobbyname with friend</li>
       </ol>
       <Link href="/draft/online">
-        <button className={button()} style={{ width: "100%" }}>
+        <button className={buttonVariants()} style={{ width: "100%" }}>
           Create a lobby
         </button>
       </Link>
@@ -396,21 +287,21 @@ const Draft = () => {
 
 const DeckBuilder = () => {
   return (
-    <div className={css({ color: "text.primary" })}>
+    <div className="text-text-primary">
       <p>Build Custom Decks</p>
       <p>Create and save your own Sorcery TCG decks locally</p>
-      <HStack my="0.5rem" gap="0.5rem" alignItems="center">
+      <div className="flex items-center my-2 gap-2">
         <p>Version:</p>
-        <span className={badge({ variant: "new" })}>NEW</span>
-        <p className={css({ color: "text.secondary" })}>Build decks without external sites!</p>
-      </HStack>
-      <ul className={css({ listStyle: "inside", mb: "0.5rem", pl: "0.5rem" })}>
+        <span className={badgeVariants({ variant: "new" })}>NEW</span>
+        <p className="text-text-secondary">Build decks without external sites!</p>
+      </div>
+      <ul className="list-inside mb-2 pl-2">
         <li>Browse all available cards</li>
         <li>Save decks to your browser</li>
         <li>Export and share deck lists</li>
       </ul>
       <Link href="/deckbuilder">
-        <button className={button()} style={{ width: "100%" }}>
+        <button className={buttonVariants()} style={{ width: "100%" }}>
           Build a Deck
         </button>
       </Link>
@@ -420,29 +311,29 @@ const DeckBuilder = () => {
 
 const Crack = () => {
   return (
-    <div className={css({ color: "text.primary" })}>
+    <div className="text-text-primary">
       <p>Crack Booster Packs</p>
       <p>Open (mock) booster packs by yourself.</p>
-      <HStack>
-        <p className={css({ color: "text.secondary" })}>Draft rates are NOT accurate.</p>
+      <div className="flex items-center">
+        <p className="text-text-secondary">Draft rates are NOT accurate.</p>
         <Link href="https://github.com/JollyGrin/sorcery-tcg-playtest/blob/fa6510ea46ee0c5845aba1654944799a2eff2d1b/src/components/organisms/Draft/helpers.ts#L14">
-          <p className={css({ color: "accent.teal", textDecoration: "underline" })}>
+          <p className="text-accent-teal underline">
             Link to Code
           </p>
         </Link>
-      </HStack>
-      <HStack my="0.5rem" gap="0.5rem" alignItems="center">
+      </div>
+      <div className="flex items-center my-2 gap-2">
         <p>Version:</p>
-        <span className={badge({ variant: "beta" })}>BETA</span>
-        <p className={css({ color: "text.secondary" })}>Report bugs/feedback!</p>
-      </HStack>
-      <ol className={css({ listStyle: "inside", mb: "0.5rem", pl: "0.5rem" })}>
+        <span className={badgeVariants({ variant: "beta" })}>BETA</span>
+        <p className="text-text-secondary">Report bugs/feedback!</p>
+      </div>
+      <ol className="list-inside mb-2 pl-2">
         <li>Choose pack type to open</li>
         <li>Reveal your cards one by one</li>
         <li>Build collection for deckbuilding</li>
       </ol>
       <Link href="/crack">
-        <button className={button()} style={{ width: "100%" }}>
+        <button className={buttonVariants()} style={{ width: "100%" }}>
           Crack Packs
         </button>
       </Link>

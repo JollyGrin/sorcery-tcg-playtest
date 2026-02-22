@@ -1,4 +1,3 @@
-import { Box, Grid, HStack } from "styled-system/jsx";
 import { Button } from "@/components/ui/button";
 import { Tabs } from "@/components/atoms/Tabs";
 
@@ -39,19 +38,19 @@ export const Ribbon = (
       : [];
 
   return (
-    <Box p="1rem" bg="brown">
-      <Grid gridTemplateColumns="1fr 7fr">
-        <HStack>
+    <div className="p-4 bg-[brown]">
+      <div className="grid" style={{ gridTemplateColumns: "1fr 7fr" }}>
+        <div className="flex items-center">
           <select onChange={(e) => setSet(e.target.value as Expansion)}>
             <option>Alpha</option>
             <option>Beta</option>
             <option>Arthurian Legends</option>
           </select>
-          <Button minW="9rem" onClick={crackBooster}>
+          <Button className="min-w-[9rem]" onClick={crackBooster}>
             Crack a Pack
           </Button>
-        </HStack>
-        <HStack maxW="70vw" overflowX="auto" overflowY="clip">
+        </div>
+        <div className="flex items-center max-w-[70vw] overflow-x-auto overflow-y-clip">
           {props.player.finishedPacks.length > 0 && (
             <Tabs
               tabs={packTabs}
@@ -59,8 +58,8 @@ export const Ribbon = (
               selectedIndex={props.activeViewIndex}
             />
           )}
-        </HStack>
-      </Grid>
-    </Box>
+        </div>
+      </div>
+    </div>
   );
 };

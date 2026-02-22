@@ -1,7 +1,6 @@
 import { CardImage } from "@/components/atoms/card-view/card";
 import { GameCard, GridItem } from "@/types/card";
-import { Box, Grid, HStack } from "styled-system/jsx";
-import { button } from "styled-system/recipes";
+import { buttonVariants } from "@/components/ui/button/variants";
 
 import { PiHandWithdrawFill as IconHand } from "react-icons/pi";
 import { GiSilenced as IconBanish } from "react-icons/gi";
@@ -9,6 +8,7 @@ import { useHover } from "@/utils/hooks/useHover";
 import { useRef } from "react";
 import { GameStateActions } from "../..";
 import { actDrawDiscard, actToggleBanishCard } from "@/utils/actions/discard";
+import { cn } from "@/lib/utils";
 
 export const DiscardModalBody = (
   props: {
@@ -28,14 +28,7 @@ export const DiscardModalBody = (
   const hasFunctions = !!props.setGridItems;
 
   return (
-    <Grid
-      gridTemplateColumns="repeat(auto-fill, minmax(300px, 1fr))"
-      gridTemplateRows="auto"
-      minW="75vw"
-      h="70vh"
-      overflowX="clip"
-      overflowY="scroll"
-    >
+    <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] grid-rows-[auto] min-w-[75vw] h-[70vh] overflow-x-clip overflow-y-scroll">
       {props.cards
         ?.sort((a, b) => {
           if (a.isBanished && b.isBanished) {
@@ -52,7 +45,7 @@ export const DiscardModalBody = (
             hasFunctions={hasFunctions}
           />
         ))}
-    </Grid>
+    </div>
   );
 };
 
@@ -71,62 +64,57 @@ const Card = ({
   const isHovering = useHover(hoverRef);
 
   return (
-    <Box
+    <div
       ref={hoverRef}
       key={card.id + "discard"}
-      aspectRatio={8 / 11}
-      w="100%"
-      h="100%"
-      maxH="500px"
-      position="relative"
-      filter={card.isBanished ? "saturate(0)" : "saturate(1)"}
-      _hover={{
-        filter: card.isBanished ? "" : "saturate(1.75)",
-      }}
+      className={cn(
+        "aspect-[8/11] w-full h-full max-h-[500px] relative",
+        card.isBanished ? "saturate-0 hover:saturate-0" : "saturate-100 hover:saturate-[1.75]",
+      )}
     >
       <CardImage img={card.img} minH={"0"} />
-      <HStack
-        display={hasFunctions ? "flex" : "none"}
-        position="absolute"
-        bottom="50%"
-        right="calc(50% - 100px)"
+      <div
+        className={cn(
+          "flex items-center absolute bottom-[50%] right-[calc(50%-100px)]",
+          hasFunctions ? "flex" : "hidden",
+        )}
       >
         <button
           onClick={returnToHand}
-          className={button()}
+          className={buttonVariants()}
           style={{
             opacity: isHovering ? 1 : 0.1,
             width: "100px",
             transition: "all 0.25s ease",
           }}
         >
-          <HStack gap={0}>
+          <div className="flex items-center gap-0">
             <p>Return</p>
             <IconHand
               size="2rem"
               style={{ fontSize: "2rem", color: "white" }}
             />
-          </HStack>
+          </div>
         </button>
 
         <button
           onClick={toggleBanish}
-          className={button()}
+          className={buttonVariants()}
           style={{
             opacity: isHovering ? 1 : 0.1,
             width: "100px",
             transition: "all 0.25s ease",
           }}
         >
-          <HStack gap={0}>
+          <div className="flex items-center gap-0">
             <p>{card.isBanished ? "Unbanish" : "Banish"}</p>
             <IconBanish
               size="2rem"
               style={{ fontSize: "2rem", color: "white" }}
             />
-          </HStack>
+          </div>
         </button>
-      </HStack>
-    </Box>
+      </div>
+    </div>
   );
 };

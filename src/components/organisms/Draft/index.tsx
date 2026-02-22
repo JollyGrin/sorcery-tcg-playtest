@@ -1,5 +1,4 @@
 import { DraftCard } from "@/components/organisms/Draft/Card";
-import { Grid } from "styled-system/jsx";
 import { DraftPlayerData } from "./types";
 import { DraftRibbon } from "./Ribbon";
 import { DraftTray } from "./Tray";
@@ -26,23 +25,18 @@ export const DraftBoard = (props: {
   if (!props?.players) return <LoadingSpinner message="Loading draft..." />;
 
   return (
-    <Grid
-      h="100vh"
-      bg="gray.300"
-      alignItems="center"
-      gridTemplateRows={`${hTop} ${hTabs} ${hCards}`}
-      gap={0}
+    <div
+      className="grid h-screen bg-gray-300 items-center gap-0"
+      style={{ gridTemplateRows: `${hTop} ${hTabs} ${hCards}` }}
     >
       <DraftTray players={props.players} />
       <DraftRibbon {...props} />
-      <Grid
-        p="3rem 4rem"
-        h={hCards}
-        overflowY="auto"
-        overflowX="clip"
-        gridTemplateColumns="repeat(auto-fit, minmax(16.4rem, 1fr))"
-        position="relative"
-        bg="gray.500"
+      <div
+        className="grid p-[3rem_4rem] overflow-y-auto overflow-x-clip relative bg-gray-500"
+        style={{
+          height: hCards,
+          gridTemplateColumns: "repeat(auto-fit, minmax(16.4rem, 1fr))",
+        }}
       >
         {props.player.activePack?.map((card, index) => (
           <DraftCard
@@ -56,7 +50,7 @@ export const DraftBoard = (props: {
             }
           />
         ))}
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   );
 };

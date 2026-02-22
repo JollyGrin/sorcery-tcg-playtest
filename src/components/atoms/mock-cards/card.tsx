@@ -6,7 +6,7 @@ import { useLocalStorage } from "@/utils/hooks";
 import { useHover } from "@/utils/hooks/useHover";
 import { useKeyPress } from "@/utils/hooks/useKeyPress";
 import { useEffect, useRef, useState } from "react";
-import { Box } from "styled-system/jsx";
+import { cn } from "@/lib/utils";
 
 export const CardImage = ({
   height = "90px",
@@ -46,43 +46,32 @@ export const CardImage = ({
   }
 
   return (
-    <Box
-      position="relative"
-      m="0 auto"
-      w="calc(100% - 1rem)"
-      maxW="221px"
-      bg="yellow"
-      overflow={show ? "unset" : "clip"}
-      borderRadius="1rem"
-      filter="drop-shadow(0 1px 3px rgba(0,0,0,0.2))"
-      zIndex={isHovering ? 1000 : index}
-      mb={position === "top" ? "unset" : "unset"}
-      mt={position === "bottom" ? "-0.25rem" : "unset"}
-      isolation="isolate"
-      transform={isTapped && !isHovering ? "rotate(5deg)" : "unset"}
-      opacity={isTapped && !isHovering ? "0.8" : "1"}
-      transition="all 0.25s ease"
-      onMouseOut={() => setPreview(false)}
+    <div
+      className={cn(
+        "relative m-[0_auto] w-[calc(100%-1rem)] max-w-[221px] bg-yellow rounded-[1rem] isolate transition-all duration-[0.25s] ease-[ease]",
+        show ? "overflow-visible" : "overflow-clip",
+        position === "bottom" ? "mt-[-0.25rem]" : "",
+        isTapped && !isHovering ? "rotate-[5deg] opacity-80" : "opacity-100",
+      )}
       style={{
+        filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.2))",
+        zIndex: isHovering ? 1000 : index,
         height,
         transform: shouldRotate(),
         border: isMe ? "" : "solid 2px tomato",
       }}
+      onMouseOut={() => setPreview(false)}
     >
-      <Box
+      <div
         ref={hoverRef}
-        position={show ? "absolute" : "unset"}
-        h="310px"
-        w="100%"
-        backgroundPosition="top"
-        backgroundSize="cover"
-        backgroundRepeat="no-repeat"
-        transform={show ? "scale(1.5)" : "unset"}
-        transition="all 0.25s ease"
+        className={cn(
+          "h-[310px] w-full bg-top bg-cover bg-no-repeat transition-all duration-[0.25s] ease-[ease]",
+          show ? "absolute scale-150" : "",
+        )}
         style={{
           backgroundImage: `url(${CARD_CDN}/${img}.webp)`,
         }}
       />{" "}
-    </Box>
+    </div>
   );
 };

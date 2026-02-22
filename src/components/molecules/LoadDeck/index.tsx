@@ -5,8 +5,8 @@ import {
   useRealmsAppDeck,
 } from "@/utils/api/curiosa/useCuriosa";
 import { ReactNode, useState } from "react";
-import { Box, Flex, Grid } from "styled-system/jsx";
-import { button, input } from "styled-system/recipes";
+import { buttonVariants } from "@/components/ui/button/variants";
+import { inputVariants } from "@/components/ui/input/variants";
 
 import { mapDeckCuriosa } from "./mappers";
 import { actShuffleDeck } from "@/utils/actions";
@@ -40,20 +40,8 @@ export const LoadDeck = (
 
   return (
     <>
-      <Grid
-        w="100vw"
-        h="100vh"
-        placeItems="center"
-        bg="blue.200"
-        overflowX="hidden"
-      >
-        <Box
-          bg="white"
-          w="100%"
-          maxW={!!deckId ? "900px" : "600px"}
-          m="0 auto"
-          p="1rem"
-        >
+      <div className="grid w-screen min-h-screen place-items-center bg-blue-200 overflow-x-hidden">
+        <div className={`bg-white w-full m-[0_auto] p-[1rem] ${!!deckId ? "max-w-[900px]" : "max-w-[600px]"}`}>
           {props.children}
           <Tabs
             tabs={[
@@ -96,8 +84,8 @@ export const LoadDeck = (
               />,
             ]}
           />
-        </Box>
-      </Grid>
+        </div>
+      </div>
     </>
   );
 };
@@ -133,7 +121,7 @@ const InputLoader = ({
     <>
       <input
         placeholder={`${provider} deck id`}
-        className={input()}
+        className={inputVariants()}
         value={deckId}
         onChange={(e) => setDeckId(e.target.value)}
       />
@@ -145,14 +133,14 @@ const InputLoader = ({
       )}
       {deckId !== "" && (
         <button
-          className={button()}
+          className={buttonVariants()}
           style={{ marginTop: "1rem" }}
           onClick={() => setDeck(deck)}
         >
           Use this deck
         </button>
       )}
-      <Flex wrap="wrap" gap="0.25rem" mt="1rem">
+      <div className="flex flex-wrap gap-[0.25rem] mt-[1rem]">
         {cards?.map((card, index) => (
           <div key={card.identifier + index + "flex"}>
             <img
@@ -163,7 +151,7 @@ const InputLoader = ({
             />
           </div>
         ))}
-      </Flex>
+      </div>
     </>
   );
 };

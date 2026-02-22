@@ -1,9 +1,8 @@
 import { CSSProperties, ReactNode, useState } from "react";
-import { css } from "styled-system/css";
-import { Box } from "styled-system/jsx";
 import { useDroppable } from "@dnd-kit/core";
 import { Modal } from "@/components/atoms/Modal";
 import { GRIDS } from "@/components/organisms/GameBoard/constants";
+import { cn } from "@/lib/utils";
 
 export const DroppableGridItem = (props: {
   contextMenu?: ReactNode;
@@ -25,11 +24,7 @@ export const DroppableGridItem = (props: {
       data-testid={"droppable-" + props.id}
       ref={setNodeRef}
       style={props.style}
-      className={css({
-        h: "100%",
-        w: "100%",
-        position: "relative",
-      })}
+      className="h-full w-full relative"
       onContextMenu={(e) => {
         e.preventDefault();
         // NOTE: This no longer is needed, but not sure why
@@ -41,13 +36,11 @@ export const DroppableGridItem = (props: {
       }}
     >
       {props.children}
-      <Box
-        position="absolute"
-        top={0}
-        w="100%"
-        h="100%"
-        bg={isOver ? "green.200" : "gray.200"}
-        zIndex={-1000}
+      <div
+        className={cn(
+          "absolute top-0 w-full h-full -z-[1000]",
+          isOver ? "bg-green-200" : "bg-gray-200",
+        )}
       >
         <p
           style={{
@@ -59,7 +52,7 @@ export const DroppableGridItem = (props: {
         >
           {props.gridIndex <= 19 ? props.gridIndex + 1 : ""}
         </p>
-      </Box>
+      </div>
       <Modal
         wrapperProps={{
           open: isGrid && isOpen,

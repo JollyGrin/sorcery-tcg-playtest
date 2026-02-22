@@ -1,6 +1,5 @@
 import { PlayerData, PlayerDataProps } from "@/types/card";
 import { useRouter } from "next/router";
-import { Flex, HStack } from "styled-system/jsx";
 import { Resource } from "./Resource";
 import { ManaNumber } from "./Mana";
 import { GiBoltSpellCast as IconMana } from "react-icons/gi";
@@ -18,16 +17,8 @@ export const CountersTray = (props: PlayerDataProps) => {
   }
 
   return (
-    <Flex
-      direction="column"
-      h="100%"
-      overflowY="auto"
-      p="0 0.5rem"
-      justifyContent="space-between"
-      alignItems="center"
-      gap="0.5rem"
-    >
-      <HStack position="relative" w="100%">
+    <div className="flex flex-col h-full overflow-y-auto p-[0_0.5rem] justify-between items-center gap-[0.5rem]">
+      <div className="flex items-center relative w-full">
         <IconMana
           size={12}
           style={{
@@ -55,7 +46,7 @@ export const CountersTray = (props: PlayerDataProps) => {
           setValue={setField("mana")}
           value={me?.mana ?? 0}
         />
-      </HStack>
+      </div>
       {(["life", "earth", "fire", "water", "wind"] as const).map((type) => (
         <Resource
           key={type}
@@ -64,7 +55,7 @@ export const CountersTray = (props: PlayerDataProps) => {
           value={me?.[type] ?? 0}
         />
       ))}
-    </Flex>
+    </div>
   );
 };
 

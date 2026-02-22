@@ -1,5 +1,4 @@
 import { CardImage } from "@/components/atoms/card-view/card";
-import { Box, Flex } from "styled-system/jsx";
 import Tilt, { GlareProps } from "react-parallax-tilt";
 import { useState } from "react";
 import { CardDTO } from "@/utils/api/cardData/CardDataType";
@@ -28,9 +27,9 @@ export const DraftCard = ({
   };
 
   return (
-    <Box
+    <div
       data-testid={"draftcard-" + cardDTO.slug}
-      transition="all 0.25s ease"
+      className="transition-all duration-[0.25s] ease-in-out"
       style={{
         zIndex: isOver ? 10000 : 1,
         transform:
@@ -43,25 +42,19 @@ export const DraftCard = ({
         glareColor={rarityColor[cardDTO.guardian.rarity]}
         scale={isOver ? 1.3 : 1}
       >
-        <Flex
-          justifyContent="center"
-          w="100%"
-          h="23.5rem"
-          filter="drop-shadow(0 0 5px rgba(0,0,0,0.35))"
+        <div
+          className="flex justify-center w-full h-[23.5rem] drop-shadow-[0_0_5px_rgba(0,0,0,0.35)] items-center rounded-[0.5rem] overflow-clip"
           onMouseOver={over}
           onMouseOut={out}
-          alignItems="center"
           onClick={onSelect}
-          borderRadius="0.5rem"
-          overflow="clip"
           style={{
             background: isSelected ? "rgba(0,250,100,0.5)" : "",
           }}
         >
           <CardImage img={cardDTO.slug} />
-        </Flex>
+        </div>
       </Tilt>
-    </Box>
+    </div>
   );
 };
 

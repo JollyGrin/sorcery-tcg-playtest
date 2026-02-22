@@ -1,7 +1,6 @@
 import { CardImage } from "@/components/atoms/card-view/card";
 import { GameCard } from "@/types/card";
-import { Box, Grid, HStack } from "styled-system/jsx";
-import { button } from "styled-system/recipes";
+import { buttonVariants } from "@/components/ui/button/variants";
 
 import { PiHandWithdrawFill as IconHand } from "react-icons/pi";
 import { useHover } from "@/utils/hooks/useHover";
@@ -27,14 +26,7 @@ export const DeckModalBody = ({
   }
 
   return (
-    <Grid
-      gridTemplateColumns="repeat(auto-fill, minmax(300px, 1fr))"
-      gridTemplateRows="auto"
-      minW="75vw"
-      h="70vh"
-      overflowX="clip"
-      overflowY="scroll"
-    >
+    <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] grid-rows-[auto] min-w-[75vw] h-[70vh] overflow-x-clip overflow-y-scroll">
       {cards?.map((card, index) => (
         <Card
           key={card.id}
@@ -42,7 +34,7 @@ export const DeckModalBody = ({
           returnToHand={() => returnToHand(index)}
         />
       ))}
-    </Grid>
+    </div>
   );
 };
 
@@ -57,23 +49,15 @@ const Card = ({
   const isHovering = useHover(hoverRef);
 
   return (
-    <Box
+    <div
       ref={hoverRef}
       key={card.id + "discard"}
-      aspectRatio={8 / 11}
-      w="100%"
-      h="100%"
-      maxH="500px"
-      position="relative"
-      filter="saturate(1)"
-      _hover={{
-        filter: "saturate(1.75)",
-      }}
+      className="aspect-[8/11] w-full h-full max-h-[500px] relative saturate-100 hover:saturate-[1.75]"
     >
       <CardImage img={card.img} minH={"0"} />
       <button
         onClick={returnToHand}
-        className={button()}
+        className={buttonVariants()}
         style={{
           position: "absolute",
           bottom: "50%",
@@ -83,11 +67,11 @@ const Card = ({
           transition: "all 0.25s ease",
         }}
       >
-        <HStack gap={0}>
+        <div className="flex items-center gap-0">
           <p>Return</p>
           <IconHand size="2rem" style={{ fontSize: "2rem", color: "white" }} />
-        </HStack>
+        </div>
       </button>
-    </Box>
+    </div>
   );
 };

@@ -1,6 +1,4 @@
 import React from 'react';
-import { Box, Grid, VStack } from 'styled-system/jsx';
-import { css } from 'styled-system/css';
 import { LocalDeck, Card } from '../types';
 
 interface DeckCardsProps {
@@ -16,122 +14,110 @@ const DeckCards: React.FC<DeckCardsProps> = ({
   getCardCount,
   getCardImage
 }) => {
-  const isEmpty = !currentDeck.avatar && 
-    (!currentDeck.spellbook || currentDeck.spellbook.length === 0) && 
+  const isEmpty = !currentDeck.avatar &&
+    (!currentDeck.spellbook || currentDeck.spellbook.length === 0) &&
     (!currentDeck.atlas || currentDeck.atlas.length === 0);
 
   if (isEmpty) {
     return (
-      <VStack gap={4} alignItems="stretch">
-        <h2 className={css({ fontSize: '2rem', fontWeight: 700, color: 'brand.highlight' })}>
+      <div className="flex flex-col gap-4 items-stretch">
+        <h2 className="text-[2rem] font-bold text-brand-highlight">
           Deck Cards
         </h2>
-        <Box textAlign="center" py="4rem">
-          <p className={css({ color: 'gray.400', fontSize: '1.25rem' })}>
+        <div className="text-center py-16">
+          <p className="text-gray-400 text-[1.25rem]">
             No cards in deck yet. Add some cards to see them here!
           </p>
-        </Box>
-      </VStack>
+        </div>
+      </div>
     );
   }
 
   return (
-    <VStack gap={4} alignItems="stretch">
-      <h2 className={css({ fontSize: '2rem', fontWeight: 700, color: 'brand.highlight' })}>
+    <div className="flex flex-col gap-4 items-stretch">
+      <h2 className="text-[2rem] font-bold text-brand-highlight">
         Deck Cards
       </h2>
-      
-      <VStack gap={6} alignItems="stretch">
+
+      <div className="flex flex-col gap-6 items-stretch">
         {/* Avatar Section */}
         {currentDeck.avatar && (
-          <Box>
-            <h3 className={css({ fontSize: '1.5rem', fontWeight: 700, mb: '1rem', color: 'blue.400' })}>
+          <div>
+            <h3 className="text-[1.5rem] font-bold mb-4 text-blue-400">
               Avatar
             </h3>
-            <Grid gridTemplateColumns="repeat(auto-fill, minmax(200px, 1fr))" gap={4}>
-              <Box position="relative">
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4">
+              <div className="relative">
                 <img
                   src={getCardImage(currentDeck.avatar)}
                   alt={cards.find(c => c.slug === currentDeck.avatar)?.name}
-                  className={css({ w: 'full', borderRadius: '0.5rem' })}
+                  className="w-full rounded-[0.5rem]"
                 />
-              </Box>
-            </Grid>
-          </Box>
+              </div>
+            </div>
+          </div>
         )}
 
         {/* Spellbook Section */}
         {currentDeck.spellbook && currentDeck.spellbook.length > 0 && (
-          <Box>
-            <h3 className={css({ fontSize: '1.5rem', fontWeight: 700, mb: '1rem', color: 'green.400' })}>
+          <div>
+            <h3 className="text-[1.5rem] font-bold mb-4 text-green-400">
               Spellbook ({currentDeck.spellbook.length} cards)
             </h3>
-            <Grid gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))" gap={4}>
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4">
               {currentDeck.spellbook.map((slug, index) => {
                 const card = cards.find(c => c.slug === slug);
                 const count = getCardCount(slug);
                 const isFirstInstance = currentDeck.spellbook!.indexOf(slug) === index;
-                
+
                 // Only show first instance of each card with count badge
                 if (!isFirstInstance) return null;
-                
+
                 return (
-                  <Box key={slug} position="relative">
+                  <div key={slug} className="relative">
                     <img
                       src={getCardImage(slug)}
                       alt={card?.name}
-                      className={css({ w: 'full', borderRadius: '0.5rem' })}
+                      className="w-full rounded-[0.5rem]"
                     />
                     {count > 1 && (
-                      <Box 
-                        position="absolute" 
-                        top="0.5rem" 
-                        right="0.5rem" 
-                        bg="green.600" 
-                        color="white" 
-                        borderRadius="full" 
-                        w="2rem" 
-                        h="2rem" 
-                        display="flex" 
-                        alignItems="center" 
-                        justifyContent="center" 
-                        fontSize="1rem" 
-                        fontWeight="bold"
+                      <div
+                        className="absolute top-2 right-2 bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-base font-bold"
                       >
                         {count}
-                      </Box>
+                      </div>
                     )}
-                  </Box>
+                  </div>
                 );
               })}
-            </Grid>
-          </Box>
+            </div>
+          </div>
         )}
 
         {/* Atlas Section */}
         {currentDeck.atlas && currentDeck.atlas.length > 0 && (
-          <Box>
-            <h3 className={css({ fontSize: '1.5rem', fontWeight: 700, mb: '1rem', color: 'purple.400' })}>
+          <div>
+            <h3 className="text-[1.5rem] font-bold mb-4 text-purple-400">
               Atlas ({currentDeck.atlas.length} sites)
             </h3>
-            <Grid gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))" gap={4}>
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4">
               {currentDeck.atlas.map((slug, index) => {
                 const card = cards.find(c => c.slug === slug);
                 return (
-                  <Box key={`${slug}-${index}`} position="relative">
+                  <div key={`${slug}-${index}`} className="relative">
                     <img
                       src={getCardImage(slug)}
                       alt={card?.name}
-                      className={css({ w: 'full', borderRadius: '0.5rem' })}
+                      className="w-full rounded-[0.5rem]"
                     />
-                  </Box>
+                  </div>
                 );
               })}
-            </Grid>
-          </Box>
+            </div>
+          </div>
         )}
-      </VStack>
-    </VStack>
+      </div>
+    </div>
   );
 };
 

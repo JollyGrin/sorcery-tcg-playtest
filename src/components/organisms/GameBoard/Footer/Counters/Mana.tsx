@@ -1,8 +1,7 @@
 import { PlayerData } from "@/types/card";
 import { useHover } from "@/utils/hooks/useHover";
 import { useRef } from "react";
-import { Grid, HStack, VStack } from "styled-system/jsx";
-import { button } from "styled-system/recipes";
+import { buttonVariants } from "@/components/ui/button/variants";
 
 // bit lengthy but maintains type safety
 type ManaKey = keyof Pick<PlayerData, "manaRemaining" | "mana">;
@@ -25,19 +24,13 @@ export const ManaNumber = (props: {
   }
 
   return (
-    <VStack gap={0} p={0} ref={hoverRef} w="100%">
-      <Grid gridTemplateColumns={"1fr"} alignItems="center" w="inherit">
+    <div className="flex flex-col gap-0 p-0 w-full" ref={hoverRef}>
+      <div className="grid grid-cols-[1fr] items-center w-inherit">
         {isHovering && (
-          <HStack
-            gap={0}
-            p={0}
-            opacity="0.05"
-            _hover={{ opacity: 1 }}
-            transition="all 0.25s ease"
-          >
+          <div className="flex items-center gap-0 p-0 opacity-5 hover:opacity-100 transition-all duration-[0.25s] ease-[ease]">
             <button
               onClick={decrement}
-              className={button({ variant: "destructive", size: "sm" })}
+              className={buttonVariants({ variant: "destructive", size: "sm" })}
               style={decrementStyle}
             >
               -
@@ -45,12 +38,12 @@ export const ManaNumber = (props: {
 
             <button
               onClick={increment}
-              className={button({ size: "sm" })}
+              className={buttonVariants({ size: "sm" })}
               style={incrementStyle}
             >
               +
             </button>
-          </HStack>
+          </div>
         )}
 
         {!isHovering && (
@@ -58,8 +51,8 @@ export const ManaNumber = (props: {
             {props.value}
           </p>
         )}
-      </Grid>
-    </VStack>
+      </div>
+    </div>
   );
 };
 

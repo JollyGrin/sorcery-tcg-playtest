@@ -9,7 +9,6 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { Box, Grid } from "styled-system/jsx";
 import { actions } from "./Commands";
 
 type Actions = {
@@ -25,7 +24,7 @@ export const CommandCombobox = (props: {
   const [input, setInput] = useState("");
 
   return (
-    <Grid gridTemplateColumns="2fr 3fr" h="100%">
+    <div className="grid grid-cols-[2fr_3fr] h-full">
       <Command>
         <CommandInput
           placeholder="Select action..."
@@ -56,9 +55,9 @@ export const CommandCombobox = (props: {
           </CommandGroup>
         </CommandList>
       </Command>
-      <Box>
+      <div>
         {selectedStatus !== null && props.children({ action: selectedStatus })}
-      </Box>
-    </Grid>
+      </div>
+    </div>
   );
 };

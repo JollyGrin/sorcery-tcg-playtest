@@ -1,13 +1,11 @@
-import { Box, Flex, HStack } from "styled-system/jsx";
 import { DraftPlayerData } from "../types";
-import { css } from "styled-system/css";
+import { CSSProperties } from "react";
 
 import { LuArrowBigRightDash as IconRight } from "react-icons/lu";
 import { RiArrowGoBackLine as IconReturnArrow } from "react-icons/ri";
 import { FaRegCopy as IconCopy } from "react-icons/fa";
 import { sortPlayersByJoin } from "../helpers";
 import { useRouter } from "next/router";
-import { Properties } from "styled-system/types/csstype";
 import { useCopyToClipboard } from "@/utils/hooks";
 import toast from "react-hot-toast";
 
@@ -29,15 +27,9 @@ export const DraftTray = (props: {
   }
 
   return (
-    <HStack data-testid="stats" p="1rem" position="relative">
-      <HStack
-        position="absolute"
-        right={3}
-        top={"0.5rem"}
-        p="0.25rem 1rem"
-        bg="teal.200"
-        borderRadius="2rem"
-        className={IconStyle}
+    <div className="flex items-center p-4 relative" data-testid="stats">
+      <div
+        className="flex items-center absolute right-3 top-[0.5rem] p-[0.25rem_1rem] bg-teal-200 rounded-[2rem] select-none scale-100 transition-all duration-[0.25s] ease-in-out cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_2px_rgba(0,0,0,0.25)] active:scale-105"
         onClick={() => {
           const text = `https://spells.bar/draft/online?gid=${query.gid}`;
           copy(text);
@@ -46,24 +38,18 @@ export const DraftTray = (props: {
       >
         <IconCopy />
         <p>Share Lobby</p>
-      </HStack>
+      </div>
 
       {players?.map(([key, value], index) => {
         return (
-          <Flex
+          <div
             key={key + index}
-            alignItems="center"
-            gap={1}
-            position="relative"
+            className="flex items-center gap-1 relative"
           >
             <Dots {...value} />
-            <Flex
+            <div
               key={key}
-              direction="column"
-              bg="lightblue"
-              p="1rem"
-              borderRadius="0.5rem"
-              border="solid 2px"
+              className="flex flex-col bg-[lightblue] p-4 rounded-[0.5rem] border-solid border-2"
               onClick={() => changePlayer(key)}
               style={{
                 borderColor:
@@ -72,23 +58,23 @@ export const DraftTray = (props: {
             >
               <p>{key}</p>
               <p>{getStatus(value)}</p>
-            </Flex>
+            </div>
             {index !== players.length - 1 ? (
               <IconRight size="2rem" />
             ) : (
               <IconReturnArrow size="2rem" />
             )}
-          </Flex>
+          </div>
         );
       })}
-    </HStack>
+    </div>
   );
 };
 
 const Dots = (props: DraftPlayerData) => {
   const s = "0.85rem"; // dot size
 
-  const style: Properties = {
+  const style: CSSProperties = {
     width: s,
     height: s,
     position: "absolute",
@@ -104,19 +90,19 @@ const Dots = (props: DraftPlayerData) => {
       {props.pendingPacks.map(
         (pack, index) =>
           (pack ?? []).length > 0 && (
-            <Box
+            <div
               data-testid="pending-dot"
               key={pack[0]?.slug + index}
-              left="-0.65rem"
+              className="left-[-0.65rem]"
               style={{ ...style, top: index ? `${index * 20}px` : 0 }}
             />
           ),
       )}
       {props.finishedPacks.map((pack, index) => (
-        <Box
+        <div
           data-testid="finished-dot"
           key={pack[0]?.slug + index}
-          right="1.5rem"
+          className="right-[1.5rem]"
           style={{ ...style, top: index ? `${index * 20}px` : 0 }}
         />
       ))}
@@ -137,17 +123,3 @@ function getStatus(props: DraftPlayerData) {
   if (!activeIsEmpty && !isSelecting) return "thinking";
   if (!activeIsEmpty && isSelecting) return "selecting";
 }
-
-const IconStyle = css({
-  userSelect: "none",
-  transform: "scale(1)",
-  transition: "all 0.25s ease",
-  cursor: "pointer",
-  _hover: {
-    transform: "scale(1.1)",
-    filter: "drop-shadow(0 0 2px rgba(0,0,0,0.25))",
-  },
-  _active: {
-    transform: "scale(1.05)",
-  },
-});

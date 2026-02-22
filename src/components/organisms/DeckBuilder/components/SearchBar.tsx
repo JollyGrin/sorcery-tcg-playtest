@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Flex } from 'styled-system/jsx';
-import { button, input } from 'styled-system/recipes';
+import { buttonVariants } from '@/components/ui/button/variants';
+import { inputVariants } from '@/components/ui/input/variants';
 
 interface SearchBarProps {
   searchQuery: string;
@@ -30,19 +30,14 @@ const SearchBar: React.FC<SearchBarProps> = ({
   onImport
 }) => {
   return (
-    <Box
-      position="sticky"
-      top="0"
-      zIndex={10}
-      bg="surface.page"
-      p="1rem"
-      backdropFilter="blur(10px)"
+    <div
+      className="sticky top-0 z-10 bg-surface-page p-4 backdrop-blur-[10px]"
     >
-      <Box maxW="1400px" mx="auto">
-        <Flex direction={{ base: "column", sm: "row" }} gap={4} alignItems="center">
-          <Flex gap={2}>
+      <div className="max-w-[1400px] mx-auto">
+        <div className="flex flex-col sm:flex-row gap-4 items-center">
+          <div className="flex gap-2">
             <button
-              className={button()}
+              className={buttonVariants()}
               onClick={() => {
                 setShowMyDecks(!showMyDecks);
                 setShowDeckCards(false);
@@ -51,7 +46,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
               My Decks ({savedDecksCount})
             </button>
             <button
-              className={button()}
+              className={buttonVariants()}
               onClick={() => {
                 setShowDeckCards(!showDeckCards);
                 setShowMyDecks(false);
@@ -60,29 +55,29 @@ const SearchBar: React.FC<SearchBarProps> = ({
               Deck Cards
             </button>
             <button
-              className={button()}
+              className={buttonVariants()}
               onClick={onCreateNewDeck}
             >
               New Deck
             </button>
             <button
-              className={button()}
+              className={buttonVariants()}
               onClick={onImport}
             >
               Import
             </button>
-          </Flex>
-          
+          </div>
+
           <input
             type="text"
             placeholder="Search cards..."
-            className={input()}
+            className={inputVariants()}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{ flex: 1 }}
           />
           <select
-            className={input()}
+            className={inputVariants()}
             value={selectedType}
             onChange={(e) => setSelectedType(e.target.value)}
             style={{ width: "auto" }}
@@ -95,9 +90,9 @@ const SearchBar: React.FC<SearchBarProps> = ({
             <option value="aura">Aura</option>
             <option value="site">Site</option>
           </select>
-        </Flex>
-      </Box>
-    </Box>
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Grid } from 'styled-system/jsx';
-import { button } from 'styled-system/recipes';
 import { CuriosaResponse } from '@/utils/api/curiosa/api';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 interface LocalDeck {
   id: string;
@@ -86,34 +85,31 @@ const LocalDeckLoader: React.FC<LocalDeckLoaderProps> = ({ setDeck }) => {
 
   if (localDecks.length === 0) {
     return (
-      <Box textAlign="center" py="2rem">
+      <div className="text-center py-8">
         <p style={{ marginBottom: '1rem' }}>No local decks found.</p>
         <Link href="/deckbuilder">
-          <button className={button()}>
+          <Button>
             Build Your First Deck
-          </button>
+          </Button>
         </Link>
-      </Box>
+      </div>
     );
   }
 
   return (
-    <Box>
+    <div>
       <p style={{ marginBottom: '1rem' }}>Select a deck from your collection:</p>
-      
-      <Grid gap="0.5rem" mb="1rem" maxH="300px" overflowY="auto">
+
+      <div className="grid gap-2 mb-4 max-h-[300px] overflow-y-auto">
         {localDecks.map((deck) => (
-          <Box
+          <div
             key={deck.id}
-            p="1rem"
-            border="2px solid"
-            borderColor={selectedDeck?.id === deck.id ? "blue.500" : "gray.300"}
-            borderRadius="0.5rem"
-            cursor="pointer"
+            className={`p-4 border-2 rounded-lg cursor-pointer ${
+              selectedDeck?.id === deck.id
+                ? 'border-blue-500 bg-blue-500/10'
+                : 'border-gray-300 bg-white'
+            }`}
             onClick={() => handleSelectDeck(deck)}
-            style={{
-              backgroundColor: selectedDeck?.id === deck.id ? 'rgba(59, 130, 246, 0.1)' : 'white'
-            }}
           >
             <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>{deck.name}</h3>
             <p style={{ fontSize: '0.875rem', color: '#6b7280' }}>
@@ -122,24 +118,23 @@ const LocalDeckLoader: React.FC<LocalDeckLoaderProps> = ({ setDeck }) => {
             <p style={{ fontSize: '0.75rem', color: '#9ca3af' }}>
               Updated: {new Date(deck.updatedAt).toLocaleDateString()}
             </p>
-          </Box>
+          </div>
         ))}
-      </Grid>
+      </div>
 
       {selectedDeck && (
         <>
-          <button
-            className={button()}
-            style={{ width: '100%', marginBottom: '1rem' }}
+          <Button
+            className="w-full mb-4"
             onClick={handleUseDeck}
           >
             Use &quot;{selectedDeck.name}&quot;
-          </button>
+          </Button>
 
           {/* Show deck preview */}
-          <Box>
+          <div>
             <h4 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>Deck Preview:</h4>
-            <Grid gap="0.25rem" gridTemplateColumns="repeat(auto-fill, minmax(120px, 1fr))" maxH="200px" overflowY="auto">
+            <div className="grid gap-1 max-h-[200px] overflow-y-auto" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))' }}>
               {selectedDeck.avatar && (
                 <img
                   src={`https://card.cards.army/cards/${selectedDeck.avatar}.webp`}
@@ -155,16 +150,16 @@ const LocalDeckLoader: React.FC<LocalDeckLoaderProps> = ({ setDeck }) => {
                   style={{ width: '100%', borderRadius: '0.25rem' }}
                 />
               ))}
-            </Grid>
+            </div>
             {(selectedDeck.spellbook.length + selectedDeck.atlas.length) > 20 && (
               <p style={{ fontSize: '0.75rem', color: '#9ca3af', textAlign: 'center', marginTop: '0.5rem' }}>
                 ... and {selectedDeck.spellbook.length + selectedDeck.atlas.length - 20} more cards
               </p>
             )}
-          </Box>
+          </div>
         </>
       )}
-    </Box>
+    </div>
   );
 };
 

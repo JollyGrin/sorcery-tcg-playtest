@@ -10,7 +10,6 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { useCardData, useTokenData } from "@/utils/api/cardData/useCardData";
-import { Box, Grid, HStack } from "styled-system/jsx";
 import { getCardImage } from "@/components/organisms/GameBoard/constants";
 import { GameCard, SorceryCard } from "@/types/card";
 import { GameStateActions } from "@/components/organisms/GameBoard";
@@ -18,7 +17,7 @@ import { Button } from "@/components/ui/button";
 import { actSpawnCard } from "@/utils/actions/card";
 import { useRouter } from "next/router";
 import { Switch } from "@/components/ui/switch";
-import { css } from "styled-system/css";
+import { cn } from "@/lib/utils";
 import { TOKEN_CARDS, TOKEN_RUBBLE } from "@/utils/api/cardData/api";
 
 type Status = {
@@ -74,13 +73,9 @@ export const CardInject = (props: {
   }
 
   return (
-    <Box>
-      <HStack mb="1rem">
-        <p
-          className={css({
-            opacity: isChecked ? 0.5 : 1,
-          })}
-        >
+    <div>
+      <div className="flex items-center mb-[1rem]">
+        <p className={cn(isChecked ? "opacity-50" : "opacity-100")}>
           Cards
         </p>
         <Switch
@@ -88,16 +83,12 @@ export const CardInject = (props: {
           onCheckedChange={(check) => setIsChecked(check)}
         />
 
-        <p
-          className={css({
-            opacity: !isChecked ? 0.5 : 1,
-          })}
-        >
+        <p className={cn(!isChecked ? "opacity-50" : "opacity-100")}>
           Tokens
         </p>
-      </HStack>
+      </div>
 
-      <Grid gridTemplateColumns="1fr 1fr">
+      <div className="grid grid-cols-[1fr_1fr]">
         <Command>
           <CommandInput
             placeholder="Select card..."
@@ -128,24 +119,19 @@ export const CardInject = (props: {
             </CommandGroup>
           </CommandList>
         </Command>
-        <Box>
+        <div>
           {selectedStatus?.value ? (
             <img alt="card" src={getCardImage(selectedStatus?.value ?? "")} />
           ) : (
-            <Box
-              w="380px"
-              aspectRatio={380 / 530}
-              bg="gray.200"
-              borderRadius="1rem"
-            />
+            <div className="w-[380px] aspect-[380/530] bg-gray-200 rounded-[1rem]" />
           )}
-        </Box>
-      </Grid>
-      <HStack mt="1rem" justifyContent="end">
+        </div>
+      </div>
+      <div className="flex items-center mt-[1rem] justify-end">
         <Button onClick={spawnCard}>
           Add card to Grid-{(props.gridIndex ?? 0) + 1}
         </Button>
-      </HStack>
-    </Box>
+      </div>
+    </div>
   );
 };

@@ -1,4 +1,3 @@
-import { Box, Flex, HStack } from "styled-system/jsx";
 import { DraftProps } from "@/components/organisms/Draft/types";
 import { CardDTO } from "@/utils/api/cardData/CardDataType";
 
@@ -18,30 +17,22 @@ export const CrackStats = (props: DraftProps) => {
   const avatars = flat.filter((card) => card?.guardian?.type === "Avatar");
 
   return (
-    <HStack justifyContent="space-between">
-      <Flex p="0 1.25rem" gap="2rem" fontSize={{ base: "0.85rem", md: "1rem" }}>
-        <Flex
-          alignItems="start"
-          direction={{ base: "row", md: "column" }}
-          gap={{ base: 2, md: 0 }}
-        >
+    <div className="flex items-center justify-between">
+      <div className="flex px-[1.25rem] py-0 gap-8 text-[0.85rem] md:text-[1rem]">
+        <div className="flex items-start flex-row md:flex-col gap-2 md:gap-0">
           <p>Exceptionals: {exceptionals.length.toString()}</p>
           <p>Elites: {elites.length.toString()}</p>
           <p>Uniques: {uniques.length.toString()}</p>
-        </Flex>
-        <Flex
-          alignItems="start"
-          direction={{ base: "row", md: "column" }}
-          gap={{ base: 2, md: 0 }}
-        >
+        </div>
+        <div className="flex items-start flex-row md:flex-col gap-2 md:gap-0">
           <p>Total Cards: {flat.length.toString()}</p>
           <p>Sites: {sites.length.toString()}</p>
           <p>Avatars: {avatars.length.toString()}</p>
-        </Flex>
-      </Flex>
-      <Box display={{ base: "none", lg: "block" }} p="1rem" mx="1rem" bg="plum">
+        </div>
+      </div>
+      <div className="hidden lg:block p-4 mx-4 bg-[plum]">
         <p>Online draft currently in development!</p>
-      </Box>
-    </HStack>
+      </div>
+    </div>
   );
 };

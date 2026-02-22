@@ -1,6 +1,5 @@
 import { DroppableGridItem } from "@/components/molecules/DropGridItem";
 import { GRIDS } from "@/components/organisms/GameBoard/constants";
-import { Box, Grid } from "styled-system/jsx";
 
 import { GiPirateGrave as IconGrave } from "react-icons/gi";
 import { CardImage } from "@/components/atoms/card-view/card";
@@ -18,7 +17,7 @@ export const GraveTray = (props: GameStateActions) => {
   const [preview, setPreview] = useState(false);
 
   return (
-    <Box position="relative" overflow="clip" h="100%">
+    <div className="relative overflow-clip h-full">
       <IconGrave
         style={{
           position: "absolute",
@@ -36,11 +35,8 @@ export const GraveTray = (props: GameStateActions) => {
       )}
       <DroppableGridItem gridIndex={GRIDS.GRAVE} id={GRIDS.GRAVE.toString()}>
         {hasCards && (
-          <Grid
-            position="relative"
-            placeItems="center"
-            h="100%"
-            cursor="pointer"
+          <div
+            className="grid relative place-items-center h-full cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
               setPreview(true);
@@ -51,77 +47,61 @@ export const GraveTray = (props: GameStateActions) => {
             }}
           >
             {graveAmount > 0 && (
-              <Box w="100px" h="120px" position="absolute">
+              <div className="w-[100px] h-[120px] absolute">
                 <CardImage
                   img={graveCards?.[graveAmount - 1 - 0].img}
                   minH={"0"}
                 />
-              </Box>
+              </div>
             )}
 
             {graveAmount > 1 && (
-              <Box
-                w="100px"
-                h="120px"
-                position="absolute"
-                left={9}
-                top={9}
-                rotate="4deg"
+              <div
+                className="w-[100px] h-[120px] absolute rotate-[4deg]"
+                style={{ left: 9, top: 9 }}
               >
                 <CardImage
                   img={graveCards?.[graveAmount - 1 - 1].img}
                   minH={"0"}
                 />
-              </Box>
+              </div>
             )}
 
             {graveAmount > 2 && (
-              <Box
-                w="100px"
-                h="120px"
-                position="absolute"
-                left={4}
-                top={8}
-                rotate="-2deg"
+              <div
+                className="w-[100px] h-[120px] absolute -rotate-[2deg]"
+                style={{ left: 4, top: 8 }}
               >
                 <CardImage
                   img={graveCards?.[graveAmount - 1 - 2].img}
                   minH={"0"}
                 />
-              </Box>
+              </div>
             )}
 
             {graveAmount > 3 && (
-              <Box
-                w="100px"
-                h="120px"
-                position="absolute"
-                left={7}
-                top={4}
-                rotate="3deg"
+              <div
+                className="w-[100px] h-[120px] absolute rotate-[3deg]"
+                style={{ left: 7, top: 4 }}
               >
                 <CardImage
                   img={graveCards?.[graveAmount - 1 - 3].img}
                   minH={"0"}
                 />
-              </Box>
+              </div>
             )}
 
             {graveAmount > 4 && (
-              <Box
-                w="100px"
-                h="120px"
-                position="absolute"
-                left={5}
-                top={9}
-                rotate="0deg"
+              <div
+                className="w-[100px] h-[120px] absolute rotate-0"
+                style={{ left: 5, top: 9 }}
               >
                 <CardImage img={graveCards?.[0].img} minH={"0"} />
-              </Box>
+              </div>
             )}
-          </Grid>
+          </div>
         )}
       </DroppableGridItem>
-    </Box>
+    </div>
   );
 };

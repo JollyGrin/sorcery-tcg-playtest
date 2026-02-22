@@ -1,19 +1,27 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
-import { styled, type HTMLStyledProps } from "styled-system/jsx";
-import { button } from "styled-system/recipes";
+import { type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "./variants";
 
-const BaseButton = React.forwardRef<
-  HTMLButtonElement,
-  React.ButtonHTMLAttributes<HTMLButtonElement> & {
-    asChild?: boolean;
-    children?: React.ReactNode;
-  }
->(({ asChild = false, ...props }, ref) => {
-  const Comp = asChild ? Slot : "button";
-  return <Comp ref={ref} {...props} />;
-});
-BaseButton.displayName = "Button";
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
+}
 
-export const Button = styled(BaseButton, button);
-export type ButtonProps = HTMLStyledProps<typeof Button>;
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    );
+  },
+);
+Button.displayName = "Button";
+
+export { Button, buttonVariants };

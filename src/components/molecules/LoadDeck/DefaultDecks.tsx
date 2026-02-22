@@ -1,13 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { PlayerData } from "@/types/card";
-import { Divider, Grid } from "styled-system/jsx";
 
 export const DefaultDecks = (props: { setDeckId(id: string): void }) => {
   return (
     <>
-      <Divider mt="0.5rem" mb="0.25rem" opacity={0.1} />
+      <hr className="border-border mt-[0.5rem] mb-[0.25rem] opacity-10" />
       <p>Load a precon deck</p>
-      <Grid gridTemplateColumns="repeat(4,1fr)" mt="1rem">
+      <div className="grid grid-cols-[repeat(4,1fr)] mt-[1rem]">
         {precons.map((precon) => (
           <PreconButton
             key={precon.deckId}
@@ -15,7 +14,7 @@ export const DefaultDecks = (props: { setDeckId(id: string): void }) => {
             {...precon}
           />
         ))}
-      </Grid>
+      </div>
     </>
   );
 };

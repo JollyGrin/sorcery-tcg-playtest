@@ -5,7 +5,6 @@ import { DroppableGridItem } from "@/components/molecules/DropGridItem";
 import { DndContext, DragOverlay } from "@dnd-kit/core";
 import { useHandleDrag } from "./useHandleDrag";
 import { CardImage } from "@/components/atoms/mock-cards/card";
-import { Box } from "styled-system/jsx";
 import { GameState, PlayerDataProps } from "@/types/card";
 import { GRIDS, LOCALSTORAGE_KEYS } from "./constants";
 import { useRouter } from "next/router";
@@ -85,12 +84,12 @@ export const GameBoard = ({
                 gridIndex={gridIndex}
                 style={{ overflowY: "auto", overflowX: "clip" }}
                 contextMenu={
-                  <Box maxW="900px" w="100%">
+                  <div className="max-w-[900px] w-full">
                     <CardInject
                       gridIndex={gridIndex}
                       gameState={{ gridItems, setGridItems }}
                     />
-                  </Box>
+                  </div>
                 }
               >
                 <SortableContext
@@ -98,9 +97,8 @@ export const GameBoard = ({
                   items={cards.map((card) => card.id)}
                   strategy={rectSortingStrategy}
                 >
-                  <Box
-                    h="100%"
-                    w="100%"
+                  <div
+                    className="h-full w-full"
                     onMouseEnter={() => {
                       setGridHover(gridIndex);
                     }}
@@ -114,7 +112,7 @@ export const GameBoard = ({
                         {...{ card, gridIndex, cardIndex }}
                       />
                     ))}
-                  </Box>
+                  </div>
                 </SortableContext>
               </DroppableGridItem>
             );
@@ -122,14 +120,14 @@ export const GameBoard = ({
         </GameLayout>
         <DragOverlay>
           {activeId ? (
-            <Box opacity={0.5}>
+            <div className="opacity-50">
               {activeCard?.type === "site" && (
                 <CardAtlas img={activeCard?.img} />
               )}
               {activeCard?.type !== "site" && (
                 <CardImage img={activeCard?.img} />
               )}
-            </Box>
+            </div>
           ) : null}
         </DragOverlay>
       </DndContext>

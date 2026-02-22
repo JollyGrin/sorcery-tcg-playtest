@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Box, Flex, VStack } from "styled-system/jsx";
-import { css } from "styled-system/css";
-import { button, input } from "styled-system/recipes";
+import { buttonVariants } from "@/components/ui/button/variants";
+import { inputVariants } from "@/components/ui/input/variants";
 import { LocalDeck } from "../types";
 import { decodeDeck, isValidDeck } from "../utils/deckEncoding";
 
@@ -78,56 +77,34 @@ const ImportModal: React.FC<ImportModalProps> = ({
   };
 
   return (
-    <Box
-      position="fixed"
-      inset={0}
-      bg="rgba(0,0,0,0.8)"
-      zIndex={50}
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      p="1rem"
+    <div
+      className="fixed inset-0 bg-[rgba(0,0,0,0.8)] z-50 flex items-center justify-center p-4"
     >
-      <Box
-        bg="rgba(40,40,40,0.95)"
-        borderRadius="1rem"
-        p="2rem"
-        maxW="500px"
-        w="100%"
-        border="1px solid"
-        borderColor="rgba(255,255,255,0.2)"
+      <div
+        className="bg-[rgba(40,40,40,0.95)] rounded-[1rem] p-8 max-w-[500px] w-full border border-[rgba(255,255,255,0.2)]"
       >
-        <Flex justifyContent="space-between" alignItems="center" mb="1.5rem">
+        <div className="flex justify-between items-center mb-6">
           <h2
-            className={css({
-              fontSize: "1.5rem",
-              fontWeight: 700,
-              color: "brand.highlight",
-            })}
+            className="text-[1.5rem] font-bold text-brand-highlight"
           >
             Import Deck
           </h2>
           <button
             onClick={handleClose}
-            className={css({
-              color: "gray.400",
-              _hover: { color: "white" },
-              fontSize: "1.5rem",
-              cursor: "pointer",
-            })}
+            className="text-gray-400 hover:text-white text-[1.5rem] cursor-pointer"
           >
             ×
           </button>
-        </Flex>
+        </div>
 
-        <VStack gap={4} alignItems="stretch">
-          <Box>
-            <p className={css({ mb: "0.5rem", color: "gray.300" })}>
+        <div className="flex flex-col gap-4 items-stretch">
+          <div>
+            <p className="mb-2 text-gray-300">
               Paste a deck URL or share code:
             </p>
             <textarea
               placeholder="https://spells.bar/deckbuilder?deck=... or just the deck code"
-              className={input()}
+              className={inputVariants()}
               value={importText}
               onChange={(e) => setImportText(e.target.value)}
               style={{
@@ -138,54 +115,47 @@ const ImportModal: React.FC<ImportModalProps> = ({
                 fontSize: "0.875rem",
               }}
             />
-          </Box>
+          </div>
 
           {error && (
-            <Box
-              bg="rgba(239,68,68,0.1)"
-              border="1px solid"
-              borderColor="red.400"
-              borderRadius="0.5rem"
-              p="0.75rem"
+            <div
+              className="bg-[rgba(239,68,68,0.1)] border border-red-400 rounded-[0.5rem] p-3"
             >
-              <p className={css({ color: "red.400", fontSize: "0.875rem" })}>
+              <p className="text-red-400 text-sm">
                 {error}
               </p>
-            </Box>
+            </div>
           )}
 
-          <Flex gap={2}>
+          <div className="flex gap-2">
             <button
-              className={button()}
+              className={buttonVariants()}
               onClick={handleClose}
               style={{ flex: 1 }}
             >
               Cancel
             </button>
             <button
-              className={button()}
+              className={buttonVariants()}
               onClick={handleImport}
               disabled={importing || !importText.trim()}
               style={{ flex: 1 }}
             >
               {importing ? "Importing..." : "Import Deck"}
             </button>
-          </Flex>
-        </VStack>
+          </div>
+        </div>
 
-        <Box
-          mt="1.5rem"
-          p="0.75rem"
-          bg="rgba(59,130,246,0.1)"
-          borderRadius="0.5rem"
+        <div
+          className="mt-6 p-3 bg-[rgba(59,130,246,0.1)] rounded-[0.5rem]"
         >
-          <p className={css({ fontSize: "0.75rem", color: "blue.400" })}>
+          <p className="text-xs text-blue-400">
             <strong>Tip:</strong> You can also visit a deck URL directly to
             import it automatically.
           </p>
-        </Box>
-      </Box>
-    </Box>
+        </div>
+      </div>
+    </div>
   );
 };
 

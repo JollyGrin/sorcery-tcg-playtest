@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Grid, Flex, VStack } from 'styled-system/jsx';
-import { css } from 'styled-system/css';
-import { button } from 'styled-system/recipes';
+import { cn } from '@/lib/utils';
+import { buttonVariants } from '@/components/ui/button/variants';
 import { PreconMeta, PreconDeck, getPreconList, getPreconDeck, preconToLocalDeck } from '@/utils/precons';
 
 interface PreconBrowserProps {
@@ -72,50 +71,47 @@ const PreconBrowser: React.FC<PreconBrowserProps> = ({ onLoadPrecon }) => {
 
   if (loading) {
     return (
-      <Box textAlign="center" py="4rem">
-        <p className={css({ color: 'gray.400', fontSize: '1.25rem' })}>
+      <div className="text-center py-16">
+        <p className="text-gray-400 text-[1.25rem]">
           Loading preconstructed decks...
         </p>
-      </Box>
+      </div>
     );
   }
 
   return (
-    <VStack gap={4} alignItems="stretch">
-      <h2 className={css({ fontSize: '2rem', fontWeight: 700, color: 'brand.highlight' })}>
+    <div className="flex flex-col gap-4 items-stretch">
+      <h2 className="text-[2rem] font-bold text-brand-highlight">
         Preconstructed Decks
       </h2>
-      
+
       {precons.length === 0 ? (
-        <Box textAlign="center" py="4rem">
-          <p className={css({ color: 'gray.400', fontSize: '1.25rem' })}>
+        <div className="text-center py-16">
+          <p className="text-gray-400 text-[1.25rem]">
             No preconstructed decks available.
           </p>
-        </Box>
+        </div>
       ) : (
-        <Grid gridTemplateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }} gap={4}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {precons.map((precon) => (
-            <Box
+            <div
               key={precon.id}
-              bg="rgba(255,255,255,0.1)"
-              p="1rem"
-              borderRadius="0.5rem"
-              cursor="pointer"
-              className={css({
-                _hover: { bg: 'rgba(255,255,255,0.15)' },
-                border: selectedPrecon?.name === precon.name ? '2px solid' : '1px solid',
-                borderColor: selectedPrecon?.name === precon.name ? 'blue.400' : 'rgba(255,255,255,0.2)'
-              })}
+              className={cn(
+                "bg-[rgba(255,255,255,0.1)] p-4 rounded-[0.5rem] cursor-pointer hover:bg-[rgba(255,255,255,0.15)]",
+                selectedPrecon?.name === precon.name
+                  ? "border-2 border-blue-400"
+                  : "border border-[rgba(255,255,255,0.2)]"
+              )}
               onClick={() => handleSelectPrecon(precon.id)}
             >
-              <Flex justifyContent="space-between" alignItems="flex-start" mb="0.5rem">
-                <h3 className={css({ fontWeight: 'bold', fontSize: '1.125rem', mb: '0.5rem' })}>
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="font-bold text-[1.125rem] mb-2">
                   {precon.name}
                 </h3>
-                <Flex gap="0.5rem">
-                  <span 
-                    style={{ 
-                      fontSize: '0.75rem', 
+                <div className="flex gap-2">
+                  <span
+                    style={{
+                      fontSize: '0.75rem',
                       padding: '0.25rem 0.5rem',
                       borderRadius: '0.25rem',
                       backgroundColor: getElementColor(precon.element),
@@ -125,9 +121,9 @@ const PreconBrowser: React.FC<PreconBrowserProps> = ({ onLoadPrecon }) => {
                   >
                     {precon.element}
                   </span>
-                  <span 
-                    style={{ 
-                      fontSize: '0.75rem', 
+                  <span
+                    style={{
+                      fontSize: '0.75rem',
                       padding: '0.25rem 0.5rem',
                       borderRadius: '0.25rem',
                       backgroundColor: getDifficultyColor(precon.difficulty),
@@ -137,23 +133,23 @@ const PreconBrowser: React.FC<PreconBrowserProps> = ({ onLoadPrecon }) => {
                   >
                     {precon.difficulty}
                   </span>
-                </Flex>
-              </Flex>
-              <p className={css({ fontSize: '0.875rem', color: 'gray.400', mb: '0.5rem' })}>
+                </div>
+              </div>
+              <p className="text-sm text-gray-400 mb-2">
                 {precon.description}
               </p>
-              <p className={css({ fontSize: '0.75rem', color: 'gray.500' })}>
+              <p className="text-xs text-gray-500">
                 {precon.cardCount.total} cards ({precon.cardCount.spellbook} spellbook, {precon.cardCount.atlas} atlas)
               </p>
-            </Box>
+            </div>
           ))}
-        </Grid>
+        </div>
       )}
 
       {selectedPrecon && (
-        <Box>
+        <div>
           <button
-            className={button()}
+            className={buttonVariants()}
             onClick={handleLoadForEditing}
             disabled={loadingDeck}
             style={{ width: '100%', marginBottom: '1rem' }}
@@ -161,14 +157,14 @@ const PreconBrowser: React.FC<PreconBrowserProps> = ({ onLoadPrecon }) => {
             {loadingDeck ? 'Loading...' : `Load "${selectedPrecon.name}" for Editing`}
           </button>
 
-          <Box>
-            <h4 className={css({ fontWeight: 'bold', mb: '0.5rem' })}>Preview:</h4>
-            <Grid gridTemplateColumns="repeat(auto-fill, minmax(120px, 1fr))" gap={2} maxH="200px" overflowY="auto">
+          <div>
+            <h4 className="font-bold mb-2">Preview:</h4>
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-2 max-h-[200px] overflow-y-auto">
               {selectedPrecon.avatar && (
                 <img
                   src={`https://card.cards.army/cards/${selectedPrecon.avatar}.webp`}
                   alt="Avatar"
-                  className={css({ w: 'full', borderRadius: '0.25rem' })}
+                  className="w-full rounded-[0.25rem]"
                 />
               )}
               {Array.from(new Set([...selectedPrecon.spellbook, ...selectedPrecon.atlas])).slice(0, 15).map((slug, index) => (
@@ -176,25 +172,25 @@ const PreconBrowser: React.FC<PreconBrowserProps> = ({ onLoadPrecon }) => {
                   key={slug + index}
                   src={`https://card.cards.army/cards/${slug}.webp`}
                   alt={slug}
-                  className={css({ w: 'full', borderRadius: '0.25rem' })}
+                  className="w-full rounded-[0.25rem]"
                 />
               ))}
-            </Grid>
+            </div>
             {(selectedPrecon.spellbook.length + selectedPrecon.atlas.length) > 15 && (
-              <p className={css({ fontSize: '0.75rem', color: 'gray.500', textAlign: 'center', mt: '0.5rem' })}>
+              <p className="text-xs text-gray-500 text-center mt-2">
                 ... and {selectedPrecon.spellbook.length + selectedPrecon.atlas.length - 15} more cards
               </p>
             )}
-          </Box>
-        </Box>
+          </div>
+        </div>
       )}
 
-      <Box p="0.75rem" bg="rgba(59,130,246,0.1)" borderRadius="0.5rem">
-        <p className={css({ fontSize: '0.75rem', color: 'blue.400' })}>
+      <div className="p-3 bg-[rgba(59,130,246,0.1)] rounded-[0.5rem]">
+        <p className="text-xs text-blue-400">
           <strong>Tip:</strong> Load any precon to customize it and save your own version.
         </p>
-      </Box>
-    </VStack>
+      </div>
+    </div>
   );
 };
 

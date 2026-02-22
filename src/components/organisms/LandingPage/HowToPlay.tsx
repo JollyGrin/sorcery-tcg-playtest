@@ -1,31 +1,15 @@
 import Link from "next/link";
 import { ReactNode } from "react";
-import { css } from "styled-system/css";
-import { Box, Flex, Grid } from "styled-system/jsx";
 
 export const HowToPlay = () => {
   return (
-    <Flex
-      className="wood"
-      bg="rgba(200,100,0,0.5)"
-      color="white"
-      backdropFilter="blur(5px) brightness(90%)"
-      boxShadow="0 3px 6px rgba(0,0,0,0.5)"
-      p="1rem"
-      borderRadius="0.5rem"
-      direction="column"
-      gap="2rem"
+    <div
+      className="wood flex flex-col gap-[2rem] bg-[rgba(200,100,0,0.5)] text-white backdrop-blur-[5px] backdrop-brightness-[90%] shadow-[0_3px_6px_rgba(0,0,0,0.5)] p-4 rounded-[0.5rem]"
     >
-      <p
-        className={css({
-          fontWeight: 700,
-          fontSize: "2rem",
-          textShadow: "0 2px 2px rgba(0,0,0,0.5)",
-        })}
-      >
+      <p className="font-bold text-[2rem] [text-shadow:0_2px_2px_rgba(0,0,0,0.5)]">
         How to play
       </p>
-      <Grid gridTemplateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }}>
+      <div className="grid grid-cols-1 md:grid-cols-3">
         <Step
           img="shop"
           title="1) Buy Sorcery Cards"
@@ -69,22 +53,15 @@ export const HowToPlay = () => {
             </p>
           }
         />
-      </Grid>
-    </Flex>
+      </div>
+    </div>
   );
 };
 
 const Step = (props: { img: string; title: string; desc: ReactNode }) => {
   return (
-    <Box>
-      <p
-        className={css({
-          fontWeight: 600,
-          fontSize: "1.25rem",
-
-          textShadow: "0 2px 2px rgba(0,0,0,0.5)",
-        })}
-      >
+    <div>
+      <p className="font-semibold text-[1.25rem] [text-shadow:0_2px_2px_rgba(0,0,0,0.5)]">
         {props.title}
       </p>
       <img
@@ -98,6 +75,6 @@ const Step = (props: { img: string; title: string; desc: ReactNode }) => {
         }}
       />
       {typeof props.desc === "string" ? <p>{props.desc}</p> : props.desc}
-    </Box>
+    </div>
   );
 };

@@ -1,5 +1,5 @@
 import { CARD_CDN } from "@/components/organisms/GameBoard/constants";
-import { Box } from "styled-system/jsx";
+import { cn } from "@/lib/utils";
 
 export const CardImage = ({
   img = "headless_haunt.webp",
@@ -11,32 +11,19 @@ export const CardImage = ({
   minH?: string;
 }) => {
   return (
-    <Box
-      w="inherit"
-      h="inherit"
-      position="relative"
-      m="0.5rem auto"
-      borderRadius="1rem"
-      mb={position === "top" ? "unset" : "unset"}
-      mt={position === "bottom" ? "-0.25rem" : "unset"}
-      isolation="isolate"
-      transform="unset"
-      opacity="1"
-      transition="all 0.25s ease"
+    <div
+      className={cn(
+        "w-inherit h-inherit relative m-[0.5rem_auto] rounded-[1rem] isolate opacity-100 transition-all duration-[0.25s] ease-[ease]",
+        position === "bottom" ? "mt-[-0.25rem]" : "",
+      )}
     >
-      <Box
+      <div
         style={{
           backgroundImage: `url(${CARD_CDN}/${img}.webp)`,
+          minHeight: minH,
         }}
-        w="100%"
-        h="100%"
-        minH={minH}
-        backgroundPosition="top"
-        backgroundSize="contain"
-        backgroundRepeat="no-repeat"
-        transition="all 0.25s ease"
-        // bg="gray.400"
+        className="w-full h-full bg-top bg-contain bg-no-repeat transition-all duration-[0.25s] ease-[ease]"
       />
-    </Box>
+    </div>
   );
 };

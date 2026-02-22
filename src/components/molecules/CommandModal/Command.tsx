@@ -1,6 +1,4 @@
-import { Box, Flex } from "styled-system/jsx";
 import { CommandCombobox } from "./ComandCombobox";
-import { css } from "styled-system/css";
 import { GameStateActions } from "@/components/organisms/GameBoard";
 import {
   ActDrawDeckBottom,
@@ -17,13 +15,8 @@ import { PlayerDataProps } from "@/types/card";
 
 export const Command = (props: GameStateActions & PlayerDataProps) => {
   return (
-    <Flex direction="column" minW="800px" minH="500px">
-      <p
-        className={css({
-          fontSize: "1.5rem",
-          my: "0.5rem",
-        })}
-      >
+    <div className="flex flex-col min-w-[800px] min-h-[500px]">
+      <p className="text-[1.5rem] my-[0.5rem]">
         Command Box
       </p>
       <CommandCombobox>
@@ -44,9 +37,9 @@ export const Command = (props: GameStateActions & PlayerDataProps) => {
           if (id === "rotate_enemy") return <ActRotateEnemyCards />;
           if (id === "toggle_display") return <ActToggleDisplayCards />;
 
-          return <Box>No action setup</Box>;
+          return <div>No action setup</div>;
         }}
       </CommandCombobox>
-    </Flex>
+    </div>
   );
 };

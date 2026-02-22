@@ -1,6 +1,5 @@
 import React from 'react';
-import { Box, Flex, Grid } from 'styled-system/jsx';
-import { css } from 'styled-system/css';
+import { cn } from '@/lib/utils';
 import { Card } from '../types';
 
 interface CardBrowserProps {
@@ -30,90 +29,47 @@ const CardBrowser: React.FC<CardBrowserProps> = ({
 
   return (
     <>
-      <Grid
-        gridTemplateColumns={{
-          base: "repeat(2, 1fr)",
-          sm: "repeat(3, 1fr)",
-          md: "repeat(4, 1fr)",
-          lg: "repeat(5, 1fr)",
-        }}
-        gap={4}
+      <div
+        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
       >
         {filteredCards.slice(0, 100).map((card) => (
-          <Box
+          <div
             key={card.slug}
-            position="relative"
-            cursor="pointer"
+            className="relative cursor-pointer group"
             onClick={() => onAddCard(card)}
-            className={css({
-              _hover: {
-                "& img": { boxShadow: "lg", transform: "scale(1.05)" },
-                "& .overlay": { opacity: 1, bg: "rgba(0,0,0,0.5)" },
-              },
-            })}
           >
             <img
               src={getCardImage(card.slug)}
               alt={card.name}
-              className={css({
-                w: "full",
-                borderRadius: "0.5rem",
-                transition: "all 0.2s",
-              })}
+              className="w-full rounded-[0.5rem] transition-all duration-200 group-hover:shadow-lg group-hover:scale-105"
               loading="lazy"
             />
-            <Flex
-              className="overlay"
-              position="absolute"
-              inset={0}
-              bg="transparent"
-              opacity={0}
-              transition="all 0.2s"
-              borderRadius="0.5rem"
-              alignItems="center"
-              justifyContent="center"
+            <div
+              className={cn(
+                "overlay absolute inset-0 bg-transparent opacity-0 transition-all duration-200 rounded-[0.5rem] flex items-center justify-center",
+                "group-hover:opacity-100 group-hover:bg-[rgba(0,0,0,0.5)]"
+              )}
             >
               <span
-                className={css({
-                  color: "white",
-                  fontSize: "1.5rem",
-                  fontWeight: "bold",
-                })}
+                className="text-white text-[1.5rem] font-bold"
               >
                 +
               </span>
-            </Flex>
+            </div>
             {getCardCount(card.slug) > 0 && (
-              <Box
-                position="absolute"
-                top="0.5rem"
-                right="0.5rem"
-                bg="blue.600"
-                color="white"
-                borderRadius="full"
-                w="1.5rem"
-                h="1.5rem"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                fontSize="0.875rem"
-                fontWeight="bold"
+              <div
+                className="absolute top-2 right-2 bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"
               >
                 {getCardCount(card.slug)}
-              </Box>
+              </div>
             )}
-          </Box>
+          </div>
         ))}
-      </Grid>
+      </div>
 
       {filteredCards.length > 100 && (
         <p
-          className={css({
-            color: "gray.400",
-            textAlign: "center",
-            mt: "1rem",
-            mb: "1rem",
-          })}
+          className="text-gray-400 text-center mt-4 mb-4"
         >
           Showing first 100 results. Use search to narrow down.
         </p>

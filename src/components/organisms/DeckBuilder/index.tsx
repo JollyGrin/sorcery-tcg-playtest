@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Box, Grid } from "styled-system/jsx";
 import { LoadingSpinner } from "@/components/atoms/LoadingSpinner";
 
 // Hooks
@@ -70,7 +69,7 @@ const DeckBuilder: React.FC = () => {
   }
 
   return (
-    <Box position="relative" h="calc(100vh - 0px)">
+    <div className="relative h-[calc(100vh-0px)]">
       {/* Search Bar */}
       <SearchBar
         searchQuery={searchQuery}
@@ -87,14 +86,11 @@ const DeckBuilder: React.FC = () => {
       />
 
       {/* Main content */}
-      <Grid
-        gridTemplateColumns={{ base: "1fr", lg: "1fr 400px" }}
-        h="calc(100% - 72px)"
-        maxW="1400px"
-        mx="auto"
+      <div
+        className="grid h-[calc(100%-72px)] max-w-[1400px] mx-auto grid-cols-1 lg:grid-cols-[1fr_400px]"
       >
         {/* Left Panel - Card Browser, My Decks, or Deck Cards */}
-        <Box overflow="auto" p="1rem">
+        <div className="overflow-auto p-4">
           {showMyDecks ? (
             <MyDecks
               savedDecks={savedDecks}
@@ -121,7 +117,7 @@ const DeckBuilder: React.FC = () => {
               getCardImage={getCardImage}
             />
           )}
-        </Box>
+        </div>
 
         {/* Right Panel - Current Deck */}
         <CurrentDeck
@@ -139,8 +135,8 @@ const DeckBuilder: React.FC = () => {
           onClose={() => setShowImportModal(false)}
           onImport={handleImport}
         />
-      </Grid>
-    </Box>
+      </div>
+    </div>
   );
 };
 

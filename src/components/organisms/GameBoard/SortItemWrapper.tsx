@@ -3,7 +3,6 @@ import { CardAtlas } from "@/components/atoms/mock-cards/atlas";
 import { CardImage } from "@/components/atoms/mock-cards/card";
 import { CardImage as FullCard } from "@/components/atoms/card-view/card";
 import { SortableItem } from "@/components/molecules/SortItem";
-import { Box, Flex, HStack } from "styled-system/jsx";
 import { Modal } from "@/components/atoms/Modal";
 
 import { useState } from "react";
@@ -11,7 +10,7 @@ import { FullCardAtlas } from "@/components/atoms/card-view/atlas";
 import { GameCard } from "@/types/card";
 import { useRouter } from "next/router";
 import { GameStateActions } from ".";
-import { button } from "styled-system/recipes";
+import { buttonVariants } from "@/components/ui/button/variants";
 import {
   actCardCounterDecrement,
   actCardCounterIncrement,
@@ -105,21 +104,9 @@ export const SortItemWrapper = ({
           index={cardIndex}
         >
           {card.counter && card.counter !== 0 ? (
-            <Box
-              position="absolute"
-              right={0}
-              bottom={0}
-              zIndex={10}
-              bg="rgba(255,255,255,0.25)"
-              backdropFilter="blur(4px)"
-              filter="drop-shadow(0 1px 1px black)"
-              p="0.25rem 0.5rem"
-              borderRadius="100%"
-              color="white"
-              minW="1.65rem"
-            >
+            <div className="absolute right-0 bottom-0 z-10 bg-[rgba(255,255,255,0.25)] backdrop-blur-[4px] drop-shadow-[0_1px_1px_black] p-[0.25rem_0.5rem] rounded-full text-white min-w-[1.65rem]">
               <p style={{ fontSize: "0.75rem" }}>{card.counter}</p>
-            </Box>
+            </div>
           ) : null}
           {card.type === "site" && (
             <CardAtlas
@@ -140,21 +127,21 @@ export const SortItemWrapper = ({
       <Modal
         wrapperProps={{ open: preview, onOpenChange: setPreview }}
         content={
-          <Flex direction="column" gap="1rem">
-            <Box h="600px" w="460px" position="relative">
+          <div className="flex flex-col gap-[1rem]">
+            <div className="h-[600px] w-[460px] relative">
               {card.type === "site" && <FullCardAtlas img={card.img} />}
               {card.type !== "site" && <FullCard img={card.img} />}
-            </Box>
-            <HStack justifyContent="center">
-              <button className={button()} onClick={decrementCounter}>
+            </div>
+            <div className="flex items-center justify-center">
+              <button className={buttonVariants()} onClick={decrementCounter}>
                 Decrement
               </button>
               <p>{card.counter}</p>
-              <button className={button()} onClick={incrementCounter}>
+              <button className={buttonVariants()} onClick={incrementCounter}>
                 Increment
               </button>
-            </HStack>
-          </Flex>
+            </div>
+          </div>
         }
       />
     </div>

@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Flex, Grid, HStack } from "styled-system/jsx";
 import { DraftPlayerData, DraftProps } from "../types";
 import {
   Expansion,
@@ -180,8 +179,11 @@ export const DraftRibbon = (
         cards={props.player.selectedCards}
       />
 
-      <Grid h="100%" bg="brown" gap={0} gridTemplateColumns="1fr 3fr 1fr">
-        <Flex alignItems="center" justifyContent="center" gap={1}>
+      <div
+        className="grid h-full bg-[brown] gap-0"
+        style={{ gridTemplateColumns: "1fr 3fr 1fr" }}
+      >
+        <div className="flex items-center justify-center gap-1">
           {/* <Button */}
           {/*   disabled={unrequestedPacks.length === 0} */}
           {/*   onClick={copyToPending} */}
@@ -199,18 +201,17 @@ export const DraftRibbon = (
           >
             Flip -{availablePacks.length}
           </Button>
-        </Flex>
-        <Grid
-          gridTemplateColumns="repeat(3,1fr)"
-          alignItems="center"
-          p="0 0.5rem"
+        </div>
+        <div
+          className="grid items-center p-[0_0.5rem]"
+          style={{ gridTemplateColumns: "repeat(3,1fr)" }}
         >
           <div>
             <p>{props.player.packsOpened ?? "0"} packs opened</p>
           </div>
 
           {props.player.activePack.length === 0 ? (
-            <HStack>
+            <div className="flex items-center">
               <select onChange={(e) => setSet(e.target.value as Expansion)}>
                 <option>Alpha</option>
                 <option>Beta</option>
@@ -224,7 +225,7 @@ export const DraftRibbon = (
               >
                 Open a Pack
               </Button>
-            </HStack>
+            </div>
           ) : (
             <Button
               disabled={props.player.selectedIndex === undefined}
@@ -233,19 +234,18 @@ export const DraftRibbon = (
               Take &amp; Pass
             </Button>
           )}
-        </Grid>
-        <Flex alignItems="center" justifyContent="center">
+        </div>
+        <div className="flex items-center justify-center">
           {props.player.selectedCards.length > 0 && (
             <Button
-              bg="purple.800"
+              className="bg-purple-800 rounded-full hover:bg-purple-700"
               onClick={disclosure.onOpen}
-              borderRadius="10rem"
             >
               View Selected
             </Button>
           )}
-        </Flex>
-      </Grid>
+        </div>
+      </div>
     </>
   );
 };

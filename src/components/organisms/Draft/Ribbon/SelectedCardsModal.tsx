@@ -1,4 +1,3 @@
-import { Box, Flex, Grid } from "styled-system/jsx";
 import { Modal } from "@/components/atoms/Modal";
 import { getCardImage } from "../../GameBoard/constants";
 import { reduceCardCount, sortAlphabetical } from "./helpers";
@@ -23,28 +22,26 @@ export const SelectedCardsModal = ({
       <Modal
         wrapperProps={{ open: isOpen, onOpenChange: onToggle }}
         content={
-          <Grid
-            gridTemplateColumns="4fr 1fr"
-            minW="70vw"
-            minH="50vh"
-            maxH="70vh"
-            w="100%"
+          <div
+            className="grid min-w-[70vw] min-h-[50vh] max-h-[70vh] w-full"
+            style={{ gridTemplateColumns: "4fr 1fr" }}
           >
-            <Flex
-              flexWrap="wrap"
-              gap="0.25rem"
-              h="100%"
-              overflowY="auto"
-              overflowX="clip"
-            >
+            <div className="flex flex-wrap gap-[0.25rem] h-full overflow-y-auto overflow-x-clip">
               {cards.sort(sortAlphabetical).map((card, index) => (
-                <Box
+                <div
                   key={card.slug + index}
-                  width="18rem"
-                  height="fit-content"
-                  transition="all 0.25s ease"
-                  _hover={{
-                    transform: `scale(1.25) ${card.guardian.type === "Site" ? "rotate(90deg)" : ""}`,
+                  className="w-[18rem] h-fit transition-all duration-[0.25s] ease-in-out hover:scale-125"
+                  style={{
+                    transform: undefined,
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget;
+                    if (card.guardian.type === "Site") {
+                      el.style.transform = "scale(1.25) rotate(90deg)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "";
                   }}
                 >
                   <img
@@ -53,27 +50,27 @@ export const SelectedCardsModal = ({
                     height="inherit"
                     width="inherit"
                   />
-                </Box>
+                </div>
               ))}
-            </Flex>
-            <Box>
+            </div>
+            <div>
               {cards
                 .sort(sortAlphabetical)
                 .reduce(reduceCardCount, [])
                 .map((card, index) => {
                   return (
-                    <Grid
+                    <div
                       key={card.name + index}
-                      gridTemplateColumns="1.5rem auto"
+                      className="grid"
+                      style={{ gridTemplateColumns: "1.5rem auto" }}
                     >
                       <p>{card.count}x</p>
                       <p>{card.name}</p>
-                    </Grid>
+                    </div>
                   );
                 })}
               <Button
-                mt="2rem"
-                w="100%"
+                className="mt-8 w-full"
                 onClick={() => {
                   const list = cards
                     .sort(sortAlphabetical)
@@ -97,8 +94,8 @@ export const SelectedCardsModal = ({
                 Copy &amp; Paste into Curiosa &apos;bulk add&apos; in Create
                 Deck
               </p>
-            </Box>
-          </Grid>
+            </div>
+          </div>
         }
       />
     </>
