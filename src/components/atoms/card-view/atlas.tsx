@@ -6,12 +6,21 @@ export const FullCardAtlas = ({
   img?: string;
 }) => {
   return (
-    <div className="relative m-[0.5rem_auto] w-inherit h-inherit rounded-[1rem] isolate">
+    <div className="relative rounded-[1rem] isolate" style={{ width: "inherit", height: "inherit", margin: "0.5rem auto" }}>
       <div
         style={{
           backgroundImage: `url(${CARD_CDN}/${img}.webp)`,
-        }} // bgImage has caching issues
-        className="isolate w-full h-full bg-right bg-cover bg-no-repeat rotate-90 bg-gray-400 rounded-[1rem] transition-all duration-[0.25s] ease-[ease]"
+          width: "100%",
+          height: "100%",
+          backgroundPosition: "right",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          transform: "rotate(90deg)",
+          backgroundColor: "#9ca3af",
+          borderRadius: "1rem",
+          transition: "all 0.25s ease",
+          isolation: "isolate",
+        }}
       />
     </div>
   );

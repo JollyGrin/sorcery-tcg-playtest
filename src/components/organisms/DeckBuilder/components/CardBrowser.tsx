@@ -41,7 +41,8 @@ const CardBrowser: React.FC<CardBrowserProps> = ({
             <img
               src={getCardImage(card.slug)}
               alt={card.name}
-              className="w-full rounded-[0.5rem] transition-all duration-200 group-hover:shadow-lg group-hover:scale-105"
+              style={{ width: "100%", borderRadius: "0.5rem" }}
+              className="transition-all duration-200 group-hover:shadow-lg group-hover:scale-105"
               loading="lazy"
             />
             <div

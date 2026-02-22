@@ -72,7 +72,6 @@ export const Resource = (props: {
             <img
               src={`/icon/${props.type}.webp`}
               alt="fire"
-              className="w-[25px]"
               style={{ height: "21px", width: "20px" }}
             />
           )}

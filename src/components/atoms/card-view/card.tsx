@@ -13,16 +13,27 @@ export const CardImage = ({
   return (
     <div
       className={cn(
-        "w-inherit h-inherit relative m-[0.5rem_auto] rounded-[1rem] isolate opacity-100 transition-all duration-[0.25s] ease-[ease]",
+        "relative rounded-[1rem] isolate opacity-100",
         position === "bottom" ? "mt-[-0.25rem]" : "",
       )}
+      style={{
+        width: "inherit",
+        height: "inherit",
+        margin: "0.5rem auto",
+        transition: "all 0.25s ease",
+      }}
     >
       <div
         style={{
           backgroundImage: `url(${CARD_CDN}/${img}.webp)`,
           minHeight: minH,
+          width: "100%",
+          height: "100%",
+          backgroundPosition: "top",
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          transition: "all 0.25s ease",
         }}
-        className="w-full h-full bg-top bg-contain bg-no-repeat transition-all duration-[0.25s] ease-[ease]"
       />
     </div>
   );

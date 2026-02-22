@@ -47,7 +47,7 @@ export const GraveTray = (props: GameStateActions) => {
             }}
           >
             {graveAmount > 0 && (
-              <div className="w-[100px] h-[120px] absolute">
+              <div style={{ width: "100px", height: "120px", position: "absolute" }}>
                 <CardImage
                   img={graveCards?.[graveAmount - 1 - 0].img}
                   minH={"0"}
@@ -57,8 +57,7 @@ export const GraveTray = (props: GameStateActions) => {
 
             {graveAmount > 1 && (
               <div
-                className="w-[100px] h-[120px] absolute rotate-[4deg]"
-                style={{ left: 9, top: 9 }}
+                style={{ width: "100px", height: "120px", position: "absolute", transform: "rotate(4deg)", left: 9, top: 9 }}
               >
                 <CardImage
                   img={graveCards?.[graveAmount - 1 - 1].img}
@@ -69,8 +68,7 @@ export const GraveTray = (props: GameStateActions) => {
 
             {graveAmount > 2 && (
               <div
-                className="w-[100px] h-[120px] absolute -rotate-[2deg]"
-                style={{ left: 4, top: 8 }}
+                style={{ width: "100px", height: "120px", position: "absolute", transform: "rotate(-2deg)", left: 4, top: 8 }}
               >
                 <CardImage
                   img={graveCards?.[graveAmount - 1 - 2].img}
@@ -81,8 +79,7 @@ export const GraveTray = (props: GameStateActions) => {
 
             {graveAmount > 3 && (
               <div
-                className="w-[100px] h-[120px] absolute rotate-[3deg]"
-                style={{ left: 7, top: 4 }}
+                style={{ width: "100px", height: "120px", position: "absolute", transform: "rotate(3deg)", left: 7, top: 4 }}
               >
                 <CardImage
                   img={graveCards?.[graveAmount - 1 - 3].img}
@@ -93,8 +90,7 @@ export const GraveTray = (props: GameStateActions) => {
 
             {graveAmount > 4 && (
               <div
-                className="w-[100px] h-[120px] absolute rotate-0"
-                style={{ left: 5, top: 9 }}
+                style={{ width: "100px", height: "120px", position: "absolute", transform: "rotate(0deg)", left: 5, top: 9 }}
               >
                 <CardImage img={graveCards?.[0].img} minH={"0"} />
               </div>

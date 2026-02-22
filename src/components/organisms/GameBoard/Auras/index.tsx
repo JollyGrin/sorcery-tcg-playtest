@@ -56,7 +56,7 @@ const Aura = (props: {
     >
       {!auraCard?.id && (
         <AuraDrop gridIndex={props.gridIndex}>
-          <div className="w-full h-full bg-cover rotate-90 rounded-[0.5rem]" />
+          <div style={{ width: "100%", height: "100%", backgroundSize: "cover", transform: "rotate(90deg)", borderRadius: "0.5rem" }} />
         </AuraDrop>
       )}
       {auraCard?.id && (
@@ -83,10 +83,14 @@ const DragWrapper = ({
         style={{ width: "100%", height: "100%", zIndex: 1000 }}
       >
         <div
-          className="w-full h-full bg-[length:200%] bg-[position:10%_20%] rounded-[0.5rem]"
           style={{
             backgroundImage: `url(${CARD_CDN}${card.img}.webp)`,
             transform: card?.type === "site" ? "rotate(90deg)" : "",
+            width: "100%",
+            height: "100%",
+            backgroundSize: "200%",
+            backgroundPosition: "10% 20%",
+            borderRadius: "0.5rem",
           }}
           onContextMenu={(e) => {
             e.preventDefault();

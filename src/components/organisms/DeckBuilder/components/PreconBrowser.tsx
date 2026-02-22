@@ -164,7 +164,7 @@ const PreconBrowser: React.FC<PreconBrowserProps> = ({ onLoadPrecon }) => {
                 <img
                   src={`https://card.cards.army/cards/${selectedPrecon.avatar}.webp`}
                   alt="Avatar"
-                  className="w-full rounded-[0.25rem]"
+                  style={{ width: "100%", borderRadius: "0.25rem" }}
                 />
               )}
               {Array.from(new Set([...selectedPrecon.spellbook, ...selectedPrecon.atlas])).slice(0, 15).map((slug, index) => (
@@ -172,7 +172,7 @@ const PreconBrowser: React.FC<PreconBrowserProps> = ({ onLoadPrecon }) => {
                   key={slug + index}
                   src={`https://card.cards.army/cards/${slug}.webp`}
                   alt={slug}
-                  className="w-full rounded-[0.25rem]"
+                  style={{ width: "100%", borderRadius: "0.25rem" }}
                 />
               ))}
             </div>

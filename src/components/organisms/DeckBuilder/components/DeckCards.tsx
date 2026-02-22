@@ -51,7 +51,7 @@ const DeckCards: React.FC<DeckCardsProps> = ({
                 <img
                   src={getCardImage(currentDeck.avatar)}
                   alt={cards.find(c => c.slug === currentDeck.avatar)?.name}
-                  className="w-full rounded-[0.5rem]"
+                  style={{ width: "100%", borderRadius: "0.5rem" }}
                 />
               </div>
             </div>
@@ -78,7 +78,7 @@ const DeckCards: React.FC<DeckCardsProps> = ({
                     <img
                       src={getCardImage(slug)}
                       alt={card?.name}
-                      className="w-full rounded-[0.5rem]"
+                      style={{ width: "100%", borderRadius: "0.5rem" }}
                     />
                     {count > 1 && (
                       <div
@@ -108,7 +108,7 @@ const DeckCards: React.FC<DeckCardsProps> = ({
                     <img
                       src={getCardImage(slug)}
                       alt={card?.name}
-                      className="w-full rounded-[0.5rem]"
+                      style={{ width: "100%", borderRadius: "0.5rem" }}
                     />
                   </div>
                 );

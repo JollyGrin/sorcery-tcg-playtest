@@ -63,10 +63,14 @@ export const DecksTray = (props: GameStateActions) => {
             e.preventDefault();
             setPreview("atlas");
           }}
-          className="grid h-[70px] aspect-[3/2] place-items-center rounded-[0.25rem] cursor-pointer bg-cover"
+          className="grid place-items-center cursor-pointer"
           onClick={drawAtlas}
           style={{
             backgroundImage: "url(/card-backs/m_atlas.png)",
+            height: "70px",
+            aspectRatio: "3/2",
+            borderRadius: "0.25rem",
+            backgroundSize: "cover",
           }}
         >
           <p className="font-bold bg-[rgba(255,255,255,0.7)] px-[0.25rem] rounded-[0.25rem]">{atlasRemainingCards}</p>
@@ -76,10 +80,14 @@ export const DecksTray = (props: GameStateActions) => {
             e.preventDefault();
             setPreview("deck");
           }}
-          className="grid w-[60px] aspect-[2/3] place-items-center rounded-[0.25rem] cursor-pointer bg-cover"
+          className="grid place-items-center cursor-pointer"
           onClick={drawDeck}
           style={{
             backgroundImage: "url(/card-backs/m_spells.png)",
+            width: "60px",
+            aspectRatio: "2/3",
+            borderRadius: "0.25rem",
+            backgroundSize: "cover",
           }}
         >
           <p className="font-bold bg-[rgba(255,255,255,0.7)] px-[0.25rem] rounded-[0.25rem]">{deckRemainingCards}</p>

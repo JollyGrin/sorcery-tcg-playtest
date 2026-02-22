@@ -48,16 +48,20 @@ export const CardImage = ({
   return (
     <div
       className={cn(
-        "relative m-[0_auto] w-[calc(100%-1rem)] max-w-[221px] bg-yellow rounded-[1rem] isolate transition-all duration-[0.25s] ease-[ease]",
+        "relative isolate",
         show ? "overflow-visible" : "overflow-clip",
-        position === "bottom" ? "mt-[-0.25rem]" : "",
-        isTapped && !isHovering ? "rotate-[5deg] opacity-80" : "opacity-100",
+        isTapped && !isHovering ? "opacity-80" : "opacity-100",
       )}
       style={{
+        width: "calc(100% - 1rem)",
+        maxWidth: "221px",
+        margin: position === "bottom" ? "-0.25rem auto 0" : "0 auto",
+        borderRadius: "1rem",
+        transition: "all 0.25s ease",
         filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.2))",
         zIndex: isHovering ? 1000 : index,
         height,
-        transform: shouldRotate(),
+        transform: `${shouldRotate()} ${isTapped && !isHovering ? "rotate(5deg)" : ""}`,
         border: isMe ? "" : "solid 2px tomato",
       }}
       onMouseOut={() => setPreview(false)}
@@ -65,11 +69,16 @@ export const CardImage = ({
       <div
         ref={hoverRef}
         className={cn(
-          "h-[310px] w-full bg-top bg-cover bg-no-repeat transition-all duration-[0.25s] ease-[ease]",
           show ? "absolute scale-150" : "",
         )}
         style={{
           backgroundImage: `url(${CARD_CDN}/${img}.webp)`,
+          height: "310px",
+          width: "100%",
+          backgroundPosition: "top",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          transition: "all 0.25s ease",
         }}
       />{" "}
     </div>

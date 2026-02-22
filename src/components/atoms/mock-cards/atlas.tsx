@@ -23,8 +23,13 @@ export const CardAtlas = ({
   }
   return (
     <div
-      className="relative m-[0_auto] w-[calc(100%-1rem)] max-w-[221px] bg-yellow rounded-[1rem] isolate overflow-clip transition-all duration-[0.25s] ease-[ease]"
+      className="relative isolate overflow-clip"
       style={{
+        width: "calc(100% - 1rem)",
+        maxWidth: "221px",
+        margin: "0 auto",
+        borderRadius: "1rem",
+        transition: "all 0.25s ease",
         height,
         border: isMe ? "" : "solid 2px tomato",
         transform: shouldRotate(),
@@ -33,8 +38,20 @@ export const CardAtlas = ({
       <div
         style={{
           backgroundImage: `url(${CARD_CDN}/${img}.webp)`,
-        }} // bgImage has caching issues
-        className="isolate h-[310px] w-full absolute right-0 bottom-[-160px] bg-right bg-cover bg-no-repeat scale-[0.85] rotate-90 translate-x-[-47.8%] translate-y-0 bg-gray-400 rounded-[1rem] transition-all duration-[0.25s] ease-[ease]"
+          height: "310px",
+          width: "100%",
+          position: "absolute",
+          right: 0,
+          bottom: "-160px",
+          backgroundPosition: "right",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          transform: "scale(0.85) rotate(90deg) translateX(-47.8%) translateY(0)",
+          backgroundColor: "#9ca3af",
+          borderRadius: "1rem",
+          transition: "all 0.25s ease",
+          isolation: "isolate",
+        }}
       />{" "}
     </div>
   );
