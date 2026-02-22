@@ -7,7 +7,7 @@ import { useDeckManager } from "./hooks/useDeckManager";
 import { LocalDeck } from "./types";
 
 // Components
-import SearchBar from "./components/SearchBar";
+import SearchBar, { ViewMode } from "./components/SearchBar";
 import CardBrowser from "./components/CardBrowser";
 import MyDecks from "./components/MyDecks";
 import DeckCards from "./components/DeckCards";
@@ -18,6 +18,10 @@ const DeckBuilder: React.FC = () => {
   // UI State
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedType, setSelectedType] = useState<string>("all");
+  const [selectedRarity, setSelectedRarity] = useState<string>("all");
+  const [costRange, setCostRange] = useState<[number, number]>([0, 20]);
+  const [selectedElements, setSelectedElements] = useState<string[]>([]);
+  const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [showMyDecks, setShowMyDecks] = useState(false);
   const [showDeckCards, setShowDeckCards] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
@@ -36,7 +40,7 @@ const DeckBuilder: React.FC = () => {
     addCardToDeck,
     removeCardFromDeck,
     getCardCount,
-    importDeckFromURL
+    importDeckFromURL,
   } = useDeckManager();
 
   // Enhanced handlers that manage view state
@@ -58,7 +62,13 @@ const DeckBuilder: React.FC = () => {
     setShowDeckCards(false);
   };
 
-  const handleLoadPrecon = (precon: { name: string; avatar?: string; spellbook: string[]; atlas: string[]; id?: string | undefined }) => {
+  const handleLoadPrecon = (precon: {
+    name: string;
+    avatar?: string;
+    spellbook: string[];
+    atlas: string[];
+    id?: string | undefined;
+  }) => {
     setCurrentDeck(precon);
     setShowMyDecks(false);
     setShowDeckCards(false);
@@ -76,6 +86,14 @@ const DeckBuilder: React.FC = () => {
         setSearchQuery={setSearchQuery}
         selectedType={selectedType}
         setSelectedType={setSelectedType}
+        selectedRarity={selectedRarity}
+        setSelectedRarity={setSelectedRarity}
+        costRange={costRange}
+        setCostRange={setCostRange}
+        selectedElements={selectedElements}
+        setSelectedElements={setSelectedElements}
+        viewMode={viewMode}
+        setViewMode={setViewMode}
         showMyDecks={showMyDecks}
         setShowMyDecks={setShowMyDecks}
         showDeckCards={showDeckCards}
@@ -86,9 +104,7 @@ const DeckBuilder: React.FC = () => {
       />
 
       {/* Main content */}
-      <div
-        className="grid h-[calc(100%-72px)] max-w-[1400px] mx-auto grid-cols-1 lg:grid-cols-[1fr_400px]"
-      >
+      <div className="grid h-[calc(100%-120px)] max-w-[1400px] mx-auto grid-cols-1 lg:grid-cols-[1fr_340px]">
         {/* Left Panel - Card Browser, My Decks, or Deck Cards */}
         <div className="overflow-auto p-4">
           {showMyDecks ? (
@@ -112,6 +128,10 @@ const DeckBuilder: React.FC = () => {
               cards={cards}
               searchQuery={searchQuery}
               selectedType={selectedType}
+              selectedRarity={selectedRarity}
+              costRange={costRange}
+              selectedElements={selectedElements}
+              viewMode={viewMode}
               onAddCard={addCardToDeck}
               getCardCount={getCardCount}
               getCardImage={getCardImage}

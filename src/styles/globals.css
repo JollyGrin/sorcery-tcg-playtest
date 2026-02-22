@@ -136,3 +136,85 @@ body {
 .card:nth-child(3) {
   animation-delay: 4s;
 }
+
+.deckbuilder-bg {
+  background: 
+    radial-gradient(ellipse at 20% 0%, rgba(212,168,83,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(177,116,87,0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #151210 0%, #1C1917 15%, #1a1714 100%);
+  background-attachment: fixed;
+}
+
+.deckbuilder-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.deckbuilder-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+.deckbuilder-searchbar {
+  background: linear-gradient(180deg, rgba(21,18,16,0.95) 0%, rgba(28,25,23,0.9) 100%);
+  border-bottom: 1px solid rgba(212,168,83,0.15);
+  backdrop-filter: blur(12px);
+}
+
+.deckbuilder-panel {
+  background: linear-gradient(180deg, rgba(41,37,36,0.6) 0%, rgba(28,25,23,0.8) 100%);
+  border-left: 1px solid rgba(212,168,83,0.1);
+}
+
+.card-grid-item {
+  transition: transform 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s ease;
+}
+.card-grid-item:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,168,83,0.2);
+}
+
+.card-count-badge {
+  background: linear-gradient(135deg, #D4A853 0%, #B8942E 100%);
+  box-shadow: 0 2px 8px rgba(212,168,83,0.4);
+  color: #1C1917;
+  font-variant-numeric: tabular-nums;
+}
+
+.filter-chip {
+  transition: all 0.15s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+}
+.filter-chip:hover {
+  border-color: rgba(212,168,83,0.3);
+  background: rgba(212,168,83,0.08);
+}
+.filter-chip[data-active="true"] {
+  border-color: rgba(212,168,83,0.5);
+  background: rgba(212,168,83,0.12);
+  color: #D4A853;
+}
+
+.deck-section-header {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.table-view-row {
+  transition: background 0.1s ease;
+}
+.table-view-row:hover {
+  background: rgba(212,168,83,0.06);
+}
+
+.tilt-card-wrapper {
+  perspective: 800px;
+}

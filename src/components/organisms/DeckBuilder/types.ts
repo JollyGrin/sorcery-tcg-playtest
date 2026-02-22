@@ -8,10 +8,25 @@ export interface LocalDeck {
   updatedAt: number;
 }
 
+export interface CardThresholds {
+  air: number;
+  earth: number;
+  fire: number;
+  water: number;
+}
+
 export interface Card {
   name: string;
   slug: string;
   type: string;
+  rarity: "Ordinary" | "Exceptional" | "Elite" | "Unique";
+  cost: number;
+  attack: number;
+  defence: number;
+  life: number | null;
+  subType: string;
+  rulesText: string;
+  thresholds: CardThresholds;
 }
 
 export interface DeckBuilderState {
