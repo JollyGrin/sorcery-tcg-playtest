@@ -217,13 +217,12 @@ const Selector = () => (
     className="h-full bg-[rgba(0,0,0,0.35)] rounded-lg p-2"
   >
     <Tabs
-      tabs={["Solo", "Online", "Deck Builder", "Crack Packs", "Online Draft"]}
+      tabs={["Solo", "Online", "Deck Builder", "Crack Packs"]}
       content={[
         <Solo key="solo" />,
         <Multiplayer key="multiplayer" />,
         <DeckBuilder key="deckbuilder" />,
         <Crack key="crack" />,
-        <Draft key="draft" />,
       ]}
     />
   </div>
@@ -245,38 +244,6 @@ const Multiplayer = () => {
         <li>share lobbyname with friend</li>
       </ol>
       <Link href="/online">
-        <button className={buttonVariants()} style={{ width: "100%" }}>
-          Create a lobby
-        </button>
-      </Link>
-    </div>
-  );
-};
-
-const Draft = () => {
-  return (
-    <div className="text-text-primary">
-      <p>Run a (mock) Sorcery Draft online in the browser.</p>
-      <p>Players join a lobby, select & pass, and can export decklist</p>
-      <div className="flex items-center">
-        <p className="text-text-secondary">Draft rates are NOT accurate.</p>
-        <Link href="https://github.com/JollyGrin/sorcery-tcg-playtest/blob/fa6510ea46ee0c5845aba1654944799a2eff2d1b/src/components/organisms/Draft/helpers.ts#L14">
-          <p className="text-accent-teal underline">
-            Link to Code
-          </p>
-        </Link>
-      </div>
-      <div className="flex items-center my-2 gap-2">
-        <p>Version:</p>
-        <span className={badgeVariants({ variant: "alpha" })}>ALPHA</span>
-        <p className="text-text-secondary">Expect bugs!</p>
-      </div>
-      <ol className="list-inside mb-2 pl-2">
-        <li>start a lobby</li>
-        <li>choose a name</li>
-        <li>share lobbyname with friend</li>
-      </ol>
-      <Link href="/draft/online">
         <button className={buttonVariants()} style={{ width: "100%" }}>
           Create a lobby
         </button>
@@ -313,7 +280,7 @@ const Crack = () => {
   return (
     <div className="text-text-primary">
       <p>Crack Booster Packs</p>
-      <p>Open (mock) booster packs by yourself.</p>
+      <p>Open (mock) booster packs by yourself or draft online with friends.</p>
       <div className="flex items-center">
         <p className="text-text-secondary">Draft rates are NOT accurate.</p>
         <Link href="https://github.com/JollyGrin/sorcery-tcg-playtest/blob/fa6510ea46ee0c5845aba1654944799a2eff2d1b/src/components/organisms/Draft/helpers.ts#L14">
@@ -327,16 +294,18 @@ const Crack = () => {
         <span className={badgeVariants({ variant: "beta" })}>BETA</span>
         <p className="text-text-secondary">Report bugs/feedback!</p>
       </div>
-      <ol className="list-inside mb-2 pl-2">
-        <li>Choose pack type to open</li>
-        <li>Reveal your cards one by one</li>
-        <li>Build collection for deckbuilding</li>
-      </ol>
-      <Link href="/crack">
-        <button className={buttonVariants()} style={{ width: "100%" }}>
-          Crack Packs
-        </button>
-      </Link>
+      <div className="flex flex-col gap-2 mt-2">
+        <Link href="/crack">
+          <button className={buttonVariants()} style={{ width: "100%" }}>
+            Crack Packs
+          </button>
+        </Link>
+        <Link href="/draft/online">
+          <button className={buttonVariants({ variant: "outline" })} style={{ width: "100%" }}>
+            Online Draft
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };

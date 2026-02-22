@@ -10,10 +10,16 @@ import { useEffect, useMemo, useState } from "react";
 import { SelectedCardsModal } from "./SelectedCardsModal";
 import { useRouter } from "next/router";
 import { mapPackKey } from "./helpers";
+import {
+  GiCardPick,
+  GiCardDraw,
+  GiSwapBag,
+} from "react-icons/gi";
 
 export const DraftRibbon = (
   props: DraftProps & {
     players: Record<string, DraftPlayerData>;
+    isAnimating?: boolean;
   },
 ) => {
   const { query } = useRouter();
@@ -23,7 +29,7 @@ export const DraftRibbon = (
     isOpen,
     toggle: () => setIsOpen((prev) => !prev),
     onOpen: () => setIsOpen(true),
-    onClose: () => setIsOpen(true),
+    onClose: () => setIsOpen(false),
   };
 
   const [set, setSet] = useState<Expansion>("Alpha");
@@ -41,7 +47,6 @@ export const DraftRibbon = (
     return props.player.pendingPacks.map(mapPackKey);
   }, [props.player.pendingPacks]);
 
-  // handle the state of copying finished packs and waiting for removal from prev player
   const { unrequestedPacks, availablePacks } = useMemo(() => {
     const [, values] = previousPlayer;
     const { finishedPacks } = values;
@@ -70,7 +75,7 @@ export const DraftRibbon = (
   function crackBooster() {
     const newBooster = generateBoosterPack({
       cardData,
-      expansionSlug: set, // TODO: let players decide expansion
+      expansionSlug: set,
     });
     props.setPlayerData({
       ...props.player,
@@ -78,13 +83,6 @@ export const DraftRibbon = (
       packsOpened: (props.player.packsOpened ?? 0) + 1,
     });
   }
-
-  // function copyToPending() {
-  //   props.setPlayerData({
-  //     ...props.player,
-  //     pendingPacks: [...props.player.pendingPacks, ...unrequestedPacks],
-  //   });
-  // }
 
   function activatePendingPack() {
     const { pendingPacks } = props.player;
@@ -125,13 +123,9 @@ export const DraftRibbon = (
     if (!props.player.pendingPacks) return;
     const [, value] = previousPlayer;
 
-    // keys of my pending packs
     const myPendingPackKeys = props.player.pendingPacks.map(mapPackKey);
-    // search for packs in previous player finished to add to my pending
-    // packs in previous players finished that are not in my pending
     const packsToRequest = value.finishedPacks.filter((pack) => {
       const packKey = mapPackKey(pack);
-      // find packs that are not in my pending
       return !myPendingPackKeys.includes(packKey);
     });
 
@@ -145,11 +139,8 @@ export const DraftRibbon = (
 
   useEffect(() => {
     if (props.player.finishedPacks.length === 0) return;
-    // if nextplayer has matching pack in their pending, delete from my finished
     const [, value] = nextPlayer;
-    // get keys of packs in next player's pending
     const pendingPackKeys = value.pendingPacks.map(mapPackKey);
-    // find packs that are not requested yet
     const unrequestedPacks = props.player.finishedPacks.filter((pack) => {
       const packKey = mapPackKey(pack);
       return !pendingPackKeys.includes(packKey);
@@ -171,6 +162,21 @@ export const DraftRibbon = (
 
   if (!availablePacks) return null;
 
+  const packSize = props.player.activePack.length;
+  const totalPicked = props.player.selectedCards.length;
+  const hasActivePack = packSize > 0;
+  const canFlip =
+    availablePacks.length > 0 && !hasActivePack && (nextPack ?? []).length > 0;
+  const canCrack =
+    (nextPack ?? []).length === 0 && (unrequestedPacks ?? []).length === 0;
+  const hasSelection = props.player.selectedIndex !== undefined;
+
+  // Count sites vs non-sites in selected cards
+  const siteCount = props.player.selectedCards.filter(
+    (c) => c.guardian.type === "Site",
+  ).length;
+  const spellbookCount = totalPicked - siteCount;
+
   return (
     <>
       <SelectedCardsModal
@@ -180,39 +186,46 @@ export const DraftRibbon = (
       />
 
       <div
-        className="grid h-full bg-[brown] gap-0"
-        style={{ gridTemplateColumns: "1fr 3fr 1fr" }}
+        className="flex items-center gap-4 px-4 py-2"
+        style={{
+          background: "linear-gradient(180deg, #292524 0%, #1C1917 100%)",
+          borderBottom: "1px solid rgba(212,168,83,0.15)",
+        }}
       >
-        <div className="flex items-center justify-center gap-1">
-          {/* <Button */}
-          {/*   disabled={unrequestedPacks.length === 0} */}
-          {/*   onClick={copyToPending} */}
-          {/* > */}
-          {/*   Request: {unrequestedPacks.length.toString()} */}
-          {/* </Button> */}
-          {/* <p>{requestedPacks.length.toString()}</p> */}
-          <Button
-            disabled={
-              availablePacks.length === 0 ||
-              props.player.activePack.length > 0 ||
-              nextPack.length === 0
-            }
-            onClick={activatePendingPack}
-          >
-            Flip -{availablePacks.length}
-          </Button>
+        {/* Left: Pending packs / Flip */}
+        <div className="flex items-center gap-2 min-w-0 shrink-0">
+          {canFlip ? (
+            <Button
+              onClick={activatePendingPack}
+              className="bg-[#D4A853] text-[#1C1917] hover:bg-[#E0BC6A] font-semibold gap-1.5 animate-pulse"
+            >
+              <GiSwapBag className="text-base" />
+              <span>
+                Open Passed Pack
+                {availablePacks.length > 1 &&
+                  ` (${availablePacks.length})`}
+              </span>
+            </Button>
+          ) : availablePacks.length > 0 && hasActivePack ? (
+            <div className="text-xs text-[#A8A29E] flex items-center gap-1.5">
+              <GiSwapBag className="text-sm text-[#D4A853] opacity-50" />
+              <span>
+                {availablePacks.length} pack
+                {availablePacks.length !== 1 ? "s" : ""} waiting
+              </span>
+            </div>
+          ) : null}
         </div>
-        <div
-          className="grid items-center p-[0_0.5rem]"
-          style={{ gridTemplateColumns: "repeat(3,1fr)" }}
-        >
-          <div>
-            <p>{props.player.packsOpened ?? "0"} packs opened</p>
-          </div>
 
-          {props.player.activePack.length === 0 ? (
-            <div className="flex items-center">
-              <select onChange={(e) => setSet(e.target.value as Expansion)}>
+        {/* Center: Main action area */}
+        <div className="flex items-center justify-center gap-3 flex-1 min-w-0">
+          {!hasActivePack ? (
+            <div className="flex items-center gap-2">
+              <select
+                value={set}
+                onChange={(e) => setSet(e.target.value as Expansion)}
+                className="bg-[#44403C] text-[#FAF7F0] border border-stone-600 rounded-md px-3 py-1.5 text-sm outline-none focus:border-[#D4A853] transition-colors cursor-pointer"
+              >
                 <option>Alpha</option>
                 <option>Beta</option>
                 <option>Arthurian Legends</option>
@@ -220,30 +233,80 @@ export const DraftRibbon = (
                 <option>Gothic</option>
               </select>
               <Button
-                disabled={
-                  (nextPack ?? []).length > 0 || unrequestedPacks.length > 0
-                }
+                disabled={!canCrack}
                 onClick={crackBooster}
+                className="bg-[#D4A853] text-[#1C1917] hover:bg-[#E0BC6A] font-semibold gap-1.5 disabled:opacity-30"
               >
-                Open a Pack
+                <GiCardPick className="text-base" />
+                Crack Pack
               </Button>
             </div>
           ) : (
-            <Button
-              disabled={props.player.selectedIndex === undefined}
-              onClick={takeAndPass}
-            >
-              Take &amp; Pass
-            </Button>
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-[#A8A29E] tabular-nums">
+                {packSize} card{packSize !== 1 ? "s" : ""} in pack
+              </span>
+              <Button
+                disabled={!hasSelection || props.isAnimating}
+                onClick={takeAndPass}
+                className="bg-[#D4A853] text-[#1C1917] hover:bg-[#E0BC6A] font-semibold gap-1.5 disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <GiCardDraw className="text-base" />
+                {hasSelection ? "Take & Pass" : "Select a card"}
+              </Button>
+            </div>
           )}
         </div>
-        <div className="flex items-center justify-center">
-          {props.player.selectedCards.length > 0 && (
+
+        {/* Right: Stats + View Selected */}
+        <div className="flex items-center gap-3 shrink-0">
+          {/* Draft progress counters */}
+          <div className="hidden sm:flex items-center gap-3 text-xs tabular-nums">
+            <div className="flex flex-col items-center leading-tight">
+              <span className="text-[#D4A853] font-semibold text-sm">
+                {spellbookCount}
+              </span>
+              <span className="text-[#A8A29E] text-[10px] uppercase tracking-wider">
+                Spellbook
+              </span>
+            </div>
+            <div
+              className="w-px h-6"
+              style={{ background: "rgba(168,162,158,0.2)" }}
+            />
+            <div className="flex flex-col items-center leading-tight">
+              <span className="text-[#D4A853] font-semibold text-sm">
+                {siteCount}
+              </span>
+              <span className="text-[#A8A29E] text-[10px] uppercase tracking-wider">
+                Atlas
+              </span>
+            </div>
+            <div
+              className="w-px h-6"
+              style={{ background: "rgba(168,162,158,0.2)" }}
+            />
+            <div className="flex flex-col items-center leading-tight">
+              <span className="text-[#D4A853] font-semibold text-sm">
+                {props.player.packsOpened ?? 0}
+              </span>
+              <span className="text-[#A8A29E] text-[10px] uppercase tracking-wider">
+                Packs
+              </span>
+            </div>
+          </div>
+
+          {totalPicked > 0 && (
             <Button
-              className="bg-purple-800 rounded-full hover:bg-purple-700"
               onClick={disclosure.onOpen}
+              variant="outline"
+              className="border-[#D4A853]/40 text-[#D4A853] hover:bg-[#D4A853]/10 hover:text-[#E0BC6A] gap-1.5 text-sm"
             >
-              View Selected
+              <GiCardDraw className="text-base" />
+              <span>
+                Picks
+                <span className="ml-1 text-xs opacity-70">({totalPicked})</span>
+              </span>
             </Button>
           )}
         </div>
