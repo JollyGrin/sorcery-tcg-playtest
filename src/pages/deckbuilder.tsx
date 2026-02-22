@@ -11,7 +11,7 @@ const DeckBuilderPage: NextPage = () => {
         <title>Deck Builder | Sorcery TCG Playtest</title>
         <meta name="description" content="Build your custom Sorcery TCG deck" />
       </Head>
-      <div className="min-h-screen bg-brand-shadow wood">
+      <div className="min-h-screen bg-surface-page deckbuilder-bg">
         <AppNav />
         <DeckBuilder />
       </div>
