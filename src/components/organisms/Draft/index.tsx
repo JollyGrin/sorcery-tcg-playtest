@@ -3,18 +3,13 @@ import { DraftPlayerData } from "./types";
 import { DraftRibbon } from "./Ribbon";
 import { DraftTray } from "./Tray";
 import { LoadingSpinner } from "@/components/atoms/LoadingSpinner";
-
-const hTop = "9vh";
-const hTabs = "6vh";
-const hCards = "85vh";
-export const gridHeight = { top: hTop, tabs: hTabs, cards: hCards };
+import { GiCardPick } from "react-icons/gi";
 
 export const DraftBoard = (props: {
   players: Record<string, DraftPlayerData>;
   player: DraftPlayerData;
   setPlayerData(data: DraftPlayerData): void;
 }) => {
-  // select a card from active pack, ready for taking
   function setSelectedIndex(index?: number) {
     props.setPlayerData({
       ...props.player,
@@ -24,32 +19,59 @@ export const DraftBoard = (props: {
 
   if (!props?.players) return <LoadingSpinner message="Loading draft..." />;
 
+  const hasCards = props.player.activePack?.length > 0;
+
   return (
     <div
-      className="grid h-screen bg-gray-300 items-center gap-0"
-      style={{ gridTemplateRows: `${hTop} ${hTabs} ${hCards}` }}
+      className="grid h-screen gap-0"
+      style={{
+        gridTemplateRows: `auto auto 1fr`,
+        background:
+          "radial-gradient(ellipse at 50% 0%, #3D2B1F 0%, #1C1917 60%)",
+      }}
     >
       <DraftTray players={props.players} />
       <DraftRibbon {...props} />
       <div
-        className="grid p-[3rem_4rem] overflow-y-auto overflow-x-clip relative bg-gray-500"
+        className="relative overflow-y-auto overflow-x-clip"
         style={{
-          height: hCards,
-          gridTemplateColumns: "repeat(auto-fit, minmax(16.4rem, 1fr))",
+          background: hasCards
+            ? "radial-gradient(ellipse at center top, rgba(212,168,83,0.04) 0%, transparent 60%)"
+            : undefined,
         }}
       >
-        {props.player.activePack?.map((card, index) => (
-          <DraftCard
-            key={"draftcard" + card?.name + index}
-            {...card}
-            isSelected={index === props.player.selectedIndex}
-            onSelect={() =>
-              props.player.selectedIndex === index
-                ? setSelectedIndex(undefined)
-                : setSelectedIndex(index)
-            }
-          />
-        ))}
+        {hasCards ? (
+          <div
+            className="grid p-6 pb-12 gap-1"
+            style={{
+              gridTemplateColumns: "repeat(auto-fit, minmax(16.4rem, 1fr))",
+            }}
+          >
+            {props.player.activePack.map((card, index) => (
+              <DraftCard
+                key={"draftcard" + card?.name + index}
+                {...card}
+                isSelected={index === props.player.selectedIndex}
+                onSelect={() =>
+                  props.player.selectedIndex === index
+                    ? setSelectedIndex(undefined)
+                    : setSelectedIndex(index)
+                }
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center h-full text-center gap-3 select-none">
+            <GiCardPick className="text-[3.5rem] text-[#D4A853] opacity-30" />
+            <p className="text-[#A8A29E] text-base max-w-[28ch]">
+              {props.player.pendingPacks?.length > 0
+                ? "A pack has been passed to you. Activate it above to continue drafting."
+                : props.player.packsOpened === 0
+                  ? "Choose an expansion and crack your first pack to begin."
+                  : "Waiting for the next pack to come around..."}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
