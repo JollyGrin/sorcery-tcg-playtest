@@ -3,6 +3,7 @@ import Tilt from "react-parallax-tilt";
 import { Card } from "../types";
 import { ViewMode } from "./SearchBar";
 import CardTable from "./CardTable";
+import { useBlurLoad } from "@/utils/hooks/useBlurLoad";
 
 interface CardBrowserProps {
   cards: Card[];
@@ -98,7 +99,6 @@ const CardBrowser: React.FC<CardBrowserProps> = ({
               card={card}
               onAdd={onAddCard}
               count={getCardCount(card.slug)}
-              imageSrc={getCardImage(card.slug)}
             />
           ) : (
             <GridCard
@@ -106,7 +106,6 @@ const CardBrowser: React.FC<CardBrowserProps> = ({
               card={card}
               onAdd={onAddCard}
               count={getCardCount(card.slug)}
-              imageSrc={getCardImage(card.slug)}
             />
           )
         )}
@@ -120,18 +119,22 @@ const GridCard: React.FC<{
   card: Card;
   onAdd: (card: Card) => void;
   count: number;
-  imageSrc: string;
-}> = ({ card, onAdd, count, imageSrc }) => {
+}> = ({ card, onAdd, count }) => {
+  const { url, loaded } = useBlurLoad(card.slug);
   return (
     <div
       className="relative cursor-pointer card-grid-item rounded-lg overflow-hidden"
       onClick={() => onAdd(card)}
     >
       <img
-        src={imageSrc}
+        src={url}
         alt={card.name}
         className="w-full rounded-lg"
         loading="lazy"
+        style={{
+          filter: loaded ? "none" : "blur(10px)",
+          transition: "filter 0.3s ease",
+        }}
       />
       {/* Hover overlay */}
       <div className="absolute inset-0 bg-black/0 hover:bg-black/40 transition-colors duration-200 rounded-lg flex items-center justify-center opacity-0 hover:opacity-100">
@@ -152,9 +155,9 @@ const TiltCard: React.FC<{
   card: Card;
   onAdd: (card: Card) => void;
   count: number;
-  imageSrc: string;
-}> = ({ card, onAdd, count, imageSrc }) => {
+}> = ({ card, onAdd, count }) => {
   const [isOver, setIsOver] = useState(false);
+  const { url, loaded } = useBlurLoad(card.slug);
 
   return (
     <div
@@ -184,10 +187,14 @@ const TiltCard: React.FC<{
           }}
         >
           <img
-            src={imageSrc}
+            src={url}
             alt={card.name}
             className="w-full rounded-lg"
             loading="lazy"
+            style={{
+              filter: loaded ? "none" : "blur(10px)",
+              transition: "filter 0.3s ease",
+            }}
           />
           {/* Add overlay on hover */}
           {isOver && (

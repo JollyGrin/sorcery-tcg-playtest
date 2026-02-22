@@ -1,18 +1,17 @@
 import React from 'react';
 import { LocalDeck, Card } from '../types';
+import { useBlurLoad } from '@/utils/hooks/useBlurLoad';
 
 interface DeckCardsProps {
   currentDeck: Partial<LocalDeck>;
   cards: Card[];
   getCardCount: (slug: string) => number;
-  getCardImage: (slug: string) => string;
 }
 
 const DeckCards: React.FC<DeckCardsProps> = ({
   currentDeck,
   cards,
   getCardCount,
-  getCardImage
 }) => {
   const isEmpty = !currentDeck.avatar &&
     (!currentDeck.spellbook || currentDeck.spellbook.length === 0) &&
@@ -48,10 +47,9 @@ const DeckCards: React.FC<DeckCardsProps> = ({
             </h3>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4">
               <div className="relative">
-                <img
-                  src={getCardImage(currentDeck.avatar)}
+                <BlurImage
+                  slug={currentDeck.avatar}
                   alt={cards.find(c => c.slug === currentDeck.avatar)?.name}
-                  style={{ width: "100%", borderRadius: "0.5rem" }}
                 />
               </div>
             </div>
@@ -75,11 +73,7 @@ const DeckCards: React.FC<DeckCardsProps> = ({
 
                 return (
                   <div key={slug} className="relative">
-                    <img
-                      src={getCardImage(slug)}
-                      alt={card?.name}
-                      style={{ width: "100%", borderRadius: "0.5rem" }}
-                    />
+                    <BlurImage slug={slug} alt={card?.name} />
                     {count > 1 && (
                       <div
                         className="absolute top-2 right-2 bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-base font-bold"
@@ -105,11 +99,7 @@ const DeckCards: React.FC<DeckCardsProps> = ({
                 const card = cards.find(c => c.slug === slug);
                 return (
                   <div key={`${slug}-${index}`} className="relative">
-                    <img
-                      src={getCardImage(slug)}
-                      alt={card?.name}
-                      style={{ width: "100%", borderRadius: "0.5rem" }}
-                    />
+                    <BlurImage slug={slug} alt={card?.name} />
                   </div>
                 );
               })}
@@ -118,6 +108,22 @@ const DeckCards: React.FC<DeckCardsProps> = ({
         )}
       </div>
     </div>
+  );
+};
+
+const BlurImage: React.FC<{ slug: string; alt?: string }> = ({ slug, alt }) => {
+  const { url, loaded } = useBlurLoad(slug);
+  return (
+    <img
+      src={url}
+      alt={alt}
+      style={{
+        width: "100%",
+        borderRadius: "0.5rem",
+        filter: loaded ? "none" : "blur(10px)",
+        transition: "filter 0.3s ease",
+      }}
+    />
   );
 };
 

@@ -121,7 +121,6 @@ const DeckBuilder: React.FC = () => {
               currentDeck={currentDeck}
               cards={cards}
               getCardCount={getCardCount}
-              getCardImage={getCardImage}
             />
           ) : (
             <CardBrowser
