@@ -27,15 +27,13 @@ export const DroppableGridItem = (props: {
       className="h-full w-full relative"
       onContextMenu={(e) => {
         e.preventDefault();
-        // NOTE: This no longer is needed, but not sure why
-        // const Div = e.target as Element;
-        // const testId = Div.getAttribute("data-testid");
-        // const [isDroppable] = testId?.split("-") ?? [];
-        // isDroppable && setIsOpen(true);
         setIsOpen(true);
       }}
     >
       {props.children}
+      {isOver && (
+        <div className="absolute inset-0 border-2 border-green-400 rounded z-10 pointer-events-none" />
+      )}
       <div
         className={cn(
           "absolute top-0 w-full h-full -z-[1000]",

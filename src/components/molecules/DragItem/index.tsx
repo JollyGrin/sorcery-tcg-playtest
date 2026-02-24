@@ -1,4 +1,5 @@
 import { useDraggable } from "@dnd-kit/core";
+import { CSS } from "@dnd-kit/utilities";
 import { CSSProperties, ReactNode } from "react";
 
 export const DragItem = (props: {
@@ -7,23 +8,30 @@ export const DragItem = (props: {
   index: number;
   style?: CSSProperties;
 }) => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: `${props.gridIndex}-${props.index}`,
-    data: {
-      gridIndex: props.gridIndex,
-      index: props.index,
-    },
-  });
+  const { attributes, listeners, setNodeRef, transform, isDragging } =
+    useDraggable({
+      id: `${props.gridIndex}-${props.index}`,
+      data: {
+        gridIndex: props.gridIndex,
+        index: props.index,
+      },
+    });
   const style = transform
     ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+        transform: CSS.Translate.toString(transform),
       }
     : undefined;
 
   return (
     <div
       ref={setNodeRef}
-      style={{ ...style, ...props?.style }}
+      style={{
+        ...style,
+        ...props?.style,
+        cursor: isDragging ? "grabbing" : "grab",
+        opacity: isDragging ? 0.4 : 1,
+        transition: "opacity 150ms ease",
+      }}
       {...listeners}
       {...attributes}
     >

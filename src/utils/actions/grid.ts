@@ -1,5 +1,46 @@
-import { GameState } from "@/types/card";
+import { GameCard, GameState } from "@/types/card";
 import { DragEndEvent } from "@dnd-kit/core";
+
+/**
+ * Finds which grid index holds a card by its id.
+ * Returns -1 if not found.
+ */
+export function findContainer(gridItems: GameCard[][], cardId: string | number): number {
+  for (let i = 0; i < gridItems.length; i++) {
+    if (gridItems[i].some((card) => card.id === String(cardId))) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+/**
+ * Determines whether `overId` refers to a droppable container ("droppable-X")
+ * or a sortable card. Returns the container index and card index within it.
+ */
+export function resolveOverTarget(
+  gridItems: GameCard[][],
+  overId: string | number,
+): { containerIndex: number; cardIndex: number } {
+  const overStr = String(overId);
+
+  // Droppable containers have ids like "droppable-0", "droppable-32"
+  if (overStr.startsWith("droppable-")) {
+    const containerIndex = parseInt(overStr.replace("droppable-", ""), 10);
+    return { containerIndex, cardIndex: -1 };
+  }
+
+  // Otherwise it's a sortable card id — find its container and position
+  const containerIndex = findContainer(gridItems, overId);
+  if (containerIndex === -1) {
+    return { containerIndex: -1, cardIndex: -1 };
+  }
+
+  const cardIndex = gridItems[containerIndex].findIndex(
+    (card) => card.id === String(overId),
+  );
+  return { containerIndex, cardIndex };
+}
 
 /**
  * Repositions a card within it's existing grid cell

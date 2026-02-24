@@ -53,9 +53,7 @@ export const GameFooter = ({
         <DroppableGridItem id={gridIndex.toString()} gridIndex={gridIndex}>
           <SortableContext
             id={`grid-${gridIndex}`}
-            items={cardsInHand?.map(
-              (_, cardIndex) => `card-${gridIndex}-${cardIndex}`,
-            )}
+            items={cardsInHand?.map((card) => card.id)}
             strategy={horizontalListSortingStrategy}
           >
             <div className="flex items-center p-0 m-0 w-[calc(100vw-355px)] h-full justify-start overflow-x-auto relative">

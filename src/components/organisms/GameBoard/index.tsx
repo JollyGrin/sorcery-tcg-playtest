@@ -30,7 +30,7 @@ export const GameBoard = ({
   const isReversed = reversed ?? name === "p2"; // online will send reversed, solo will not and default to p2
 
   // while dragging, activeCard has the GameCard type details of it
-  const { activeCard, activeId, ...dragProps } = useHandleDrag({
+  const { activeCard, activeId, accessibility, ...dragProps } = useHandleDrag({
     gridItems,
     setGridItems,
   });
@@ -43,7 +43,7 @@ export const GameBoard = ({
 
   return (
     <CommandModalWrapper {...{ gridItems, setGridItems, ...playerDataProps }}>
-      <DndContext {...dragProps}>
+      <DndContext {...dragProps} accessibility={accessibility}>
         <GameLayout
           gridItems={gridItems}
           setGridItems={setGridItems}
@@ -118,9 +118,14 @@ export const GameBoard = ({
             );
           })}
         </GameLayout>
-        <DragOverlay>
+        <DragOverlay
+          dropAnimation={{
+            duration: 200,
+            easing: "cubic-bezier(0.18, 0.67, 0.6, 1.22)",
+          }}
+        >
           {activeId ? (
-            <div className="opacity-50">
+            <div>
               {activeCard?.type === "site" && (
                 <CardAtlas img={activeCard?.img} />
               )}
