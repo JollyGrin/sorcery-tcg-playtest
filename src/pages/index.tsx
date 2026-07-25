@@ -13,6 +13,7 @@ import {
   GiAnvil,
   GiCardPick,
   GiOpenBook,
+  GiCubeforce,
 } from "react-icons/gi";
 
 export default function Home() {
@@ -196,6 +197,42 @@ export default function Home() {
                 </div>
               </button>
             </Link>
+          </div>
+        </div>
+        <div
+          className="py-8 px-6 text-center bg-[rgba(0,0,0,0.3)] rounded-lg backdrop-blur-[5px] relative overflow-hidden"
+        >
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <GiCubeforce className="text-accent-gold text-[2rem]" />
+            <h2 className="text-[2rem] font-bold text-accent-gold font-header">
+              Play in 3D on Table.Place
+            </h2>
+            <span className={badgeVariants({ variant: "new" })}>NEW</span>
+          </div>
+          <p className="text-[1.2rem] mb-6 text-text-secondary max-w-[600px] mx-auto">
+            Export precons or your own decks as table.place packs and play
+            Sorcery on a full 3D tabletop with friends.
+          </p>
+          <div className="flex items-center justify-center gap-4 flex-wrap">
+            <Link href="/tableplace">
+              <button
+                className="bg-accent-gold text-surface-page py-3 px-6 rounded-lg text-[1.1rem] font-semibold border-none cursor-pointer transition-all duration-200 hover:bg-accent-goldHover hover:-translate-y-0.5"
+              >
+                <div className="flex items-center gap-2">
+                  <GiCubeforce />
+                  <span>Create a Pack</span>
+                </div>
+              </button>
+            </Link>
+            <a
+              href="https://table.place"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className={buttonVariants({ variant: "outline" })}>
+                Visit table.place
+              </button>
+            </a>
           </div>
         </div>
       </div>
