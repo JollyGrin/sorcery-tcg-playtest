@@ -14,6 +14,7 @@ import {
   decklistToTbppPack,
   downloadTbppPack,
 } from "@/utils/tableplace/toPack";
+import { CreateLobby } from "@/components/organisms/TablePlace/CreateLobby";
 
 export const TablePlace = () => {
   const { data: cards } = useCardData();
@@ -90,6 +91,13 @@ export const TablePlace = () => {
           <li>Each player brings their own deck — then duel!</li>
         </ol>
       </div>
+
+      {/* One-click lobby */}
+      <CreateLobby
+        precons={precons ?? []}
+        savedDecks={savedDecks}
+        cardNames={cardNames}
+      />
 
       {/* Precons */}
       <section>

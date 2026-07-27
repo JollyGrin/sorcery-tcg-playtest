@@ -101,7 +101,7 @@ export const decklistToTbppPack = (
   return {
     $schema: "https://table.place/pack.schema.json",
     tbpp: 1,
-    specVersion: "1.0.0",
+    specVersion: "1.3.0",
     id: `spellsbar-${slugify(deck.name)}`,
     name: deck.name,
     scope: "player",
