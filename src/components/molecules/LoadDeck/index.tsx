@@ -58,7 +58,6 @@ export const LoadDeck = (
               <LocalDeckLoader key="mydecks" setDeck={setDeck} />,
               <DirectImport key="import" setDeck={setDeck} />,
               <InputLoader
-                disabledReason="Curiosa API has changed - import not currently working"
                 key="curiosa"
                 deckId={deckId}
                 setDeckId={setDeckId}

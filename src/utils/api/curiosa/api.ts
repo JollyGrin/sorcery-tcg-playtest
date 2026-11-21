@@ -17,6 +17,17 @@ export type CuriosaResponse = {
   sideboard: SideboardCard[];
 };
 
+// Curiosa tRPC card entry returned by getDecklistById / getAvatarById / getSideboardById
+type CuriosaCardEntry = {
+  quantity: number;
+  card: {
+    slug: string;
+    name: string;
+    type: string;
+    category: string;
+  };
+};
+
 export async function getCuriosaDeck(_deckId: string) {
   let deckId;
   const regex = /\/([^\/]+)$/;
@@ -29,10 +40,47 @@ export async function getCuriosaDeck(_deckId: string) {
     deckId = _deckId;
   }
 
-  const res = await axios.get<CuriosaResponse>(
-    `${CORS_PROXY}https://curiosa.io/api/decks/${deckId}`,
+  const input = encodeURIComponent(
+    JSON.stringify({
+      "0": { json: { id: deckId } },
+      "1": { json: { id: deckId } },
+      "2": { json: { id: deckId } },
+    }),
   );
-  return res.data;
+
+  const res = await axios.get(
+    `${CORS_PROXY}https://curiosa.io/api/trpc/deck.getDecklistById,deck.getAvatarById,deck.getSideboardById?batch=1&input=${input}`,
+  );
+
+  const [decklistRes, avatarRes, sideboardRes] = res.data as [
+    { result: { data: { json: CuriosaCardEntry[] } } },
+    { result: { data: { json: CuriosaCardEntry } } },
+    { result: { data: { json: CuriosaCardEntry[] } } },
+  ];
+
+  const toCard = (entry: CuriosaCardEntry): Card => ({
+    identifier: entry.card.slug,
+    name: entry.card.name,
+    quantity: entry.quantity,
+  });
+
+  const decklist = decklistRes.result.data.json;
+  const atlas = decklist.filter((c) => c.card.type === "Site").map(toCard);
+  const spellbook = decklist.filter((c) => c.card.type !== "Site").map(toCard);
+
+  const avatarEntry = avatarRes.result.data.json;
+  const avatar: Card[] = avatarEntry
+    ? [toCard(avatarEntry)]
+    : [];
+
+  const sideboard: SideboardCard[] = sideboardRes.result.data.json.map(
+    (entry) => ({
+      ...toCard(entry),
+      category: entry.card.type === "Site" ? "atlas" : "spellbook",
+    }),
+  );
+
+  return { avatar, spellbook, atlas, sideboard } as CuriosaResponse;
 }
 
 type RealmsCard = {
